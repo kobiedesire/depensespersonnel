@@ -650,8 +650,8 @@ public class InterfaceLigne extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        listerLigne();
-        boxInvisible();
+       // listerLigne();
+        //boxInvisible();
     }//GEN-LAST:event_formInternalFrameActivated
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
@@ -659,6 +659,8 @@ public class InterfaceLigne extends javax.swing.JInternalFrame {
         //listerProgramme();
         //listerComboArticle();
         listerComboProgramme();
+        listerLigne();
+        boxInvisible();
         JTableHeader header = tableau_ligne.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
     }//GEN-LAST:event_formInternalFrameOpened

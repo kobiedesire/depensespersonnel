@@ -100,6 +100,10 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         AgentController.viderChamps();
     }
 
+     //Afficher l'id du programme de la structure  
+    public static void displayIDProgramme() {
+        AgentController.afficherIDProgrammeFromStructure();
+    }
     //Fonction pour l'enregistrement d'un agent********************************************************************************************************************
     public static void enregistrerAgent() {
         Double aCARFO, aCNSS;
@@ -154,7 +158,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
             Double aLigne661 = Double.valueOf(ligne661.getText());
             Double aLigne663 = Double.valueOf(ligne663.getText());
-            Double aLigne664 = Double.valueOf(ligne664.getText());
+            Double aLigne664 = Double.valueOf(idLigne664.getText());
             Double aLigne666 = Double.valueOf(ligne666.getText());
             Double aLigne669 = Double.valueOf(ligne669.getText());
 
@@ -172,8 +176,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static void listerAgent() {
         AgentController.listAll(); // Executer la méthode d'affichage des données  
     }
+     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes********************************************************************************************************************
+    public static void afficherListeLigneIdProgramme() {
+        AgentController.afficherIdProgrammeListeSelectLigne(); // Executer la méthode d'affichage des données  
+    }
 
-   
 
     /* private static int rep;
 
@@ -258,6 +265,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         boxIncidenceAnnuelle = new javax.swing.JFormattedTextField();
         boxDatePriseServiceAg = new javax.swing.JFormattedTextField();
         boxDateNaissAg = new javax.swing.JFormattedTextField();
+        idProg = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_agent = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -301,16 +309,21 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
         ligne661 = new javax.swing.JFormattedTextField();
         ligne663 = new javax.swing.JFormattedTextField();
-        ligne664 = new javax.swing.JFormattedTextField();
+        idLigne664 = new javax.swing.JFormattedTextField();
         ligne666 = new javax.swing.JFormattedTextField();
         ligne669 = new javax.swing.JFormattedTextField();
+        btn_SelectLigne661 = new javax.swing.JButton();
+        btn_SelectLigne663 = new javax.swing.JButton();
+        btn_ligne663 = new javax.swing.JButton();
+        btn_SelectLigne666 = new javax.swing.JButton();
+        btn_SelectLigne669 = new javax.swing.JButton();
+        idLigne661 = new javax.swing.JTextField();
+        idLigne663 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        idLigne666 = new javax.swing.JTextField();
+        idLigne669 = new javax.swing.JTextField();
         boxContributionCARFO = new javax.swing.JFormattedTextField();
         boxContributionCNSS = new javax.swing.JFormattedTextField();
         boxIndeminiteVestimentaire = new javax.swing.JFormattedTextField();
@@ -361,6 +374,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         comboStructure.setEditable(true);
         comboStructure.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboStructure.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " " }));
+        comboStructure.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboStructureItemStateChanged(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Matricule :");
@@ -488,7 +506,10 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                             .addComponent(comboEmploiAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(boxIncidenceMensuelle)
                             .addComponent(boxIncidenceAnnuelle)
-                            .addComponent(boxDatePriseServiceAg))))
+                            .addComponent(boxDatePriseServiceAg)))
+                    .addGroup(panneauFormsLayout.createSequentialGroup()
+                        .addComponent(idProg, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panneauFormsLayout.setVerticalGroup(
@@ -546,6 +567,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(boxIncidenceAnnuelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(idProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -852,26 +875,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jLabel16.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel16.setText("Primes et indemnités (Ligne 663) : ");
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "661" }));
-        jComboBox2.setEnabled(false);
-
-        jComboBox4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "663" }));
-        jComboBox4.setEnabled(false);
-
-        jComboBox5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "664" }));
-        jComboBox5.setEnabled(false);
-
-        jComboBox6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "666" }));
-        jComboBox6.setEnabled(false);
-
-        jComboBox7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "669" }));
-        jComboBox7.setEnabled(false);
-
         ligne661.setBackground(new java.awt.Color(204, 0, 0));
         ligne661.setForeground(new java.awt.Color(255, 255, 255));
         ligne661.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -896,11 +899,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne663.setEnabled(false);
         ligne663.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        ligne664.setBackground(new java.awt.Color(204, 0, 0));
-        ligne664.setForeground(new java.awt.Color(255, 255, 255));
-        ligne664.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        ligne664.setEnabled(false);
-        ligne664.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        idLigne664.setBackground(new java.awt.Color(204, 0, 0));
+        idLigne664.setForeground(new java.awt.Color(255, 255, 255));
+        idLigne664.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        idLigne664.setEnabled(false);
+        idLigne664.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         ligne666.setBackground(new java.awt.Color(204, 0, 0));
         ligne666.setForeground(new java.awt.Color(255, 255, 255));
@@ -912,6 +915,56 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne669.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ligne669.setEnabled(false);
         ligne669.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        btn_SelectLigne661.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_SelectLigne661.setForeground(new java.awt.Color(204, 0, 0));
+        btn_SelectLigne661.setText("Sélectionnez une ligne 661");
+        btn_SelectLigne661.setToolTipText("Sélectionnez une ligne");
+        btn_SelectLigne661.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SelectLigne661ActionPerformed(evt);
+            }
+        });
+
+        btn_SelectLigne663.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_SelectLigne663.setForeground(new java.awt.Color(204, 0, 0));
+        btn_SelectLigne663.setText("Sélectionnez une ligne 663");
+        btn_SelectLigne663.setToolTipText("Sélectionnez une ligne 661");
+        btn_SelectLigne663.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SelectLigne663ActionPerformed(evt);
+            }
+        });
+
+        btn_ligne663.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_ligne663.setForeground(new java.awt.Color(204, 0, 0));
+        btn_ligne663.setText("Sélectionnez une ligne 664");
+        btn_ligne663.setToolTipText("Sélectionnez une ligne 664");
+        btn_ligne663.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ligne663ActionPerformed(evt);
+            }
+        });
+
+        btn_SelectLigne666.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_SelectLigne666.setForeground(new java.awt.Color(204, 0, 0));
+        btn_SelectLigne666.setText("Sélectionnez une ligne 666");
+        btn_SelectLigne666.setToolTipText("Sélectionnez une ligne 666");
+        btn_SelectLigne666.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SelectLigne666ActionPerformed(evt);
+            }
+        });
+
+        btn_SelectLigne669.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_SelectLigne669.setForeground(new java.awt.Color(204, 0, 0));
+        btn_SelectLigne669.setText("Sélectionnez une ligne 669");
+        btn_SelectLigne669.setToolTipText("Sélectionnez une ligne 669");
+        btn_SelectLigne669.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SelectLigne669ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -927,51 +980,71 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                     .addComponent(jLabel18)
                     .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_SelectLigne669)
+                    .addComponent(btn_SelectLigne666)
+                    .addComponent(btn_ligne663)
+                    .addComponent(btn_SelectLigne663)
+                    .addComponent(btn_SelectLigne661))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox2, 0, 91, Short.MAX_VALUE)
-                    .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(idLigne664, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ligne663, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ligne661, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ligne666, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ligne669, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ligne661)
-                    .addComponent(ligne663, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
-                    .addComponent(ligne664)
-                    .addComponent(ligne666)
-                    .addComponent(ligne669))
-                .addContainerGap())
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(idLigne661, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idLigne666, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idLigne663, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idLigne669, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idLigne661, idLigne663, idLigne666, idLigne669, jTextField3});
+
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ligne661, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ligne661, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_SelectLigne661, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idLigne661, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ligne663, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ligne663, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_SelectLigne663)
+                    .addComponent(idLigne663, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ligne664, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idLigne664, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ligne663)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ligne666, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ligne666, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_SelectLigne666)
+                    .addComponent(idLigne666, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ligne669, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ligne669, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_SelectLigne669)
+                    .addComponent(idLigne669, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idLigne661, idLigne663, idLigne666, idLigne669, jTextField3});
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_SelectLigne661, btn_SelectLigne663, btn_SelectLigne666, btn_SelectLigne669, btn_ligne663});
 
         boxContributionCARFO.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxContributionCARFO.setEnabled(false);
@@ -1162,7 +1235,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             .addGroup(panneauPrincipalLayout.createSequentialGroup()
                 .addGroup(panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panneauForms, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
+                    .addComponent(panneauForms, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1205,6 +1278,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
+        idProg.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();
@@ -1243,7 +1317,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne664.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAgent.idLigne664.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
@@ -1437,6 +1511,36 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_rechercheragentActionPerformed
 
+    private void btn_SelectLigne661ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne661ActionPerformed
+        // TODO add your handling code here:
+        afficherListeLigneIdProgramme();
+    }//GEN-LAST:event_btn_SelectLigne661ActionPerformed
+
+    private void comboStructureItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboStructureItemStateChanged
+        // TODO add your handling code here:
+        displayIDProgramme();
+    }//GEN-LAST:event_comboStructureItemStateChanged
+
+    private void btn_SelectLigne663ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne663ActionPerformed
+        // TODO add your handling code here:
+        afficherListeLigneIdProgramme();
+    }//GEN-LAST:event_btn_SelectLigne663ActionPerformed
+
+    private void btn_ligne663ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ligne663ActionPerformed
+        // TODO add your handling code here:
+        afficherListeLigneIdProgramme();
+    }//GEN-LAST:event_btn_ligne663ActionPerformed
+
+    private void btn_SelectLigne666ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne666ActionPerformed
+        // TODO add your handling code here:
+        afficherListeLigneIdProgramme();
+    }//GEN-LAST:event_btn_SelectLigne666ActionPerformed
+
+    private void btn_SelectLigne669ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne669ActionPerformed
+        // TODO add your handling code here:
+        afficherListeLigneIdProgramme();
+    }//GEN-LAST:event_btn_SelectLigne669ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JFormattedTextField boxAllocationFamiliale;
@@ -1461,7 +1565,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField boxNomAg;
     public static javax.swing.JTextField boxPrenomAg;
     public static javax.swing.JFormattedTextField boxSalaireIndicMensuel;
+    private javax.swing.JButton btn_SelectLigne661;
+    private javax.swing.JButton btn_SelectLigne663;
+    private javax.swing.JButton btn_SelectLigne666;
+    private javax.swing.JButton btn_SelectLigne669;
     private javax.swing.JButton btn_enregistrer;
+    private javax.swing.JButton btn_ligne663;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;
@@ -1474,11 +1583,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JComboBox<String> comboSexeAg;
     public static javax.swing.JComboBox<String> comboStructure;
     public static javax.swing.JComboBox<String> comboTypeAgent;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JTextField idLigne661;
+    private javax.swing.JTextField idLigne663;
+    public static javax.swing.JFormattedTextField idLigne664;
+    private javax.swing.JTextField idLigne666;
+    private javax.swing.JTextField idLigne669;
+    public static javax.swing.JTextField idProg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1517,9 +1627,9 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField3;
     public static javax.swing.JFormattedTextField ligne661;
     public static javax.swing.JFormattedTextField ligne663;
-    public static javax.swing.JFormattedTextField ligne664;
     public static javax.swing.JFormattedTextField ligne666;
     public static javax.swing.JFormattedTextField ligne669;
     public static javax.swing.JPanel panneauForms;
