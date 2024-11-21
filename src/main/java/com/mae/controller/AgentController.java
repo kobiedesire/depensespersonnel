@@ -68,14 +68,14 @@ public class AgentController {
                 case "Fonctionnaire":
                     double contriCARFO = (salIndicaire * tauxCARFO) / 100;
                     InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
-                    InterfaceAgent.idLigne664.setValue(Math.round(contriCARFO));
+                    InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
                     InterfaceAgent.boxContributionCNSS.setText("");
                     break;
 
                 case "Contractuel":
                     double contriCNSS = (salIndicaire * tauxCNSS) / 100;
                     InterfaceAgent.boxContributionCNSS.setValue(Math.round(contriCNSS));
-                    InterfaceAgent.idLigne664.setValue(Math.round(contriCNSS));
+                    InterfaceAgent.ligne664.setValue(Math.round(contriCNSS));
                     InterfaceAgent.boxContributionCARFO.setText("");
                     break;
             }
@@ -173,7 +173,7 @@ public class AgentController {
     public static void calculIncidenceMensuelleAnnuelle() {
         double inciMensuelle, inciAnnuelle, montantLigne661, montantLigne663, montantLigne664, montantLigne666, montantLigne669;
         if (InterfaceAgent.ligne661.getText().isBlank() && InterfaceAgent.ligne663.getText().isBlank()
-                && InterfaceAgent.idLigne664.getText().isBlank() && InterfaceAgent.ligne666.getText().isBlank() && InterfaceAgent.ligne669.getText().isBlank()) {
+                && InterfaceAgent.ligne664.getText().isBlank() && InterfaceAgent.ligne666.getText().isBlank() && InterfaceAgent.ligne669.getText().isBlank()) {
             InterfaceAgent.boxIncidenceMensuelle.setText("");
             InterfaceAgent.boxIncidenceAnnuelle.setText("");
         } else {
@@ -190,10 +190,10 @@ public class AgentController {
                 montantLigne663 = Integer.parseInt(InterfaceAgent.ligne663.getText());
             }
 
-            if (InterfaceAgent.idLigne664.getText().isBlank()) {
+            if (InterfaceAgent.ligne664.getText().isBlank()) {
                 montantLigne664 = 0;
             } else {
-                montantLigne664 = Integer.parseInt(InterfaceAgent.idLigne664.getText());
+                montantLigne664 = Integer.parseInt(InterfaceAgent.ligne664.getText());
             }
 
             if (InterfaceAgent.ligne666.getText().isBlank()) {
@@ -336,7 +336,7 @@ public class AgentController {
 
         InterfaceAgent.ligne661.setText("");
         InterfaceAgent.ligne663.setText("");
-        InterfaceAgent.idLigne664.setText("");
+        InterfaceAgent.ligne664.setText("");
         InterfaceAgent.ligne666.setText("");
         InterfaceAgent.ligne669.setText("");
 
@@ -352,6 +352,19 @@ public class AgentController {
 
         InterfaceAgent.comboCatAgent.setSelectedIndex(0);
 
+        InterfaceAgent.idProg.setText("");
+        InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgent.ligne666.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgent.ligne669.setBackground(new java.awt.Color(204, 0, 0));
+
+        InterfaceAgent.idLigne661.setText("");
+        InterfaceAgent.idLigne663.setText("");
+        InterfaceAgent.idLigne664.setText("");
+        InterfaceAgent.idLigne666.setText("");
+        InterfaceAgent.idLigne669.setText("");
+
     }
 
     //recuperation de l'id du programme et l'afficher en fonction de la selection de la structure  
@@ -362,6 +375,18 @@ public class AgentController {
         String codeProg = InterfaceAgent.comboStructure.getSelectedItem().toString();
         if (codeProg.contentEquals(" ")) {
             InterfaceAgent.idProg.setText("");
+            InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgent.ligne666.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgent.ligne669.setBackground(new java.awt.Color(204, 0, 0));
+           
+            InterfaceAgent.idLigne661.setText("");
+            InterfaceAgent.idLigne663.setText("");
+            InterfaceAgent.idLigne664.setText("");
+            InterfaceAgent.idLigne666.setText("");
+            InterfaceAgent.idLigne669.setText("");
+
         } else {
 
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectIDProgrammeFromStructure)) {
@@ -369,6 +394,17 @@ public class AgentController {
                 ResultSet res = preparedStatement.executeQuery();
                 if (res.next()) {
                     InterfaceAgent.idProg.setText(res.getString("idProgramme"));
+                    InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgent.ligne666.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgent.ligne669.setBackground(new java.awt.Color(204, 0, 0));
+                    
+                    InterfaceAgent.idLigne661.setText("");
+                    InterfaceAgent.idLigne663.setText("");
+                    InterfaceAgent.idLigne664.setText("");
+                    InterfaceAgent.idLigne666.setText("");
+                    InterfaceAgent.idLigne669.setText("");
                     //System.out.println(res.getString("idBudget"));
                 }
                 preparedStatement.close();
@@ -389,7 +425,7 @@ public class AgentController {
             JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
         } else {
             int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
-           // System.out.println(idP);
+            // System.out.println(idP);
             InterfaceListeLigne listeLigne = new InterfaceListeLigne(new javax.swing.JFrame(), true);
             listeLigne.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
             listeLigne.idProgrammeListeLigne.setValue(idP);
@@ -397,15 +433,16 @@ public class AgentController {
 
         }
     }
-    
+
     //Selectionner toutes les lignes contenu dans un programme en fonction de la structure choisie    
     private static final String querySelectLigne661 = "SELECT * FROM ligne l, programme p, action a, chapitre c, activite act, article ar, paragraphe para WHERE "
-             + " l.idProgramme = ? AND l.idProgramme = p.idProgramme AND l.idAction = a.idAction AND l.idChapitre = c.idChapitre AND l.idActivite = act.idActivite AND l.idArticle = ar.idArticle AND l.idParagraphe = para.idParagraphe ";
+            + " l.idProgramme = ? AND l.idProgramme = p.idProgramme AND l.idAction = a.idAction AND l.idChapitre = c.idChapitre AND l.idActivite = act.idActivite AND l.idArticle = ar.idArticle AND l.idParagraphe = para.idParagraphe ";
+
     //private static final String querySelectLigne661 = "SELECT * FROM ligne WHERE idProgramme = ?";
     //+ " l.idProgramme = ? ";
     public static void afficherLignesFromProgramme() {
         int idp = Integer.parseInt(InterfaceListeLigne.idProgrammeListeLigne.getText());
-         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne661)) {
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne661)) {
             preparedStatement.setInt(1, idp);
             ResultSet res = preparedStatement.executeQuery();
             res.last();
@@ -448,100 +485,151 @@ public class AgentController {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
-
     }
 
-    
-    
-    
-                
-           /* try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne661)) {
-                // preparedStatement.setInt(1, idP);
-                
-                //listeLigne.idProgrammeListeLigne.setValue(idP);  
-                ResultSet res = preparedStatement.executeQuery();
-                if (res.next()) {
-                   
-                }
-                res.last();
-                tab = new String[res.getRow()][9];
-                res.beforeFirst();
-                yn = false;
-                DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne.tableau_Selectligne.getModel();
-                while (InterfaceListeLigne.tableau_Selectligne.getRowCount() > 0) {
-                    tablemodel.removeRow(0);
-                }
-
-                for (int k = 0; k < tab.length; k++) {
-                    res.next();
-                   // tablemodel.addRow();
-                    /*tablemodel.setValueAt(res.getString("idLigne"), k, 0);
-                    tablemodel.setValueAt(res.getString("codeLigne"), k, 1);
-                    tablemodel.setValueAt(res.getString("idProgramme"), k, 2);
-                    tablemodel.setValueAt(res.getString("idAction"), k, 3);
-                    tablemodel.setValueAt(res.getString("idChapitre"), k, 4);
-                    tablemodel.setValueAt(res.getString("idActivite"), k, 5);
-                    tablemodel.setValueAt(res.getString("idArticle"), k, 6);
-                    tablemodel.setValueAt(res.getString("idParagraphe"), k, 7);
-                    tablemodel.setValueAt(res.getString("montantLigne"), k, 8);*/
-                         
-                    
-                    
-                    
-                    /*Object[] objects = new Object[9];
-                    objects[0] = res.getString("l.idLigne");
-                    objects[1] = res.getString("l.codeLigne");
-                    objects[2] = res.getString("p.codeProgramme");
-                    objects[3] = res.getString("a.codeAction");
-                    objects[4] = res.getString("c.codeChapitre");
-                    objects[5] = res.getString("act.codeActivite");
-                    objects[6] = res.getString("ar.codeArticle");
-                    objects[7] = res.getString("para.codeParagraphe");
-                    objects[8] = res.getString("montantLigne");
-                    tablemodel.addRow(objects);
-                    tab1[0] = res.getString("l.idLigne");
-                    tab1[1] = res.getString("l.codeLigne");
-                    tab1[2] = res.getString("p.codeProgramme");
-                    tab1[3] = res.getString("a.codeAction");
-                    tab1[4] = res.getString("c.codeChapitre");
-                    tab1[5] = res.getString("act.codeActivite");
-                    tab1[6] = res.getString("ar.codeArticle");
-                    tab1[7] = res.getString("para.codeParagraphe");
-                    tab1[8] = res.getString("montantLigne");*/                    
-                    
-                   /* Object[] objects = new Object[9];
-                    objects[0] = res.getString("idLigne");
-                    objects[1] = res.getString("codeLigne");
-                    objects[2] = res.getString("idProgramme");
-                    objects[3] = res.getString("idAction");
-                    objects[4] = res.getString("idChapitre");
-                    objects[5] = res.getString("idActivite");
-                    objects[6] = res.getString("idArticle");
-                    objects[7] = res.getString("idParagraphe");
-                    objects[8] = res.getString("montantLigne");
-                    tablemodel.addRow(objects);
-                    tab[k][0] = res.getString("idLigne");
-                    tab[k][1] = res.getString("codeLigne");
-                    tab[k][2] = res.getString("idProgramme");
-                    tab[k][3] = res.getString("idAction");
-                    tab[k][4] = res.getString("idChapitre");
-                    tab[k][5] = res.getString("idActivite");
-                    tab[k][6] = res.getString("idArticle");
-                    tab[k][7] = res.getString("idParagraphe");
-                    tab[k][8] = res.getString("montantLigne");
-                    yn = true;
-                }       
-                res.close();
-                preparedStatement.close();
-                connection.close();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erreur SQL");
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
-            }
+    // Recuperation de l'id de la ligne selectionnée 661
+    public static int nbreligne, numligne, idL;
+    private static final String querySelectOneLigne = "SELECT * FROM ligne WHERE idLigne = ? ";
+    public static void recupIDLigne661() {
+        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        if (nbreligne != 1) {
+            // InterfaceListeLigne.codeArticle.setText("");            
+            JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
+            //System.out.println(nbreligne);
+        } else {
+            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
         }
-    }*/
-
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
+            preparedStatement.setInt(1, idL);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+                InterfaceAgent.ligne661.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgent.idLigne661.setText(res.getString("idLigne"));
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+    
+    public static void recupIDLigne663() {
+        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        if (nbreligne != 1) {
+            // InterfaceListeLigne.codeArticle.setText("");            
+            JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
+            //System.out.println(nbreligne);
+        } else {
+            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+        }
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
+            preparedStatement.setInt(1, idL);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+                InterfaceAgent.ligne663.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgent.idLigne663.setText(res.getString("idLigne"));
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+    
+    
+      public static void recupIDLigne664() {
+        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        if (nbreligne != 1) {
+            // InterfaceListeLigne.codeArticle.setText("");            
+            JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
+            //System.out.println(nbreligne);
+        } else {
+            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+        }
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
+            preparedStatement.setInt(1, idL);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+                InterfaceAgent.ligne664.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgent.idLigne664.setText(res.getString("idLigne"));
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+    
+      public static void recupIDLigne666() {
+        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        if (nbreligne != 1) {
+            // InterfaceListeLigne.codeArticle.setText("");            
+            JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
+            //System.out.println(nbreligne);
+        } else {
+            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+        }
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
+            preparedStatement.setInt(1, idL);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+                InterfaceAgent.ligne666.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgent.idLigne666.setText(res.getString("idLigne"));
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+    
+      
+        public static void recupIDLigne669() {
+        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        if (nbreligne != 1) {
+            // InterfaceListeLigne.codeArticle.setText("");            
+            JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
+            //System.out.println(nbreligne);
+        } else {
+            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+        }
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
+            preparedStatement.setInt(1, idL);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+                InterfaceAgent.ligne669.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgent.idLigne669.setText(res.getString("idLigne"));
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+ 
+ 
+        
+ 
     //Enregistrer un agent
     private static final String queryInsert = "INSERT INTO agent (matriculeAgent, nomAgent, prenomAgent, dateNaissanceAgent, sexeAgent, datePriseServiceAgent, typeAgent, structureAgent, ministereOrigineAgent, fonctionAgent, emploiAgent, categorieEchelleAgent, echelonAgent, \n"
             + "indiceAgent, salaireIndiciaireAgent, indeminiteResidence, indeminiteAstreinte, indeminiteTechnicite, indeminiteResponsabilite, indeminiteVestimentaire, indeminiteLogement, indeminiteSpecifique, autreIndeminite, chargeMilitaire, \n"
@@ -647,6 +735,7 @@ public class AgentController {
 
     //Mise a jour de des lignes
     private static final String querySelectStructureAgent = "SELECT * FROM  structure s, agent a WHERE a.structureAgent = ? AND a.structureAgent =  s.codeStructure ";
+
     public static void updateLigne() {
         String selectStructure = InterfaceAgent.comboStructure.getSelectedItem().toString();
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectStructureAgent)) {
@@ -665,5 +754,4 @@ public class AgentController {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
     }
-
 }

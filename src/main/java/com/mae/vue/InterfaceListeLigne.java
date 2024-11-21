@@ -31,9 +31,26 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
     }
     //Lister toutes les agents********************************************************************************************************************
     public static void listerLignes() {
-        AgentController.afficherLignesFromProgramme(); // Executer la méthode d'affichage des données  
+        AgentController.afficherLignesFromProgramme(); 
+    }
+    
+    //afficher l'id de la ligne dans le formulaire agent
+    public static void afficherIDLigne661() {
+        AgentController.recupIDLigne661(); 
     }
 
+    public static void afficherIDLigne663() {
+        AgentController.recupIDLigne663(); 
+    }
+    public static void afficherIDLigne664() {
+        AgentController.recupIDLigne664(); 
+    }
+    public static void afficherIDLigne666() {
+        AgentController.recupIDLigne666(); 
+    }
+    public static void afficherIDLigne669() {
+        AgentController.recupIDLigne669(); 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +64,12 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_Selectligne = new javax.swing.JTable();
         idProgrammeListeLigne = new javax.swing.JFormattedTextField();
-        btn_ajout = new javax.swing.JButton();
+        btn_ajout661 = new javax.swing.JButton();
+        btn_ajout1 = new javax.swing.JButton();
+        btn_ajout663 = new javax.swing.JButton();
+        btn_ajout664 = new javax.swing.JButton();
+        btn_ajout666 = new javax.swing.JButton();
+        btn_ajout669 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Liste des lignes budgétaires");
@@ -89,15 +111,75 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(tableau_Selectligne);
+        if (tableau_Selectligne.getColumnModel().getColumnCount() > 0) {
+            tableau_Selectligne.getColumnModel().getColumn(0).setMinWidth(0);
+            tableau_Selectligne.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tableau_Selectligne.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
-        btn_ajout.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_ajout.setForeground(new java.awt.Color(0, 102, 51));
-        btn_ajout.setText("Ajouter la ligne");
-        btn_ajout.setToolTipText("Ajouter la ligne");
-        btn_ajout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
-        btn_ajout.addActionListener(new java.awt.event.ActionListener() {
+        btn_ajout661.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_ajout661.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout661.setText("Sélectionnez 661");
+        btn_ajout661.setToolTipText("Sélectionnez 661");
+        btn_ajout661.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_ajout661.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ajoutActionPerformed(evt);
+                btn_ajout661ActionPerformed(evt);
+            }
+        });
+
+        btn_ajout1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_ajout1.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout1.setText("Fermer");
+        btn_ajout1.setToolTipText("Fermer");
+        btn_ajout1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_ajout1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ajout1ActionPerformed(evt);
+            }
+        });
+
+        btn_ajout663.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_ajout663.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout663.setText("Sélectionnez 663");
+        btn_ajout663.setToolTipText("Sélectionnez 663");
+        btn_ajout663.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_ajout663.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ajout663ActionPerformed(evt);
+            }
+        });
+
+        btn_ajout664.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_ajout664.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout664.setText("Sélectionnez 664");
+        btn_ajout664.setToolTipText("Sélectionnez 664");
+        btn_ajout664.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_ajout664.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ajout664ActionPerformed(evt);
+            }
+        });
+
+        btn_ajout666.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_ajout666.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout666.setText("Sélectionnez 666");
+        btn_ajout666.setToolTipText("Sélectionnez 666");
+        btn_ajout666.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_ajout666.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ajout666ActionPerformed(evt);
+            }
+        });
+
+        btn_ajout669.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_ajout669.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout669.setText("Sélectionnez 669");
+        btn_ajout669.setToolTipText("Sélectionnez 669");
+        btn_ajout669.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_ajout669.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ajout669ActionPerformed(evt);
             }
         });
 
@@ -109,8 +191,19 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(idProgrammeListeLigne, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ajout, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(1189, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_ajout661, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_ajout663, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_ajout664, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_ajout666, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_ajout669, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_ajout1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(561, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -122,7 +215,13 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(idProgrammeListeLigne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
-                .addComponent(btn_ajout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_ajout661, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ajout1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ajout663, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ajout664, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ajout666, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ajout669, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -163,9 +262,40 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
         header.setDefaultRenderer(new PropsTableau());
     }//GEN-LAST:event_formWindowOpened
 
-    private void btn_ajoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajoutActionPerformed
-        
-    }//GEN-LAST:event_btn_ajoutActionPerformed
+    private void btn_ajout661ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajout661ActionPerformed
+         afficherIDLigne661();
+         this.dispose();
+    }//GEN-LAST:event_btn_ajout661ActionPerformed
+
+    private void btn_ajout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajout1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btn_ajout1ActionPerformed
+
+    private void btn_ajout663ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajout663ActionPerformed
+        // TODO add your handling code here:
+        afficherIDLigne663();
+        this.dispose();
+
+    }//GEN-LAST:event_btn_ajout663ActionPerformed
+
+    private void btn_ajout664ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajout664ActionPerformed
+        // TODO add your handling code here:
+        afficherIDLigne664();
+        this.dispose();
+    }//GEN-LAST:event_btn_ajout664ActionPerformed
+
+    private void btn_ajout666ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajout666ActionPerformed
+        // TODO add your handling code here:
+                afficherIDLigne666();
+                this.dispose();
+    }//GEN-LAST:event_btn_ajout666ActionPerformed
+
+    private void btn_ajout669ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajout669ActionPerformed
+        // TODO add your handling code here:
+                afficherIDLigne669();
+                this.dispose();
+    }//GEN-LAST:event_btn_ajout669ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,7 +340,12 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_ajout;
+    private javax.swing.JButton btn_ajout1;
+    private javax.swing.JButton btn_ajout661;
+    private javax.swing.JButton btn_ajout663;
+    private javax.swing.JButton btn_ajout664;
+    private javax.swing.JButton btn_ajout666;
+    private javax.swing.JButton btn_ajout669;
     public static javax.swing.JFormattedTextField idProgrammeListeLigne;
     public static javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

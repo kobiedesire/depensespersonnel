@@ -158,7 +158,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
             Double aLigne661 = Double.valueOf(ligne661.getText());
             Double aLigne663 = Double.valueOf(ligne663.getText());
-            Double aLigne664 = Double.valueOf(idLigne664.getText());
+            Double aLigne664 = Double.valueOf(ligne664.getText());
             Double aLigne666 = Double.valueOf(ligne666.getText());
             Double aLigne669 = Double.valueOf(ligne669.getText());
 
@@ -311,7 +311,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         ligne661 = new javax.swing.JFormattedTextField();
         ligne663 = new javax.swing.JFormattedTextField();
-        idLigne664 = new javax.swing.JFormattedTextField();
+        ligne664 = new javax.swing.JFormattedTextField();
         ligne666 = new javax.swing.JFormattedTextField();
         ligne669 = new javax.swing.JFormattedTextField();
         btn_SelectLigne661 = new javax.swing.JButton();
@@ -321,7 +321,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         btn_SelectLigne669 = new javax.swing.JButton();
         idLigne661 = new javax.swing.JTextField();
         idLigne663 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        idLigne664 = new javax.swing.JTextField();
         idLigne666 = new javax.swing.JTextField();
         idLigne669 = new javax.swing.JTextField();
         boxContributionCARFO = new javax.swing.JFormattedTextField();
@@ -879,6 +879,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne661.setForeground(new java.awt.Color(255, 255, 255));
         ligne661.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ligne661.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        ligne661.setEnabled(false);
         ligne661.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ligne661.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
@@ -899,11 +900,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne663.setEnabled(false);
         ligne663.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        idLigne664.setBackground(new java.awt.Color(204, 0, 0));
-        idLigne664.setForeground(new java.awt.Color(255, 255, 255));
-        idLigne664.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        idLigne664.setEnabled(false);
-        idLigne664.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ligne664.setBackground(new java.awt.Color(204, 0, 0));
+        ligne664.setForeground(new java.awt.Color(255, 255, 255));
+        ligne664.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne664.setEnabled(false);
+        ligne664.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         ligne666.setBackground(new java.awt.Color(204, 0, 0));
         ligne666.setForeground(new java.awt.Color(255, 255, 255));
@@ -988,14 +989,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                     .addComponent(btn_SelectLigne661))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(idLigne664, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ligne664, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ligne663, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ligne661, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ligne666, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ligne669, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idLigne664, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(idLigne661, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(idLigne666, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1004,7 +1005,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addContainerGap(93, Short.MAX_VALUE))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idLigne661, idLigne663, idLigne666, idLigne669, jTextField3});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idLigne661, idLigne663, idLigne664, idLigne666, idLigne669});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1024,9 +1025,9 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(idLigne664, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ligne664, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_ligne663)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idLigne664, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
@@ -1042,7 +1043,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idLigne661, idLigne663, idLigne666, idLigne669, jTextField3});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idLigne661, idLigne663, idLigne664, idLigne666, idLigne669});
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_SelectLigne661, btn_SelectLigne663, btn_SelectLigne666, btn_SelectLigne669, btn_ligne663});
 
@@ -1279,6 +1280,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
         idProg.setVisible(false);
+        //idLigne661.setVisible(false);
+        //idLigne663.setVisible(false);
+        //idLigne664.setVisible(false);
+       // idLigne666.setVisible(false);
+        //idLigne669.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();
@@ -1317,7 +1323,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.idLigne664.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAgent.ligne664.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
@@ -1583,11 +1589,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JComboBox<String> comboSexeAg;
     public static javax.swing.JComboBox<String> comboStructure;
     public static javax.swing.JComboBox<String> comboTypeAgent;
-    private javax.swing.JTextField idLigne661;
-    private javax.swing.JTextField idLigne663;
-    public static javax.swing.JFormattedTextField idLigne664;
-    private javax.swing.JTextField idLigne666;
-    private javax.swing.JTextField idLigne669;
+    public static javax.swing.JTextField idLigne661;
+    public static javax.swing.JTextField idLigne663;
+    public static javax.swing.JTextField idLigne664;
+    public static javax.swing.JTextField idLigne666;
+    public static javax.swing.JTextField idLigne669;
     public static javax.swing.JTextField idProg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1627,9 +1633,9 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField3;
     public static javax.swing.JFormattedTextField ligne661;
     public static javax.swing.JFormattedTextField ligne663;
+    public static javax.swing.JFormattedTextField ligne664;
     public static javax.swing.JFormattedTextField ligne666;
     public static javax.swing.JFormattedTextField ligne669;
     public static javax.swing.JPanel panneauForms;

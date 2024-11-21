@@ -1369,7 +1369,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="idLigne664" alignment="1" max="32767" attributes="0"/>
+                              <Component id="ligne664" alignment="1" max="32767" attributes="0"/>
                               <Component id="ligne663" alignment="1" max="32767" attributes="0"/>
                               <Component id="ligne661" alignment="1" max="32767" attributes="0"/>
                               <Component id="ligne666" alignment="1" max="32767" attributes="0"/>
@@ -1377,7 +1377,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField3" linkSize="19" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="idLigne664" linkSize="19" min="-2" pref="87" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="idLigne661" linkSize="19" min="-2" pref="93" max="-2" attributes="0"/>
                                   <Component id="idLigne666" linkSize="19" alignment="1" min="-2" pref="87" max="-2" attributes="0"/>
@@ -1409,9 +1409,9 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="idLigne664" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ligne664" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_ligne663" linkSize="21" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField3" linkSize="20" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="idLigne664" linkSize="20" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1487,6 +1487,7 @@
                     <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="1"/>
                     </Property>
@@ -1519,7 +1520,7 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JFormattedTextField" name="idLigne664">
+                <Component class="javax.swing.JFormattedTextField" name="ligne664">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="cc" type="rgb"/>
@@ -1654,14 +1655,29 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="idLigne661">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="idLigne663">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="idLigne664">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="idLigne666">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="idLigne669">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
