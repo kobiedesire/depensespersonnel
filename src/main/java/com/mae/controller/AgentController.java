@@ -7,7 +7,12 @@ package com.mae.controller;
 import com.mae.bd.connexionBD;
 import com.mae.model.Agent;
 import com.mae.vue.InterfaceAgent;
-import com.mae.vue.InterfaceListeLigne;
+import com.mae.vue.InterfaceListeLigne661;
+import com.mae.vue.InterfaceListeLigne663;
+import com.mae.vue.InterfaceListeLigne664;
+import com.mae.vue.InterfaceListeLigne666;
+import com.mae.vue.InterfaceListeLigne669;
+import com.mae.vue.InterfaceListeLigne669;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -418,21 +423,107 @@ public class AgentController {
         }
     }
 
-    //afficher l'id du programme dans l'interface de la liste des lignes
-    public static void afficherIdProgrammeListeSelectLigne() {
+    //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 661
+    public static void afficherIdProgrammeListeSelectLigne661() {
         if (InterfaceAgent.idProg.getText().trim().isBlank()) {
             InterfaceAgent.idProg.setText("");
             JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
         } else {
             int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
             // System.out.println(idP);
-            InterfaceListeLigne listeLigne = new InterfaceListeLigne(new javax.swing.JFrame(), true);
-            listeLigne.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
-            listeLigne.idProgrammeListeLigne.setValue(idP);
-            listeLigne.setVisible(true);
-
+            InterfaceListeLigne661 listeLigne661 = new InterfaceListeLigne661(new javax.swing.JFrame(), true);
+            listeLigne661.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            listeLigne661.idProgrammeListeLigne.setValue(idP);
+            listeLigne661.setVisible(true);
+           
+            
         }
     }
+    
+    //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 663
+    public static void afficherIdProgrammeListeSelectLigne663() {
+        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
+            InterfaceAgent.idProg.setText("");
+            JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
+        } else {
+            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            // System.out.println(idP);
+            InterfaceListeLigne663 listeLigne663 = new InterfaceListeLigne663(new javax.swing.JFrame(), true);
+            listeLigne663.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            listeLigne663.idProgrammeListeLigne.setValue(idP);
+            listeLigne663.setVisible(true);
+           
+            
+        }
+    }
+    
+     
+    
+  //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 664
+    public static void afficherIdProgrammeListeSelectLigne664() {
+        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
+            InterfaceAgent.idProg.setText("");
+            JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
+        } else {
+            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            // System.out.println(idP);
+            InterfaceListeLigne664 listeLigne664 = new InterfaceListeLigne664(new javax.swing.JFrame(), true);
+            listeLigne664.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            listeLigne664.idProgrammeListeLigne.setValue(idP);
+            listeLigne664.setVisible(true);
+           
+            
+        }
+    }   
+    
+    
+    
+    
+     //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 6666
+    public static void afficherIdProgrammeListeSelectLigne666() {
+        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
+            InterfaceAgent.idProg.setText("");
+            JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
+        } else {
+            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            // System.out.println(idP);
+            InterfaceListeLigne666 listeLigne666 = new InterfaceListeLigne666(new javax.swing.JFrame(), true);
+            listeLigne666.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            listeLigne666.idProgrammeListeLigne.setValue(idP);
+            listeLigne666.setVisible(true);
+           
+            
+        }
+    }
+    
+    
+    
+     //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 669
+    public static void afficherIdProgrammeListeSelectLigne669() {
+        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
+            InterfaceAgent.idProg.setText("");
+            JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
+        } else {
+            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            // System.out.println(idP);
+            InterfaceListeLigne669 listeLigne669 = new InterfaceListeLigne669(new javax.swing.JFrame(), true);
+            listeLigne669.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            listeLigne669.idProgrammeListeLigne.setValue(idP);
+            listeLigne669.setVisible(true);
+           
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     //Selectionner toutes les lignes contenu dans un programme en fonction de la structure choisie    
     private static final String querySelectLigne661 = "SELECT * FROM ligne l, programme p, action a, chapitre c, activite act, article ar, paragraphe para WHERE "
@@ -441,7 +532,7 @@ public class AgentController {
     //private static final String querySelectLigne661 = "SELECT * FROM ligne WHERE idProgramme = ?";
     //+ " l.idProgramme = ? ";
     public static void afficherLignesFromProgramme() {
-        int idp = Integer.parseInt(InterfaceListeLigne.idProgrammeListeLigne.getText());
+        int idp = Integer.parseInt(InterfaceListeLigne661.idProgrammeListeLigne.getText());
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne661)) {
             preparedStatement.setInt(1, idp);
             ResultSet res = preparedStatement.executeQuery();
@@ -449,8 +540,8 @@ public class AgentController {
             tab = new String[res.getRow()][9];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne.tableau_Selectligne.getModel();
-            while (InterfaceListeLigne.tableau_Selectligne.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne661.tableau_Selectligne.getModel();
+            while (InterfaceListeLigne661.tableau_Selectligne.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (String[] tab1 : tab) {
@@ -491,14 +582,14 @@ public class AgentController {
     public static int nbreligne, numligne, idL;
     private static final String querySelectOneLigne = "SELECT * FROM ligne WHERE idLigne = ? ";
     public static void recupIDLigne661() {
-        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
-            // InterfaceListeLigne.codeArticle.setText("");            
+            // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+            idL = Integer.parseInt(InterfaceListeLigne661.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
         }
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
@@ -518,14 +609,14 @@ public class AgentController {
     }
     
     public static void recupIDLigne663() {
-        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
-            // InterfaceListeLigne.codeArticle.setText("");            
+            // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+            idL = Integer.parseInt(InterfaceListeLigne661.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
         }
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
@@ -546,14 +637,14 @@ public class AgentController {
     
     
       public static void recupIDLigne664() {
-        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
-            // InterfaceListeLigne.codeArticle.setText("");            
+            // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+            idL = Integer.parseInt(InterfaceListeLigne661.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
         }
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
@@ -573,14 +664,14 @@ public class AgentController {
     }
     
       public static void recupIDLigne666() {
-        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
-            // InterfaceListeLigne.codeArticle.setText("");            
+            // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+            idL = Integer.parseInt(InterfaceListeLigne661.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
         }
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
@@ -601,14 +692,14 @@ public class AgentController {
     
       
         public static void recupIDLigne669() {
-        nbreligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
-            // InterfaceListeLigne.codeArticle.setText("");            
+            // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            idL = Integer.parseInt(InterfaceListeLigne.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
+            idL = Integer.parseInt(InterfaceListeLigne661.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne      
         }
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);

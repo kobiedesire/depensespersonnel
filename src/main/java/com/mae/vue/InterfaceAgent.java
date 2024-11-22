@@ -176,12 +176,44 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static void listerAgent() {
         AgentController.listAll(); // Executer la méthode d'affichage des données  
     }
-     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes********************************************************************************************************************
-    public static void afficherListeLigneIdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne(); // Executer la méthode d'affichage des données  
+     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 661********************************************************************************************************************
+    public static void afficherListeLigne661IdProgramme() {
+        AgentController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
     }
 
 
+     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 663********************************************************************************************************************
+    public static void afficherListeLigne663IdProgramme() {
+        AgentController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
+    }
+    
+    
+     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 664********************************************************************************************************************
+    public static void afficherListeLigne664IdProgramme() {
+        AgentController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
+    }
+    
+     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 666********************************************************************************************************************
+    public static void afficherListeLigne666IdProgramme() {
+        AgentController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
+    }
+    
+     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 669********************************************************************************************************************
+    public static void afficherListeLigne669IdProgramme() {
+        AgentController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /* private static int rep;
 
     
@@ -316,7 +348,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne669 = new javax.swing.JFormattedTextField();
         btn_SelectLigne661 = new javax.swing.JButton();
         btn_SelectLigne663 = new javax.swing.JButton();
-        btn_ligne663 = new javax.swing.JButton();
+        btn_SelectLigne664 = new javax.swing.JButton();
         btn_SelectLigne666 = new javax.swing.JButton();
         btn_SelectLigne669 = new javax.swing.JButton();
         idLigne661 = new javax.swing.JTextField();
@@ -899,6 +931,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne663.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         ligne663.setEnabled(false);
         ligne663.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ligne663.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ligne663ActionPerformed(evt);
+            }
+        });
 
         ligne664.setBackground(new java.awt.Color(204, 0, 0));
         ligne664.setForeground(new java.awt.Color(255, 255, 255));
@@ -937,13 +974,13 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_ligne663.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_ligne663.setForeground(new java.awt.Color(204, 0, 0));
-        btn_ligne663.setText("Sélectionnez une ligne 664");
-        btn_ligne663.setToolTipText("Sélectionnez une ligne 664");
-        btn_ligne663.addActionListener(new java.awt.event.ActionListener() {
+        btn_SelectLigne664.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_SelectLigne664.setForeground(new java.awt.Color(204, 0, 0));
+        btn_SelectLigne664.setText("Sélectionnez une ligne 664");
+        btn_SelectLigne664.setToolTipText("Sélectionnez une ligne 664");
+        btn_SelectLigne664.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ligne663ActionPerformed(evt);
+                btn_SelectLigne664ActionPerformed(evt);
             }
         });
 
@@ -984,7 +1021,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_SelectLigne669)
                     .addComponent(btn_SelectLigne666)
-                    .addComponent(btn_ligne663)
+                    .addComponent(btn_SelectLigne664)
                     .addComponent(btn_SelectLigne663)
                     .addComponent(btn_SelectLigne661))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1026,7 +1063,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(ligne664, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ligne663)
+                    .addComponent(btn_SelectLigne664)
                     .addComponent(idLigne664, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1045,7 +1082,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idLigne661, idLigne663, idLigne664, idLigne666, idLigne669});
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_SelectLigne661, btn_SelectLigne663, btn_SelectLigne666, btn_SelectLigne669, btn_ligne663});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_SelectLigne661, btn_SelectLigne663, btn_SelectLigne664, btn_SelectLigne666, btn_SelectLigne669});
 
         boxContributionCARFO.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxContributionCARFO.setEnabled(false);
@@ -1519,7 +1556,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void btn_SelectLigne661ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne661ActionPerformed
         // TODO add your handling code here:
-        afficherListeLigneIdProgramme();
+        afficherListeLigne661IdProgramme();
     }//GEN-LAST:event_btn_SelectLigne661ActionPerformed
 
     private void comboStructureItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboStructureItemStateChanged
@@ -1529,23 +1566,27 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void btn_SelectLigne663ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne663ActionPerformed
         // TODO add your handling code here:
-        afficherListeLigneIdProgramme();
+        afficherListeLigne663IdProgramme();
     }//GEN-LAST:event_btn_SelectLigne663ActionPerformed
 
-    private void btn_ligne663ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ligne663ActionPerformed
+    private void btn_SelectLigne664ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne664ActionPerformed
         // TODO add your handling code here:
-        afficherListeLigneIdProgramme();
-    }//GEN-LAST:event_btn_ligne663ActionPerformed
+        afficherListeLigne664IdProgramme();
+    }//GEN-LAST:event_btn_SelectLigne664ActionPerformed
 
     private void btn_SelectLigne666ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne666ActionPerformed
         // TODO add your handling code here:
-        afficherListeLigneIdProgramme();
+        afficherListeLigne666IdProgramme();
     }//GEN-LAST:event_btn_SelectLigne666ActionPerformed
 
     private void btn_SelectLigne669ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne669ActionPerformed
         // TODO add your handling code here:
-        afficherListeLigneIdProgramme();
+        afficherListeLigne669IdProgramme();
     }//GEN-LAST:event_btn_SelectLigne669ActionPerformed
+
+    private void ligne663ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ligne663ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ligne663ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1571,12 +1612,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField boxNomAg;
     public static javax.swing.JTextField boxPrenomAg;
     public static javax.swing.JFormattedTextField boxSalaireIndicMensuel;
-    private javax.swing.JButton btn_SelectLigne661;
-    private javax.swing.JButton btn_SelectLigne663;
-    private javax.swing.JButton btn_SelectLigne666;
-    private javax.swing.JButton btn_SelectLigne669;
+    public static javax.swing.JButton btn_SelectLigne661;
+    public static javax.swing.JButton btn_SelectLigne663;
+    public static javax.swing.JButton btn_SelectLigne664;
+    public static javax.swing.JButton btn_SelectLigne666;
+    public static javax.swing.JButton btn_SelectLigne669;
     private javax.swing.JButton btn_enregistrer;
-    private javax.swing.JButton btn_ligne663;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;

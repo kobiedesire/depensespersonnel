@@ -20,12 +20,12 @@ import com.mae.controller.ImportExcelController;
  *
  * @author hp
  */
-public class InterfaceListeLigne extends javax.swing.JDialog {
+public class InterfaceListeLigne661 extends javax.swing.JDialog {
 
     /**
      * Creates new form InterfaceListeLigne
      */
-    public InterfaceListeLigne(java.awt.Frame parent, boolean modal) {
+    public InterfaceListeLigne661(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -314,20 +314,21 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceListeLigne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceListeLigne661.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceListeLigne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceListeLigne661.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceListeLigne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceListeLigne661.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceListeLigne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceListeLigne661.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InterfaceListeLigne dialog = new InterfaceListeLigne(new javax.swing.JFrame(), true);
+                InterfaceListeLigne661 dialog = new InterfaceListeLigne661(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -341,11 +342,11 @@ public class InterfaceListeLigne extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_ajout1;
-    private javax.swing.JButton btn_ajout661;
-    private javax.swing.JButton btn_ajout663;
-    private javax.swing.JButton btn_ajout664;
-    private javax.swing.JButton btn_ajout666;
-    private javax.swing.JButton btn_ajout669;
+    public static javax.swing.JButton btn_ajout661;
+    public static javax.swing.JButton btn_ajout663;
+    public static javax.swing.JButton btn_ajout664;
+    public static javax.swing.JButton btn_ajout666;
+    public static javax.swing.JButton btn_ajout669;
     public static javax.swing.JFormattedTextField idProgrammeListeLigne;
     public static javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
