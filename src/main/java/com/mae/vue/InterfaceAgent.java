@@ -126,8 +126,9 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         if (aMatricule.isBlank() || aNom.isBlank() || aPrenom.isBlank() || aDateNaiss.isBlank() || aDatePriseService.isBlank() || aSexe.isBlank()
                 || aTypeAgent.isBlank() || aStructure.isBlank() || aMinistereOrigine.isBlank() || aFonction.isBlank() || aEmploi.isBlank() || aCategorieEchelle.isBlank()
                 || boxIndiceSal.getText().isBlank() || boxIndeminiteAstreinte.getText().isBlank() || boxIndeminiteTechnicite.getText().isBlank()
-                || boxEchelon.getText().isBlank() || boxIndeminiteLogement.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Vérifiez les champs obligatoires...");
+                || boxEchelon.getText().isBlank() || boxIndeminiteLogement.getText().isBlank()
+                || idLigne661.getText().isBlank() || idLigne663.getText().isBlank() || idLigne664.getText().isBlank() || idLigne666.getText().isBlank() || idLigne669.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Vérifiez les champs obligatoires ou des lignes budgétaires ne sont pas sélectionnées...");
         } else {
             int aIndice = Integer.parseInt(boxIndiceSal.getText());
             Double aIResidence = Double.valueOf(boxIndResidence.getText());
@@ -167,12 +168,16 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
             Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle);
             AgentController.saveAgent(agent);  // Enregistrez  dans la base de données     
-            AgentController.updateLigne();
+            AgentController.updateLigne661();
+            AgentController.updateLigne663();
+            AgentController.updateLigne664();
+            AgentController.updateLigne666();
+            AgentController.updateLigne669();
             reinitChamps();
         }
 
     }
-    
+
     
 
     //Lister toutes les agents********************************************************************************************************************

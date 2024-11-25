@@ -1027,7 +1027,7 @@ public class AgentController {
     }
 
     //Mise a jour de des lignes
-    private static final String querySelectLigne = "SELECT * FROM ligne WHERE idLigne = ?, AND idLigne = ?, idLigne = ?, idLigne = ?, idLigne = ?";
+  /*  private static final String querySelectLigne = "SELECT * FROM ligne WHERE idLigne IN (?, ?, ?, ?, ?)";
 
     public static void updateLigne() {
         //recuperation des valeur id des lignes
@@ -1144,4 +1144,201 @@ public class AgentController {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
     }
+}*/
+    
+    //Mise a jour du montant de la ligne 661
+    private static final String querySelectionLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+
+    public static void updateLigne661() {
+       // if (InterfaceAgent.idLigne661.getText().isBlank()) {
+          //  JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 661 correspondante");
+
+       // } else {
+            int LigneID661 = Integer.parseInt(InterfaceAgent.idLigne661.getText());
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne661)) {
+                preparedStatement.setInt(1, LigneID661);
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        int valeurLigne661 = res.getInt("montantLigne");
+                        int valeurFinalLigne661 = valeurLigne661 + Integer.parseInt(InterfaceAgent.ligne661.getText());
+                        String queryUpdateMontant661 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                        try (PreparedStatement preparedStatement661 = connection.prepareStatement(queryUpdateMontant661)) {
+                            preparedStatement661.setInt(1, valeurFinalLigne661);
+                            preparedStatement661.setInt(2, LigneID661);
+                            preparedStatement661.executeUpdate();
+                            preparedStatement661.close();
+                            // connection.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }
+      //  }
+
+    }
+
+    //Mise a jour du montant de la ligne 663
+    private static final String querySelectionLigne663 = "SELECT * FROM ligne WHERE idLigne = ?";
+
+    public static void updateLigne663() {
+       // if (InterfaceAgent.idLigne663.getText().isBlank()) {
+          //  JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 663 correspondante");
+
+      //  } else {
+            int LigneID663 = Integer.parseInt(InterfaceAgent.idLigne663.getText());
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne663)) {
+                preparedStatement.setInt(1, LigneID663);
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        int valeurLigne663 = res.getInt("montantLigne");
+                        int valeurFinalLigne663 = valeurLigne663 + Integer.parseInt(InterfaceAgent.ligne663.getText());
+                        String queryUpdateMontant663 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                        try (PreparedStatement preparedStatement663 = connection.prepareStatement(queryUpdateMontant663)) {
+                            preparedStatement663.setInt(1, valeurFinalLigne663);
+                            preparedStatement663.setInt(2, LigneID663);
+                            preparedStatement663.executeUpdate();
+                            preparedStatement663.close();
+                            // connection.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }
+      //  }
+    }
+
+    //Mise a jour du montant de la ligne 664
+    private static final String querySelectionLigne664 = "SELECT * FROM ligne WHERE idLigne = ?";
+
+    public static void updateLigne664() {
+       // if (InterfaceAgent.idLigne664.getText().isBlank()) {
+       //     JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 664 correspondante");
+
+     //   } else {
+            int LigneID664 = Integer.parseInt(InterfaceAgent.idLigne664.getText());
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne664)) {
+                preparedStatement.setInt(1, LigneID664);
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        int valeurLigne664 = res.getInt("montantLigne");
+                        int valeurFinalLigne664 = valeurLigne664 + Integer.parseInt(InterfaceAgent.ligne664.getText());
+                        String queryUpdateMontant664 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                        try (PreparedStatement preparedStatement664 = connection.prepareStatement(queryUpdateMontant664)) {
+                            preparedStatement664.setInt(1, valeurFinalLigne664);
+                            preparedStatement664.setInt(2, LigneID664);
+                            preparedStatement664.executeUpdate();
+                            preparedStatement664.close();
+                            // connection.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }
+      //  }
+    }
+
+    //Mise a jour du montant de la ligne 666
+    private static final String querySelectionLigne666 = "SELECT * FROM ligne WHERE idLigne = ?";
+
+    public static void updateLigne666() {
+       // if (InterfaceAgent.idLigne666.getText().isBlank()) {
+        //    JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 666 correspondante");
+
+       // } else {
+            int LigneID666 = Integer.parseInt(InterfaceAgent.idLigne666.getText());
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne666)) {
+                preparedStatement.setInt(1, LigneID666);
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        int valeurLigne666 = res.getInt("montantLigne");
+                        int valeurFinalLigne666 = valeurLigne666 + Integer.parseInt(InterfaceAgent.ligne666.getText());
+                        String queryUpdateMontant666 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                        try (PreparedStatement preparedStatement666 = connection.prepareStatement(queryUpdateMontant666)) {
+                            preparedStatement666.setInt(1, valeurFinalLigne666);
+                            preparedStatement666.setInt(2, LigneID666);
+                            preparedStatement666.executeUpdate();
+                            preparedStatement666.close();
+                            // connection.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }
+       //// }
+//
+    }
+//Mise a jour du montant de la ligne 669
+    private static final String querySelectionLigne669 = "SELECT * FROM ligne WHERE idLigne = ?";
+
+    public static void updateLigne669() {
+        //if (InterfaceAgent.idLigne669.getText().isBlank()) {
+       //     JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 669 correspondante");
+
+      //  } else {
+            int LigneID669 = Integer.parseInt(InterfaceAgent.idLigne669.getText());
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne669)) {
+                preparedStatement.setInt(1, LigneID669);
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        int valeurLigne669 = res.getInt("montantLigne");
+                        int valeurFinalLigne669 = valeurLigne669 + Integer.parseInt(InterfaceAgent.ligne669.getText());
+                        String queryUpdateMontant669 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                        try (PreparedStatement preparedStatement669 = connection.prepareStatement(queryUpdateMontant669)) {
+                            preparedStatement669.setInt(1, valeurFinalLigne669);
+                            preparedStatement669.setInt(2, LigneID669);
+                            preparedStatement669.executeUpdate();
+                            preparedStatement669.close();
+                            // connection.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }
+        //}
+
+    }
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
