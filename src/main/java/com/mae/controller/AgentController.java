@@ -926,7 +926,7 @@ public class AgentController {
     //Enregistrer un agent
     private static final String queryInsert = "INSERT INTO agent (matriculeAgent, nomAgent, prenomAgent, dateNaissanceAgent, sexeAgent, datePriseServiceAgent, typeAgent, structureAgent, ministereOrigineAgent, fonctionAgent, emploiAgent, categorieEchelleAgent, echelonAgent, \n"
             + "indiceAgent, salaireIndiciaireAgent, indeminiteResidence, indeminiteAstreinte, indeminiteTechnicite, indeminiteResponsabilite, indeminiteVestimentaire, indeminiteLogement, indeminiteSpecifique, autreIndeminite, chargeMilitaire, \n"
-            + "contributionCARFO, contributionCNSS, allocationFamiliale, montantLigne661, montantLigne663, montantLigne664, montantLigne666, montantLigne669, incidenceMensuelle, incidenceAnnuelle) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            + "contributionCARFO, contributionCNSS, allocationFamiliale, montantLigne661, montantLigne663, montantLigne664, montantLigne666, montantLigne669, incidenceMensuelle, incidenceAnnuelle, idLigne661, idLigne663, idLigne664, idLigne666, idLigne669) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     public static void saveAgent(Agent agent) {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryInsert)) {
@@ -968,6 +968,11 @@ public class AgentController {
 
             preparedStatement.setDouble(33, agent.getIncidenceM());
             preparedStatement.setDouble(34, agent.getIncidenceA());
+            preparedStatement.setInt(35, agent.getIdL661());
+            preparedStatement.setInt(36, agent.getIdL663());
+            preparedStatement.setInt(37, agent.getIdL664());
+            preparedStatement.setInt(38, agent.getIdL666());
+            preparedStatement.setInt(39, agent.getIdL669());
 
             // preparedStatement.executeUpdate();
             int enregistrementValide = preparedStatement.executeUpdate();
@@ -985,6 +990,76 @@ public class AgentController {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques" + e.getMessage());
         }
     }
+    
+     
+     //Modifier un agent
+    public static void updateAgent(Agent agent) {
+        idAg = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());   //recuperer l'id 
+        String queryUpdate = """
+                             UPDATE agent SET  matriculeAgent = ?, nomAgent = ?, prenomAgent = ?, dateNaissanceAgent = ?, sexeAgent = ?, datePriseServiceAgent = ?, typeAgent = ?, structureAgent = ?, ministereOrigineAgent = ?, fonctionAgent = ?, emploiAgent = ?, categorieEchelleAgent = ?, echelonAgent = ?, 
+                             indiceAgent = ?, salaireIndiciaireAgent = ?, indeminiteResidence = ?, indeminiteAstreinte = ?, indeminiteTechnicite = ?, indeminiteResponsabilite = ?, indeminiteVestimentaire = ?, indeminiteLogement = ?, indeminiteSpecifique = ?, autreIndeminite = ?, chargeMilitaire = ?, 
+                             contributionCARFO = ?, contributionCNSS = ?, allocationFamiliale = ?, montantLigne661 = ?, montantLigne663 = ?, montantLigne664 = ?, montantLigne666 = ?, montantLigne669 = ?, incidenceMensuelle = ?, incidenceAnnuelle = ?, idLigne661 = ?, idLigne663 = ?, idLigne664 = ?, idLigne666 = ?, idLigne669 = ? WHERE idAgent = ?""";
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryUpdate)) {
+           preparedStatement.setString(1, agent.getMatriculeA());
+            preparedStatement.setString(2, agent.getNomA());
+            preparedStatement.setString(3, agent.getPrenomA());
+            preparedStatement.setString(4, agent.getDateNaissanceA());
+            preparedStatement.setString(5, agent.getSexeA());
+
+            preparedStatement.setString(6, agent.getDatePriseServiceA());
+            preparedStatement.setString(7, agent.getTypeA());
+            preparedStatement.setString(8, agent.getStructureA());
+            preparedStatement.setString(9, agent.getMinistereOrigineA());
+            preparedStatement.setString(10, agent.getFonctionA());
+            preparedStatement.setString(11, agent.getEmploiA());
+
+            preparedStatement.setString(12, agent.getCategorieEchelleA());
+            preparedStatement.setInt(13, agent.getEchelonA());
+            preparedStatement.setInt(14, agent.getIndiceA());
+            preparedStatement.setDouble(15, agent.getSalaireIndiciaireA());
+            preparedStatement.setDouble(16, agent.getIndeminiteResidence());
+            preparedStatement.setDouble(17, agent.getIndeminiteAstreinte());
+            preparedStatement.setDouble(18, agent.getIndeminiteTechnicite());
+            preparedStatement.setDouble(19, agent.getIndeminiteResponsabilite());
+            preparedStatement.setDouble(20, agent.getIndeminiteVestimentaire());
+            preparedStatement.setDouble(21, agent.getIndeminiteLogement());
+            preparedStatement.setDouble(22, agent.getIndeminiteSpecifique());
+            preparedStatement.setDouble(23, agent.getAutreIndeminite());
+            preparedStatement.setDouble(24, agent.getChargeMilitaire());
+            preparedStatement.setDouble(25, agent.getContributionCARFO());
+            preparedStatement.setDouble(26, agent.getContributionCNSS());
+            preparedStatement.setDouble(27, agent.getAllocationFamiliale());
+
+            preparedStatement.setDouble(28, agent.getMontant661());
+            preparedStatement.setDouble(29, agent.getMontant663());
+            preparedStatement.setDouble(30, agent.getMontant664());
+            preparedStatement.setDouble(31, agent.getMontant666());
+            preparedStatement.setDouble(32, agent.getMontant669());
+
+            preparedStatement.setDouble(33, agent.getIncidenceM());
+            preparedStatement.setDouble(34, agent.getIncidenceA());
+            preparedStatement.setInt(35, agent.getIdL661());
+            preparedStatement.setInt(36, agent.getIdL663());
+            preparedStatement.setInt(37, agent.getIdL664());
+            preparedStatement.setInt(38, agent.getIdL666());
+            preparedStatement.setInt(39, agent.getIdL669());
+            preparedStatement.setInt(40, idAg);                   
+            
+            
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+
+    }
+    
+    
+    
+    
 
     /*Lister tous les agents*/
     private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent FROM agent ";
@@ -1148,7 +1223,6 @@ public class AgentController {
     
     //Mise a jour du montant de la ligne 661
     private static final String querySelectionLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
-
     public static void updateLigne661() {
        // if (InterfaceAgent.idLigne661.getText().isBlank()) {
           //  JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 661 correspondante");
@@ -1327,17 +1401,358 @@ public class AgentController {
         //}
 
     }
+    
+    
+      //Mise a jour du montant de la ligne 661 lors de la mise à jours de l'agent
+    private static final String querySelectionLigne661Update = "SELECT * FROM ligne WHERE idLigne = ?";
+    private static final String querySelectionValActuelLigne661Agent = "SELECT montantLigne661 FROM agent WHERE idAgent = ?";
+    public static void updateLigne661ForUpdate() {
+      
+            int LigneID661 = Integer.parseInt(InterfaceAgent.idLigne661.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne661Update)) {
+                preparedStatement.setInt(1, LigneID661);                
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        try (PreparedStatement preparedStatementLA = connection.prepareStatement(querySelectionValActuelLigne661Agent)) {
+                            preparedStatementLA.setInt(1, idA);
+                            ResultSet resLA = preparedStatementLA.executeQuery();
+                            if (resLA.next()) {
+                                int valeurActuelLigneAgent = resLA.getInt("montantLigne661");//valeur actuelle de la ligne 661 de l'agent
+                                int valeurLigne661 = res.getInt("montantLigne"); //valeur de ligne 661 du programme de l'agent contenu dans la base 
+                                int valeurFinalLigne661 = (Integer.parseInt(InterfaceAgent.ligne661.getText()) - valeurLigne661) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                String queryUpdateMontant661 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                                try (PreparedStatement preparedStatement661 = connection.prepareStatement(queryUpdateMontant661)) {
+                                    preparedStatement661.setInt(1, valeurFinalLigne661);
+                                    preparedStatement661.setInt(2, LigneID661);
+                                    preparedStatement661.executeUpdate();
+                                    preparedStatement661.close();
+                                    // connection.close();
+                                } catch (SQLException e) {
+                                    JOptionPane.showMessageDialog(null, "Erreur SQL");
+                                }
+                            }  
+                             preparedStatementLA.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }
+     
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }
+      //  }
+
+    }
+    
+    //Mise a jour du montant de la ligne 663 lors de la mise à jours de l'agent
+    private static final String querySelectionLigne663Update = "SELECT * FROM ligne WHERE idLigne = ?";
+    private static final String querySelectionValActuelLigne663Agent = "SELECT montantLigne663 FROM agent WHERE idAgent = ?";
+    public static void updateLigne663ForUpdate() {      
+            int LigneID663 = Integer.parseInt(InterfaceAgent.idLigne663.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne663Update)) {
+                preparedStatement.setInt(1, LigneID663);                
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        try (PreparedStatement preparedStatementLA = connection.prepareStatement(querySelectionValActuelLigne663Agent)) {
+                            preparedStatementLA.setInt(1, idA);
+                            ResultSet resLA = preparedStatementLA.executeQuery();
+                            if (resLA.next()) {
+                                int valeurActuelLigneAgent = resLA.getInt("montantLigne663");//valeur actuelle de la ligne 663 de l'agent
+                                int valeurLigne663 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
+                                int valeurFinalLigne663 = (Integer.parseInt(InterfaceAgent.ligne663.getText()) - valeurLigne663) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                String queryUpdateMontant663 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                                try (PreparedStatement preparedStatement663 = connection.prepareStatement(queryUpdateMontant663)) {
+                                    preparedStatement663.setInt(1, valeurFinalLigne663);
+                                    preparedStatement663.setInt(2, LigneID663);
+                                    preparedStatement663.executeUpdate();
+                                    preparedStatement663.close();
+                                    // connection.close();
+                                } catch (SQLException e) {
+                                    JOptionPane.showMessageDialog(null, "Erreur SQL");
+                                }
+                            }  
+                             preparedStatementLA.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }     
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }      //  }
+    }
+
+    //Mise a jour du montant de la ligne 664 lors de la mise à jours de l'agent
+    private static final String querySelectionLigne664Update = "SELECT * FROM ligne WHERE idLigne = ?";
+    private static final String querySelectionValActuelLigne664Agent = "SELECT montantLigne664 FROM agent WHERE idAgent = ?";
+    public static void updateLigne664ForUpdate() {      
+            int LigneID664 = Integer.parseInt(InterfaceAgent.idLigne664.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne664Update)) {
+                preparedStatement.setInt(1, LigneID664);                
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        try (PreparedStatement preparedStatementLA = connection.prepareStatement(querySelectionValActuelLigne664Agent)) {
+                            preparedStatementLA.setInt(1, idA);
+                            ResultSet resLA = preparedStatementLA.executeQuery();
+                            if (resLA.next()) {
+                                int valeurActuelLigneAgent = resLA.getInt("montantLigne664");//valeur actuelle de la ligne 663 de l'agent
+                                int valeurLigne664 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
+                                int valeurFinalLigne664 = (Integer.parseInt(InterfaceAgent.ligne664.getText()) - valeurLigne664) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                String queryUpdateMontant664 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                                try (PreparedStatement preparedStatement664 = connection.prepareStatement(queryUpdateMontant664)) {
+                                    preparedStatement664.setInt(1, valeurFinalLigne664);
+                                    preparedStatement664.setInt(2, LigneID664);
+                                    preparedStatement664.executeUpdate();
+                                    preparedStatement664.close();
+                                    // connection.close();
+                                } catch (SQLException e) {
+                                    JOptionPane.showMessageDialog(null, "Erreur SQL");
+                                }
+                            }  
+                             preparedStatementLA.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }     
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }      //  }
+    }
+    
+    //Mise a jour du montant de la ligne 666 lors de la mise à jours de l'agent
+    private static final String querySelectionLigne666Update = "SELECT * FROM ligne WHERE idLigne = ?";
+    private static final String querySelectionValActuelLigne666Agent = "SELECT montantLigne666 FROM agent WHERE idAgent = ?";
+    public static void updateLigne666ForUpdate() {      
+            int LigneID666 = Integer.parseInt(InterfaceAgent.idLigne666.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne666Update)) {
+                preparedStatement.setInt(1, LigneID666);                
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        try (PreparedStatement preparedStatementLA = connection.prepareStatement(querySelectionValActuelLigne666Agent)) {
+                            preparedStatementLA.setInt(1, idA);
+                            ResultSet resLA = preparedStatementLA.executeQuery();
+                            if (resLA.next()) {
+                                int valeurActuelLigneAgent = resLA.getInt("montantLigne666");//valeur actuelle de la ligne 666 de l'agent
+                                int valeurLigne666 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
+                                int valeurFinalLigne666 = (Integer.parseInt(InterfaceAgent.ligne666.getText()) - valeurLigne666) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                String queryUpdateMontant666 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                                try (PreparedStatement preparedStatement666 = connection.prepareStatement(queryUpdateMontant666)) {
+                                    preparedStatement666.setInt(1, valeurFinalLigne666);
+                                    preparedStatement666.setInt(2, LigneID666);
+                                    preparedStatement666.executeUpdate();
+                                    preparedStatement666.close();
+                                    // connection.close();
+                                } catch (SQLException e) {
+                                    JOptionPane.showMessageDialog(null, "Erreur SQL");
+                                }
+                            }  
+                             preparedStatementLA.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }     
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }      //  }
+    }
+    
+    //Mise a jour du montant de la ligne 669 lors de la mise à jours de l'agent
+    private static final String querySelectionLigne669Update = "SELECT * FROM ligne WHERE idLigne = ?";
+    private static final String querySelectionValActuelLigne669Agent = "SELECT montantLigne669 FROM agent WHERE idAgent = ?";
+    public static void updateLigne669ForUpdate() {      
+            int LigneID669 = Integer.parseInt(InterfaceAgent.idLigne669.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne666Update)) {
+                preparedStatement.setInt(1, LigneID669);                
+                try (ResultSet res = preparedStatement.executeQuery()) {
+                    if (res.next()) {
+                        try (PreparedStatement preparedStatementLA = connection.prepareStatement(querySelectionValActuelLigne669Agent)) {
+                            preparedStatementLA.setInt(1, idA);
+                            ResultSet resLA = preparedStatementLA.executeQuery();
+                            if (resLA.next()) {
+                                int valeurActuelLigneAgent = resLA.getInt("montantLigne663");//valeur actuelle de la ligne 669 de l'agent
+                                int valeurLigne669 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
+                                int valeurFinalLigne669 = (Integer.parseInt(InterfaceAgent.ligne669.getText()) - valeurLigne669) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                String queryUpdateMontant669 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
+                                try (PreparedStatement preparedStatement669 = connection.prepareStatement(queryUpdateMontant669)) {
+                                    preparedStatement669.setInt(1, valeurFinalLigne669);
+                                    preparedStatement669.setInt(2, LigneID669);
+                                    preparedStatement669.executeUpdate();
+                                    preparedStatement669.close();
+                                    // connection.close();
+                                } catch (SQLException e) {
+                                    JOptionPane.showMessageDialog(null, "Erreur SQL");
+                                }
+                            }  
+                             preparedStatementLA.close();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Erreur SQL");
+                        }     
+                    }
+                }
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            }      //  }
+    }
+    
+    
+    
+    // rechercher et afficher un agent
+    //public static int nbreligne, numligne, idAc;
+    private static final String querySelectOneAgentByMatricule = "SELECT * FROM agent WHERE matriculeAgent = ? ";
+    public static void rechercheAgentByMatricule() {
+    String matriculeA = InterfaceAgent.rechercheMatricule.getText().trim();
+    //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
+    if (matriculeA.isBlank()) {
+        JOptionPane.showMessageDialog(null, "Saisir un matricule !! ");
+        InterfaceAgent.tableau_agent.removeAll();
+        //System.out.println(nbreligne);
+    } else {
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentByMatricule)) {
+            preparedStatement.setString(1, matriculeA);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+                res.last();
+            tab = new String[res.getRow()][5];
+            res.beforeFirst();
+            yn = false;
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgent.tableau_agent.getModel();
+            while (InterfaceAgent.tableau_agent.getRowCount() > 0) {
+                tablemodel.removeRow(0);
+            }
+            for (int k = 0; k < tab.length; k++) {
+                res.next();
+                Object[] objects = new Object[5];
+                objects[0] = res.getString("idAgent");
+                objects[1] = res.getString("matriculeAgent");
+                objects[2] = res.getString("nomAgent");
+                objects[3] = res.getString("prenomAgent");
+                objects[4] = res.getString("structureAgent");
+                tablemodel.addRow(objects);
+                tab[k][0] = res.getString("idAgent");
+                tab[k][1] = res.getString("matriculeAgent");
+                tab[k][2] = res.getString("nomAgent");
+                tab[k][3] = res.getString("prenomAgent");
+                tab[k][4] = res.getString("structureAgent");
+                yn = true;
+            }
+            } else {
+                JOptionPane.showMessageDialog(null, "Saisir un matricule valide !! ");
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
 }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // Afficher une Programme
+    public static int  idAg;
+    private static final String querySelectOneAgentToDisplay = "SELECT * FROM agent where idAgent = ? ";
+
+    public static void displayAgentInBox() {
+        nbreligne = InterfaceAgent.tableau_agent.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceAgent.tableau_agent.getSelectedRow();//recuperer le le numero de la ligne
+        if (nbreligne != 1) {
+            InterfaceAgent.reinitChamps();            
+            JOptionPane.showMessageDialog(null, " Sélectionnez un agent");
+            //System.out.println(nbreligne);
+        } else {
+            idAg = Integer.parseInt(InterfaceAgent.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id       
+        }
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentToDisplay)) {
+            preparedStatement.setInt(1, idAg);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+                
+                InterfaceAgent.boxIDAgent.setText(res.getString("idAgent"));
+                InterfaceAgent.boxMatriculeAg.setText(res.getString("matriculeAgent"));
+                InterfaceAgent.boxNomAg.setText(res.getString("nomAgent"));
+                InterfaceAgent.boxPrenomAg.setText(res.getString("prenomAgent"));                
+                InterfaceAgent.boxDateNaissAg.setText(res.getString("dateNaissanceAgent"));
+                
+                InterfaceAgent.comboSexeAg.setSelectedItem(res.getString("sexeAgent"));
+                InterfaceAgent.boxDatePriseServiceAg.setText(res.getString("datePriseServiceAgent"));
+                InterfaceAgent.comboStructure.setSelectedItem(res.getString("structureAgent"));
+                InterfaceAgent.comboMinistere.setSelectedItem(res.getString("ministereOrigineAgent"));
+                
+                InterfaceAgent.comboFonction.setSelectedItem(res.getString("fonctionAgent"));
+                InterfaceAgent.comboEmploiAgent.setSelectedItem(res.getString("emploiAgent"));
+                InterfaceAgent.comboCatAgent.setSelectedItem(res.getString("categorieEchelleAgent")); 
+                InterfaceAgent.comboTypeAgent.setSelectedItem(res.getString("typeAgent"));     
+                
+                InterfaceAgent.boxEchelon.setText(res.getString("echelonAgent"));                
+                InterfaceAgent.boxIndiceSal.setText(res.getString("indiceAgent"));
+                
+                InterfaceAgent.boxSalaireIndicMensuel.setValue((res.getDouble("salaireIndiciaireAgent")));            
+                
+                InterfaceAgent.boxIndResidence.setValue(res.getDouble("indeminiteResidence"));
+                InterfaceAgent.boxIndeminiteAstreinte.setValue(res.getDouble("indeminiteAstreinte"));
+                InterfaceAgent.boxIndeminiteTechnicite.setValue(res.getDouble("indeminiteTechnicite"));
+                InterfaceAgent.boxIndeminiteResponsabilite.setValue(res.getDouble("indeminiteResponsabilite"));
+                InterfaceAgent.boxIndeminiteVestimentaire.setValue(res.getDouble("indeminiteVestimentaire"));                
+                
+                InterfaceAgent.boxIndeminiteLogement.setText(res.getString("indeminiteLogement"));
+                InterfaceAgent.boxIndeminiteSpecifique.setValue(res.getDouble("indeminiteSpecifique"));
+                InterfaceAgent.boxAutreIndeminite.setValue(res.getDouble("autreIndeminite"));
+                InterfaceAgent.boxChargeMilitaire.setValue(res.getDouble("chargeMilitaire"));
+                InterfaceAgent.boxContributionCARFO.setValue(res.getDouble("contributionCARFO"));
+                InterfaceAgent.boxContributionCNSS.setValue(res.getDouble("contributionCNSS"));
+                
+                InterfaceAgent.boxAllocationFamiliale.setValue(res.getDouble("allocationFamiliale"));
+                InterfaceAgent.ligne661.setValue(res.getDouble("montantLigne661"));
+                InterfaceAgent.ligne663.setValue(res.getDouble("montantLigne663"));
+                InterfaceAgent.ligne664.setValue(res.getDouble("montantLigne664"));
+                InterfaceAgent.ligne666.setValue(res.getDouble("montantLigne666"));
+                InterfaceAgent.ligne669.setValue(res.getDouble("montantLigne669"));
+                InterfaceAgent.boxIncidenceMensuelle.setValue(res.getDouble("incidenceMensuelle"));
+                InterfaceAgent.boxIncidenceAnnuelle.setValue(res.getDouble("incidenceAnnuelle")); 
+                
+                InterfaceAgent.idLigne661.setText(res.getString("idLigne661"));
+                InterfaceAgent.idLigne663.setText(res.getString("idLigne663"));
+                InterfaceAgent.idLigne664.setText(res.getString("idLigne664"));
+                InterfaceAgent.idLigne666.setText(res.getString("idLigne666"));
+                InterfaceAgent.idLigne669.setText(res.getString("idLigne669"));
+                            
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+   
+        
+}  
     
     
     

@@ -16,6 +16,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
 import com.mae.controller.ImportExcelController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -100,10 +102,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         AgentController.viderChamps();
     }
 
-     //Afficher l'id du programme de la structure  
+    //Afficher l'id du programme de la structure  
     public static void displayIDProgramme() {
         AgentController.afficherIDProgrammeFromStructure();
     }
+
     //Fonction pour l'enregistrement d'un agent********************************************************************************************************************
     public static void enregistrerAgent() {
         Double aCARFO, aCNSS;
@@ -165,8 +168,15 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
             Double aIncidenceMensuelle = Double.valueOf(boxIncidenceMensuelle.getText());
             Double aIncidenceAnnuelle = Double.valueOf(boxIncidenceAnnuelle.getText());
+            
+            int IDL661 = Integer.parseInt(idLigne661.getText());
+            int IDL663 = Integer.parseInt(idLigne663.getText());
+            int IDL664 = Integer.parseInt(idLigne664.getText());
+            int IDL666 = Integer.parseInt(idLigne666.getText());
+            int IDL669 = Integer.parseInt(idLigne669.getText());
+            
 
-            Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle);
+            Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
             AgentController.saveAgent(agent);  // Enregistrez  dans la base de données     
             AgentController.updateLigne661();
             AgentController.updateLigne663();
@@ -177,51 +187,137 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         }
 
     }
-
     
+       //Fonction pour la modification d'un agent********************************************************************************************************************
+        private static int rep;
+    public static void modifierAgent() {
+        Double aCARFO, aCNSS;
+        // Récuperation des donnéses du formulaire
+        //champ de saisie caractere
+        String aMatricule = boxMatriculeAg.getText().trim();
+        String aNom = boxNomAg.getText().trim().toUpperCase();
+        String aPrenom = boxPrenomAg.getText().trim();
+        String aDateNaiss = boxDateNaissAg.getText().trim();
+        String aDatePriseService = boxDatePriseServiceAg.getText().trim();
+        //champs de selection 
+        String aSexe = (comboSexeAg.getSelectedItem().toString()).trim();
+        String aTypeAgent = (comboTypeAgent.getSelectedItem().toString()).trim();
+        String aStructure = (comboStructure.getSelectedItem().toString()).trim();
+        String aMinistereOrigine = (comboMinistere.getSelectedItem().toString()).trim();
+        String aFonction = (comboFonction.getSelectedItem().toString()).trim();
+        String aEmploi = (comboEmploiAgent.getSelectedItem().toString()).trim();
+        String aCategorieEchelle = (comboCatAgent.getSelectedItem().toString()).trim();
+
+        if (aMatricule.isBlank() || aNom.isBlank() || aPrenom.isBlank() || aDateNaiss.isBlank() || aDatePriseService.isBlank() || aSexe.isBlank()
+                || aTypeAgent.isBlank() || aStructure.isBlank() || aMinistereOrigine.isBlank() || aFonction.isBlank() || aEmploi.isBlank() || aCategorieEchelle.isBlank()
+                || boxIndiceSal.getText().isBlank() || boxIndeminiteAstreinte.getText().isBlank() || boxIndeminiteTechnicite.getText().isBlank()
+                || boxEchelon.getText().isBlank() || boxIndeminiteLogement.getText().isBlank()
+                || idLigne661.getText().isBlank() || idLigne663.getText().isBlank() || idLigne664.getText().isBlank() || idLigne666.getText().isBlank() || idLigne669.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Vérifiez les champs obligatoires ou des lignes budgétaires ne sont pas sélectionnées...");
+        } else {
+            int aIndice = Integer.parseInt(boxIndiceSal.getText());
+            Double aIResidence = Double.valueOf(boxIndResidence.getText());
+            Double aIAstreinte = Double.valueOf(boxIndeminiteAstreinte.getText());
+            Double aITechnicite = Double.valueOf(boxIndeminiteTechnicite.getText());
+            Double aIResponsabilite = Double.valueOf(boxIndeminiteResponsabilite.getText());
+            Double aIVestimentaire = Double.valueOf(boxIndeminiteVestimentaire.getText());
+            Double aISpecifique = Double.valueOf(boxIndeminiteSpecifique.getText());
+            int aEchelon = Integer.parseInt(boxEchelon.getText());
+            Double aSalIncidiciaire = Double.valueOf(boxSalaireIndicMensuel.getText());
+            Double aILogement = Double.valueOf(boxIndeminiteLogement.getText());
+            Double aChargeMilitaire = Double.valueOf(boxChargeMilitaire.getText());
+
+            if (boxContributionCARFO.getText().isBlank()) {
+                aCARFO = 0.0;
+            } else {
+                aCARFO = Double.valueOf(boxContributionCARFO.getText());
+            }
+            if (boxContributionCNSS.getText().isBlank()) {
+                aCNSS = 0.0;
+            } else {
+                aCNSS = Double.valueOf(boxContributionCNSS.getText());
+            }
+
+            //Double aCNSS = Double.valueOf(boxContributionCNSS.getText());
+            Double aAllFamil = Double.valueOf(boxAllocationFamiliale.getText());
+            Double aAutresI = Double.valueOf(boxAutreIndeminite.getText());
+
+            Double aLigne661 = Double.valueOf(ligne661.getText());
+            Double aLigne663 = Double.valueOf(ligne663.getText());
+            Double aLigne664 = Double.valueOf(ligne664.getText());
+            Double aLigne666 = Double.valueOf(ligne666.getText());
+            Double aLigne669 = Double.valueOf(ligne669.getText());
+
+            Double aIncidenceMensuelle = Double.valueOf(boxIncidenceMensuelle.getText());
+            Double aIncidenceAnnuelle = Double.valueOf(boxIncidenceAnnuelle.getText());
+            
+            int IDL661 = Integer.parseInt(idLigne661.getText());
+            int IDL663 = Integer.parseInt(idLigne663.getText());
+            int IDL664 = Integer.parseInt(idLigne664.getText());
+            int IDL666 = Integer.parseInt(idLigne666.getText());
+            int IDL669 = Integer.parseInt(idLigne669.getText());
+
+            rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment modifier cet agent?", "Modification d'un agent", JOptionPane.YES_NO_OPTION);
+            if (rep == JOptionPane.YES_OPTION) {
+                Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
+                AgentController.updateLigne661ForUpdate();
+                AgentController.updateLigne663ForUpdate();
+                AgentController.updateLigne664ForUpdate();
+                AgentController.updateLigne666ForUpdate();
+                AgentController.updateLigne669ForUpdate();
+                AgentController.updateAgent(agent);  // Enregistrez  dans la base de données     
+
+               // AgentController.updateLigne663();
+                //AgentController.updateLigne664();
+               // AgentController.updateLigne666();
+                //AgentController.updateLigne669();
+                reinitChamps();
+                JOptionPane.showMessageDialog(null, "Modification validée");
+            }
+            }
+
+    }
 
     //Lister toutes les agents********************************************************************************************************************
     public static void listerAgent() {
         AgentController.listAll(); // Executer la méthode d'affichage des données  
     }
-     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 661********************************************************************************************************************
+
+    //afficher un agent
+    public static void displayOneAgent() {
+        AgentController.rechercheAgentByMatricule();
+    }
+
+    //afficher les informations d'un agents dans les champs
+    public static void displayOneAgenntToUpdateOrDelete() {
+        AgentController.displayAgentInBox();
+    }
+
+    //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 661********************************************************************************************************************
     public static void afficherListeLigne661IdProgramme() {
         AgentController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
     }
 
-
-     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 663********************************************************************************************************************
+    //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 663********************************************************************************************************************
     public static void afficherListeLigne663IdProgramme() {
         AgentController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
     }
-    
-    
-     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 664********************************************************************************************************************
+
+    //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 664********************************************************************************************************************
     public static void afficherListeLigne664IdProgramme() {
         AgentController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
     }
-    
-     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 666********************************************************************************************************************
+
+    //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 666********************************************************************************************************************
     public static void afficherListeLigne666IdProgramme() {
         AgentController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
     }
-    
-     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 669********************************************************************************************************************
+
+    //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 669********************************************************************************************************************
     public static void afficherListeLigne669IdProgramme() {
         AgentController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     /* private static int rep;
 
     
@@ -370,6 +466,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         boxIncidenceMensuelle = new javax.swing.JFormattedTextField();
         jLabel34 = new javax.swing.JLabel();
         boxIncidenceAnnuelle = new javax.swing.JFormattedTextField();
+        boxIDAgent = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -854,6 +951,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jPanel1.add(btn_rechercheragent, new org.netbeans.lib.awtextra.AbsoluteConstraints(891, 25, 170, 40));
 
         rechercheMatricule.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        rechercheMatricule.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                rechercheMatriculeKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                rechercheMatriculeKeyTyped(evt);
+            }
+        });
         jPanel1.add(rechercheMatricule, new org.netbeans.lib.awtextra.AbsoluteConstraints(1067, 26, 255, 40));
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 1613, 90));
@@ -979,7 +1084,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         boxDateNaissAg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         boxDateNaissAg.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         panneauForms.add(boxDateNaissAg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 54, 299, -1));
-        panneauForms.add(idProg, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 25, 112, -1));
+        panneauForms.add(idProg, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 25, 80, -1));
 
         jLabel25.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel25.setText("Inncidence mensuelle : ");
@@ -1007,6 +1112,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
         });
         panneauForms.add(boxIncidenceAnnuelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 25, 299, -1));
+        panneauForms.add(boxIDAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1043,17 +1149,17 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void btn_rafraichirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rafraichirActionPerformed
         // TODO add your handling code here:
-        //listerStructure();
+        listerAgent();
     }//GEN-LAST:event_btn_rafraichirActionPerformed
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
         idProg.setVisible(false);
-        idLigne661.setVisible(false);
-        idLigne663.setVisible(false);
-        idLigne664.setVisible(false);
-        idLigne666.setVisible(false);
-        idLigne669.setVisible(false);
+       // idLigne661.setVisible(false);
+        //idLigne663.setVisible(false);
+       // idLigne664.setVisible(false);
+        //idLigne666.setVisible(false);
+       // idLigne669.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();
@@ -1174,13 +1280,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void tableau_agentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableau_agentMouseClicked
         // TODO add your handling code here:
-        // afficherStructure();
+        displayOneAgenntToUpdateOrDelete();
     }//GEN-LAST:event_tableau_agentMouseClicked
 
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
         // TODO add your handling code here:
-        /*modifierStructure();
-        listerStructure();*/
+        modifierAgent();
+        listerAgent();
+
     }//GEN-LAST:event_btn_modifierActionPerformed
 
     private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
@@ -1284,6 +1391,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void btn_rechercheragentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rechercheragentActionPerformed
         // TODO add your handling code here:
+        displayOneAgent();
     }//GEN-LAST:event_btn_rechercheragentActionPerformed
 
     private void btn_SelectLigne661ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SelectLigne661ActionPerformed
@@ -1320,6 +1428,18 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ligne663ActionPerformed
 
+    private void rechercheMatriculeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rechercheMatriculeKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_rechercheMatriculeKeyTyped
+
+    private void rechercheMatriculeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rechercheMatriculeKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            displayOneAgent();
+        }
+    }//GEN-LAST:event_rechercheMatriculeKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JFormattedTextField boxAllocationFamiliale;
@@ -1330,6 +1450,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JFormattedTextField boxDateNaissAg;
     public static javax.swing.JFormattedTextField boxDatePriseServiceAg;
     public static javax.swing.JTextField boxEchelon;
+    public static javax.swing.JTextField boxIDAgent;
     public static javax.swing.JFormattedTextField boxIncidenceAnnuelle;
     public static javax.swing.JFormattedTextField boxIncidenceMensuelle;
     public static javax.swing.JFormattedTextField boxIndResidence;

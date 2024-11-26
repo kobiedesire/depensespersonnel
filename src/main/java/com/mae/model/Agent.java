@@ -13,17 +13,41 @@ public class Agent {
     private String matriculeA, nomA, prenomA, dateNaissanceA, sexeA, datePriseServiceA, typeA, structureA, ministereOrigineA, fonctionA, emploiA;
     private String categorieEchelleA;
     private int echelonA;
-    private int indiceA ;   
+    private int indiceA ;
+    
     
     private Double salaireIndiciaireA,
             indeminiteResidence, indeminiteAstreinte, indeminiteTechnicite, indeminiteResponsabilite, indeminiteVestimentaire, indeminiteLogement, indeminiteSpecifique,
             autreIndeminite, chargeMilitaire, contributionCARFO, contributionCNSS, allocationFamiliale,
             montant661, montant663, montant664, montant666, montant669, incidenceM, incidenceA;
+    private int idL661, idL663, idL664, idL666, idL669;
 
     public int getIdA() {
         return idA;
     }
 
+    public int getIdL661() {
+        return idL661;
+    }
+
+    public int getIdL663() {
+        return idL663;
+    }
+
+    public int getIdL664() {
+        return idL664;
+    }
+
+    public int getIdL666() {
+        return idL666;
+    }
+
+    public int getIdL669() {
+        return idL669;
+    }
+
+    
+    
     public int getEchelonA() {
         return echelonA;
     }
@@ -300,7 +324,30 @@ public class Agent {
         this.incidenceA = incidenceA;
     }
 
-    public Agent(String matriculeA, String nomA, String prenomA, String dateNaissanceA, String sexeA, String datePriseServiceA, String typeA, String structureA, String ministereOrigineA, String fonctionA, String emploiA, String categorieEchelleA, int echelonA, int indiceA, Double salaireIndiciaireA, Double indeminiteResidence, Double indeminiteAstreinte, Double indeminiteTechnicite, Double indeminiteResponsabilite, Double indeminiteVestimentaire, Double indeminiteLogement, Double indeminiteSpecifique, Double autreIndeminite, Double chargeMilitaire, Double contributionCARFO, Double contributionCNSS, Double allocationFamiliale, Double montant661, Double montant663, Double montant664, Double montant666, Double montant669, Double incidenceM, Double incidenceA) {
+    public void setIdL661(int idL661) {
+        this.idL661 = idL661;
+    }
+
+    public void setIdL663(int idL663) {
+        this.idL663 = idL663;
+    }
+
+    public void setIdL664(int idL664) {
+        this.idL664 = idL664;
+    }
+
+    public void setIdL666(int idL666) {
+        this.idL666 = idL666;
+    }
+
+    public void setIdL669(int idL669) {
+        this.idL669 = idL669;
+    }
+    
+    
+    
+
+   /* public Agent(String matriculeA, String nomA, String prenomA, String dateNaissanceA, String sexeA, String datePriseServiceA, String typeA, String structureA, String ministereOrigineA, String fonctionA, String emploiA, String categorieEchelleA, int echelonA, int indiceA, Double salaireIndiciaireA, Double indeminiteResidence, Double indeminiteAstreinte, Double indeminiteTechnicite, Double indeminiteResponsabilite, Double indeminiteVestimentaire, Double indeminiteLogement, Double indeminiteSpecifique, Double autreIndeminite, Double chargeMilitaire, Double contributionCARFO, Double contributionCNSS, Double allocationFamiliale, Double montant661, Double montant663, Double montant664, Double montant666, Double montant669, Double incidenceM, Double incidenceA) {
         this.matriculeA = matriculeA;
         this.nomA = nomA;
         this.prenomA = prenomA;
@@ -335,8 +382,51 @@ public class Agent {
         this.montant669 = montant669;
         this.incidenceM = incidenceM;
         this.incidenceA = incidenceA;
-    }
+    }*/
+    
      
+    public Agent(String matriculeA, String nomA, String prenomA, String dateNaissanceA, String sexeA, String datePriseServiceA, String typeA, String structureA, String ministereOrigineA, String fonctionA, String emploiA, String categorieEchelleA, int echelonA, int indiceA, Double salaireIndiciaireA, Double indeminiteResidence, Double indeminiteAstreinte, Double indeminiteTechnicite, Double indeminiteResponsabilite, Double indeminiteVestimentaire, Double indeminiteLogement, Double indeminiteSpecifique, Double autreIndeminite, Double chargeMilitaire, Double contributionCARFO, Double contributionCNSS, Double allocationFamiliale, Double montant661, Double montant663, Double montant664, Double montant666, Double montant669, Double incidenceM, Double incidenceA, int idL661, int idL663, int idL664, int idL666, int idL669) {
+        this.matriculeA = matriculeA;
+        this.nomA = nomA;
+        this.prenomA = prenomA;
+        this.dateNaissanceA = dateNaissanceA;
+        this.sexeA = sexeA;
+        this.datePriseServiceA = datePriseServiceA;
+        this.typeA = typeA;
+        this.structureA = structureA;
+        this.ministereOrigineA = ministereOrigineA;
+        this.fonctionA = fonctionA;
+        this.emploiA = emploiA;
+        this.categorieEchelleA = categorieEchelleA;
+        this.echelonA = echelonA;
+        this.indiceA = indiceA;
+        this.salaireIndiciaireA = salaireIndiciaireA;
+        this.indeminiteResidence = indeminiteResidence;
+        this.indeminiteAstreinte = indeminiteAstreinte;
+        this.indeminiteTechnicite = indeminiteTechnicite;
+        this.indeminiteResponsabilite = indeminiteResponsabilite;
+        this.indeminiteVestimentaire = indeminiteVestimentaire;
+        this.indeminiteLogement = indeminiteLogement;
+        this.indeminiteSpecifique = indeminiteSpecifique;
+        this.autreIndeminite = autreIndeminite;
+        this.chargeMilitaire = chargeMilitaire;
+        this.contributionCARFO = contributionCARFO;
+        this.contributionCNSS = contributionCNSS;
+        this.allocationFamiliale = allocationFamiliale;
+        this.montant661 = montant661;
+        this.montant663 = montant663;
+        this.montant664 = montant664;
+        this.montant666 = montant666;
+        this.montant669 = montant669;
+        this.incidenceM = incidenceM;
+        this.incidenceA = incidenceA;
+        this.idL661 = idL661;
+        this.idL663 = idL663;
+        this.idL664 = idL664;
+        this.idL666 = idL666;
+        this.idL669 = idL669;
+    }
+
     public Agent() {
     }
 
