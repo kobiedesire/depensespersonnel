@@ -7,6 +7,12 @@ package com.mae.vue;
 import com.mae.controller.StructureController;
 import com.mae.model.Structure;
 import com.mae.props.PropsTableau;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
@@ -40,23 +46,25 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
 
     // private static String mNom, mDescription;
     //Fonction pour l'enregistrement d'une structure********************************************************************************************************************
-    public static void enregistrerStructure() {
+    public static void enregistrerStructure() throws ParseException {
         // Récuperation des donnéses du formulaire
 
         String sCode = codeStr.getText().trim();        
         String sType = (typeStr.getSelectedItem().toString()).trim();
         String sLibele = libeleStr.getText().trim();
 
-        if (idProg.getText().isBlank() || sCode.isBlank() || sType.isBlank() || sLibele.isBlank()) {
+        if (idProg.getText().isBlank() || sCode.isBlank() || sType.isBlank() || sLibele.isBlank() || coefficientStruc.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
-            int pID = Integer.parseInt(idProg.getText());
-            Structure structure = new Structure(pID, sCode, sType, sLibele); // Créez un objet InterfaceStructure     
+            int pID = Integer.parseInt(idProg.getText());            
+            BigDecimal sCoefficient = String.format("%.1f", coefficientStruc.getText());     
+            Structure structure = new Structure(pID, sCode, sType, sLibele, sCoefficient); // Créez un objet InterfaceStructure     
             StructureController.saveStructure(structure);  // Enregistrez  dans la base de données            
             typeStr.setSelectedIndex(0);
             programmeStruc.setSelectedIndex(0);
             codeStr.setText("");
             libeleStr.setText("");
+            coefficientStruc.setText("");
         }
             
     }
@@ -72,18 +80,19 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
     }
 
     //Modifier une structure********************************************************************************************************************
-    public static void modifierStructure() {
+    public static void modifierStructure() throws ParseException {
         // Récuperation des donnéses du formulaire
         String sCode = codeStr.getText().trim();
         String sType = (typeStr.getSelectedItem().toString()).trim();
         String sLibele = libeleStr.getText().trim();
-        if (idProg.getText().isBlank() || sCode.isBlank() || sType.isBlank() || sLibele.isBlank()) {
+        if (idProg.getText().isBlank() || sCode.isBlank() || sType.isBlank() || sLibele.isBlank() || coefficientStruc.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
-               int pID = Integer.parseInt(idProg.getText());
+            int pID = Integer.parseInt(idProg.getText());
+             String sCoefficient = String.format("%.1f", coefficientStruc.getText());     
             rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment modifier cette structure?", "Modification d'une structure", JOptionPane.YES_NO_OPTION);
             if (rep == JOptionPane.YES_OPTION) {
-                Structure structure = new Structure(pID, sCode, sType, sLibele);
+                Structure structure = new Structure(pID, sCode, sType, sLibele, sCoefficient);
                 StructureController.updateStructure(structure); // Executer la méthode de modification dans la base de données
                 JOptionPane.showMessageDialog(null, "Modification validée");
                 typeStr.setSelectedIndex(0);
@@ -91,6 +100,7 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
                 codeStr.setText("");
                 libeleStr.setText("");
                 idProg.setText("");
+                coefficientStruc.setText("");
             }
         }
 
@@ -108,6 +118,7 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
             codeStr.setText("");
             libeleStr.setText("");
             idProg.setText("");
+             coefficientStruc1.setText("");
         }
     }
 
@@ -131,6 +142,9 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         programmeStruc = new javax.swing.JComboBox<>();
         idProg = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        coefficientStruc1 = new javax.swing.JFormattedTextField();
+        coefficientStruc = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_structure = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -192,12 +206,19 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Programme budgétaire : ");
 
+        programmeStruc.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         programmeStruc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         programmeStruc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 programmeStrucItemStateChanged(evt);
             }
         });
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setText("Coefficient de correction : ");
+
+        coefficientStruc1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0.###"))));
+        coefficientStruc1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout panneauFormsLayout = new javax.swing.GroupLayout(panneauForms);
         panneauForms.setLayout(panneauFormsLayout);
@@ -217,11 +238,17 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panneauFormsLayout.createSequentialGroup()
                         .addComponent(programmeStruc, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(idProg, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coefficientStruc)
+                        .addGap(18, 18, 18)
+                        .addComponent(coefficientStruc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idProg, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(libeleStr, javax.swing.GroupLayout.PREFERRED_SIZE, 965, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -242,25 +269,30 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
                     .addComponent(typeStr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(programmeStruc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(idProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(coefficientStruc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(coefficientStruc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
+
+        panneauFormsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {coefficientStruc1, libeleStr});
 
         tableau_structure.setAutoCreateRowSorter(true);
         tableau_structure.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         tableau_structure.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID Structure", "ID Programme", "Code Structure", "Type de structure", "Libélé Structure"
+                "ID Structure", "Code Programme", "Code Structure", "Type de structure", "Libélé Structure", "Coefficient de correction"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -422,12 +454,18 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
     private void btn_nouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nouveauActionPerformed
         // TODO add your handling code here:
         typeStr.setSelectedIndex(0);
+         programmeStruc.setSelectedIndex(0);
         codeStr.setText("");
         libeleStr.setText("");
+        coefficientStruc1.setText("");
     }//GEN-LAST:event_btn_nouveauActionPerformed
 
     private void btn_enregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enregistrerActionPerformed
-        enregistrerStructure();
+        try {
+            enregistrerStructure();
+        } catch (ParseException ex) {
+            Logger.getLogger(InterfaceStructure.class.getName()).log(Level.SEVERE, null, ex);
+        }
         listerStructure();
     }//GEN-LAST:event_btn_enregistrerActionPerformed
 
@@ -456,8 +494,12 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableau_structureMouseClicked
 
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
-        // TODO add your handling code here:
-        modifierStructure();
+        try {
+            // TODO add your handling code here:
+            modifierStructure();
+        } catch (ParseException ex) {
+            Logger.getLogger(InterfaceStructure.class.getName()).log(Level.SEVERE, null, ex);
+        }
         listerStructure();
     }//GEN-LAST:event_btn_modifierActionPerformed
 
@@ -480,11 +522,14 @@ public class InterfaceStructure extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_rafraichir;
     private javax.swing.JButton btn_supprimer;
     public static javax.swing.JTextField codeStr;
+    public static javax.swing.JTextField coefficientStruc;
+    public static javax.swing.JFormattedTextField coefficientStruc1;
     public static javax.swing.JTextField idProg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTextField libeleStr;

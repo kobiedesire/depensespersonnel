@@ -277,6 +277,25 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
 
     }
+    
+    
+    
+    //Supprimer un agent********************************************************************************************************************
+    public static void supprimerAgent() {
+        rep = JOptionPane.showConfirmDialog(null, "ACTION IRREVERSIBLE !!! Voulez-vous vraiment supprimer cet agent?", "Suppression d'un agent", JOptionPane.YES_NO_OPTION);
+        if (rep == JOptionPane.YES_OPTION) {
+            Agent agent = new Agent();
+            AgentController.updateLigne661ForDelete();
+            AgentController.updateLigne663ForDelete();
+            AgentController.updateLigne664ForDelete();
+            AgentController.updateLigne666ForDelete();
+            AgentController.updateLigne669ForDelete();
+            AgentController.deleteAgent(agent);// Executer la méthode de suppression des données    
+            JOptionPane.showMessageDialog(null, "L'agent a été supprimé avec succès.");
+            reinitChamps();            
+        }
+    }
+    
 
     //Lister toutes les agents********************************************************************************************************************
     public static void listerAgent() {
@@ -291,6 +310,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     //afficher les informations d'un agents dans les champs
     public static void displayOneAgenntToUpdateOrDelete() {
         AgentController.displayAgentInBox();
+        
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 661********************************************************************************************************************
@@ -397,7 +417,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         boxAutreIndeminite = new javax.swing.JFormattedTextField();
         boxChargeMilitaire = new javax.swing.JFormattedTextField();
-        boxIndeminiteLogement = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -434,10 +453,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         btn_nouveau = new javax.swing.JButton();
         btn_enregistrer = new javax.swing.JButton();
         btn_modifier = new javax.swing.JButton();
-        btn_supprimer = new javax.swing.JButton();
+        btn_modificationavancee = new javax.swing.JButton();
         btn_rafraichir = new javax.swing.JButton();
         btn_rechercheragent = new javax.swing.JButton();
         rechercheMatricule = new javax.swing.JTextField();
+        btn_supprimer = new javax.swing.JButton();
+        boxIndeminiteLogement = new javax.swing.JFormattedTextField();
         panneauForms = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -662,14 +683,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         });
         jPanel2.add(boxChargeMilitaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 117, 180, 26));
 
-        boxIndeminiteLogement.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        boxIndeminiteLogement.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                boxIndeminiteLogementKeyReleased(evt);
-            }
-        });
-        jPanel2.add(boxIndeminiteLogement, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 53, 180, 26));
-
         jLabel26.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel26.setText("Ind.Logement :");
         jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 62, -1, -1));
@@ -876,7 +889,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actions", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_nouveau.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_nouveau.setForeground(new java.awt.Color(0, 102, 51));
@@ -888,7 +900,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 btn_nouveauActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_nouveau, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 25, 170, 40));
 
         btn_enregistrer.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_enregistrer.setForeground(new java.awt.Color(0, 102, 51));
@@ -900,7 +911,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 btn_enregistrerActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_enregistrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 25, 170, 40));
 
         btn_modifier.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_modifier.setForeground(new java.awt.Color(0, 102, 51));
@@ -912,19 +922,17 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 btn_modifierActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_modifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 25, 170, 40));
 
-        btn_supprimer.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_supprimer.setForeground(new java.awt.Color(0, 102, 51));
-        btn_supprimer.setText("Supprimer");
-        btn_supprimer.setToolTipText("Supprimer");
-        btn_supprimer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
-        btn_supprimer.addActionListener(new java.awt.event.ActionListener() {
+        btn_modificationavancee.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_modificationavancee.setForeground(new java.awt.Color(0, 102, 51));
+        btn_modificationavancee.setText("Modification avancée");
+        btn_modificationavancee.setToolTipText("Modification avancée");
+        btn_modificationavancee.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_modificationavancee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_supprimerActionPerformed(evt);
+                btn_modificationavanceeActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_supprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 25, 170, 40));
 
         btn_rafraichir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_rafraichir.setForeground(new java.awt.Color(0, 102, 51));
@@ -936,7 +944,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 btn_rafraichirActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_rafraichir, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 25, 170, 40));
 
         btn_rechercheragent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_rechercheragent.setForeground(new java.awt.Color(0, 102, 51));
@@ -948,7 +955,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 btn_rechercheragentActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_rechercheragent, new org.netbeans.lib.awtextra.AbsoluteConstraints(891, 25, 170, 40));
 
         rechercheMatricule.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         rechercheMatricule.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -959,9 +965,68 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 rechercheMatriculeKeyTyped(evt);
             }
         });
-        jPanel1.add(rechercheMatricule, new org.netbeans.lib.awtextra.AbsoluteConstraints(1067, 26, 255, 40));
+
+        btn_supprimer.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_supprimer.setForeground(new java.awt.Color(0, 102, 51));
+        btn_supprimer.setText("Supprimer");
+        btn_supprimer.setToolTipText("Supprimer");
+        btn_supprimer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_supprimerActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(btn_nouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_enregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_modificationavancee, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_nouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_enregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_modificationavancee, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19))
+        );
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 1613, 90));
+
+        boxIndeminiteLogement.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        boxIndeminiteLogement.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        boxIndeminiteLogement.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                boxIndeminiteLogementKeyReleased(evt);
+            }
+        });
+        jPanel2.add(boxIndeminiteLogement, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 50, 180, 30));
 
         javax.swing.GroupLayout panneauPrincipalLayout = new javax.swing.GroupLayout(panneauPrincipal);
         panneauPrincipal.setLayout(panneauPrincipalLayout);
@@ -1112,7 +1177,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
         });
         panneauForms.add(boxIncidenceAnnuelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 25, 299, -1));
-        panneauForms.add(boxIDAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, -1, -1));
+        panneauForms.add(boxIDAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1155,11 +1220,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
         idProg.setVisible(false);
-       // idLigne661.setVisible(false);
-        //idLigne663.setVisible(false);
-       // idLigne664.setVisible(false);
-        //idLigne666.setVisible(false);
-       // idLigne669.setVisible(false);
+       idLigne661.setVisible(false);
+        idLigne663.setVisible(false);
+        idLigne664.setVisible(false);
+        idLigne666.setVisible(false);
+        idLigne669.setVisible(false);
+        boxIDAgent.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();
@@ -1281,6 +1347,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void tableau_agentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableau_agentMouseClicked
         // TODO add your handling code here:
         displayOneAgenntToUpdateOrDelete();
+        
     }//GEN-LAST:event_tableau_agentMouseClicked
 
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
@@ -1289,12 +1356,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         listerAgent();
 
     }//GEN-LAST:event_btn_modifierActionPerformed
-
-    private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
-        // TODO add your handling code here:
-        /*supprimerStructure();
-        listerStructure();*/
-    }//GEN-LAST:event_btn_supprimerActionPerformed
 
     private void boxIndiceSalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndiceSalKeyPressed
         // TODO add your handling code here:
@@ -1342,11 +1403,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         afficherSommeIndeminite663();
     }//GEN-LAST:event_boxIndeminiteResponsabiliteKeyReleased
-
-    private void boxIndeminiteLogementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteLogementKeyReleased
-        // TODO add your handling code here:
-        afficherSommeIndeminite663();
-    }//GEN-LAST:event_boxIndeminiteLogementKeyReleased
 
     private void boxIndeminiteVestimentaireKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteVestimentaireKeyReleased
         // TODO add your handling code here:
@@ -1440,6 +1496,24 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_rechercheMatriculeKeyReleased
 
+    private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
+        // TODO add your handling code here:
+         supprimerAgent();
+         listerAgent();
+    }//GEN-LAST:event_btn_supprimerActionPerformed
+
+    private void boxIndeminiteLogementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteLogementKeyReleased
+        // TODO add your handling code here:
+         afficherSommeIndeminite663();
+    }//GEN-LAST:event_boxIndeminiteLogementKeyReleased
+
+    private void btn_modificationavanceeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificationavanceeActionPerformed
+        // TODO add your handling code here:
+        supprimerAgent();
+        enregistrerAgent();
+        listerAgent();
+    }//GEN-LAST:event_btn_modificationavanceeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JFormattedTextField boxAllocationFamiliale;
@@ -1455,7 +1529,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JFormattedTextField boxIncidenceMensuelle;
     public static javax.swing.JFormattedTextField boxIndResidence;
     public static javax.swing.JFormattedTextField boxIndeminiteAstreinte;
-    public static javax.swing.JTextField boxIndeminiteLogement;
+    public static javax.swing.JFormattedTextField boxIndeminiteLogement;
     public static javax.swing.JFormattedTextField boxIndeminiteResponsabilite;
     public static javax.swing.JFormattedTextField boxIndeminiteSpecifique;
     public static javax.swing.JFormattedTextField boxIndeminiteTechnicite;
@@ -1471,6 +1545,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btn_SelectLigne666;
     public static javax.swing.JButton btn_SelectLigne669;
     private javax.swing.JButton btn_enregistrer;
+    private javax.swing.JButton btn_modificationavancee;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;

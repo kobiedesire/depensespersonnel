@@ -4,6 +4,8 @@
  */
 package com.mae.model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author hp
@@ -13,6 +15,7 @@ public class Structure {
     private int idS, idP;
     private String codeS, typeS;
     private String libeleS;
+    private BigDecimal  coefficientS;
 
     public int getIdS() {
         return idS;
@@ -33,6 +36,12 @@ public class Structure {
     public int getIdP() {
         return idP;
     }
+
+    public BigDecimal getCoefficientS() {
+        return coefficientS;
+    }
+    
+    
     
     
 
@@ -56,15 +65,20 @@ public class Structure {
         this.idP = idP;
     }
 
+    public void setCoefficientS(BigDecimal coefficientS) {
+        this.coefficientS = coefficientS;
+    }
+
     
     public Structure() {
     }
 
-    public Structure(int idP, String codeS, String typeS, String libeleS) {
+    public Structure(int idP, String codeS, String typeS, String libeleS, BigDecimal coefficientS) {
         this.idP = idP;
         this.codeS = codeS;
         this.typeS = typeS;
         this.libeleS = libeleS;
+        this.coefficientS = coefficientS;
     }  
 
 }

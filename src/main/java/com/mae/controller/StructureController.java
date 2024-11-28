@@ -12,8 +12,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -76,13 +80,14 @@ public class StructureController {
     private static String tab[][];
 
     /*Enregistrer une structure*/
-    private static final String queryInsert = "INSERT INTO structure (idProgramme, codeStructure, typeStructure, libeleStructure) VALUES (?, ?, ?, ?)";
+    private static final String queryInsert = "INSERT INTO structure (idProgramme, codeStructure, typeStructure, libeleStructure, coefficientStructure) VALUES (?, ?, ?, ?, ?)";
     public static void saveStructure(Structure structure) {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryInsert)) {
             preparedStatement.setInt(1, structure.getIdP());
             preparedStatement.setString(2, structure.getCodeS());
             preparedStatement.setString(3, structure.getTypeS());
             preparedStatement.setString(4, structure.getLibeleS());
+            preparedStatement.setBigDecimal(5, structure.getCoefficientS());
            // preparedStatement.executeUpdate();
             int enregistrementValide = preparedStatement.executeUpdate();
             if (enregistrementValide > 0) {
@@ -108,7 +113,7 @@ public class StructureController {
                  
             ResultSet res = preparedStatement.executeQuery();
             res.last();
-            tab = new String[res.getRow()][5];
+            tab = new String[res.getRow()][6];
             res.beforeFirst();
             yn = false;
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStructure.tableau_structure.getModel();
@@ -117,18 +122,20 @@ public class StructureController {
             }
             for (int k = 0; k < tab.length; k++) {
                 res.next();
-                Object[] objects = new Object[5];
+                Object[] objects = new Object[6];
                 objects[0] = res.getString("idStructure");
                 objects[1] = res.getString("p.codeProgramme");
                 objects[2] = res.getString("codeStructure");
                 objects[3] = res.getString("typeStructure");
                 objects[4] = res.getString("libeleStructure");
+                 objects[5] = res.getString("coefficientStructure");
                 tablemodel.addRow(objects);
                 tab[k][0] = res.getString("idStructure");
                 tab[k][1] = res.getString("p.codeProgramme");
                 tab[k][2] = res.getString("codeStructure");
                 tab[k][3] = res.getString("typeStructure");
                 tab[k][4] = res.getString("libeleStructure");
+                tab[k][5] = res.getString("coefficientStructure");
                 yn = true;
             }
             res.close();
@@ -145,7 +152,7 @@ public class StructureController {
     public static int nbreligne, numligne, idStruc;
     private static final String querySelectOneStructure = "SELECT * FROM structure s, programme p where idStructure = ? AND s.idProgramme = p.idProgramme";
 
-    public static void displayStructure() {
+    public static void displayStructure() {      
         nbreligne = InterfaceStructure.tableau_structure.getSelectedRowCount();//nombre de ligne selectionnÃ©es
         numligne = InterfaceStructure.tableau_structure.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
@@ -153,7 +160,8 @@ public class StructureController {
             InterfaceStructure.programmeStruc.setSelectedIndex(0);
             InterfaceStructure.libeleStr.setText("");
             InterfaceStructure.idProg.setText("");
-            JOptionPane.showMessageDialog(null, " Sélectionnez une structure");
+            InterfaceStructure.coefficientStruc.setText("");
+            JOptionPane.showMessageDialog(null, "Sélectionnez une structure");
             //System.out.println(nbreligne);
         } else {
             idStruc = Integer.parseInt(InterfaceStructure.tableau_structure.getValueAt(numligne, 0).toString());   //recuperer l'id     
@@ -164,7 +172,8 @@ public class StructureController {
                     InterfaceStructure.typeStr.setSelectedItem(res.getString("typeStructure"));
                     InterfaceStructure.programmeStruc.setSelectedItem(res.getString("p.codeProgramme"));
                     InterfaceStructure.codeStr.setText(res.getString("codeStructure"));
-                    InterfaceStructure.libeleStr.setText(res.getString("libeleStructure"));
+                    InterfaceStructure.libeleStr.setText(res.getString("libeleStructure"));                                     
+                    InterfaceStructure.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));
                 }
                 res.close();
                 preparedStatement.close();
@@ -180,13 +189,14 @@ public class StructureController {
     //Modifier une structure
     public static void updateStructure(Structure structure) {
         idStruc = Integer.parseInt(InterfaceStructure.tableau_structure.getValueAt(numligne, 0).toString());   //recuperer l'id 
-        String queryUpdate = "UPDATE structure SET  idProgramme = ?, codeStructure = ?, typeStructure = ?, libeleStructure = ? WHERE idStructure = ?";
+        String queryUpdate = "UPDATE structure SET  idProgramme = ?, codeStructure = ?, typeStructure = ?, libeleStructure = ?, coefficientStructure = ? WHERE idStructure = ?";
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryUpdate)) {
             preparedStatement.setInt(1, structure.getIdP());
             preparedStatement.setString(2, structure.getCodeS());           
             preparedStatement.setString(3, structure.getTypeS());
             preparedStatement.setString(4, structure.getLibeleS());
-            preparedStatement.setInt(5, idStruc);
+            preparedStatement.setBigDecimal(5, structure.getCoefficientS());            
+            preparedStatement.setInt(6, idStruc);
             preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
@@ -195,7 +205,6 @@ public class StructureController {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
-
     }
 
     public static void deleteStructure(Structure structure) {
