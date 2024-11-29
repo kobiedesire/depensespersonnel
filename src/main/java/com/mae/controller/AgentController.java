@@ -26,6 +26,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 
 /**
  *
@@ -47,7 +48,10 @@ public class AgentController {
             //JOptionPane.showMessageDialog(null, "Saisir l'indice");
         } else {
             double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
-            double salIndicaire = (indiceS * pointIndiciare) / 12; //salaire indiciaire mensuel = indice*point /12
+            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            double aCoefficient = Double.parseDouble(coeffSaisie);            
+            
+            double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient ; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
             double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
             double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
             InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
@@ -123,8 +127,11 @@ public class AgentController {
             } else {
                 indTechnicite = Integer.parseInt(InterfaceAgent.boxIndeminiteTechnicite.getText());
             }
+            
+            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            double aCoefficient = Double.parseDouble(coeffSaisie); 
 //calcul de la somme des indeminités            
-            double sommeIndeminite = indLogement + indAstreinte + indVestimentaire + indReponsabilité + indTechnicite;
+            double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire*aCoefficient) + (indReponsabilité) + (indTechnicite);
             InterfaceAgent.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
 
         }
@@ -134,10 +141,13 @@ public class AgentController {
     //mise a jour de laigne 666
     public static void miseAJourLigne666() {
         double alloc;
-        if (InterfaceAgent.boxAllocationFamiliale.getText().isBlank()) {
+        if (InterfaceAgent.boxAllocationFamiliale.getText().isBlank() || InterfaceAgent.coefficientStruc.getText().isBlank()) {
             InterfaceAgent.ligne666.setText("");
+            InterfaceAgent.coefficientStruc.setText("");
         } else {
-            alloc = Integer.parseInt(InterfaceAgent.boxAllocationFamiliale.getText());
+            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            double aCoefficient = Double.parseDouble(coeffSaisie);    
+            alloc = Integer.parseInt(InterfaceAgent.boxAllocationFamiliale.getText()) * aCoefficient;
             InterfaceAgent.ligne666.setValue(Math.round(alloc));//mise a jour de ligne 666
         }
     }
@@ -165,9 +175,10 @@ public class AgentController {
             } else {
                 indSpecifique = Integer.parseInt(InterfaceAgent.boxIndeminiteSpecifique.getText());
             }
-
+            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            double aCoefficient = Double.parseDouble(coeffSaisie);    
             //calcul de la somme des indeminités            
-            double sommeAutreDepense = autreIndemnite + chargeMilitaire + indSpecifique;
+            double sommeAutreDepense = (autreIndemnite) + (chargeMilitaire * aCoefficient) + (indSpecifique);
             InterfaceAgent.ligne669.setValue(Math.round(sommeAutreDepense));//mise a jour de ligne 669
 
         }
@@ -374,13 +385,14 @@ public class AgentController {
     }
 
     //recuperation de l'id du programme et l'afficher en fonction de la selection de la structure  
-    private static final String querySelectIDProgrammeFromStructure = "SELECT idProgramme FROM structure  where codeStructure = ? ";
+    private static final String querySelectIDProgrammeFromStructure = "SELECT idProgramme, coefficientStructure FROM structure  where codeStructure = ? ";
 
     // public static int exercice = Integer.parseInt(InterfaceProgramme.exerciceBu.getSelectedItem().toString());
     public static void afficherIDProgrammeFromStructure() {
         String codeProg = InterfaceAgent.comboStructure.getSelectedItem().toString();
         if (codeProg.contentEquals(" ")) {
             InterfaceAgent.idProg.setText("");
+            InterfaceAgent.coefficientStruc.setText("");
             InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
             InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
             InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));
@@ -400,6 +412,7 @@ public class AgentController {
                 ResultSet res = preparedStatement.executeQuery();
                 if (res.next()) {
                     InterfaceAgent.idProg.setText(res.getString("idProgramme"));
+                    InterfaceAgent.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));                  
                     InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
                     InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
                     InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));

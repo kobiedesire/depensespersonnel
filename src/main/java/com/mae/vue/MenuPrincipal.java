@@ -78,6 +78,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         dateJour = new javax.swing.JLabel();
         heureJour = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         panneauEntete = new javax.swing.JPanel();
         btn_moncompte = new javax.swing.JButton();
         btn_deconnexion = new javax.swing.JButton();
@@ -138,6 +139,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         panneauDeBase.setBackground(new java.awt.Color(255, 255, 255));
@@ -149,7 +153,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Script MT Bold", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Bienvenue");
+        jLabel1.setText("MAEC-RBE");
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -167,23 +171,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         heureJour.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         heureJour.setForeground(new java.awt.Color(255, 255, 255));
 
+        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton1.setText("Revenir à la page d'acceuil");
+        jButton1.setToolTipText("Revenir à la page d'acceuil");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panneauMenuLayout = new javax.swing.GroupLayout(panneauMenu);
         panneauMenu.setLayout(panneauMenuLayout);
         panneauMenuLayout.setHorizontalGroup(
             panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panneauMenuLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panneauMenuLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(dateJour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panneauMenuLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(heureJour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauMenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,6 +192,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauMenuLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panneauMenuLayout.createSequentialGroup()
+                        .addGroup(panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panneauMenuLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(dateJour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panneauMenuLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(heureJour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGap(20, 20, 20))
         );
         panneauMenuLayout.setVerticalGroup(
             panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,6 +224,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(panneauMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(heureJour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,7 +267,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 468, Short.MAX_VALUE)
                 .addGroup(panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_deconnexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_moncompte, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -285,7 +303,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.setLayout(panneauBureauLayout);
         panneauBureauLayout.setHorizontalGroup(
             panneauBureauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1903, Short.MAX_VALUE)
         );
         panneauBureauLayout.setVerticalGroup(
             panneauBureauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,6 +663,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         afficherDateDuJour();
         afficherHeure();
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void menu_ambassadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ambassadeActionPerformed
@@ -772,6 +791,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         importerExcel();
     }//GEN-LAST:event_menu_importagentActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        panneauBureau.removeAll();
+        InterfaceAcceuil acc = new InterfaceAcceuil();
+        acc.setSize(1900, 760);
+        panneauBureau.add(acc).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+         panneauBureau.removeAll();
+        InterfaceAcceuil acc = new InterfaceAcceuil();
+        acc.setSize(1900, 760);
+        panneauBureau.add(acc).setVisible(true);
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -815,6 +850,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_moncompte;
     public static javax.swing.JLabel dateJour;
     public static javax.swing.JLabel heureJour;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

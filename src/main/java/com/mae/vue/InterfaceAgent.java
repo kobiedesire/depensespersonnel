@@ -453,7 +453,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         btn_nouveau = new javax.swing.JButton();
         btn_enregistrer = new javax.swing.JButton();
         btn_modifier = new javax.swing.JButton();
-        btn_modificationavancee = new javax.swing.JButton();
         btn_rafraichir = new javax.swing.JButton();
         btn_rechercheragent = new javax.swing.JButton();
         rechercheMatricule = new javax.swing.JTextField();
@@ -488,6 +487,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         boxIncidenceAnnuelle = new javax.swing.JFormattedTextField();
         boxIDAgent = new javax.swing.JTextField();
+        coefficientStruc = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -923,17 +923,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_modificationavancee.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_modificationavancee.setForeground(new java.awt.Color(0, 102, 51));
-        btn_modificationavancee.setText("Modification avancée");
-        btn_modificationavancee.setToolTipText("Modification avancée");
-        btn_modificationavancee.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
-        btn_modificationavancee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificationavanceeActionPerformed(evt);
-            }
-        });
-
         btn_rafraichir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_rafraichir.setForeground(new java.awt.Color(0, 102, 51));
         btn_rafraichir.setText("Rafraîchir la liste");
@@ -991,10 +980,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_modificationavancee, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
                 .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1010,7 +997,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                     .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_modificationavancee, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1178,6 +1164,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         });
         panneauForms.add(boxIncidenceAnnuelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 25, 299, -1));
         panneauForms.add(boxIDAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 90, -1));
+        panneauForms.add(coefficientStruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1510, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1219,8 +1206,9 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
+        coefficientStruc.setVisible(false);
         idProg.setVisible(false);
-       idLigne661.setVisible(false);
+        idLigne661.setVisible(false);
         idLigne663.setVisible(false);
         idLigne664.setVisible(false);
         idLigne666.setVisible(false);
@@ -1507,13 +1495,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
          afficherSommeIndeminite663();
     }//GEN-LAST:event_boxIndeminiteLogementKeyReleased
 
-    private void btn_modificationavanceeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificationavanceeActionPerformed
-        // TODO add your handling code here:
-        supprimerAgent();
-        enregistrerAgent();
-        listerAgent();
-    }//GEN-LAST:event_btn_modificationavanceeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JFormattedTextField boxAllocationFamiliale;
@@ -1545,12 +1526,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btn_SelectLigne666;
     public static javax.swing.JButton btn_SelectLigne669;
     private javax.swing.JButton btn_enregistrer;
-    private javax.swing.JButton btn_modificationavancee;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;
     private javax.swing.JButton btn_rechercheragent;
     private javax.swing.JButton btn_supprimer;
+    public static javax.swing.JTextField coefficientStruc;
     public static javax.swing.JComboBox<String> comboCatAgent;
     public static javax.swing.JComboBox<String> comboEmploiAgent;
     public static javax.swing.JComboBox<String> comboFonction;
