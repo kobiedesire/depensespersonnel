@@ -101,7 +101,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator13 = new javax.swing.JPopupMenu.Separator();
         menu_ministere = new javax.swing.JMenuItem();
         jSeparator12 = new javax.swing.JPopupMenu.Separator();
-        menu_agent = new javax.swing.JMenuItem();
+        menu_agent = new javax.swing.JMenu();
+        menu_agent_fonct = new javax.swing.JMenuItem();
+        jSeparator18 = new javax.swing.JPopupMenu.Separator();
+        menu_agent_contrac = new javax.swing.JMenuItem();
         menu_budget = new javax.swing.JMenu();
         menu_creerbudget = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
@@ -444,14 +447,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_parametre.add(jSeparator12);
 
         menu_agent.setBackground(new java.awt.Color(255, 204, 0));
-        menu_agent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         menu_agent.setText("Gestion des agents");
         menu_agent.setToolTipText("Gestion des agents");
-        menu_agent.addActionListener(new java.awt.event.ActionListener() {
+        menu_agent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        menu_agent_fonct.setBackground(new java.awt.Color(255, 204, 0));
+        menu_agent_fonct.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_agent_fonct.setText("Gestion des agents fonctionnaires");
+        menu_agent_fonct.setToolTipText("Gestion des agents fonctionnaires");
+        menu_agent_fonct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_agentActionPerformed(evt);
+                menu_agent_fonctActionPerformed(evt);
             }
         });
+        menu_agent.add(menu_agent_fonct);
+
+        jSeparator18.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator18.setForeground(new java.awt.Color(255, 255, 255));
+        menu_agent.add(jSeparator18);
+
+        menu_agent_contrac.setBackground(new java.awt.Color(255, 204, 0));
+        menu_agent_contrac.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_agent_contrac.setText("Gestion des agents contractuels");
+        menu_agent_contrac.setToolTipText("Gestion des agents contractuels");
+        menu_agent_contrac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_agent_contracActionPerformed(evt);
+            }
+        });
+        menu_agent.add(menu_agent_contrac);
+
         menu_parametre.add(menu_agent);
 
         jMenuBar1.add(menu_parametre);
@@ -746,13 +771,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.add(ligne).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void menu_agentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_agentActionPerformed
+    private void menu_agent_fonctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_agent_fonctActionPerformed
         // TODO add your handling code here:
         panneauBureau.removeAll();
         InterfaceAgent age = new InterfaceAgent();
         age.setSize(1900, 760);
         panneauBureau.add(age).setVisible(true);
-    }//GEN-LAST:event_menu_agentActionPerformed
+    }//GEN-LAST:event_menu_agent_fonctActionPerformed
 
     private void menu_catechelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_catechelleActionPerformed
         // TODO add your handling code here:
@@ -806,6 +831,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         acc.setSize(1900, 760);
         panneauBureau.add(acc).setVisible(true);
     }//GEN-LAST:event_formWindowOpened
+
+    private void menu_agent_contracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_agent_contracActionPerformed
+        // TODO add your handling code here:
+       panneauBureau.removeAll();
+        InterfaceAgentContractuel aegentContract = new InterfaceAgentContractuel();
+        aegentContract.setSize(1900, 760);
+        panneauBureau.add(aegentContract).setVisible(true); 
+        
+    }//GEN-LAST:event_menu_agent_contracActionPerformed
 
     /**
      * @param args the command line arguments
@@ -873,6 +907,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator15;
     private javax.swing.JPopupMenu.Separator jSeparator16;
     private javax.swing.JPopupMenu.Separator jSeparator17;
+    private javax.swing.JPopupMenu.Separator jSeparator18;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
@@ -882,7 +917,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JMenu menu__stattistiques;
-    private javax.swing.JMenuItem menu_agent;
+    private javax.swing.JMenu menu_agent;
+    private javax.swing.JMenuItem menu_agent_contrac;
+    private javax.swing.JMenuItem menu_agent_fonct;
     private javax.swing.JMenu menu_aide;
     private javax.swing.JMenuItem menu_ambassade;
     private javax.swing.JMenuItem menu_article;

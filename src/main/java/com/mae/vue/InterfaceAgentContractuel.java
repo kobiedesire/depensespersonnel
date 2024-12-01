@@ -4,7 +4,7 @@
  */
 package com.mae.vue;
 
-import com.mae.controller.AgentController;
+import com.mae.controller.ContractuelController;
 import com.mae.model.Agent;
 import com.mae.props.PropsTableau;
 import java.awt.event.KeyEvent;
@@ -23,12 +23,12 @@ import java.util.logging.Logger;
  *
  * @author kobie
  */
-public class InterfaceAgent extends javax.swing.JInternalFrame {
+public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     /**
      *
      */
-    public InterfaceAgent() {
+    public InterfaceAgentContractuel() {
         initComponents();
         AutoCompleteDecorator.decorate(comboStructure);
         AutoCompleteDecorator.decorate(comboFonction);
@@ -42,69 +42,69 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     //Fonction pour exécuter le calcul du salaire indicaire mensuel de l'agent ********************************************************************************************************************
     public static void afficherSalaireIndiciaire() {
-        AgentController.calculSalIndiciaire();
+        ContractuelController.calculSalIndiciaire();
 
     }
 
     //Fonction pour exécuter le calcul des contribution cnss et carfo en fonctio n du type d'gant selectionné
     public static void afficherContribution() {
-        AgentController.calculContribution();
+        ContractuelController.calculContribution();
     }
 
     //Fonction pour exécuter le calcul de la somme des indeminite
     public static void afficherSommeIndeminite663() {
-        AgentController.calculIndemnite();
+        ContractuelController.calculIndemnite();
     }
 
     //Methode de mise à jour de la ligne 666
     public static void afficherLigne666() {
-        AgentController.miseAJourLigne666();
+        ContractuelController.miseAJourLigne666();
     }
 
     //Methode de mise à jour de la ligne 669
     public static void afficherLigne669() {
-        AgentController.calculAutreDepenses();
+        ContractuelController.calculAutreDepenses();
     }
 
     //Methode de mise à jour de l'incidence mensuelle et annuelle
     public static void afficherIncidenceMensuelleAnnuelle() {
-        AgentController.calculIncidenceMensuelleAnnuelle();
+        ContractuelController.calculIncidenceMensuelleAnnuelle();
 
     }
 
     //remplissage du combobox des categories
     public static void listerComboCategorieEchelle() {
-        AgentController.listCategorieInCombo();// Executer la méthode de remplissage du combo
+        ContractuelController.listCategorieInCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des emplois
     public static void listerComboEmploi() {
-        AgentController.listEmploiInCombo();// Executer la méthode de remplissage du combo
+        ContractuelController.listEmploiInCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des fonctions
     public static void listerComboFonction() {
-        AgentController.listFonctionInCombo();// Executer la méthode de remplissage du combo
+        ContractuelController.listFonctionInCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des ministères
     public static void listerComboMinistere() {
-        AgentController.listMinistereCombo();// Executer la méthode de remplissage du combo
+        ContractuelController.listMinistereCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des structures
     public static void listerComboStructure() {
-        AgentController.listStructureCombo();// Executer la méthode de remplissage du combo
+        ContractuelController.listStructureCombo();// Executer la méthode de remplissage du combo
     }
 
     //Vider les tous les champs   
     public static void reinitChamps() {
-        AgentController.viderChamps();
+        ContractuelController.viderChamps();
     }
 
     //Afficher l'id du programme de la structure  
     public static void displayIDProgramme() {
-        AgentController.afficherIDProgrammeFromStructure();
+        ContractuelController.afficherIDProgrammeFromStructure();
     }
 
     //Fonction pour l'enregistrement d'un agent********************************************************************************************************************
@@ -168,28 +168,28 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
             Double aIncidenceMensuelle = Double.valueOf(boxIncidenceMensuelle.getText());
             Double aIncidenceAnnuelle = Double.valueOf(boxIncidenceAnnuelle.getText());
-
+            
             int IDL661 = Integer.parseInt(idLigne661.getText());
             int IDL663 = Integer.parseInt(idLigne663.getText());
             int IDL664 = Integer.parseInt(idLigne664.getText());
             int IDL666 = Integer.parseInt(idLigne666.getText());
             int IDL669 = Integer.parseInt(idLigne669.getText());
+            
 
             Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
-            AgentController.saveAgent(agent);  // Enregistrez  dans la base de données     
-            AgentController.updateLigne661();
-            AgentController.updateLigne663();
-            AgentController.updateLigne664();
-            AgentController.updateLigne666();
-            AgentController.updateLigne669();
+            ContractuelController.saveAgent(agent);  // Enregistrez  dans la base de données     
+            ContractuelController.updateLigne661();
+            ContractuelController.updateLigne663();
+            ContractuelController.updateLigne664();
+            ContractuelController.updateLigne666();
+            ContractuelController.updateLigne669();
             reinitChamps();
         }
 
     }
-
-    //Fonction pour la modification d'un agent********************************************************************************************************************
-    private static int rep;
-
+    
+       //Fonction pour la modification d'un agent********************************************************************************************************************
+        private static int rep;
     public static void modifierAgent() {
         Double aCARFO, aCNSS;
         // Récuperation des donnéses du formulaire
@@ -250,7 +250,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
             Double aIncidenceMensuelle = Double.valueOf(boxIncidenceMensuelle.getText());
             Double aIncidenceAnnuelle = Double.valueOf(boxIncidenceAnnuelle.getText());
-
+            
             int IDL661 = Integer.parseInt(idLigne661.getText());
             int IDL663 = Integer.parseInt(idLigne663.getText());
             int IDL664 = Integer.parseInt(idLigne664.getText());
@@ -260,250 +260,82 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment modifier cet agent?", "Modification d'un agent", JOptionPane.YES_NO_OPTION);
             if (rep == JOptionPane.YES_OPTION) {
                 Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
+                ContractuelController.updateLigne661ForUpdate();
+                ContractuelController.updateLigne663ForUpdate();
+                ContractuelController.updateLigne664ForUpdate();
+                ContractuelController.updateLigne666ForUpdate();
+                ContractuelController.updateLigne669ForUpdate();
+                ContractuelController.updateAgent(agent);  // Enregistrez  dans la base de données     
 
-                AgentController.updateLigne661ForUpdate();
-                AgentController.updateLigne663ForUpdate();
-                AgentController.updateLigne664ForUpdate();
-                AgentController.updateLigne666ForUpdate();
-                AgentController.updateLigne669ForUpdate();
-                AgentController.updateAgent(agent);  // Enregistrez  dans la base de données     
-
-                // AgentController.updateLigne663();
-                //AgentController.updateLigne664();
-                // AgentController.updateLigne666();
-                //AgentController.updateLigne669();
+               // ContractuelController.updateLigne663();
+                //ContractuelController.updateLigne664();
+               // ContractuelController.updateLigne666();
+                //ContractuelController.updateLigne669();
                 reinitChamps();
                 JOptionPane.showMessageDialog(null, "Modification validée");
             }
-        }
+            }
 
     }
-
+    
+    
+    
     //Supprimer un agent********************************************************************************************************************
     public static void supprimerAgent() {
-        rep = JOptionPane.showConfirmDialog(null, " !!! Voulez-vous vraiment supprimer cet agent?", "Suppression d'un agent", JOptionPane.YES_NO_OPTION);
+        rep = JOptionPane.showConfirmDialog(null, "ACTION IRREVERSIBLE !!! Voulez-vous vraiment supprimer cet agent?", "Suppression d'un agent", JOptionPane.YES_NO_OPTION);
         if (rep == JOptionPane.YES_OPTION) {
             Agent agent = new Agent();
-            AgentController.updateLigne661ForDelete();
-            AgentController.updateLigne663ForDelete();
-            AgentController.updateLigne664ForDelete();
-            AgentController.updateLigne666ForDelete();
-            AgentController.updateLigne669ForDelete();
-            AgentController.deleteAgent(agent);// Executer la méthode de suppression des données    
+            ContractuelController.updateLigne661ForDelete();
+            ContractuelController.updateLigne663ForDelete();
+            ContractuelController.updateLigne664ForDelete();
+            ContractuelController.updateLigne666ForDelete();
+            ContractuelController.updateLigne669ForDelete();
+            ContractuelController.deleteAgent(agent);// Executer la méthode de suppression des données    
             JOptionPane.showMessageDialog(null, "L'agent a été supprimé avec succès.");
-            reinitChamps();
+            reinitChamps();            
         }
     }
-
-    public static void retraitDeLignes() {
-        Double aCARFO, aCNSS;
-        // Récuperation des donnéses du formulaire
-        //champ de saisie caractere
-        String aMatricule = boxMatriculeAg.getText().trim();
-        String aNom = boxNomAg.getText().trim().toUpperCase();
-        String aPrenom = boxPrenomAg.getText().trim();
-        String aDateNaiss = boxDateNaissAg.getText().trim();
-        String aDatePriseService = boxDatePriseServiceAg.getText().trim();
-        //champs de selection 
-        String aSexe = (comboSexeAg.getSelectedItem().toString()).trim();
-        String aTypeAgent = (comboTypeAgent.getSelectedItem().toString()).trim();
-        String aStructure = (comboStructure.getSelectedItem().toString()).trim();
-        String aMinistereOrigine = (comboMinistere.getSelectedItem().toString()).trim();
-        String aFonction = (comboFonction.getSelectedItem().toString()).trim();
-        String aEmploi = (comboEmploiAgent.getSelectedItem().toString()).trim();
-        String aCategorieEchelle = (comboCatAgent.getSelectedItem().toString()).trim();
-
-        if (aMatricule.isBlank() || aNom.isBlank() || aPrenom.isBlank() || aDateNaiss.isBlank() || aDatePriseService.isBlank() || aSexe.isBlank()
-                || aTypeAgent.isBlank() || aStructure.isBlank() || aMinistereOrigine.isBlank() || aFonction.isBlank() || aEmploi.isBlank() || aCategorieEchelle.isBlank()
-                || boxIndiceSal.getText().isBlank() || boxIndeminiteAstreinte.getText().isBlank() || boxIndeminiteTechnicite.getText().isBlank()
-                || boxEchelon.getText().isBlank() || boxIndeminiteLogement.getText().isBlank()
-                || idLigne661.getText().isBlank() || idLigne663.getText().isBlank() || idLigne664.getText().isBlank() || idLigne666.getText().isBlank() || idLigne669.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Vérifiez les champs obligatoires ou des lignes budgétaires ne sont pas sélectionnées...");
-        } else {
-            int aIndice = Integer.parseInt(boxIndiceSal.getText());
-            Double aIResidence = Double.valueOf(boxIndResidence.getText());
-            Double aIAstreinte = Double.valueOf(boxIndeminiteAstreinte.getText());
-            Double aITechnicite = Double.valueOf(boxIndeminiteTechnicite.getText());
-            Double aIResponsabilite = Double.valueOf(boxIndeminiteResponsabilite.getText());
-            Double aIVestimentaire = Double.valueOf(boxIndeminiteVestimentaire.getText());
-            Double aISpecifique = Double.valueOf(boxIndeminiteSpecifique.getText());
-            int aEchelon = Integer.parseInt(boxEchelon.getText());
-            Double aSalIncidiciaire = Double.valueOf(boxSalaireIndicMensuel.getText());
-            Double aILogement = Double.valueOf(boxIndeminiteLogement.getText());
-            Double aChargeMilitaire = Double.valueOf(boxChargeMilitaire.getText());
-
-            if (boxContributionCARFO.getText().isBlank()) {
-                aCARFO = 0.0;
-            } else {
-                aCARFO = Double.valueOf(boxContributionCARFO.getText());
-            }
-            if (boxContributionCNSS.getText().isBlank()) {
-                aCNSS = 0.0;
-            } else {
-                aCNSS = Double.valueOf(boxContributionCNSS.getText());
-            }
-
-            //Double aCNSS = Double.valueOf(boxContributionCNSS.getText());
-            Double aAllFamil = Double.valueOf(boxAllocationFamiliale.getText());
-            Double aAutresI = Double.valueOf(boxAutreIndeminite.getText());
-
-            Double aLigne661 = Double.valueOf(ligne661.getText());
-            Double aLigne663 = Double.valueOf(ligne663.getText());
-            Double aLigne664 = Double.valueOf(ligne664.getText());
-            Double aLigne666 = Double.valueOf(ligne666.getText());
-            Double aLigne669 = Double.valueOf(ligne669.getText());
-
-            Double aIncidenceMensuelle = Double.valueOf(boxIncidenceMensuelle.getText());
-            Double aIncidenceAnnuelle = Double.valueOf(boxIncidenceAnnuelle.getText());
-
-            int IDL661 = Integer.parseInt(idLigne661.getText());
-            int IDL663 = Integer.parseInt(idLigne663.getText());
-            int IDL664 = Integer.parseInt(idLigne664.getText());
-            int IDL666 = Integer.parseInt(idLigne666.getText());
-            int IDL669 = Integer.parseInt(idLigne669.getText());
-
-            rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment retirer les lignes de cet agent de son programme budgétaire?", "Retrait de lignes d'un agent", JOptionPane.YES_NO_OPTION);
-            if (rep == JOptionPane.YES_OPTION) {
-                Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
-
-                AgentController.updateLigne661ForDelete();
-                AgentController.updateLigne663ForDelete();
-                AgentController.updateLigne664ForDelete();
-                AgentController.updateLigne666ForDelete();
-                AgentController.updateLigne669ForDelete();
-                AgentController.updateAgent(agent);  // mise à jours de l'agent  dans la base de données   
-                reinitChamps();
-                JOptionPane.showMessageDialog(null, "Les lignes budgétaires de cet agent ont été retirées de son programme !");
-            }
-        }
-
-    }
-
-    //reacffecter un agent
-    public static void reaffecterAgent() {
-        Double aCARFO, aCNSS;
-        // Récuperation des donnéses du formulaire
-        //champ de saisie caractere
-        String aMatricule = boxMatriculeAg.getText().trim();
-        String aNom = boxNomAg.getText().trim().toUpperCase();
-        String aPrenom = boxPrenomAg.getText().trim();
-        String aDateNaiss = boxDateNaissAg.getText().trim();
-        String aDatePriseService = boxDatePriseServiceAg.getText().trim();
-        //champs de selection 
-        String aSexe = (comboSexeAg.getSelectedItem().toString()).trim();
-        String aTypeAgent = (comboTypeAgent.getSelectedItem().toString()).trim();
-        String aStructure = (comboStructure.getSelectedItem().toString()).trim();
-        String aMinistereOrigine = (comboMinistere.getSelectedItem().toString()).trim();
-        String aFonction = (comboFonction.getSelectedItem().toString()).trim();
-        String aEmploi = (comboEmploiAgent.getSelectedItem().toString()).trim();
-        String aCategorieEchelle = (comboCatAgent.getSelectedItem().toString()).trim();
-
-        if (aMatricule.isBlank() || aNom.isBlank() || aPrenom.isBlank() || aDateNaiss.isBlank() || aDatePriseService.isBlank() || aSexe.isBlank()
-                || aTypeAgent.isBlank() || aStructure.isBlank() || aMinistereOrigine.isBlank() || aFonction.isBlank() || aEmploi.isBlank() || aCategorieEchelle.isBlank()
-                || boxIndiceSal.getText().isBlank() || boxIndeminiteAstreinte.getText().isBlank() || boxIndeminiteTechnicite.getText().isBlank()
-                || boxEchelon.getText().isBlank() || boxIndeminiteLogement.getText().isBlank()
-                || idLigne661.getText().isBlank() || idLigne663.getText().isBlank() || idLigne664.getText().isBlank() || idLigne666.getText().isBlank() || idLigne669.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Vérifiez les champs obligatoires ou des lignes budgétaires ne sont pas sélectionnées...");
-        } else {
-            int aIndice = Integer.parseInt(boxIndiceSal.getText());
-            Double aIResidence = Double.valueOf(boxIndResidence.getText());
-            Double aIAstreinte = Double.valueOf(boxIndeminiteAstreinte.getText());
-            Double aITechnicite = Double.valueOf(boxIndeminiteTechnicite.getText());
-            Double aIResponsabilite = Double.valueOf(boxIndeminiteResponsabilite.getText());
-            Double aIVestimentaire = Double.valueOf(boxIndeminiteVestimentaire.getText());
-            Double aISpecifique = Double.valueOf(boxIndeminiteSpecifique.getText());
-            int aEchelon = Integer.parseInt(boxEchelon.getText());
-            Double aSalIncidiciaire = Double.valueOf(boxSalaireIndicMensuel.getText());
-            Double aILogement = Double.valueOf(boxIndeminiteLogement.getText());
-            Double aChargeMilitaire = Double.valueOf(boxChargeMilitaire.getText());
-
-            if (boxContributionCARFO.getText().isBlank()) {
-                aCARFO = 0.0;
-            } else {
-                aCARFO = Double.valueOf(boxContributionCARFO.getText());
-            }
-            if (boxContributionCNSS.getText().isBlank()) {
-                aCNSS = 0.0;
-            } else {
-                aCNSS = Double.valueOf(boxContributionCNSS.getText());
-            }
-
-            //Double aCNSS = Double.valueOf(boxContributionCNSS.getText());
-            Double aAllFamil = Double.valueOf(boxAllocationFamiliale.getText());
-            Double aAutresI = Double.valueOf(boxAutreIndeminite.getText());
-
-            Double aLigne661 = Double.valueOf(ligne661.getText());
-            Double aLigne663 = Double.valueOf(ligne663.getText());
-            Double aLigne664 = Double.valueOf(ligne664.getText());
-            Double aLigne666 = Double.valueOf(ligne666.getText());
-            Double aLigne669 = Double.valueOf(ligne669.getText());
-
-            Double aIncidenceMensuelle = Double.valueOf(boxIncidenceMensuelle.getText());
-            Double aIncidenceAnnuelle = Double.valueOf(boxIncidenceAnnuelle.getText());
-
-            int IDL661 = Integer.parseInt(idLigne661.getText());
-            int IDL663 = Integer.parseInt(idLigne663.getText());
-            int IDL664 = Integer.parseInt(idLigne664.getText());
-            int IDL666 = Integer.parseInt(idLigne666.getText());
-            int IDL669 = Integer.parseInt(idLigne669.getText());
-
-            rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment réaffecter cet agent dans un autre programme budgétaire?", "Réaffectation d'un agent", JOptionPane.YES_NO_OPTION);
-            if (rep == JOptionPane.YES_OPTION) {
-                Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
-
-                AgentController.updateAgent(agent);  // Enregistrez  dans la base de données    
-                AgentController.updateLigne661();
-                AgentController.updateLigne663();
-                AgentController.updateLigne664();
-                AgentController.updateLigne666();
-                AgentController.updateLigne669();
-
-                reinitChamps();
-                JOptionPane.showMessageDialog(null, "Réaffectation effectuée avec succès !");
-
-            }
-        }
-    }
+    
 
     //Lister toutes les agents********************************************************************************************************************
     public static void listerAgent() {
-        AgentController.listAll(); // Executer la méthode d'affichage des données  
+        ContractuelController.listAll(); // Executer la méthode d'affichage des données  
     }
 
     //afficher un agent
     public static void displayOneAgent() {
-        AgentController.rechercheAgentByMatricule();
+        ContractuelController.rechercheAgentByMatricule();
     }
 
     //afficher les informations d'un agents dans les champs
     public static void displayOneAgenntToUpdateOrDelete() {
-        AgentController.displayAgentInBox();
-
+        ContractuelController.displayAgentInBox();
+        
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 661********************************************************************************************************************
     public static void afficherListeLigne661IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
+        ContractuelController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 663********************************************************************************************************************
     public static void afficherListeLigne663IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
+        ContractuelController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 664********************************************************************************************************************
     public static void afficherListeLigne664IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
+        ContractuelController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 666********************************************************************************************************************
     public static void afficherListeLigne666IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
+        ContractuelController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 669********************************************************************************************************************
     public static void afficherListeLigne669IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
+        ContractuelController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
     }
 
     /* private static int rep;
@@ -625,8 +457,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         btn_rechercheragent = new javax.swing.JButton();
         rechercheMatricule = new javax.swing.JTextField();
         btn_supprimer = new javax.swing.JButton();
-        btn_retirerligne = new javax.swing.JButton();
-        btn_affecternewprogramme = new javax.swing.JButton();
         boxIndeminiteLogement = new javax.swing.JFormattedTextField();
         panneauForms = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -665,7 +495,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Gestion des agents fonctionnaires");
+        setTitle("Gestion des agents contractuels");
         setFrameIcon(null);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -693,17 +523,17 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         tableau_agent.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         tableau_agent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID Agent", "Matricule", "Nom", "Prénom", "Structure", "Type d'agent"
+                "ID Agent", "Matricule", "Nom", "Prénom", "Structure"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1136,28 +966,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_retirerligne.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_retirerligne.setForeground(new java.awt.Color(0, 102, 51));
-        btn_retirerligne.setText("Rétirer les lignes ");
-        btn_retirerligne.setToolTipText("Rétirer les lignes ");
-        btn_retirerligne.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
-        btn_retirerligne.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_retirerligneActionPerformed(evt);
-            }
-        });
-
-        btn_affecternewprogramme.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_affecternewprogramme.setForeground(new java.awt.Color(0, 102, 51));
-        btn_affecternewprogramme.setText("Réaffecter nouv. prog");
-        btn_affecternewprogramme.setToolTipText("Réaffecter nouv. prog");
-        btn_affecternewprogramme.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
-        btn_affecternewprogramme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_affecternewprogrammeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1172,16 +980,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_retirerligne, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_affecternewprogramme, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1195,9 +999,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                         .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_retirerligne, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_affecternewprogramme, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
 
@@ -1302,7 +1104,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         panneauForms.add(comboFonction, new org.netbeans.lib.awtextra.AbsoluteConstraints(677, 124, 386, -1));
 
         comboTypeAgent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fonctionnaire" }));
+        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Contractuel" }));
         comboTypeAgent.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboTypeAgentItemStateChanged(evt);
@@ -1405,97 +1207,97 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
         //coefficientStruc.setVisible(false);
-        // idProg.setVisible(false);
-        //idLigne661.setVisible(false);
-        //idLigne663.setVisible(false);
-        //idLigne664.setVisible(false);
-        // idLigne666.setVisible(false);
-        //idLigne669.setVisible(false);
-        // boxIDAgent.setVisible(false);
+        idProg.setVisible(false);
+        idLigne661.setVisible(false);
+        idLigne663.setVisible(false);
+        idLigne664.setVisible(false);
+        idLigne666.setVisible(false);
+        idLigne669.setVisible(false);
+        boxIDAgent.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();
         listerComboMinistere();
         listerComboStructure();
         //gestion de la mise à jour en temps réelle des champs de l'incidence mensuelle et annuelle
-        InterfaceAgent.ligne661.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAgentContractuel.ligne661.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne663.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAgentContractuel.ligne663.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne664.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAgentContractuel.ligne664.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne666.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAgentContractuel.ligne666.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne669.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAgentContractuel.ligne669.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAgentContractuel.afficherIncidenceMensuelleAnnuelle();
             }
         });
 
@@ -1533,7 +1335,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void tableau_agentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableau_agentMouseClicked
         // TODO add your handling code here:
         displayOneAgenntToUpdateOrDelete();
-
+        
     }//GEN-LAST:event_tableau_agentMouseClicked
 
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
@@ -1573,7 +1375,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void comboTypeAgentItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeAgentItemStateChanged
         // TODO add your handling code here:
         afficherContribution();
-
+       
     }//GEN-LAST:event_comboTypeAgentItemStateChanged
 
     private void boxIndeminiteAstreinteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteAstreinteKeyReleased
@@ -1685,24 +1487,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
         // TODO add your handling code here:
-        supprimerAgent();
-        listerAgent();
+         supprimerAgent();
+         listerAgent();
     }//GEN-LAST:event_btn_supprimerActionPerformed
 
     private void boxIndeminiteLogementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteLogementKeyReleased
         // TODO add your handling code here:
-        afficherSommeIndeminite663();
+         afficherSommeIndeminite663();
     }//GEN-LAST:event_boxIndeminiteLogementKeyReleased
-
-    private void btn_retirerligneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retirerligneActionPerformed
-        // TODO add your handling code here:
-        retraitDeLignes();
-    }//GEN-LAST:event_btn_retirerligneActionPerformed
-
-    private void btn_affecternewprogrammeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_affecternewprogrammeActionPerformed
-        // TODO add your handling code here:
-        reaffecterAgent();
-    }//GEN-LAST:event_btn_affecternewprogrammeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1734,13 +1526,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btn_SelectLigne664;
     public static javax.swing.JButton btn_SelectLigne666;
     public static javax.swing.JButton btn_SelectLigne669;
-    private javax.swing.JButton btn_affecternewprogramme;
     private javax.swing.JButton btn_enregistrer;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;
     private javax.swing.JButton btn_rechercheragent;
-    private javax.swing.JButton btn_retirerligne;
     private javax.swing.JButton btn_supprimer;
     public static javax.swing.JTextField coefficientStruc;
     public static javax.swing.JComboBox<String> comboCatAgent;

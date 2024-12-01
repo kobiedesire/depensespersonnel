@@ -6,7 +6,7 @@ package com.mae.controller;
 
 import com.mae.bd.connexionBD;
 import com.mae.model.Agent;
-import com.mae.vue.InterfaceAgent;
+import com.mae.vue.InterfaceAgentContractuel;
 import com.mae.vue.InterfaceListeLigne661;
 import com.mae.vue.InterfaceListeLigne663;
 import com.mae.vue.InterfaceListeLigne664;
@@ -32,7 +32,7 @@ import java.math.BigDecimal;
  *
  * @author hp
  */
-public class AgentController {
+public class ContractuelController {
 
     private static boolean res, yn;
     private static String tab[][];
@@ -40,72 +40,53 @@ public class AgentController {
     ///calcul du salaire indiciere d'un agent, de l'indeminité de residence et mise à jour de la ligne 661
     public static int pointIndiciare = 2331;
     public static void calculSalIndiciaire() {
-        if (InterfaceAgent.boxIndiceSal.getText().trim().isBlank()) {
-            InterfaceAgent.boxSalaireIndicMensuel.setText("");
-            InterfaceAgent.ligne661.setText("");
-            InterfaceAgent.boxIndResidence.setText("");
-            //JOptionPane.showMessageDialog(null, "Saisir l'indice");
-        } else {
-            double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
-            //double salIndicaire = (indiceS * pointIndiciare) / 12; //salaire indiciaire mensuel = indice*point /12
-            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
-            double aCoefficient = Double.parseDouble(coeffSaisie);            
-            
-            double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient ; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
-            double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
-            double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
-            InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
-            InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
-            InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
-
-        }
-        /*String typeAgent = InterfaceAgent.comboTypeAgent.getSelectedItem().toString().trim();
+        String typeAgent = InterfaceAgentContractuel.comboTypeAgent.getSelectedItem().toString().trim();
         if (typeAgent.isBlank()) {
-            InterfaceAgent.boxSalaireIndicMensuel.setText("");
-            InterfaceAgent.ligne661.setText("");
-            InterfaceAgent.boxIndResidence.setText("");
-           // InterfaceAgent.boxIndiceSal.setText("");
+            InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
+            InterfaceAgentContractuel.ligne661.setText("");
+            InterfaceAgentContractuel.boxIndResidence.setText("");
+           // InterfaceAgentContractuel.boxIndiceSal.setText("");
            // JOptionPane.showMessageDialog(null, "Selectionnez le type d'agent");
         } else {
             //switch (typeAgent) {
 
             //    case "Fonctionnaire":
-                    if (InterfaceAgent.boxIndiceSal.getText().trim().isBlank()) {
-                        InterfaceAgent.boxSalaireIndicMensuel.setText("");
-                        InterfaceAgent.ligne661.setText("");
-                        InterfaceAgent.boxIndResidence.setText("");
+                    if (InterfaceAgentContractuel.boxIndiceSal.getText().trim().isBlank()) {
+                        InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
+                        InterfaceAgentContractuel.ligne661.setText("");
+                        InterfaceAgentContractuel.boxIndResidence.setText("");
                         //JOptionPane.showMessageDialog(null, "Saisir l'indice");
                     } else {
-                        double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
-                        String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+                        double indiceS = Integer.parseInt(InterfaceAgentContractuel.boxIndiceSal.getText().trim());
+                        String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
                         double aCoefficient = Double.parseDouble(coeffSaisie);
 
                         double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
                         double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
                         double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
-                        InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
-                        InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
-                        InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
+                        InterfaceAgentContractuel.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
+                        InterfaceAgentContractuel.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
+                        InterfaceAgentContractuel.ligne661.setValue(Math.round(soldeLigne611));
 
                     }
 
                    // break;
               //  case "Contractuel":
-                 /*   double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
-                   // String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+                 /*   double indiceS = Integer.parseInt(InterfaceAgentContractuel.boxIndiceSal.getText().trim());
+                   // String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
                   //  double aCoefficient = Double.parseDouble(coeffSaisie);
                            double aCoefficient = 1;
                     double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
                     double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
                     double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
-                    InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
-                    InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
-                    InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
+                    InterfaceAgentContractuel.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
+                    InterfaceAgentContractuel.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
+                    InterfaceAgentContractuel.ligne661.setValue(Math.round(soldeLigne611));
                     break;
 
             }*/
 
-      //  }
+        }
 
     }
 
@@ -114,28 +95,28 @@ public class AgentController {
     public static double tauxCNSS = 16;
 
     public static void calculContribution() {
-        String typeAgent = InterfaceAgent.comboTypeAgent.getSelectedItem().toString().trim();
-        if (typeAgent.isBlank() || InterfaceAgent.boxSalaireIndicMensuel.getText().isBlank()) {
-            InterfaceAgent.boxContributionCARFO.setText("");
-            InterfaceAgent.boxContributionCNSS.setText("");
+        String typeAgent = InterfaceAgentContractuel.comboTypeAgent.getSelectedItem().toString().trim();
+        if (typeAgent.isBlank() || InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().isBlank()) {
+            InterfaceAgentContractuel.boxContributionCARFO.setText("");
+            InterfaceAgentContractuel.boxContributionCNSS.setText("");
         } else {
 
-            double salIndicaire = Integer.parseInt(InterfaceAgent.boxSalaireIndicMensuel.getText());
+            double salIndicaire = Integer.parseInt(InterfaceAgentContractuel.boxSalaireIndicMensuel.getText());
             switch (typeAgent) {
                 case "Fonctionnaire":
                     double contriCARFO = (salIndicaire * tauxCARFO) / 100;
-                    InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
-                    InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
-                    InterfaceAgent.boxContributionCNSS.setText("");
+                    InterfaceAgentContractuel.boxContributionCARFO.setValue(Math.round(contriCARFO));
+                    InterfaceAgentContractuel.ligne664.setValue(Math.round(contriCARFO));
+                    InterfaceAgentContractuel.boxContributionCNSS.setText("");
                     break;
 
                 case "Contractuel":
-                    //int coeffC = 1;
+                    int coeffC = 1;
                     double contriCNSS = (salIndicaire * tauxCNSS) / 100;
-                    InterfaceAgent.boxContributionCNSS.setValue(Math.round(contriCNSS));
-                    InterfaceAgent.ligne664.setValue(Math.round(contriCNSS));
-                    InterfaceAgent.boxContributionCARFO.setText("");
-                   // InterfaceAgent.coefficientStruc.setText("1");
+                    InterfaceAgentContractuel.boxContributionCNSS.setValue(Math.round(contriCNSS));
+                    InterfaceAgentContractuel.ligne664.setValue(Math.round(contriCNSS));
+                    InterfaceAgentContractuel.boxContributionCARFO.setText("");
+                   // InterfaceAgentContractuel.coefficientStruc.setText("1");
                     break;
             }
 
@@ -145,44 +126,44 @@ public class AgentController {
     //calcul de la somme des indeminités de logement, d'astreinte, de responsabilité, de technicité et vestimentaire et mise à jour de la ligne 663
     public static void calculIndemnite() {
         double indLogement = 0, indAstreinte = 0, indVestimentaire = 0, indReponsabilité = 0, indTechnicite = 0;
-        if (InterfaceAgent.boxIndeminiteLogement.getText().isBlank() && InterfaceAgent.boxIndeminiteAstreinte.getText().isBlank() && InterfaceAgent.boxIndeminiteVestimentaire.getText().isBlank()
-                && InterfaceAgent.boxIndeminiteResponsabilite.getText().isBlank() && InterfaceAgent.boxIndeminiteTechnicite.getText().isBlank()) {
-            InterfaceAgent.ligne663.setText("");
+        if (InterfaceAgentContractuel.boxIndeminiteLogement.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteAstreinte.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteVestimentaire.getText().isBlank()
+                && InterfaceAgentContractuel.boxIndeminiteResponsabilite.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteTechnicite.getText().isBlank()) {
+            InterfaceAgentContractuel.ligne663.setText("");
         } else {
-            if (InterfaceAgent.boxIndeminiteLogement.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxIndeminiteLogement.getText().isBlank()) {
                 indLogement = 0;
             } else {
-                indLogement = Integer.parseInt(InterfaceAgent.boxIndeminiteLogement.getText());
+                indLogement = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteLogement.getText());
             }
-            if (InterfaceAgent.boxIndeminiteAstreinte.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxIndeminiteAstreinte.getText().isBlank()) {
                 indAstreinte = 0;
             } else {
-                indAstreinte = Integer.parseInt(InterfaceAgent.boxIndeminiteAstreinte.getText());
+                indAstreinte = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteAstreinte.getText());
             }
 
-            if (InterfaceAgent.boxIndeminiteVestimentaire.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxIndeminiteVestimentaire.getText().isBlank()) {
                 indVestimentaire = 0;
             } else {
-                indVestimentaire = Integer.parseInt(InterfaceAgent.boxIndeminiteVestimentaire.getText());
+                indVestimentaire = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteVestimentaire.getText());
             }
 
-            if (InterfaceAgent.boxIndeminiteResponsabilite.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxIndeminiteResponsabilite.getText().isBlank()) {
                 indReponsabilité = 0;
             } else {
-                indReponsabilité = Integer.parseInt(InterfaceAgent.boxIndeminiteResponsabilite.getText());
+                indReponsabilité = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteResponsabilite.getText());
             }
 
-            if (InterfaceAgent.boxIndeminiteTechnicite.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxIndeminiteTechnicite.getText().isBlank()) {
                 indTechnicite = 0;
             } else {
-                indTechnicite = Integer.parseInt(InterfaceAgent.boxIndeminiteTechnicite.getText());
+                indTechnicite = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteTechnicite.getText());
             }
 
-            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
             double aCoefficient = Double.parseDouble(coeffSaisie);
 //calcul de la somme des indeminités            
             double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire * aCoefficient) + (indReponsabilité) + (indTechnicite);
-            InterfaceAgent.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
+            InterfaceAgentContractuel.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
 
         }
 
@@ -191,45 +172,45 @@ public class AgentController {
     //mise a jour de laigne 666
     public static void miseAJourLigne666() {
         double alloc;
-        if (InterfaceAgent.boxAllocationFamiliale.getText().isBlank() || InterfaceAgent.coefficientStruc.getText().isBlank()) {
-            InterfaceAgent.ligne666.setText("");
-            InterfaceAgent.coefficientStruc.setText("");
+        if (InterfaceAgentContractuel.boxAllocationFamiliale.getText().isBlank() || InterfaceAgentContractuel.coefficientStruc.getText().isBlank()) {
+            InterfaceAgentContractuel.ligne666.setText("");
+            InterfaceAgentContractuel.coefficientStruc.setText("");
         } else {
-            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
             double aCoefficient = Double.parseDouble(coeffSaisie);    
-            alloc = Integer.parseInt(InterfaceAgent.boxAllocationFamiliale.getText()) * aCoefficient;
-            InterfaceAgent.ligne666.setValue(Math.round(alloc));//mise a jour de ligne 666
+            alloc = Integer.parseInt(InterfaceAgentContractuel.boxAllocationFamiliale.getText()) * aCoefficient;
+            InterfaceAgentContractuel.ligne666.setValue(Math.round(alloc));//mise a jour de ligne 666
         }
     }
 
     //calcul de la somme autres dépenses et mise à jour de la ligne 669    
     public static void calculAutreDepenses() {
         double indSpecifique = 0, autreIndemnite = 0, chargeMilitaire = 0;
-        if (InterfaceAgent.boxAutreIndeminite.getText().isBlank() && InterfaceAgent.boxChargeMilitaire.getText().isBlank() && InterfaceAgent.boxIndeminiteSpecifique.getText().isBlank()) {
-            InterfaceAgent.ligne669.setText("");
+        if (InterfaceAgentContractuel.boxAutreIndeminite.getText().isBlank() && InterfaceAgentContractuel.boxChargeMilitaire.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteSpecifique.getText().isBlank()) {
+            InterfaceAgentContractuel.ligne669.setText("");
         } else {
-            if (InterfaceAgent.boxAutreIndeminite.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxAutreIndeminite.getText().isBlank()) {
                 autreIndemnite = 0;
             } else {
-                autreIndemnite = Integer.parseInt(InterfaceAgent.boxAutreIndeminite.getText());
+                autreIndemnite = Integer.parseInt(InterfaceAgentContractuel.boxAutreIndeminite.getText());
             }
 
-            if (InterfaceAgent.boxChargeMilitaire.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxChargeMilitaire.getText().isBlank()) {
                 chargeMilitaire = 0;
             } else {
-                chargeMilitaire = Integer.parseInt(InterfaceAgent.boxChargeMilitaire.getText());
+                chargeMilitaire = Integer.parseInt(InterfaceAgentContractuel.boxChargeMilitaire.getText());
             }
 
-            if (InterfaceAgent.boxIndeminiteSpecifique.getText().isBlank()) {
+            if (InterfaceAgentContractuel.boxIndeminiteSpecifique.getText().isBlank()) {
                 indSpecifique = 0;
             } else {
-                indSpecifique = Integer.parseInt(InterfaceAgent.boxIndeminiteSpecifique.getText());
+                indSpecifique = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteSpecifique.getText());
             }
-            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
             double aCoefficient = Double.parseDouble(coeffSaisie);    
             //calcul de la somme des indeminités            
             double sommeAutreDepense = (autreIndemnite) + (chargeMilitaire * aCoefficient) + (indSpecifique);
-            InterfaceAgent.ligne669.setValue(Math.round(sommeAutreDepense));//mise a jour de ligne 669
+            InterfaceAgentContractuel.ligne669.setValue(Math.round(sommeAutreDepense));//mise a jour de ligne 669
 
         }
 
@@ -238,46 +219,46 @@ public class AgentController {
     //mise a jour de l'incidence mensuelle et anneulle
     public static void calculIncidenceMensuelleAnnuelle() {
         double inciMensuelle, inciAnnuelle, montantLigne661, montantLigne663, montantLigne664, montantLigne666, montantLigne669;
-        if (InterfaceAgent.ligne661.getText().isBlank() && InterfaceAgent.ligne663.getText().isBlank()
-                && InterfaceAgent.ligne664.getText().isBlank() && InterfaceAgent.ligne666.getText().isBlank() && InterfaceAgent.ligne669.getText().isBlank()) {
-            InterfaceAgent.boxIncidenceMensuelle.setText("");
-            InterfaceAgent.boxIncidenceAnnuelle.setText("");
+        if (InterfaceAgentContractuel.ligne661.getText().isBlank() && InterfaceAgentContractuel.ligne663.getText().isBlank()
+                && InterfaceAgentContractuel.ligne664.getText().isBlank() && InterfaceAgentContractuel.ligne666.getText().isBlank() && InterfaceAgentContractuel.ligne669.getText().isBlank()) {
+            InterfaceAgentContractuel.boxIncidenceMensuelle.setText("");
+            InterfaceAgentContractuel.boxIncidenceAnnuelle.setText("");
         } else {
 
-            if (InterfaceAgent.ligne661.getText().isBlank()) {
+            if (InterfaceAgentContractuel.ligne661.getText().isBlank()) {
                 montantLigne661 = 0;
             } else {
-                montantLigne661 = Integer.parseInt(InterfaceAgent.ligne661.getText());
+                montantLigne661 = Integer.parseInt(InterfaceAgentContractuel.ligne661.getText());
             }
 
-            if (InterfaceAgent.ligne663.getText().isBlank()) {
+            if (InterfaceAgentContractuel.ligne663.getText().isBlank()) {
                 montantLigne663 = 0;
             } else {
-                montantLigne663 = Integer.parseInt(InterfaceAgent.ligne663.getText());
+                montantLigne663 = Integer.parseInt(InterfaceAgentContractuel.ligne663.getText());
             }
 
-            if (InterfaceAgent.ligne664.getText().isBlank()) {
+            if (InterfaceAgentContractuel.ligne664.getText().isBlank()) {
                 montantLigne664 = 0;
             } else {
-                montantLigne664 = Integer.parseInt(InterfaceAgent.ligne664.getText());
+                montantLigne664 = Integer.parseInt(InterfaceAgentContractuel.ligne664.getText());
             }
 
-            if (InterfaceAgent.ligne666.getText().isBlank()) {
+            if (InterfaceAgentContractuel.ligne666.getText().isBlank()) {
                 montantLigne666 = 0;
             } else {
-                montantLigne666 = Integer.parseInt(InterfaceAgent.ligne666.getText());
+                montantLigne666 = Integer.parseInt(InterfaceAgentContractuel.ligne666.getText());
             }
 
-            if (InterfaceAgent.ligne669.getText().isBlank()) {
+            if (InterfaceAgentContractuel.ligne669.getText().isBlank()) {
                 montantLigne669 = 0;
             } else {
-                montantLigne669 = Integer.parseInt(InterfaceAgent.ligne669.getText());
+                montantLigne669 = Integer.parseInt(InterfaceAgentContractuel.ligne669.getText());
             }
 
             //calcul de la somme des lignes pour obtenir l'incidence mensuelle    
             inciMensuelle = montantLigne661 + montantLigne663 + montantLigne664 + montantLigne666 + montantLigne669;
-            InterfaceAgent.boxIncidenceMensuelle.setValue(Math.round(inciMensuelle));//mise a jour de l'incidence mensuelle
-            InterfaceAgent.boxIncidenceAnnuelle.setValue(Math.round(inciMensuelle) * 12);//mise a jour de l'incidence annuelle
+            InterfaceAgentContractuel.boxIncidenceMensuelle.setValue(Math.round(inciMensuelle));//mise a jour de l'incidence mensuelle
+            InterfaceAgentContractuel.boxIncidenceAnnuelle.setValue(Math.round(inciMensuelle) * 12);//mise a jour de l'incidence annuelle
         }
     }
 
@@ -288,7 +269,7 @@ public class AgentController {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectCategorieEchelle)) {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                InterfaceAgent.comboCatAgent.addItem(res.getString("codeCategorieEchelle"));
+                InterfaceAgentContractuel.comboCatAgent.addItem(res.getString("codeCategorieEchelle"));
             }
             res.close();
             preparedStatement.close();
@@ -307,7 +288,7 @@ public class AgentController {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectEmploi)) {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                InterfaceAgent.comboEmploiAgent.addItem(res.getString("codeEmploi"));
+                InterfaceAgentContractuel.comboEmploiAgent.addItem(res.getString("codeEmploi"));
             }
             res.close();
             preparedStatement.close();
@@ -326,7 +307,7 @@ public class AgentController {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectFonction)) {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                InterfaceAgent.comboFonction.addItem(res.getString("libeleFonction"));
+                InterfaceAgentContractuel.comboFonction.addItem(res.getString("libeleFonction"));
             }
             res.close();
             preparedStatement.close();
@@ -345,7 +326,7 @@ public class AgentController {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectMinistere)) {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                InterfaceAgent.comboMinistere.addItem(res.getString("codeMinistere"));
+                InterfaceAgentContractuel.comboMinistere.addItem(res.getString("codeMinistere"));
             }
             res.close();
             preparedStatement.close();
@@ -364,7 +345,7 @@ public class AgentController {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectStructure)) {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                InterfaceAgent.comboStructure.addItem(res.getString("codeStructure"));
+                InterfaceAgentContractuel.comboStructure.addItem(res.getString("codeStructure"));
             }
             res.close();
             preparedStatement.close();
@@ -378,59 +359,59 @@ public class AgentController {
 
     // vider les champs
     public static void viderChamps() {
-        InterfaceAgent.boxIDAgent.setText("");
-        InterfaceAgent.boxMatriculeAg.setText("");
-        InterfaceAgent.boxNomAg.setText("");
-        InterfaceAgent.boxPrenomAg.setText("");
-        InterfaceAgent.boxDateNaissAg.setText("");
-        InterfaceAgent.boxDatePriseServiceAg.setText("");
+        InterfaceAgentContractuel.boxIDAgent.setText("");
+        InterfaceAgentContractuel.boxMatriculeAg.setText("");
+        InterfaceAgentContractuel.boxNomAg.setText("");
+        InterfaceAgentContractuel.boxPrenomAg.setText("");
+        InterfaceAgentContractuel.boxDateNaissAg.setText("");
+        InterfaceAgentContractuel.boxDatePriseServiceAg.setText("");
 
-        InterfaceAgent.boxIndiceSal.setText("");
-        InterfaceAgent.boxIndResidence.setText("");
-        InterfaceAgent.boxIndeminiteAstreinte.setText("");
-        InterfaceAgent.boxIndeminiteTechnicite.setText("");
-        InterfaceAgent.boxIndeminiteResponsabilite.setText("");
-        InterfaceAgent.boxIndeminiteVestimentaire.setText("");
-        InterfaceAgent.boxAutreIndeminite.setText("");
-        InterfaceAgent.boxEchelon.setText("");
-        InterfaceAgent.boxSalaireIndicMensuel.setText("");
-        InterfaceAgent.boxIndeminiteLogement.setText("");
-        InterfaceAgent.boxIndeminiteSpecifique.setText("");
-        InterfaceAgent.boxChargeMilitaire.setText("");
-        InterfaceAgent.boxContributionCARFO.setText("");
-        InterfaceAgent.boxContributionCNSS.setText("");
-        InterfaceAgent.boxAllocationFamiliale.setText("");
+        InterfaceAgentContractuel.boxIndiceSal.setText("");
+        InterfaceAgentContractuel.boxIndResidence.setText("");
+        InterfaceAgentContractuel.boxIndeminiteAstreinte.setText("");
+        InterfaceAgentContractuel.boxIndeminiteTechnicite.setText("");
+        InterfaceAgentContractuel.boxIndeminiteResponsabilite.setText("");
+        InterfaceAgentContractuel.boxIndeminiteVestimentaire.setText("");
+        InterfaceAgentContractuel.boxAutreIndeminite.setText("");
+        InterfaceAgentContractuel.boxEchelon.setText("");
+        InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
+        InterfaceAgentContractuel.boxIndeminiteLogement.setText("");
+        InterfaceAgentContractuel.boxIndeminiteSpecifique.setText("");
+        InterfaceAgentContractuel.boxChargeMilitaire.setText("");
+        InterfaceAgentContractuel.boxContributionCARFO.setText("");
+        InterfaceAgentContractuel.boxContributionCNSS.setText("");
+        InterfaceAgentContractuel.boxAllocationFamiliale.setText("");
 
-        InterfaceAgent.ligne661.setText("");
-        InterfaceAgent.ligne663.setText("");
-        InterfaceAgent.ligne664.setText("");
-        InterfaceAgent.ligne666.setText("");
-        InterfaceAgent.ligne669.setText("");
+        InterfaceAgentContractuel.ligne661.setText("");
+        InterfaceAgentContractuel.ligne663.setText("");
+        InterfaceAgentContractuel.ligne664.setText("");
+        InterfaceAgentContractuel.ligne666.setText("");
+        InterfaceAgentContractuel.ligne669.setText("");
 
-        InterfaceAgent.boxIncidenceMensuelle.setText("");
-        InterfaceAgent.boxIncidenceAnnuelle.setText("");
+        InterfaceAgentContractuel.boxIncidenceMensuelle.setText("");
+        InterfaceAgentContractuel.boxIncidenceAnnuelle.setText("");
 
-        InterfaceAgent.comboSexeAg.setSelectedIndex(0);
-        InterfaceAgent.comboTypeAgent.setSelectedIndex(0);
-        InterfaceAgent.comboStructure.setSelectedIndex(0);
-        InterfaceAgent.comboMinistere.setSelectedIndex(0);
-        InterfaceAgent.comboFonction.setSelectedIndex(0);
-        InterfaceAgent.comboEmploiAgent.setSelectedIndex(0);
+        InterfaceAgentContractuel.comboSexeAg.setSelectedIndex(0);
+        InterfaceAgentContractuel.comboTypeAgent.setSelectedIndex(0);
+        InterfaceAgentContractuel.comboStructure.setSelectedIndex(0);
+        InterfaceAgentContractuel.comboMinistere.setSelectedIndex(0);
+        InterfaceAgentContractuel.comboFonction.setSelectedIndex(0);
+        InterfaceAgentContractuel.comboEmploiAgent.setSelectedIndex(0);
 
-        InterfaceAgent.comboCatAgent.setSelectedIndex(0);
+        InterfaceAgentContractuel.comboCatAgent.setSelectedIndex(0);
 
-        InterfaceAgent.idProg.setText("");
-        InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
-        InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
-        InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));
-        InterfaceAgent.ligne666.setBackground(new java.awt.Color(204, 0, 0));
-        InterfaceAgent.ligne669.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgentContractuel.idProg.setText("");
+        InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgentContractuel.ligne666.setBackground(new java.awt.Color(204, 0, 0));
+        InterfaceAgentContractuel.ligne669.setBackground(new java.awt.Color(204, 0, 0));
 
-        InterfaceAgent.idLigne661.setText("");
-        InterfaceAgent.idLigne663.setText("");
-        InterfaceAgent.idLigne664.setText("");
-        InterfaceAgent.idLigne666.setText("");
-        InterfaceAgent.idLigne669.setText("");
+        InterfaceAgentContractuel.idLigne661.setText("");
+        InterfaceAgentContractuel.idLigne663.setText("");
+        InterfaceAgentContractuel.idLigne664.setText("");
+        InterfaceAgentContractuel.idLigne666.setText("");
+        InterfaceAgentContractuel.idLigne669.setText("");
 
     }
 
@@ -439,21 +420,21 @@ public class AgentController {
 
     // public static int exercice = Integer.parseInt(InterfaceProgramme.exerciceBu.getSelectedItem().toString());
     public static void afficherIDProgrammeFromStructure() {
-        String codeProg = InterfaceAgent.comboStructure.getSelectedItem().toString();
+        String codeProg = InterfaceAgentContractuel.comboStructure.getSelectedItem().toString();
         if (codeProg.contentEquals(" ")) {
-            InterfaceAgent.idProg.setText("");
-            InterfaceAgent.coefficientStruc.setText("");
-            InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
-            InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
-            InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));
-            InterfaceAgent.ligne666.setBackground(new java.awt.Color(204, 0, 0));
-            InterfaceAgent.ligne669.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgentContractuel.idProg.setText("");
+            InterfaceAgentContractuel.coefficientStruc.setText("");
+            InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgentContractuel.ligne666.setBackground(new java.awt.Color(204, 0, 0));
+            InterfaceAgentContractuel.ligne669.setBackground(new java.awt.Color(204, 0, 0));
 
-            InterfaceAgent.idLigne661.setText("");
-            InterfaceAgent.idLigne663.setText("");
-            InterfaceAgent.idLigne664.setText("");
-            InterfaceAgent.idLigne666.setText("");
-            InterfaceAgent.idLigne669.setText("");
+            InterfaceAgentContractuel.idLigne661.setText("");
+            InterfaceAgentContractuel.idLigne663.setText("");
+            InterfaceAgentContractuel.idLigne664.setText("");
+            InterfaceAgentContractuel.idLigne666.setText("");
+            InterfaceAgentContractuel.idLigne669.setText("");
 
         } else {
 
@@ -461,26 +442,19 @@ public class AgentController {
                 preparedStatement.setString(1, codeProg);
                 ResultSet res = preparedStatement.executeQuery();
                 if (res.next()) {
-                    InterfaceAgent.idProg.setText(res.getString("idProgramme"));
-                    InterfaceAgent.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));   
-                    calculSalIndiciaire(); //calcul automatique du salaire indiciaire avec le coefficiebt appliqué
-                    //calculContribution();//calcul de la contribution carfo
-                   // calculIndemnite();//calcul des indemnités
-                   // miseAJourLigne666();//calcul automatique des allocations
-                    //calculAutreDepenses();//calcul des autres dépenses
-                    
-                    
-                    InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
-                    InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));
-                    InterfaceAgent.ligne664.setBackground(new java.awt.Color(204, 0, 0));
-                    InterfaceAgent.ligne666.setBackground(new java.awt.Color(204, 0, 0));
-                    InterfaceAgent.ligne669.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgentContractuel.idProg.setText(res.getString("idProgramme"));
+                    InterfaceAgentContractuel.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));                  
+                    InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgentContractuel.ligne666.setBackground(new java.awt.Color(204, 0, 0));
+                    InterfaceAgentContractuel.ligne669.setBackground(new java.awt.Color(204, 0, 0));
 
-                    InterfaceAgent.idLigne661.setText("");
-                    InterfaceAgent.idLigne663.setText("");
-                    InterfaceAgent.idLigne664.setText("");
-                    InterfaceAgent.idLigne666.setText("");
-                    InterfaceAgent.idLigne669.setText("");
+                    InterfaceAgentContractuel.idLigne661.setText("");
+                    InterfaceAgentContractuel.idLigne663.setText("");
+                    InterfaceAgentContractuel.idLigne664.setText("");
+                    InterfaceAgentContractuel.idLigne666.setText("");
+                    InterfaceAgentContractuel.idLigne669.setText("");
                     //System.out.println(res.getString("idBudget"));
                 }
                 preparedStatement.close();
@@ -496,11 +470,11 @@ public class AgentController {
 
     //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 661
     public static void afficherIdProgrammeListeSelectLigne661() {
-        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
-            InterfaceAgent.idProg.setText("");
+        if (InterfaceAgentContractuel.idProg.getText().trim().isBlank()) {
+            InterfaceAgentContractuel.idProg.setText("");
             JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
         } else {
-            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
             InterfaceListeLigne661 listeLigne661 = new InterfaceListeLigne661(new javax.swing.JFrame(), true);
             listeLigne661.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
@@ -512,11 +486,11 @@ public class AgentController {
 
     //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 663
     public static void afficherIdProgrammeListeSelectLigne663() {
-        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
-            InterfaceAgent.idProg.setText("");
+        if (InterfaceAgentContractuel.idProg.getText().trim().isBlank()) {
+            InterfaceAgentContractuel.idProg.setText("");
             JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
         } else {
-            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
             InterfaceListeLigne663 listeLigne663 = new InterfaceListeLigne663(new javax.swing.JFrame(), true);
             listeLigne663.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
@@ -527,11 +501,11 @@ public class AgentController {
 
     //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 664
     public static void afficherIdProgrammeListeSelectLigne664() {
-        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
-            InterfaceAgent.idProg.setText("");
+        if (InterfaceAgentContractuel.idProg.getText().trim().isBlank()) {
+            InterfaceAgentContractuel.idProg.setText("");
             JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
         } else {
-            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
             InterfaceListeLigne664 listeLigne664 = new InterfaceListeLigne664(new javax.swing.JFrame(), true);
             listeLigne664.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
@@ -543,11 +517,11 @@ public class AgentController {
 
     //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 6666
     public static void afficherIdProgrammeListeSelectLigne666() {
-        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
-            InterfaceAgent.idProg.setText("");
+        if (InterfaceAgentContractuel.idProg.getText().trim().isBlank()) {
+            InterfaceAgentContractuel.idProg.setText("");
             JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
         } else {
-            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
             InterfaceListeLigne666 listeLigne666 = new InterfaceListeLigne666(new javax.swing.JFrame(), true);
             listeLigne666.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
@@ -559,11 +533,11 @@ public class AgentController {
 
     //afficher l'id du programme dans l'interface de la liste des lignes correspondantes au 669
     public static void afficherIdProgrammeListeSelectLigne669() {
-        if (InterfaceAgent.idProg.getText().trim().isBlank()) {
-            InterfaceAgent.idProg.setText("");
+        if (InterfaceAgentContractuel.idProg.getText().trim().isBlank()) {
+            InterfaceAgentContractuel.idProg.setText("");
             JOptionPane.showMessageDialog(null, "Sélectionnez la structure pour ouvrir la liste des lignes.");
         } else {
-            int idP = Integer.parseInt(InterfaceAgent.idProg.getText());
+            int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
             InterfaceListeLigne669 listeLigne669 = new InterfaceListeLigne669(new javax.swing.JFrame(), true);
             listeLigne669.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
@@ -857,15 +831,15 @@ public class AgentController {
             //System.out.println(nbreligne);
         } else {
             int idL = Integer.parseInt(InterfaceListeLigne661.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne 
-            InterfaceAgent.ligne661.setBackground(new java.awt.Color(0, 102, 51));
-            InterfaceAgent.idLigne661.setText(String.valueOf(idL));
+            InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(0, 102, 51));
+            InterfaceAgentContractuel.idLigne661.setText(String.valueOf(idL));
         }
         /* try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
-                InterfaceAgent.ligne661.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne661.setText(res.getString("idLigne"));
+                InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne661.setText(res.getString("idLigne"));
             }
             res.close();
             preparedStatement.close();
@@ -886,15 +860,15 @@ public class AgentController {
             //System.out.println(nbreligne);
         } else {
             int idL = Integer.parseInt(InterfaceListeLigne663.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne    
-            InterfaceAgent.ligne663.setBackground(new java.awt.Color(0, 102, 51));
-            InterfaceAgent.idLigne663.setText(String.valueOf(idL));
+            InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(0, 102, 51));
+            InterfaceAgentContractuel.idLigne663.setText(String.valueOf(idL));
         }
         /*try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
-                InterfaceAgent.ligne663.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne663.setText(res.getString("idLigne"));
+                InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne663.setText(res.getString("idLigne"));
             }
             res.close();
             preparedStatement.close();
@@ -915,15 +889,15 @@ public class AgentController {
             //System.out.println(nbreligne);
         } else {
             int idL = Integer.parseInt(InterfaceListeLigne664.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne 
-            InterfaceAgent.ligne664.setBackground(new java.awt.Color(0, 102, 51));
-            InterfaceAgent.idLigne664.setText(String.valueOf(idL));
+            InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(0, 102, 51));
+            InterfaceAgentContractuel.idLigne664.setText(String.valueOf(idL));
         }
         /*try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
-                InterfaceAgent.ligne664.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne664.setText(res.getString("idLigne"));
+                InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne664.setText(res.getString("idLigne"));
             }
             res.close();
             preparedStatement.close();
@@ -944,16 +918,16 @@ public class AgentController {
             //System.out.println(nbreligne);
         } else {
             int idL = Integer.parseInt(InterfaceListeLigne666.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne  
-            InterfaceAgent.ligne666.setBackground(new java.awt.Color(0, 102, 51));
-            InterfaceAgent.idLigne666.setText(String.valueOf(idL));
+            InterfaceAgentContractuel.ligne666.setBackground(new java.awt.Color(0, 102, 51));
+            InterfaceAgentContractuel.idLigne666.setText(String.valueOf(idL));
 
         }
         /*try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
-                InterfaceAgent.ligne666.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne666.setText(res.getString("idLigne"));
+                InterfaceAgentContractuel.ligne666.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne666.setText(res.getString("idLigne"));
             }
             res.close();
             preparedStatement.close();
@@ -974,15 +948,15 @@ public class AgentController {
             //System.out.println(nbreligne);
         } else {
             int idL = Integer.parseInt(InterfaceListeLigne669.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne
-            InterfaceAgent.ligne669.setBackground(new java.awt.Color(0, 102, 51));
-            InterfaceAgent.idLigne669.setText(String.valueOf(idL));
+            InterfaceAgentContractuel.ligne669.setBackground(new java.awt.Color(0, 102, 51));
+            InterfaceAgentContractuel.idLigne669.setText(String.valueOf(idL));
         }
         /*try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneLigne)) {
             preparedStatement.setInt(1, idL);
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
-                InterfaceAgent.ligne669.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne669.setText(res.getString("idLigne"));
+                InterfaceAgentContractuel.ligne669.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne669.setText(res.getString("idLigne"));
             }
             res.close();
             preparedStatement.close();
@@ -1065,7 +1039,7 @@ public class AgentController {
      
      //Modifier un agent
     public static void updateAgent(Agent agent) {
-        idAg = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());   //recuperer l'id 
+        idAg = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());   //recuperer l'id 
         String queryUpdate = """
                              UPDATE agent SET  matriculeAgent = ?, nomAgent = ?, prenomAgent = ?, dateNaissanceAgent = ?, sexeAgent = ?, datePriseServiceAgent = ?, typeAgent = ?, structureAgent = ?, ministereOrigineAgent = ?, fonctionAgent = ?, emploiAgent = ?, categorieEchelleAgent = ?, echelonAgent = ?, 
                              indiceAgent = ?, salaireIndiciaireAgent = ?, indeminiteResidence = ?, indeminiteAstreinte = ?, indeminiteTechnicite = ?, indeminiteResponsabilite = ?, indeminiteVestimentaire = ?, indeminiteLogement = ?, indeminiteSpecifique = ?, autreIndeminite = ?, chargeMilitaire = ?, 
@@ -1132,38 +1106,34 @@ public class AgentController {
     
     
 
-    /*Lister tous les agents fonctionnaires*/
-    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent WHERE typeAgent = ?";
+    /*Lister tous les agents*/
+    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent FROM agent ";
 
     public static void listAll() {
-        String typeA = InterfaceAgent.comboTypeAgent.getSelectedItem().toString();
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelect)) {
-             preparedStatement.setString(1, typeA);
             ResultSet res = preparedStatement.executeQuery();
             res.last();
-            tab = new String[res.getRow()][6];
+            tab = new String[res.getRow()][5];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgent.tableau_agent.getModel();
-            while (InterfaceAgent.tableau_agent.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgentContractuel.tableau_agent.getModel();
+            while (InterfaceAgentContractuel.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (int k = 0; k < tab.length; k++) {
                 res.next();
-                Object[] objects = new Object[6];
+                Object[] objects = new Object[5];
                 objects[0] = res.getString("idAgent");
                 objects[1] = res.getString("matriculeAgent");
                 objects[2] = res.getString("nomAgent");
                 objects[3] = res.getString("prenomAgent");
                 objects[4] = res.getString("structureAgent");
-                objects[5] = res.getString("typeAgent");
                 tablemodel.addRow(objects);
                 tab[k][0] = res.getString("idAgent");
                 tab[k][1] = res.getString("matriculeAgent");
                 tab[k][2] = res.getString("nomAgent");
                 tab[k][3] = res.getString("prenomAgent");
                 tab[k][4] = res.getString("structureAgent");
-                tab[k][5] = res.getString("typeAgent");
                 yn = true;
             }
             res.close();
@@ -1173,8 +1143,7 @@ public class AgentController {
             JOptionPane.showMessageDialog(null, "Erreur SQL");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
-        }  
-        
+        }
     }
 
     //Mise a jour de des lignes
@@ -1182,11 +1151,11 @@ public class AgentController {
 
     public static void updateLigne() {
         //recuperation des valeur id des lignes
-        int LigneID661 = Integer.parseInt(InterfaceAgent.idLigne661.getText());
-        int LigneID663 = Integer.parseInt(InterfaceAgent.idLigne663.getText());
-        int LigneID664 = Integer.parseInt(InterfaceAgent.idLigne664.getText());
-        int LigneID666 = Integer.parseInt(InterfaceAgent.idLigne666.getText());
-        int LigneID669 = Integer.parseInt(InterfaceAgent.idLigne669.getText());
+        int LigneID661 = Integer.parseInt(InterfaceAgentContractuel.idLigne661.getText());
+        int LigneID663 = Integer.parseInt(InterfaceAgentContractuel.idLigne663.getText());
+        int LigneID664 = Integer.parseInt(InterfaceAgentContractuel.idLigne664.getText());
+        int LigneID666 = Integer.parseInt(InterfaceAgentContractuel.idLigne666.getText());
+        int LigneID669 = Integer.parseInt(InterfaceAgentContractuel.idLigne669.getText());
 
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne)) {
             preparedStatement.setInt(1, LigneID661);
@@ -1201,8 +1170,8 @@ public class AgentController {
                 res.next();
                 switch (k) {
                     case 0 -> {
-                        int valeurLigne661 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgent.ligne661.getText());
-                        int valeurFinalLigne661 = valeurLigne661 + Integer.parseInt(InterfaceAgent.ligne661.getText());
+                        int valeurLigne661 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgentContractuel.ligne661.getText());
+                        int valeurFinalLigne661 = valeurLigne661 + Integer.parseInt(InterfaceAgentContractuel.ligne661.getText());
                         String queryUpdateMontant661 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement661 = connection.prepareStatement(queryUpdateMontant661)) {
                             preparedStatement661.setInt(1, valeurFinalLigne661);                            
@@ -1217,8 +1186,8 @@ public class AgentController {
                         }
                     }
                     case 1 -> {
-                        int valeurLigne663 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgent.ligne663.getText());
-                        int valeurFinalLigne663 = valeurLigne663 + Integer.parseInt(InterfaceAgent.ligne663.getText());
+                        int valeurLigne663 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgentContractuel.ligne663.getText());
+                        int valeurFinalLigne663 = valeurLigne663 + Integer.parseInt(InterfaceAgentContractuel.ligne663.getText());
                         String queryUpdateMontant663 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement663 = connection.prepareStatement(queryUpdateMontant663)) {
                             preparedStatement663.setInt(1, valeurFinalLigne663);
@@ -1234,8 +1203,8 @@ public class AgentController {
                     }
 
                     case 2 -> {
-                        int valeurLigne664 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgent.ligne664.getText());
-                        int valeurFinalLigne664 = valeurLigne664 + Integer.parseInt(InterfaceAgent.ligne666.getText());
+                        int valeurLigne664 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgentContractuel.ligne664.getText());
+                        int valeurFinalLigne664 = valeurLigne664 + Integer.parseInt(InterfaceAgentContractuel.ligne666.getText());
                         String queryUpdateMontant664 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement664 = connection.prepareStatement(queryUpdateMontant664)) {
                             preparedStatement664.setInt(1, valeurFinalLigne664);
@@ -1250,7 +1219,7 @@ public class AgentController {
                         }
                     }
                     case 3 -> {
-                        int valeurLigne666 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgent.ligne666.getText());
+                        int valeurLigne666 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgentContractuel.ligne666.getText());
                          String queryUpdateMontant666 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement666 = connection.prepareStatement(queryUpdateMontant666)) {
                             preparedStatement666.setInt(1, valeurLigne666);
@@ -1265,8 +1234,8 @@ public class AgentController {
                         }
                     }
                     case 4 -> {
-                        int valeurLigne669 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgent.ligne669.getText());
-                        int valeurFinalLigne669 = valeurLigne669 + Integer.parseInt(InterfaceAgent.ligne669.getText());
+                        int valeurLigne669 = res.getInt("montantLigne") + Integer.parseInt(InterfaceAgentContractuel.ligne669.getText());
+                        int valeurFinalLigne669 = valeurLigne669 + Integer.parseInt(InterfaceAgentContractuel.ligne669.getText());
                          String queryUpdateMontant669 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement669 = connection.prepareStatement(queryUpdateMontant669)) {
                             preparedStatement669.setInt(1, valeurFinalLigne669);
@@ -1296,22 +1265,22 @@ public class AgentController {
         }
     }
 }*/
-    /********************************************MISE A JOURS DES LIGNES APRES L'ENREGISTREMENT DE L'AGENT***********************************************************/
+    
     //Mise a jour du montant de la ligne 661
     private static final String querySelectionLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
     public static void updateLigne661() {
-       // if (InterfaceAgent.idLigne661.getText().isBlank()) {
+       // if (InterfaceAgentContractuel.idLigne661.getText().isBlank()) {
           //  JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 661 correspondante");
 
        // } else {
-            int LigneID661 = Integer.parseInt(InterfaceAgent.idLigne661.getText());
+            int LigneID661 = Integer.parseInt(InterfaceAgentContractuel.idLigne661.getText());
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne661)) {
                 preparedStatement.setInt(1, LigneID661);
                 try (ResultSet res = preparedStatement.executeQuery()) {
                     if (res.next()) {
                         int valeurLigne661 = res.getInt("montantLigne");
-                        int valeurFinalLigne661 = valeurLigne661 + Integer.parseInt(InterfaceAgent.ligne661.getText());
+                        int valeurFinalLigne661 = valeurLigne661 + Integer.parseInt(InterfaceAgentContractuel.ligne661.getText());
                         String queryUpdateMontant661 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement661 = connection.prepareStatement(queryUpdateMontant661)) {
                             preparedStatement661.setInt(1, valeurFinalLigne661);
@@ -1337,18 +1306,18 @@ public class AgentController {
     private static final String querySelectionLigne663 = "SELECT * FROM ligne WHERE idLigne = ?";
 
     public static void updateLigne663() {
-       // if (InterfaceAgent.idLigne663.getText().isBlank()) {
+       // if (InterfaceAgentContractuel.idLigne663.getText().isBlank()) {
           //  JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 663 correspondante");
 
       //  } else {
-            int LigneID663 = Integer.parseInt(InterfaceAgent.idLigne663.getText());
+            int LigneID663 = Integer.parseInt(InterfaceAgentContractuel.idLigne663.getText());
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne663)) {
                 preparedStatement.setInt(1, LigneID663);
                 try (ResultSet res = preparedStatement.executeQuery()) {
                     if (res.next()) {
                         int valeurLigne663 = res.getInt("montantLigne");
-                        int valeurFinalLigne663 = valeurLigne663 + Integer.parseInt(InterfaceAgent.ligne663.getText());
+                        int valeurFinalLigne663 = valeurLigne663 + Integer.parseInt(InterfaceAgentContractuel.ligne663.getText());
                         String queryUpdateMontant663 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement663 = connection.prepareStatement(queryUpdateMontant663)) {
                             preparedStatement663.setInt(1, valeurFinalLigne663);
@@ -1373,18 +1342,18 @@ public class AgentController {
     private static final String querySelectionLigne664 = "SELECT * FROM ligne WHERE idLigne = ?";
 
     public static void updateLigne664() {
-       // if (InterfaceAgent.idLigne664.getText().isBlank()) {
+       // if (InterfaceAgentContractuel.idLigne664.getText().isBlank()) {
        //     JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 664 correspondante");
 
      //   } else {
-            int LigneID664 = Integer.parseInt(InterfaceAgent.idLigne664.getText());
+            int LigneID664 = Integer.parseInt(InterfaceAgentContractuel.idLigne664.getText());
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne664)) {
                 preparedStatement.setInt(1, LigneID664);
                 try (ResultSet res = preparedStatement.executeQuery()) {
                     if (res.next()) {
                         int valeurLigne664 = res.getInt("montantLigne");
-                        int valeurFinalLigne664 = valeurLigne664 + Integer.parseInt(InterfaceAgent.ligne664.getText());
+                        int valeurFinalLigne664 = valeurLigne664 + Integer.parseInt(InterfaceAgentContractuel.ligne664.getText());
                         String queryUpdateMontant664 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement664 = connection.prepareStatement(queryUpdateMontant664)) {
                             preparedStatement664.setInt(1, valeurFinalLigne664);
@@ -1409,18 +1378,18 @@ public class AgentController {
     private static final String querySelectionLigne666 = "SELECT * FROM ligne WHERE idLigne = ?";
 
     public static void updateLigne666() {
-       // if (InterfaceAgent.idLigne666.getText().isBlank()) {
+       // if (InterfaceAgentContractuel.idLigne666.getText().isBlank()) {
         //    JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 666 correspondante");
 
        // } else {
-            int LigneID666 = Integer.parseInt(InterfaceAgent.idLigne666.getText());
+            int LigneID666 = Integer.parseInt(InterfaceAgentContractuel.idLigne666.getText());
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne666)) {
                 preparedStatement.setInt(1, LigneID666);
                 try (ResultSet res = preparedStatement.executeQuery()) {
                     if (res.next()) {
                         int valeurLigne666 = res.getInt("montantLigne");
-                        int valeurFinalLigne666 = valeurLigne666 + Integer.parseInt(InterfaceAgent.ligne666.getText());
+                        int valeurFinalLigne666 = valeurLigne666 + Integer.parseInt(InterfaceAgentContractuel.ligne666.getText());
                         String queryUpdateMontant666 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement666 = connection.prepareStatement(queryUpdateMontant666)) {
                             preparedStatement666.setInt(1, valeurFinalLigne666);
@@ -1445,18 +1414,18 @@ public class AgentController {
     private static final String querySelectionLigne669 = "SELECT * FROM ligne WHERE idLigne = ?";
 
     public static void updateLigne669() {
-        //if (InterfaceAgent.idLigne669.getText().isBlank()) {
+        //if (InterfaceAgentContractuel.idLigne669.getText().isBlank()) {
        //     JOptionPane.showMessageDialog(null, "Sélectionnez la ligne 669 correspondante");
 
       //  } else {
-            int LigneID669 = Integer.parseInt(InterfaceAgent.idLigne669.getText());
+            int LigneID669 = Integer.parseInt(InterfaceAgentContractuel.idLigne669.getText());
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne669)) {
                 preparedStatement.setInt(1, LigneID669);
                 try (ResultSet res = preparedStatement.executeQuery()) {
                     if (res.next()) {
                         int valeurLigne669 = res.getInt("montantLigne");
-                        int valeurFinalLigne669 = valeurLigne669 + Integer.parseInt(InterfaceAgent.ligne669.getText());
+                        int valeurFinalLigne669 = valeurLigne669 + Integer.parseInt(InterfaceAgentContractuel.ligne669.getText());
                         String queryUpdateMontant669 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                         try (PreparedStatement preparedStatement669 = connection.prepareStatement(queryUpdateMontant669)) {
                             preparedStatement669.setInt(1, valeurFinalLigne669);
@@ -1478,15 +1447,13 @@ public class AgentController {
 
     }
     
-        /********************************************MISE A JOURS DES LIGNES APRES MODIFICATION DE L'AGENT***********************************************************/
-
     
       //Mise a jour du montant de la ligne 661 lors de la mise à jours de l'agent
     private static final String querySelectionLigne661Update = "SELECT * FROM ligne WHERE idLigne = ?";
-    private static final String querySelectionValActuelLigne661Agent = "SELECT montantLigne661 FROM agent WHERE idAgent = ? ";
+    private static final String querySelectionValActuelLigne661Agent = "SELECT montantLigne661 agent WHERE idAgent = ? ";
     public static void updateLigne661ForUpdate() {      
-            int LigneID661 = Integer.parseInt(InterfaceAgent.idLigne661.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID661 = Integer.parseInt(InterfaceAgentContractuel.idLigne661.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne661Update)) {
                 preparedStatement.setInt(1, LigneID661);                
@@ -1495,11 +1462,11 @@ public class AgentController {
                         try (PreparedStatement preparedStatementLA = connection.prepareStatement(querySelectionValActuelLigne661Agent)) {
                             preparedStatementLA.setInt(1, idA);
                             ResultSet resLA = preparedStatementLA.executeQuery();
-                            if (resLA.next()) {                              
+                            if (resLA.next()) {                               
                               
                                     int valeurActuelLigneAgent = resLA.getInt("montantLigne661");//valeur actuelle de la ligne 661 de l'agent
                                     int valeurLigne661 = res.getInt("montantLigne"); //valeur de ligne 661 du programme de l'agent contenu dans la base 
-                                    int valeurFinalLigne661 = (Integer.parseInt(InterfaceAgent.ligne661.getText()) - valeurLigne661) + valeurActuelLigneAgent;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                    int valeurFinalLigne661 = (Integer.parseInt(InterfaceAgentContractuel.ligne661.getText()) - valeurLigne661) + valeurActuelLigneAgent;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
                                     String queryUpdateMontant661 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                                     try (PreparedStatement preparedStatement661 = connection.prepareStatement(queryUpdateMontant661)) {
                                         preparedStatement661.setInt(1, valeurFinalLigne661);
@@ -1528,8 +1495,8 @@ public class AgentController {
     private static final String querySelectionLigne663Update = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne663Agent = "SELECT montantLigne663 FROM agent WHERE idAgent = ?";
     public static void updateLigne663ForUpdate() {      
-            int LigneID663 = Integer.parseInt(InterfaceAgent.idLigne663.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID663 = Integer.parseInt(InterfaceAgentContractuel.idLigne663.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne663Update)) {
                 preparedStatement.setInt(1, LigneID663);                
@@ -1541,7 +1508,7 @@ public class AgentController {
                             if (resLA.next()) {
                                 int valeurActuelLigneAgent = resLA.getInt("montantLigne663");//valeur actuelle de la ligne 663 de l'agent
                                 int valeurLigne663 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
-                                int valeurFinalLigne663 = (Integer.parseInt(InterfaceAgent.ligne663.getText()) - valeurLigne663) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                int valeurFinalLigne663 = (Integer.parseInt(InterfaceAgentContractuel.ligne663.getText()) - valeurLigne663) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
                                 String queryUpdateMontant663 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                                 try (PreparedStatement preparedStatement663 = connection.prepareStatement(queryUpdateMontant663)) {
                                     preparedStatement663.setInt(1, valeurFinalLigne663);
@@ -1570,8 +1537,8 @@ public class AgentController {
     private static final String querySelectionLigne664Update = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne664Agent = "SELECT montantLigne664 FROM agent WHERE idAgent = ?";
     public static void updateLigne664ForUpdate() {      
-            int LigneID664 = Integer.parseInt(InterfaceAgent.idLigne664.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID664 = Integer.parseInt(InterfaceAgentContractuel.idLigne664.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne664Update)) {
                 preparedStatement.setInt(1, LigneID664);                
@@ -1583,7 +1550,7 @@ public class AgentController {
                             if (resLA.next()) {
                                 int valeurActuelLigneAgent = resLA.getInt("montantLigne664");//valeur actuelle de la ligne 663 de l'agent
                                 int valeurLigne664 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
-                                int valeurFinalLigne664 = (Integer.parseInt(InterfaceAgent.ligne664.getText()) - valeurLigne664) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                int valeurFinalLigne664 = (Integer.parseInt(InterfaceAgentContractuel.ligne664.getText()) - valeurLigne664) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
                                 String queryUpdateMontant664 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                                 try (PreparedStatement preparedStatement664 = connection.prepareStatement(queryUpdateMontant664)) {
                                     preparedStatement664.setInt(1, valeurFinalLigne664);
@@ -1612,8 +1579,8 @@ public class AgentController {
     private static final String querySelectionLigne666Update = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne666Agent = "SELECT montantLigne666 FROM agent WHERE idAgent = ?";
     public static void updateLigne666ForUpdate() {      
-            int LigneID666 = Integer.parseInt(InterfaceAgent.idLigne666.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID666 = Integer.parseInt(InterfaceAgentContractuel.idLigne666.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne666Update)) {
                 preparedStatement.setInt(1, LigneID666);                
@@ -1625,7 +1592,7 @@ public class AgentController {
                             if (resLA.next()) {
                                 int valeurActuelLigneAgent = resLA.getInt("montantLigne666");//valeur actuelle de la ligne 666 de l'agent
                                 int valeurLigne666 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
-                                int valeurFinalLigne666 = (Integer.parseInt(InterfaceAgent.ligne666.getText()) - valeurLigne666) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                int valeurFinalLigne666 = (Integer.parseInt(InterfaceAgentContractuel.ligne666.getText()) - valeurLigne666) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
                                 String queryUpdateMontant666 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                                 try (PreparedStatement preparedStatement666 = connection.prepareStatement(queryUpdateMontant666)) {
                                     preparedStatement666.setInt(1, valeurFinalLigne666);
@@ -1654,8 +1621,8 @@ public class AgentController {
     private static final String querySelectionLigne669Update = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne669Agent = "SELECT montantLigne669 FROM agent WHERE idAgent = ?";
     public static void updateLigne669ForUpdate() {      
-            int LigneID669 = Integer.parseInt(InterfaceAgent.idLigne669.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID669 = Integer.parseInt(InterfaceAgentContractuel.idLigne669.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne666Update)) {
                 preparedStatement.setInt(1, LigneID669);                
@@ -1667,7 +1634,7 @@ public class AgentController {
                             if (resLA.next()) {
                                 int valeurActuelLigneAgent = resLA.getInt("montantLigne669");//valeur actuelle de la ligne 669 de l'agent
                                 int valeurLigne669 = res.getInt("montantLigne"); //valeur de ligne 663 du programme de l'agent contenu dans la base 
-                                int valeurFinalLigne669 = (Integer.parseInt(InterfaceAgent.ligne669.getText()) - valeurLigne669) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
+                                int valeurFinalLigne669 = (Integer.parseInt(InterfaceAgentContractuel.ligne669.getText()) - valeurLigne669) + valeurActuelLigneAgent  ;//valeur actuelle de la ligne budg - valeur actuel de la ligne de lagent + nouvelle de la ligne saisis dans le form
                                 String queryUpdateMontant669 = "UPDATE ligne SET montantLigne = ?  WHERE idLigne = ? ";
                                 try (PreparedStatement preparedStatement669 = connection.prepareStatement(queryUpdateMontant669)) {
                                     preparedStatement669.setInt(1, valeurFinalLigne669);
@@ -1692,15 +1659,15 @@ public class AgentController {
             }      //  }
     }
     
-    /***************************************MISE A JOUR DE LIGNE APRES SUPPRESSION D'UN AGENT********************************************************/
+    /***************************************MISE A JOUR DE LIGNE AVANT SUPPRESSION D'UN AGENT********************************************************/
         
      
     ///Soustraction et mise à jour de la ligne661 budgétaire de l'agent avant suppression de l'agent
     private static final String querySelectionLigne661Delete = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne661AgentDelete  = "SELECT montantLigne661 from agent WHERE idAgent = ? ";
     public static void updateLigne661ForDelete() {      
-            int LigneID661 = Integer.parseInt(InterfaceAgent.idLigne661.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID661 = Integer.parseInt(InterfaceAgentContractuel.idLigne661.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne661Delete)) {
                 preparedStatement.setInt(1, LigneID661);                
@@ -1742,8 +1709,8 @@ public class AgentController {
     private static final String querySelectionLigne663Delete = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne663AgentDelete  = "SELECT montantLigne663 FROM agent WHERE idAgent = ? ";
     public static void updateLigne663ForDelete() {      
-            int LigneID663 = Integer.parseInt(InterfaceAgent.idLigne663.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID663 = Integer.parseInt(InterfaceAgentContractuel.idLigne663.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne663Delete)) {
                 preparedStatement.setInt(1, LigneID663);                
@@ -1787,8 +1754,8 @@ public class AgentController {
     private static final String querySelectionLigne664Delete = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne664AgentDelete  = "SELECT montantLigne664 FROM agent WHERE idAgent = ? ";
     public static void updateLigne664ForDelete() {      
-            int LigneID664 = Integer.parseInt(InterfaceAgent.idLigne664.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID664 = Integer.parseInt(InterfaceAgentContractuel.idLigne664.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne664Delete)) {
                 preparedStatement.setInt(1, LigneID664);                
@@ -1832,8 +1799,8 @@ public class AgentController {
     private static final String querySelectionLigne666Delete = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne666AgentDelete  = "SELECT montantLigne666 FROM agent WHERE idAgent = ? ";
     public static void updateLigne666ForDelete() {      
-            int LigneID666 = Integer.parseInt(InterfaceAgent.idLigne666.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID666 = Integer.parseInt(InterfaceAgentContractuel.idLigne666.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne666Delete)) {
                 preparedStatement.setInt(1, LigneID666);                
@@ -1876,8 +1843,8 @@ public class AgentController {
     private static final String querySelectionLigne669Delete = "SELECT * FROM ligne WHERE idLigne = ?";
     private static final String querySelectionValActuelLigne669AgentDelete  = "SELECT montantLigne669 FROM agent WHERE idAgent = ? ";
     public static void updateLigne669ForDelete() {      
-            int LigneID669 = Integer.parseInt(InterfaceAgent.idLigne669.getText());///id de la ligne budgetaire
-            int idA = Integer.parseInt(InterfaceAgent.boxIDAgent.getText());//id de l'agent
+            int LigneID669 = Integer.parseInt(InterfaceAgentContractuel.idLigne669.getText());///id de la ligne budgetaire
+            int idA = Integer.parseInt(InterfaceAgentContractuel.boxIDAgent.getText());//id de l'agent
             //  String querySelectLigne661 = "SELECT * FROM ligne WHERE idLigne = ?";
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectionLigne669Delete)) {
                 preparedStatement.setInt(1, LigneID669);                
@@ -1935,7 +1902,7 @@ public class AgentController {
     
     //Suppression d'un agent
       public static void deleteAgent(Agent agent) {
-        int idAge = Integer.parseInt(InterfaceAgent.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id   
+        int idAge = Integer.parseInt(InterfaceAgentContractuel.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id   
         String queryDelete = "DELETE FROM agent WHERE idAgent = ?";
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryDelete)) {
             preparedStatement.setInt(1, idAge);
@@ -1965,11 +1932,11 @@ public class AgentController {
     //public static int nbreligne, numligne, idAc;
     private static final String querySelectOneAgentByMatricule = "SELECT * FROM agent WHERE matriculeAgent = ? ";
     public static void rechercheAgentByMatricule() {
-    String matriculeA = InterfaceAgent.rechercheMatricule.getText().trim();
+    String matriculeA = InterfaceAgentContractuel.rechercheMatricule.getText().trim();
     //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
     if (matriculeA.isBlank()) {
         JOptionPane.showMessageDialog(null, "Saisir un matricule !! ");
-        InterfaceAgent.tableau_agent.removeAll();
+        InterfaceAgentContractuel.tableau_agent.removeAll();
         //System.out.println(nbreligne);
     } else {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentByMatricule)) {
@@ -1980,8 +1947,8 @@ public class AgentController {
             tab = new String[res.getRow()][5];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgent.tableau_agent.getModel();
-            while (InterfaceAgent.tableau_agent.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgentContractuel.tableau_agent.getModel();
+            while (InterfaceAgentContractuel.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (int k = 0; k < tab.length; k++) {
@@ -2019,74 +1986,74 @@ public class AgentController {
     private static final String querySelectOneAgentToDisplay = "SELECT * FROM agent where idAgent = ? ";
 
     public static void displayAgentInBox() {
-        nbreligne = InterfaceAgent.tableau_agent.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceAgent.tableau_agent.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceAgentContractuel.tableau_agent.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceAgentContractuel.tableau_agent.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
-            InterfaceAgent.reinitChamps();            
+            InterfaceAgentContractuel.reinitChamps();            
             JOptionPane.showMessageDialog(null, " Sélectionnez un agent");
             //System.out.println(nbreligne);
         } else {
-            idAg = Integer.parseInt(InterfaceAgent.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id       
+            idAg = Integer.parseInt(InterfaceAgentContractuel.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id       
         }
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentToDisplay)) {
             preparedStatement.setInt(1, idAg);
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
                 
-                InterfaceAgent.boxIDAgent.setText(res.getString("idAgent"));
-                InterfaceAgent.boxMatriculeAg.setText(res.getString("matriculeAgent"));
-                InterfaceAgent.boxNomAg.setText(res.getString("nomAgent"));
-                InterfaceAgent.boxPrenomAg.setText(res.getString("prenomAgent"));                
-                InterfaceAgent.boxDateNaissAg.setText(res.getString("dateNaissanceAgent"));
+                InterfaceAgentContractuel.boxIDAgent.setText(res.getString("idAgent"));
+                InterfaceAgentContractuel.boxMatriculeAg.setText(res.getString("matriculeAgent"));
+                InterfaceAgentContractuel.boxNomAg.setText(res.getString("nomAgent"));
+                InterfaceAgentContractuel.boxPrenomAg.setText(res.getString("prenomAgent"));                
+                InterfaceAgentContractuel.boxDateNaissAg.setText(res.getString("dateNaissanceAgent"));
                 
-                InterfaceAgent.comboSexeAg.setSelectedItem(res.getString("sexeAgent"));
-                InterfaceAgent.boxDatePriseServiceAg.setText(res.getString("datePriseServiceAgent"));
-                InterfaceAgent.comboStructure.setSelectedItem(res.getString("structureAgent"));
-                InterfaceAgent.comboMinistere.setSelectedItem(res.getString("ministereOrigineAgent"));
+                InterfaceAgentContractuel.comboSexeAg.setSelectedItem(res.getString("sexeAgent"));
+                InterfaceAgentContractuel.boxDatePriseServiceAg.setText(res.getString("datePriseServiceAgent"));
+                InterfaceAgentContractuel.comboStructure.setSelectedItem(res.getString("structureAgent"));
+                InterfaceAgentContractuel.comboMinistere.setSelectedItem(res.getString("ministereOrigineAgent"));
                 
-                InterfaceAgent.comboFonction.setSelectedItem(res.getString("fonctionAgent"));
-                InterfaceAgent.comboEmploiAgent.setSelectedItem(res.getString("emploiAgent"));
-                InterfaceAgent.comboCatAgent.setSelectedItem(res.getString("categorieEchelleAgent")); 
-                InterfaceAgent.comboTypeAgent.setSelectedItem(res.getString("typeAgent"));     
+                InterfaceAgentContractuel.comboFonction.setSelectedItem(res.getString("fonctionAgent"));
+                InterfaceAgentContractuel.comboEmploiAgent.setSelectedItem(res.getString("emploiAgent"));
+                InterfaceAgentContractuel.comboCatAgent.setSelectedItem(res.getString("categorieEchelleAgent")); 
+                InterfaceAgentContractuel.comboTypeAgent.setSelectedItem(res.getString("typeAgent"));     
                 
-                InterfaceAgent.boxEchelon.setText(res.getString("echelonAgent"));                
-                InterfaceAgent.boxIndiceSal.setText(res.getString("indiceAgent"));
+                InterfaceAgentContractuel.boxEchelon.setText(res.getString("echelonAgent"));                
+                InterfaceAgentContractuel.boxIndiceSal.setText(res.getString("indiceAgent"));
                 
-                InterfaceAgent.boxSalaireIndicMensuel.setValue((res.getDouble("salaireIndiciaireAgent")));            
+                InterfaceAgentContractuel.boxSalaireIndicMensuel.setValue((res.getDouble("salaireIndiciaireAgent")));            
                 
-                InterfaceAgent.boxIndResidence.setValue(res.getDouble("indeminiteResidence"));
-                InterfaceAgent.boxIndeminiteAstreinte.setValue(res.getDouble("indeminiteAstreinte"));
-                InterfaceAgent.boxIndeminiteTechnicite.setValue(res.getDouble("indeminiteTechnicite"));
-                InterfaceAgent.boxIndeminiteResponsabilite.setValue(res.getDouble("indeminiteResponsabilite"));
-                InterfaceAgent.boxIndeminiteVestimentaire.setValue(res.getDouble("indeminiteVestimentaire"));                
+                InterfaceAgentContractuel.boxIndResidence.setValue(res.getDouble("indeminiteResidence"));
+                InterfaceAgentContractuel.boxIndeminiteAstreinte.setValue(res.getDouble("indeminiteAstreinte"));
+                InterfaceAgentContractuel.boxIndeminiteTechnicite.setValue(res.getDouble("indeminiteTechnicite"));
+                InterfaceAgentContractuel.boxIndeminiteResponsabilite.setValue(res.getDouble("indeminiteResponsabilite"));
+                InterfaceAgentContractuel.boxIndeminiteVestimentaire.setValue(res.getDouble("indeminiteVestimentaire"));                
                 
-               // InterfaceAgent.boxIndeminiteLogement1.setText(res.getString("indeminiteLogement"));
-                InterfaceAgent.boxIndeminiteLogement.setValue(res.getDouble("indeminiteLogement"));
-                InterfaceAgent.boxIndeminiteSpecifique.setValue(res.getDouble("indeminiteSpecifique"));
-                InterfaceAgent.boxAutreIndeminite.setValue(res.getDouble("autreIndeminite"));
-                InterfaceAgent.boxChargeMilitaire.setValue(res.getDouble("chargeMilitaire"));
-                InterfaceAgent.boxContributionCARFO.setValue(res.getDouble("contributionCARFO"));
-                InterfaceAgent.boxContributionCNSS.setValue(res.getDouble("contributionCNSS"));
+               // InterfaceAgentContractuel.boxIndeminiteLogement1.setText(res.getString("indeminiteLogement"));
+                InterfaceAgentContractuel.boxIndeminiteLogement.setValue(res.getDouble("indeminiteLogement"));
+                InterfaceAgentContractuel.boxIndeminiteSpecifique.setValue(res.getDouble("indeminiteSpecifique"));
+                InterfaceAgentContractuel.boxAutreIndeminite.setValue(res.getDouble("autreIndeminite"));
+                InterfaceAgentContractuel.boxChargeMilitaire.setValue(res.getDouble("chargeMilitaire"));
+                InterfaceAgentContractuel.boxContributionCARFO.setValue(res.getDouble("contributionCARFO"));
+                InterfaceAgentContractuel.boxContributionCNSS.setValue(res.getDouble("contributionCNSS"));
                 
-                InterfaceAgent.boxAllocationFamiliale.setValue(res.getDouble("allocationFamiliale"));
-                InterfaceAgent.ligne661.setValue(res.getDouble("montantLigne661"));
-                InterfaceAgent.ligne663.setValue(res.getDouble("montantLigne663"));
-                InterfaceAgent.ligne664.setValue(res.getDouble("montantLigne664"));
-                InterfaceAgent.ligne666.setValue(res.getDouble("montantLigne666"));
-                InterfaceAgent.ligne669.setValue(res.getDouble("montantLigne669"));
-                InterfaceAgent.boxIncidenceMensuelle.setValue(res.getDouble("incidenceMensuelle"));
-                InterfaceAgent.boxIncidenceAnnuelle.setValue(res.getDouble("incidenceAnnuelle")); 
+                InterfaceAgentContractuel.boxAllocationFamiliale.setValue(res.getDouble("allocationFamiliale"));
+                InterfaceAgentContractuel.ligne661.setValue(res.getDouble("montantLigne661"));
+                InterfaceAgentContractuel.ligne663.setValue(res.getDouble("montantLigne663"));
+                InterfaceAgentContractuel.ligne664.setValue(res.getDouble("montantLigne664"));
+                InterfaceAgentContractuel.ligne666.setValue(res.getDouble("montantLigne666"));
+                InterfaceAgentContractuel.ligne669.setValue(res.getDouble("montantLigne669"));
+                InterfaceAgentContractuel.boxIncidenceMensuelle.setValue(res.getDouble("incidenceMensuelle"));
+                InterfaceAgentContractuel.boxIncidenceAnnuelle.setValue(res.getDouble("incidenceAnnuelle")); 
                 
-                InterfaceAgent.idLigne661.setText(res.getString("idLigne661"));
-                InterfaceAgent.ligne661.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne663.setText(res.getString("idLigne663"));
-                InterfaceAgent.ligne663.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne664.setText(res.getString("idLigne664"));
-                InterfaceAgent.ligne664.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne666.setText(res.getString("idLigne666"));
-                InterfaceAgent.ligne666.setBackground(new java.awt.Color(0, 102, 51));
-                InterfaceAgent.idLigne669.setText(res.getString("idLigne669"));
-                InterfaceAgent.ligne669.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne661.setText(res.getString("idLigne661"));
+                InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne663.setText(res.getString("idLigne663"));
+                InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne664.setText(res.getString("idLigne664"));
+                InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne666.setText(res.getString("idLigne666"));
+                InterfaceAgentContractuel.ligne666.setBackground(new java.awt.Color(0, 102, 51));
+                InterfaceAgentContractuel.idLigne669.setText(res.getString("idLigne669"));
+                InterfaceAgentContractuel.ligne669.setBackground(new java.awt.Color(0, 102, 51));
                             
             }
             res.close();
