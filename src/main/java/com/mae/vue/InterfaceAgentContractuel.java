@@ -41,7 +41,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
     }
 
     //Fonction pour exécuter le calcul du salaire indicaire mensuel de l'agent ********************************************************************************************************************
-    public static void afficherSalaireIndiciaire() {
+    public static void afficherLigne661() {
         ContractuelController.calculSalIndiciaire();
 
     }
@@ -265,12 +265,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
                 ContractuelController.updateLigne664ForUpdate();
                 ContractuelController.updateLigne666ForUpdate();
                 ContractuelController.updateLigne669ForUpdate();
-                ContractuelController.updateAgent(agent);  // Enregistrez  dans la base de données     
-
-               // ContractuelController.updateLigne663();
-                //ContractuelController.updateLigne664();
-               // ContractuelController.updateLigne666();
-                //ContractuelController.updateLigne669();
+                ContractuelController.updateAgent(agent);  // Enregistrez les modifications dans la base de données   
                 reinitChamps();
                 JOptionPane.showMessageDialog(null, "Modification validée");
             }
@@ -395,7 +390,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
         panneauPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableau_agent = new javax.swing.JTable();
+        tableau_agent_contractuel = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -421,7 +416,6 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        boxSalaireIndicMensuel = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -458,6 +452,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         rechercheMatricule = new javax.swing.JTextField();
         btn_supprimer = new javax.swing.JButton();
         boxIndeminiteLogement = new javax.swing.JFormattedTextField();
+        boxSalaireIndicMensuel = new javax.swing.JFormattedTextField();
         panneauForms = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -519,39 +514,39 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         panneauPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         panneauPrincipal.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
-        tableau_agent.setAutoCreateRowSorter(true);
-        tableau_agent.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
-        tableau_agent.setModel(new javax.swing.table.DefaultTableModel(
+        tableau_agent_contractuel.setAutoCreateRowSorter(true);
+        tableau_agent_contractuel.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        tableau_agent_contractuel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID Agent", "Matricule", "Nom", "Prénom", "Structure"
+                "ID Agent", "Matricule", "Nom", "Prénom", "Structure", "Type d'Agent"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tableau_agent.setSelectionBackground(new java.awt.Color(255, 153, 0));
-        tableau_agent.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tableau_agent.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableau_agent_contractuel.setSelectionBackground(new java.awt.Color(255, 153, 0));
+        tableau_agent_contractuel.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableau_agent_contractuel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableau_agentMouseClicked(evt);
+                tableau_agent_contractuelMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableau_agent);
-        if (tableau_agent.getColumnModel().getColumnCount() > 0) {
-            tableau_agent.getColumnModel().getColumn(0).setMinWidth(0);
-            tableau_agent.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tableau_agent.getColumnModel().getColumn(0).setMaxWidth(0);
+        jScrollPane1.setViewportView(tableau_agent_contractuel);
+        if (tableau_agent_contractuel.getColumnModel().getColumnCount() > 0) {
+            tableau_agent_contractuel.getColumnModel().getColumn(0).setMinWidth(0);
+            tableau_agent_contractuel.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tableau_agent_contractuel.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -601,11 +596,14 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         jPanel2.add(boxIndiceSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 19, 180, 26));
 
         boxIndResidence.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        boxIndResidence.setEnabled(false);
-        boxIndResidence.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        boxIndResidence.setText("0");
+        boxIndResidence.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         boxIndResidence.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 boxIndResidenceKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                boxIndResidenceKeyTyped(evt);
             }
         });
         jPanel2.add(boxIndResidence, new org.netbeans.lib.awtextra.AbsoluteConstraints(1432, 19, 180, 26));
@@ -699,14 +697,6 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         jLabel28.setText("Autres Ind. : ");
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 121, -1, -1));
 
-        boxSalaireIndicMensuel.setBackground(new java.awt.Color(204, 0, 0));
-        boxSalaireIndicMensuel.setForeground(new java.awt.Color(255, 255, 255));
-        boxSalaireIndicMensuel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        boxSalaireIndicMensuel.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        boxSalaireIndicMensuel.setEnabled(false);
-        boxSalaireIndicMensuel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel2.add(boxSalaireIndicMensuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 19, 180, 26));
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Récapitulatif des lignes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -767,6 +757,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         ligne664.setBackground(new java.awt.Color(204, 0, 0));
         ligne664.setForeground(new java.awt.Color(255, 255, 255));
         ligne664.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne664.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne664.setEnabled(false);
         ligne664.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel3.add(ligne664, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 60, 176, 29));
@@ -774,12 +765,14 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         ligne666.setBackground(new java.awt.Color(204, 0, 0));
         ligne666.setForeground(new java.awt.Color(255, 255, 255));
         ligne666.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne666.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne666.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel3.add(ligne666, new org.netbeans.lib.awtextra.AbsoluteConstraints(1235, 60, 256, 29));
 
         ligne669.setBackground(new java.awt.Color(204, 0, 0));
         ligne669.setForeground(new java.awt.Color(255, 255, 255));
         ligne669.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne669.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne669.setEnabled(false);
         ligne669.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel3.add(ligne669, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 95, 176, 29));
@@ -848,12 +841,12 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
         boxContributionCARFO.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxContributionCARFO.setEnabled(false);
-        boxContributionCARFO.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        boxContributionCARFO.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel2.add(boxContributionCARFO, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 51, 180, -1));
 
         boxContributionCNSS.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxContributionCNSS.setEnabled(false);
-        boxContributionCNSS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        boxContributionCNSS.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel2.add(boxContributionCNSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(1432, 51, 180, -1));
 
         boxIndeminiteVestimentaire.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -874,6 +867,9 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         boxAllocationFamiliale.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 boxAllocationFamilialeKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                boxAllocationFamilialeKeyTyped(evt);
             }
         });
         jPanel2.add(boxAllocationFamiliale, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 85, 180, -1));
@@ -1013,6 +1009,17 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(boxIndeminiteLogement, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 50, 180, 30));
+
+        boxSalaireIndicMensuel.setBackground(new java.awt.Color(255, 204, 0));
+        boxSalaireIndicMensuel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        boxSalaireIndicMensuel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        boxSalaireIndicMensuel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                boxSalaireIndicMensuelKeyTyped(evt);
+            }
+        });
+        jPanel2.add(boxSalaireIndicMensuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 20, 180, 26));
+        boxSalaireIndicMensuel.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout panneauPrincipalLayout = new javax.swing.GroupLayout(panneauPrincipal);
         panneauPrincipal.setLayout(panneauPrincipalLayout);
@@ -1206,7 +1213,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        //coefficientStruc.setVisible(false);
+        coefficientStruc.setVisible(false);
         idProg.setVisible(false);
         idLigne661.setVisible(false);
         idLigne663.setVisible(false);
@@ -1327,16 +1334,16 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         listerAgent();
-        JTableHeader header = tableau_agent.getTableHeader();
+        JTableHeader header = tableau_agent_contractuel.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
 
     }//GEN-LAST:event_formInternalFrameOpened
 
-    private void tableau_agentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableau_agentMouseClicked
+    private void tableau_agent_contractuelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableau_agent_contractuelMouseClicked
         // TODO add your handling code here:
         displayOneAgenntToUpdateOrDelete();
         
-    }//GEN-LAST:event_tableau_agentMouseClicked
+    }//GEN-LAST:event_tableau_agent_contractuelMouseClicked
 
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
         // TODO add your handling code here:
@@ -1347,9 +1354,9 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void boxIndiceSalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndiceSalKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            afficherSalaireIndiciaire();
-        }
+       // if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+          //  afficherLigne661();
+       // }
     }//GEN-LAST:event_boxIndiceSalKeyPressed
 
     private void boxAutreIndeminiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxAutreIndeminiteActionPerformed
@@ -1363,8 +1370,8 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void boxIndiceSalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndiceSalKeyReleased
         // TODO add your handling code here:
-        afficherSalaireIndiciaire();
-        afficherContribution();
+        //afficherSalaireIndiciaire();
+        //afficherContribution();
     }//GEN-LAST:event_boxIndiceSalKeyReleased
 
     private void boxIndResidenceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndResidenceKeyReleased
@@ -1496,6 +1503,21 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
          afficherSommeIndeminite663();
     }//GEN-LAST:event_boxIndeminiteLogementKeyReleased
 
+    private void boxSalaireIndicMensuelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxSalaireIndicMensuelKeyTyped
+        // TODO add your handling code here:
+         afficherLigne661();
+        afficherContribution();
+    }//GEN-LAST:event_boxSalaireIndicMensuelKeyTyped
+
+    private void boxAllocationFamilialeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxAllocationFamilialeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxAllocationFamilialeKeyTyped
+
+    private void boxIndResidenceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndResidenceKeyTyped
+        // TODO add your handling code here:
+        afficherLigne661();
+    }//GEN-LAST:event_boxIndResidenceKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JFormattedTextField boxAllocationFamiliale;
@@ -1592,6 +1614,6 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
     public static javax.swing.JPanel panneauForms;
     public static javax.swing.JPanel panneauPrincipal;
     public static javax.swing.JTextField rechercheMatricule;
-    public static javax.swing.JTable tableau_agent;
+    public static javax.swing.JTable tableau_agent_contractuel;
     // End of variables declaration//GEN-END:variables
 }

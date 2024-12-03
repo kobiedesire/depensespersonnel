@@ -7,12 +7,12 @@ package com.mae.controller;
 import com.mae.bd.connexionBD;
 import com.mae.model.Agent;
 import com.mae.vue.InterfaceAgentContractuel;
-import com.mae.vue.InterfaceListeLigne661;
-import com.mae.vue.InterfaceListeLigne663;
-import com.mae.vue.InterfaceListeLigne664;
-import com.mae.vue.InterfaceListeLigne666;
-import com.mae.vue.InterfaceListeLigne669;
-import com.mae.vue.InterfaceListeLigne669;
+import com.mae.vue.InterfaceListeLigne661Contractuel;
+import com.mae.vue.InterfaceListeLigne663Contractuel;
+import com.mae.vue.InterfaceListeLigne664Contractuel;
+import com.mae.vue.InterfaceListeLigne666Contractuel;
+import com.mae.vue.InterfaceListeLigne669Contractuel;
+import com.mae.vue.InterfaceListeLigne669Contractuel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,62 +33,79 @@ import java.math.BigDecimal;
  * @author hp
  */
 public class ContractuelController {
-
     private static boolean res, yn;
     private static String tab[][];
-
     ///calcul du salaire indiciere d'un agent, de l'indeminité de residence et mise à jour de la ligne 661
-    public static int pointIndiciare = 2331;
+   // public static int pointIndiciare = 2331;
     public static void calculSalIndiciaire() {
-        String typeAgent = InterfaceAgentContractuel.comboTypeAgent.getSelectedItem().toString().trim();
-        if (typeAgent.isBlank()) {
-            InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
-            InterfaceAgentContractuel.ligne661.setText("");
-            InterfaceAgentContractuel.boxIndResidence.setText("");
+       // String typeAgent = InterfaceAgentContractuel.comboTypeAgent.getSelectedItem().toString().trim();
+        //if (typeAgent.isBlank()) {
+        //    InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
+        //    InterfaceAgentContractuel.ligne661.setText("");
+        //    InterfaceAgentContractuel.boxIndResidence.setText("");
            // InterfaceAgentContractuel.boxIndiceSal.setText("");
            // JOptionPane.showMessageDialog(null, "Selectionnez le type d'agent");
-        } else {
+     //   } else {
+            //switch (typeAgent) {
+            //    case "Fonctionnaire":
+                    if (InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().trim().isBlank()) {
+                      //  InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
+                       InterfaceAgentContractuel.ligne661.setText("");
+                        //InterfaceAgentContractuel.boxIndResidence.setText("");
+                        //JOptionPane.showMessageDialog(null, "Saisir l'indice");
+                    } else {
+                        //double indiceS = Integer.parseInt(InterfaceAgentContractuel.boxIndiceSal.getText().trim());
+                        //String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
+                        //double aCoefficient = 1.0;                        
+                        //double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
+                        int salIndicaire = Integer.parseInt(InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().trim()); //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
+                        //double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
+                       // double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
+                        int soldeLigne661 = salIndicaire; //calcul du total de la ligne 661
+                        System.out.println(soldeLigne661);
+                        //0InterfaceAgentContractuel.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
+                        //InterfaceAgentContractuel.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
+                        InterfaceAgentContractuel.ligne661.setValue((soldeLigne661)); 
+                    }                
+       // }
+    }
+    
+    //mise a jour de la ligne 661
+   /* public static void calculLigne661() {
+       // String typeAgent = InterfaceAgentContractuel.comboTypeAgent.getSelectedItem().toString().trim();
+       // if (typeAgent.isBlank()) {
+            //InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
+            //InterfaceAgentContractuel.ligne661.setText("");
+            //InterfaceAgentContractuel.boxIndResidence.setValue(0);
+           // InterfaceAgentContractuel.boxIndiceSal.setText("");
+           // JOptionPane.showMessageDialog(null, "Selectionnez le type d'agent");
+       // } else {
             //switch (typeAgent) {
 
             //    case "Fonctionnaire":
-                    if (InterfaceAgentContractuel.boxIndiceSal.getText().trim().isBlank()) {
-                        InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
-                        InterfaceAgentContractuel.ligne661.setText("");
-                        InterfaceAgentContractuel.boxIndResidence.setText("");
+                    if (InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().trim().isBlank() || InterfaceAgentContractuel.coefficientStruc.getText().isBlank()) {
+                        //InterfaceAgentContractuel.boxSalaireIndicMensuel.setText("");
+                        InterfaceAgentContractuel.ligne661.setValue(0);
+                       // InterfaceAgentContractuel.boxIndResidence.setText("");
                         //JOptionPane.showMessageDialog(null, "Saisir l'indice");
                     } else {
-                        double indiceS = Integer.parseInt(InterfaceAgentContractuel.boxIndiceSal.getText().trim());
-                        String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
-                        double aCoefficient = Double.parseDouble(coeffSaisie);
+                       // double indiceS = Integer.parseInt(InterfaceAgentContractuel.boxIndiceSal.getText().trim());
+                        //String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
+                       // double aCoefficient = Double.parseDouble(coeffSaisie);
+                      //  double salbase = Integer.parseInt(InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().trim());
+                        int salIndicaire =   Integer.parseInt(InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().trim()); //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
+                      
+                        //  double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
+                        int soldeLigne661 = salIndicaire ; //calcul du total de la ligne 661
+                        // System.out.println(soldeLigne611);
+                       // InterfaceAgentContractuel.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
+                    //  InterfaceAgentContractuel.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
+                        InterfaceAgentContractuel.ligne661.setValue(Math.round(soldeLigne661));
 
-                        double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
-                        double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
-                        double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
-                        InterfaceAgentContractuel.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
-                        InterfaceAgentContractuel.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
-                        InterfaceAgentContractuel.ligne661.setValue(Math.round(soldeLigne611));
-
-                    }
-
-                   // break;
-              //  case "Contractuel":
-                 /*   double indiceS = Integer.parseInt(InterfaceAgentContractuel.boxIndiceSal.getText().trim());
-                   // String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
-                  //  double aCoefficient = Double.parseDouble(coeffSaisie);
-                           double aCoefficient = 1;
-                    double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
-                    double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
-                    double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
-                    InterfaceAgentContractuel.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
-                    InterfaceAgentContractuel.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
-                    InterfaceAgentContractuel.ligne661.setValue(Math.round(soldeLigne611));
-                    break;
-
-            }*/
-
+                  //  }                 
         }
+    }*/
 
-    }
 
     //calcul de la contribution carfo et cnss et mise à jour de la ligne 664, ce calcul est fonction du type d'agent
     public static double tauxCARFO = 13.5;
@@ -111,7 +128,7 @@ public class ContractuelController {
                     break;
 
                 case "Contractuel":
-                    int coeffC = 1;
+                    double coeffC = 1.0;
                     double contriCNSS = (salIndicaire * tauxCNSS) / 100;
                     InterfaceAgentContractuel.boxContributionCNSS.setValue(Math.round(contriCNSS));
                     InterfaceAgentContractuel.ligne664.setValue(Math.round(contriCNSS));
@@ -159,10 +176,10 @@ public class ContractuelController {
                 indTechnicite = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteTechnicite.getText());
             }
 
-            String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
-            double aCoefficient = Double.parseDouble(coeffSaisie);
+           // String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
+//            double aCoefficient = Double.parseDouble(coeffSaisie);
 //calcul de la somme des indeminités            
-            double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire * aCoefficient) + (indReponsabilité) + (indTechnicite);
+            double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire) + (indReponsabilité) + (indTechnicite);
             InterfaceAgentContractuel.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
 
         }
@@ -172,13 +189,14 @@ public class ContractuelController {
     //mise a jour de laigne 666
     public static void miseAJourLigne666() {
         double alloc;
-        if (InterfaceAgentContractuel.boxAllocationFamiliale.getText().isBlank() || InterfaceAgentContractuel.coefficientStruc.getText().isBlank()) {
+        if (InterfaceAgentContractuel.boxAllocationFamiliale.getText().isBlank()) {
             InterfaceAgentContractuel.ligne666.setText("");
             InterfaceAgentContractuel.coefficientStruc.setText("");
         } else {
-            String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
-            double aCoefficient = Double.parseDouble(coeffSaisie);    
-            alloc = Integer.parseInt(InterfaceAgentContractuel.boxAllocationFamiliale.getText()) * aCoefficient;
+            //String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
+            //double aCoefficient = Double.parseDouble(coeffSaisie);
+            // double aCoefficient = 1.0;
+            alloc = Integer.parseInt(InterfaceAgentContractuel.boxAllocationFamiliale.getText());
             InterfaceAgentContractuel.ligne666.setValue(Math.round(alloc));//mise a jour de ligne 666
         }
     }
@@ -206,12 +224,11 @@ public class ContractuelController {
             } else {
                 indSpecifique = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteSpecifique.getText());
             }
-            String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
-            double aCoefficient = Double.parseDouble(coeffSaisie);    
+           // String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
+            //double aCoefficient = Double.parseDouble(coeffSaisie);    
             //calcul de la somme des indeminités            
-            double sommeAutreDepense = (autreIndemnite) + (chargeMilitaire * aCoefficient) + (indSpecifique);
+            double sommeAutreDepense = (autreIndemnite) + (chargeMilitaire) + (indSpecifique);
             InterfaceAgentContractuel.ligne669.setValue(Math.round(sommeAutreDepense));//mise a jour de ligne 669
-
         }
 
     }
@@ -420,10 +437,10 @@ public class ContractuelController {
 
     // public static int exercice = Integer.parseInt(InterfaceProgramme.exerciceBu.getSelectedItem().toString());
     public static void afficherIDProgrammeFromStructure() {
-        String codeProg = InterfaceAgentContractuel.comboStructure.getSelectedItem().toString();
-        if (codeProg.contentEquals(" ")) {
+        String codeProg = InterfaceAgentContractuel.comboStructure.getSelectedItem().toString().trim();
+        if (codeProg.contentEquals("")) {
             InterfaceAgentContractuel.idProg.setText("");
-            InterfaceAgentContractuel.coefficientStruc.setText("");
+            //InterfaceAgentContractuel.coefficientStruc.setText("1,0");
             InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(204, 0, 0));
             InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(204, 0, 0));
             InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(204, 0, 0));
@@ -443,7 +460,10 @@ public class ContractuelController {
                 ResultSet res = preparedStatement.executeQuery();
                 if (res.next()) {
                     InterfaceAgentContractuel.idProg.setText(res.getString("idProgramme"));
-                    InterfaceAgentContractuel.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));                  
+                    //InterfaceAgentContractuel.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));   
+                     //InterfaceAgentContractuel.coefficientStruc.setText("1,0");
+                     //calculSalIndiciaire();
+
                     InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(204, 0, 0));
                     InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(204, 0, 0));
                     InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(204, 0, 0));
@@ -476,7 +496,7 @@ public class ContractuelController {
         } else {
             int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
-            InterfaceListeLigne661 listeLigne661 = new InterfaceListeLigne661(new javax.swing.JFrame(), true);
+            InterfaceListeLigne661Contractuel listeLigne661 = new InterfaceListeLigne661Contractuel(new javax.swing.JFrame(), true);
             listeLigne661.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
             listeLigne661.idProgrammeListeLigne661.setValue(idP);
             listeLigne661.setVisible(true);
@@ -492,7 +512,7 @@ public class ContractuelController {
         } else {
             int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
-            InterfaceListeLigne663 listeLigne663 = new InterfaceListeLigne663(new javax.swing.JFrame(), true);
+            InterfaceListeLigne663Contractuel listeLigne663 = new InterfaceListeLigne663Contractuel(new javax.swing.JFrame(), true);
             listeLigne663.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
             listeLigne663.idProgrammeListeLigne663.setValue(idP);
             listeLigne663.setVisible(true);
@@ -507,7 +527,7 @@ public class ContractuelController {
         } else {
             int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
-            InterfaceListeLigne664 listeLigne664 = new InterfaceListeLigne664(new javax.swing.JFrame(), true);
+            InterfaceListeLigne664Contractuel listeLigne664 = new InterfaceListeLigne664Contractuel(new javax.swing.JFrame(), true);
             listeLigne664.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
             listeLigne664.idProgrammeListeLigne664.setValue(idP);
             listeLigne664.setVisible(true);
@@ -523,7 +543,7 @@ public class ContractuelController {
         } else {
             int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
-            InterfaceListeLigne666 listeLigne666 = new InterfaceListeLigne666(new javax.swing.JFrame(), true);
+            InterfaceListeLigne666Contractuel listeLigne666 = new InterfaceListeLigne666Contractuel(new javax.swing.JFrame(), true);
             listeLigne666.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
             listeLigne666.idProgrammeListeLigne666.setValue(idP);
             listeLigne666.setVisible(true);
@@ -539,7 +559,7 @@ public class ContractuelController {
         } else {
             int idP = Integer.parseInt(InterfaceAgentContractuel.idProg.getText());
             // System.out.println(idP);
-            InterfaceListeLigne669 listeLigne669 = new InterfaceListeLigne669(new javax.swing.JFrame(), true);
+            InterfaceListeLigne669Contractuel listeLigne669 = new InterfaceListeLigne669Contractuel(new javax.swing.JFrame(), true);
             listeLigne669.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
             listeLigne669.idProgrammeListeLigne669.setValue(idP);
             listeLigne669.setVisible(true);
@@ -552,7 +572,7 @@ public class ContractuelController {
             + " l.idProgramme = ? AND l.idProgramme = p.idProgramme AND l.idAction = a.idAction AND l.idChapitre = c.idChapitre AND l.idActivite = act.idActivite AND l.idArticle = ar.idArticle AND l.idParagraphe = para.idParagraphe AND para.codeParagraphe LIKE '661%'";
 
     public static void afficherLignesFromProgramme661() {
-        int idp = Integer.parseInt(InterfaceListeLigne661.idProgrammeListeLigne661.getText());
+        int idp = Integer.parseInt(InterfaceListeLigne661Contractuel.idProgrammeListeLigne661.getText());
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne661)) {
             preparedStatement.setInt(1, idp);
             ResultSet res = preparedStatement.executeQuery();
@@ -560,8 +580,8 @@ public class ContractuelController {
             tab = new String[res.getRow()][9];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne661.tableau_Selectligne.getModel();
-            while (InterfaceListeLigne661.tableau_Selectligne.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne661Contractuel.tableau_Selectligne.getModel();
+            while (InterfaceListeLigne661Contractuel.tableau_Selectligne.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
 
@@ -607,7 +627,7 @@ public class ContractuelController {
             + " l.idProgramme = ? AND l.idProgramme = p.idProgramme AND l.idAction = a.idAction AND l.idChapitre = c.idChapitre AND l.idActivite = act.idActivite AND l.idArticle = ar.idArticle AND l.idParagraphe = para.idParagraphe AND para.codeParagraphe LIKE '663%' ";
 
     public static void afficherLignesFromProgramme663() {
-        int idp = Integer.parseInt(InterfaceListeLigne663.idProgrammeListeLigne663.getText());
+        int idp = Integer.parseInt(InterfaceListeLigne663Contractuel.idProgrammeListeLigne663.getText());
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne663)) {
             preparedStatement.setInt(1, idp);
             ResultSet res = preparedStatement.executeQuery();
@@ -615,8 +635,8 @@ public class ContractuelController {
             tab = new String[res.getRow()][9];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne663.tableau_Selectligne.getModel();
-            while (InterfaceListeLigne663.tableau_Selectligne.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne663Contractuel.tableau_Selectligne.getModel();
+            while (InterfaceListeLigne663Contractuel.tableau_Selectligne.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (String[] tab1 : tab) {
@@ -662,7 +682,7 @@ public class ContractuelController {
             + " l.idProgramme = ? AND l.idProgramme = p.idProgramme AND l.idAction = a.idAction AND l.idChapitre = c.idChapitre AND l.idActivite = act.idActivite AND l.idArticle = ar.idArticle AND l.idParagraphe = para.idParagraphe AND para.codeParagraphe LIKE '664%' ";
 
     public static void afficherLignesFromProgramme664() {
-        int idp = Integer.parseInt(InterfaceListeLigne664.idProgrammeListeLigne664.getText());
+        int idp = Integer.parseInt(InterfaceListeLigne664Contractuel.idProgrammeListeLigne664.getText());
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne664)) {
             preparedStatement.setInt(1, idp);
             ResultSet res = preparedStatement.executeQuery();
@@ -670,8 +690,8 @@ public class ContractuelController {
             tab = new String[res.getRow()][9];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne664.tableau_Selectligne.getModel();
-            while (InterfaceListeLigne664.tableau_Selectligne.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne664Contractuel.tableau_Selectligne.getModel();
+            while (InterfaceListeLigne664Contractuel.tableau_Selectligne.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (String[] tab1 : tab) {
@@ -717,7 +737,7 @@ public class ContractuelController {
             + " l.idProgramme = ? AND l.idProgramme = p.idProgramme AND l.idAction = a.idAction AND l.idChapitre = c.idChapitre AND l.idActivite = act.idActivite AND l.idArticle = ar.idArticle AND l.idParagraphe = para.idParagraphe AND para.codeParagraphe LIKE '666%' ";
 
     public static void afficherLignesFromProgramme666() {
-        int idp = Integer.parseInt(InterfaceListeLigne666.idProgrammeListeLigne666.getText());
+        int idp = Integer.parseInt(InterfaceListeLigne666Contractuel.idProgrammeListeLigne666.getText());
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne666)) {
             preparedStatement.setInt(1, idp);
             ResultSet res = preparedStatement.executeQuery();
@@ -725,8 +745,8 @@ public class ContractuelController {
             tab = new String[res.getRow()][9];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne666.tableau_Selectligne.getModel();
-            while (InterfaceListeLigne666.tableau_Selectligne.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne666Contractuel.tableau_Selectligne.getModel();
+            while (InterfaceListeLigne666Contractuel.tableau_Selectligne.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (String[] tab1 : tab) {
@@ -772,7 +792,7 @@ public class ContractuelController {
             + " l.idProgramme = ? AND l.idProgramme = p.idProgramme AND l.idAction = a.idAction AND l.idChapitre = c.idChapitre AND l.idActivite = act.idActivite AND l.idArticle = ar.idArticle AND l.idParagraphe = para.idParagraphe AND para.codeParagraphe LIKE '669%'";
 
     public static void afficherLignesFromProgramme669() {
-        int idp = Integer.parseInt(InterfaceListeLigne669.idProgrammeListeLigne669.getText());
+        int idp = Integer.parseInt(InterfaceListeLigne669Contractuel.idProgrammeListeLigne669.getText());
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectLigne669)) {
             preparedStatement.setInt(1, idp);
             ResultSet res = preparedStatement.executeQuery();
@@ -780,8 +800,8 @@ public class ContractuelController {
             tab = new String[res.getRow()][9];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne669.tableau_Selectligne.getModel();
-            while (InterfaceListeLigne669.tableau_Selectligne.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceListeLigne669Contractuel.tableau_Selectligne.getModel();
+            while (InterfaceListeLigne669Contractuel.tableau_Selectligne.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (String[] tab1 : tab) {
@@ -823,14 +843,14 @@ public class ContractuelController {
     private static final String querySelectOneLigne = "SELECT * FROM ligne WHERE idLigne = ? ";
 
     public static void recupIDLigne661() {
-        nbreligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne661.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne661Contractuel.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne661Contractuel.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
             // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            int idL = Integer.parseInt(InterfaceListeLigne661.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne 
+            int idL = Integer.parseInt(InterfaceListeLigne661Contractuel.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne 
             InterfaceAgentContractuel.ligne661.setBackground(new java.awt.Color(0, 102, 51));
             InterfaceAgentContractuel.idLigne661.setText(String.valueOf(idL));
         }
@@ -852,14 +872,14 @@ public class ContractuelController {
     }
 
     public static void recupIDLigne663() {
-        nbreligne = InterfaceListeLigne663.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne663.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne663Contractuel.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne663Contractuel.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
             // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            int idL = Integer.parseInt(InterfaceListeLigne663.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne    
+            int idL = Integer.parseInt(InterfaceListeLigne663Contractuel.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne    
             InterfaceAgentContractuel.ligne663.setBackground(new java.awt.Color(0, 102, 51));
             InterfaceAgentContractuel.idLigne663.setText(String.valueOf(idL));
         }
@@ -881,14 +901,14 @@ public class ContractuelController {
     }
 
     public static void recupIDLigne664() {
-        nbreligne = InterfaceListeLigne664.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne664.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne664Contractuel.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne664Contractuel.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
             // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            int idL = Integer.parseInt(InterfaceListeLigne664.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne 
+            int idL = Integer.parseInt(InterfaceListeLigne664Contractuel.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne 
             InterfaceAgentContractuel.ligne664.setBackground(new java.awt.Color(0, 102, 51));
             InterfaceAgentContractuel.idLigne664.setText(String.valueOf(idL));
         }
@@ -910,14 +930,14 @@ public class ContractuelController {
     }
 
     public static void recupIDLigne666() {
-        nbreligne = InterfaceListeLigne666.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne666.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne666Contractuel.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne666Contractuel.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
             // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            int idL = Integer.parseInt(InterfaceListeLigne666.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne  
+            int idL = Integer.parseInt(InterfaceListeLigne666Contractuel.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne  
             InterfaceAgentContractuel.ligne666.setBackground(new java.awt.Color(0, 102, 51));
             InterfaceAgentContractuel.idLigne666.setText(String.valueOf(idL));
 
@@ -940,14 +960,14 @@ public class ContractuelController {
     }
 
     public static void recupIDLigne669() {
-        nbreligne = InterfaceListeLigne669.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceListeLigne669.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceListeLigne669Contractuel.tableau_Selectligne.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceListeLigne669Contractuel.tableau_Selectligne.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
             // InterfaceListeLigne661.codeArticle.setText("");            
             JOptionPane.showMessageDialog(null, "Sélectionnez une ligne");
             //System.out.println(nbreligne);
         } else {
-            int idL = Integer.parseInt(InterfaceListeLigne669.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne
+            int idL = Integer.parseInt(InterfaceListeLigne669Contractuel.tableau_Selectligne.getValueAt(numligne, 0).toString());   //recuperer l'id de la ligne
             InterfaceAgentContractuel.ligne669.setBackground(new java.awt.Color(0, 102, 51));
             InterfaceAgentContractuel.idLigne669.setText(String.valueOf(idL));
         }
@@ -1088,9 +1108,8 @@ public class ContractuelController {
             preparedStatement.setInt(37, agent.getIdL664());
             preparedStatement.setInt(38, agent.getIdL666());
             preparedStatement.setInt(39, agent.getIdL669());
-            preparedStatement.setInt(40, idAg);                   
-            
-            
+            preparedStatement.setInt(40, idAg);                 
+                      
             preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
@@ -1107,33 +1126,37 @@ public class ContractuelController {
     
 
     /*Lister tous les agents*/
-    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent FROM agent ";
+    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent WHERE typeAgent = ? ";
 
     public static void listAll() {
+         String typeA = InterfaceAgentContractuel.comboTypeAgent.getSelectedItem().toString();
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelect)) {
+            preparedStatement.setString(1, typeA);
             ResultSet res = preparedStatement.executeQuery();
             res.last();
-            tab = new String[res.getRow()][5];
+            tab = new String[res.getRow()][6];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgentContractuel.tableau_agent.getModel();
-            while (InterfaceAgentContractuel.tableau_agent.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgentContractuel.tableau_agent_contractuel.getModel();
+            while (InterfaceAgentContractuel.tableau_agent_contractuel.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (int k = 0; k < tab.length; k++) {
                 res.next();
-                Object[] objects = new Object[5];
+                Object[] objects = new Object[6];
                 objects[0] = res.getString("idAgent");
                 objects[1] = res.getString("matriculeAgent");
                 objects[2] = res.getString("nomAgent");
                 objects[3] = res.getString("prenomAgent");
                 objects[4] = res.getString("structureAgent");
+                objects[5] = res.getString("typeAgent");
                 tablemodel.addRow(objects);
                 tab[k][0] = res.getString("idAgent");
                 tab[k][1] = res.getString("matriculeAgent");
                 tab[k][2] = res.getString("nomAgent");
                 tab[k][3] = res.getString("prenomAgent");
                 tab[k][4] = res.getString("structureAgent");
+                tab[k][5] = res.getString("typeAgent");
                 yn = true;
             }
             res.close();
@@ -1462,7 +1485,7 @@ public class ContractuelController {
                         try (PreparedStatement preparedStatementLA = connection.prepareStatement(querySelectionValActuelLigne661Agent)) {
                             preparedStatementLA.setInt(1, idA);
                             ResultSet resLA = preparedStatementLA.executeQuery();
-                            if (resLA.next()) {                               
+                            if (resLA.next()) {                              
                               
                                     int valeurActuelLigneAgent = resLA.getInt("montantLigne661");//valeur actuelle de la ligne 661 de l'agent
                                     int valeurLigne661 = res.getInt("montantLigne"); //valeur de ligne 661 du programme de l'agent contenu dans la base 
@@ -1902,7 +1925,7 @@ public class ContractuelController {
     
     //Suppression d'un agent
       public static void deleteAgent(Agent agent) {
-        int idAge = Integer.parseInt(InterfaceAgentContractuel.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id   
+        int idAge = Integer.parseInt(InterfaceAgentContractuel.tableau_agent_contractuel.getValueAt(numligne, 0).toString());   //recuperer l'id   
         String queryDelete = "DELETE FROM agent WHERE idAgent = ?";
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryDelete)) {
             preparedStatement.setInt(1, idAge);
@@ -1936,7 +1959,7 @@ public class ContractuelController {
     //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
     if (matriculeA.isBlank()) {
         JOptionPane.showMessageDialog(null, "Saisir un matricule !! ");
-        InterfaceAgentContractuel.tableau_agent.removeAll();
+        InterfaceAgentContractuel.tableau_agent_contractuel.removeAll();
         //System.out.println(nbreligne);
     } else {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentByMatricule)) {
@@ -1947,8 +1970,8 @@ public class ContractuelController {
             tab = new String[res.getRow()][5];
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgentContractuel.tableau_agent.getModel();
-            while (InterfaceAgentContractuel.tableau_agent.getRowCount() > 0) {
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgentContractuel.tableau_agent_contractuel.getModel();
+            while (InterfaceAgentContractuel.tableau_agent_contractuel.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             for (int k = 0; k < tab.length; k++) {
@@ -1986,14 +2009,14 @@ public class ContractuelController {
     private static final String querySelectOneAgentToDisplay = "SELECT * FROM agent where idAgent = ? ";
 
     public static void displayAgentInBox() {
-        nbreligne = InterfaceAgentContractuel.tableau_agent.getSelectedRowCount();//nombre de ligne selectionnÃ©es
-        numligne = InterfaceAgentContractuel.tableau_agent.getSelectedRow();//recuperer le le numero de la ligne
+        nbreligne = InterfaceAgentContractuel.tableau_agent_contractuel.getSelectedRowCount();//nombre de ligne selectionnÃ©es
+        numligne = InterfaceAgentContractuel.tableau_agent_contractuel.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
             InterfaceAgentContractuel.reinitChamps();            
             JOptionPane.showMessageDialog(null, " Sélectionnez un agent");
             //System.out.println(nbreligne);
         } else {
-            idAg = Integer.parseInt(InterfaceAgentContractuel.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id       
+            idAg = Integer.parseInt(InterfaceAgentContractuel.tableau_agent_contractuel.getValueAt(numligne, 0).toString());   //recuperer l'id       
         }
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentToDisplay)) {
             preparedStatement.setInt(1, idAg);

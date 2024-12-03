@@ -40,16 +40,15 @@ public class AgentController {
     ///calcul du salaire indiciere d'un agent, de l'indeminité de residence et mise à jour de la ligne 661
     public static int pointIndiciare = 2331;
     public static void calculSalIndiciaire() {
-        if (InterfaceAgent.boxIndiceSal.getText().trim().isBlank()) {
-            InterfaceAgent.boxSalaireIndicMensuel.setText("");
-            InterfaceAgent.ligne661.setText("");
-            InterfaceAgent.boxIndResidence.setText("");
+        if (InterfaceAgent.boxIndiceSal.getText().trim().isBlank() || InterfaceAgent.coefficientStruc.getText().isBlank()) {
+           // InterfaceAgent.boxSalaireIndicMensuel.setText("");
+          //  InterfaceAgent.ligne661.setText("");
+            //InterfaceAgent.boxIndResidence.setText("");
             //JOptionPane.showMessageDialog(null, "Saisir l'indice");
-        } else {
-            double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
+            double indiceS = 0;
             //double salIndicaire = (indiceS * pointIndiciare) / 12; //salaire indiciaire mensuel = indice*point /12
-            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
-            double aCoefficient = Double.parseDouble(coeffSaisie);            
+            //String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            double aCoefficient = 0.0;            
             
             double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient ; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
             double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
@@ -57,56 +56,20 @@ public class AgentController {
             InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
             InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
             InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
-
-        }
-        /*String typeAgent = InterfaceAgent.comboTypeAgent.getSelectedItem().toString().trim();
-        if (typeAgent.isBlank()) {
-            InterfaceAgent.boxSalaireIndicMensuel.setText("");
-            InterfaceAgent.ligne661.setText("");
-            InterfaceAgent.boxIndResidence.setText("");
-           // InterfaceAgent.boxIndiceSal.setText("");
-           // JOptionPane.showMessageDialog(null, "Selectionnez le type d'agent");
         } else {
-            //switch (typeAgent) {
-
-            //    case "Fonctionnaire":
-                    if (InterfaceAgent.boxIndiceSal.getText().trim().isBlank()) {
-                        InterfaceAgent.boxSalaireIndicMensuel.setText("");
-                        InterfaceAgent.ligne661.setText("");
-                        InterfaceAgent.boxIndResidence.setText("");
-                        //JOptionPane.showMessageDialog(null, "Saisir l'indice");
-                    } else {
-                        double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
-                        String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
-                        double aCoefficient = Double.parseDouble(coeffSaisie);
-
-                        double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
-                        double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
-                        double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
-                        InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
-                        InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
-                        InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
-
-                    }
-
-                   // break;
-              //  case "Contractuel":
-                 /*   double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
-                   // String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
-                  //  double aCoefficient = Double.parseDouble(coeffSaisie);
-                           double aCoefficient = 1;
-                    double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
-                    double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
-                    double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
-                    InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
-                    InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
-                    InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
-                    break;
-
-            }*/
-
-      //  }
-
+            double indiceS = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
+            //double salIndicaire = (indiceS * pointIndiciare) / 12; //salaire indiciaire mensuel = indice*point /12
+            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            double aCoefficient = Double.parseDouble(coeffSaisie);           
+            
+            double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient ; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
+            double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
+            double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
+            //System.out.println(soldeLigne611);
+            InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
+            InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
+            InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
+        }     
     }
 
     //calcul de la contribution carfo et cnss et mise à jour de la ligne 664, ce calcul est fonction du type d'agent
@@ -123,12 +86,24 @@ public class AgentController {
             double salIndicaire = Integer.parseInt(InterfaceAgent.boxSalaireIndicMensuel.getText());
             switch (typeAgent) {
                 case "Fonctionnaire":
+                    String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+                    double aCoeff = Double.parseDouble(coeffSaisie);
+                    if(aCoeff>1.0)
+                    {
+                    double contriCARFO = ((salIndicaire * tauxCARFO) / 100) / aCoeff;
+                    InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
+                    InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
+                    InterfaceAgent.boxContributionCNSS.setText("");
+                    break;
+                    
+                    }
+                    else{
                     double contriCARFO = (salIndicaire * tauxCARFO) / 100;
                     InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
                     InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
                     InterfaceAgent.boxContributionCNSS.setText("");
                     break;
-
+                    }
                 case "Contractuel":
                     //int coeffC = 1;
                     double contriCNSS = (salIndicaire * tauxCNSS) / 100;
@@ -177,13 +152,16 @@ public class AgentController {
             } else {
                 indTechnicite = Integer.parseInt(InterfaceAgent.boxIndeminiteTechnicite.getText());
             }
+            if (InterfaceAgent.coefficientStruc.getText().isBlank()) {
+                double aCoefficient = 0.0;
+            } else {
+                String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+                double aCoefficient = Double.parseDouble(coeffSaisie);
 
-            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
-            double aCoefficient = Double.parseDouble(coeffSaisie);
 //calcul de la somme des indeminités            
-            double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire * aCoefficient) + (indReponsabilité) + (indTechnicite);
-            InterfaceAgent.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
-
+                double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire * aCoefficient) + (indReponsabilité) + (indTechnicite);
+                InterfaceAgent.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
+            }
         }
 
     }
@@ -192,8 +170,12 @@ public class AgentController {
     public static void miseAJourLigne666() {
         double alloc;
         if (InterfaceAgent.boxAllocationFamiliale.getText().isBlank() || InterfaceAgent.coefficientStruc.getText().isBlank()) {
-            InterfaceAgent.ligne666.setText("");
-            InterfaceAgent.coefficientStruc.setText("");
+           // InterfaceAgent.ligne666.setText("");
+           // InterfaceAgent.coefficientStruc.setText("");
+            //String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+            double aCoefficient = 0.0;
+            alloc = 0 * aCoefficient;
+            InterfaceAgent.ligne666.setValue(Math.round(alloc));//mise a jour de ligne 666
         } else {
             String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
             double aCoefficient = Double.parseDouble(coeffSaisie);    
@@ -205,7 +187,7 @@ public class AgentController {
     //calcul de la somme autres dépenses et mise à jour de la ligne 669    
     public static void calculAutreDepenses() {
         double indSpecifique = 0, autreIndemnite = 0, chargeMilitaire = 0;
-        if (InterfaceAgent.boxAutreIndeminite.getText().isBlank() && InterfaceAgent.boxChargeMilitaire.getText().isBlank() && InterfaceAgent.boxIndeminiteSpecifique.getText().isBlank()) {
+        if (InterfaceAgent.boxAutreIndeminite.getText().isBlank()  && InterfaceAgent.boxIndeminiteSpecifique.getText().isBlank()) {
             InterfaceAgent.ligne669.setText("");
         } else {
             if (InterfaceAgent.boxAutreIndeminite.getText().isBlank()) {
@@ -214,10 +196,16 @@ public class AgentController {
                 autreIndemnite = Integer.parseInt(InterfaceAgent.boxAutreIndeminite.getText());
             }
 
-            if (InterfaceAgent.boxChargeMilitaire.getText().isBlank()) {
-                chargeMilitaire = 0;
+            if (InterfaceAgent.boxChargeMilitaire.getText().isBlank() || InterfaceAgent.coefficientStruc.getText().isBlank()) {
+                // chargeMilitaire = 0;
+                double aCoefficient = 0.0;
+                chargeMilitaire = 0 * aCoefficient;
+                // InterfaceAgent.boxChargeMilitaire.setValue(Math.round(chargeMilitaire));
             } else {
-                chargeMilitaire = Integer.parseInt(InterfaceAgent.boxChargeMilitaire.getText());
+                String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+                double aCoefficient = Double.parseDouble(coeffSaisie);
+                chargeMilitaire = Integer.parseInt(InterfaceAgent.boxChargeMilitaire.getText()) * aCoefficient;
+                //InterfaceAgent.boxChargeMilitaire.setValue(Math.round(chargeMilitaire));
             }
 
             if (InterfaceAgent.boxIndeminiteSpecifique.getText().isBlank()) {
@@ -225,10 +213,10 @@ public class AgentController {
             } else {
                 indSpecifique = Integer.parseInt(InterfaceAgent.boxIndeminiteSpecifique.getText());
             }
-            String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
-            double aCoefficient = Double.parseDouble(coeffSaisie);    
+            // String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+           // double aCoefficient = Double.parseDouble(coeffSaisie);    
             //calcul de la somme des indeminités            
-            double sommeAutreDepense = (autreIndemnite) + (chargeMilitaire * aCoefficient) + (indSpecifique);
+            double sommeAutreDepense = autreIndemnite + chargeMilitaire  + indSpecifique;
             InterfaceAgent.ligne669.setValue(Math.round(sommeAutreDepense));//mise a jour de ligne 669
 
         }
@@ -462,13 +450,13 @@ public class AgentController {
                 ResultSet res = preparedStatement.executeQuery();
                 if (res.next()) {
                     InterfaceAgent.idProg.setText(res.getString("idProgramme"));
-                    InterfaceAgent.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));   
+                    InterfaceAgent.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));
                     calculSalIndiciaire(); //calcul automatique du salaire indiciaire avec le coefficiebt appliqué
                     //calculContribution();//calcul de la contribution carfo
-                   // calculIndemnite();//calcul des indemnités
-                   // miseAJourLigne666();//calcul automatique des allocations
-                    //calculAutreDepenses();//calcul des autres dépenses
-                    
+                    // calculIndemnite();//calcul des indemnités
+                    miseAJourLigne666();//calcul automatique des allocations
+                    calculAutreDepenses();//calcul des autres dépenses
+
                     
                     InterfaceAgent.ligne661.setBackground(new java.awt.Color(204, 0, 0));
                     InterfaceAgent.ligne663.setBackground(new java.awt.Color(204, 0, 0));

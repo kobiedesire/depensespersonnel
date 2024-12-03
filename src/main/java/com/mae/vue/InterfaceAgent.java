@@ -771,11 +771,13 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jPanel2.add(boxIndiceSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 19, 180, 26));
 
         boxIndResidence.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        boxIndResidence.setEnabled(false);
         boxIndResidence.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         boxIndResidence.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 boxIndResidenceKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                boxIndResidenceKeyTyped(evt);
             }
         });
         jPanel2.add(boxIndResidence, new org.netbeans.lib.awtextra.AbsoluteConstraints(1432, 19, 180, 26));
@@ -873,7 +875,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         boxSalaireIndicMensuel.setForeground(new java.awt.Color(255, 255, 255));
         boxSalaireIndicMensuel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxSalaireIndicMensuel.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        boxSalaireIndicMensuel.setEnabled(false);
         boxSalaireIndicMensuel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel2.add(boxSalaireIndicMensuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 19, 180, 26));
 
@@ -1180,8 +1181,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1404,19 +1405,20 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        //coefficientStruc.setVisible(false);
-        // idProg.setVisible(false);
-        //idLigne661.setVisible(false);
-        //idLigne663.setVisible(false);
-        //idLigne664.setVisible(false);
-        // idLigne666.setVisible(false);
-        //idLigne669.setVisible(false);
-        // boxIDAgent.setVisible(false);
+        coefficientStruc.setVisible(false);
+        idProg.setVisible(false);
+        idLigne661.setVisible(false);
+        idLigne663.setVisible(false);
+        idLigne664.setVisible(false);
+        idLigne666.setVisible(false);
+        idLigne669.setVisible(false);
+        boxIDAgent.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();
         listerComboMinistere();
         listerComboStructure();
+       
         //gestion de la mise à jour en temps réelle des champs de l'incidence mensuelle et annuelle
         InterfaceAgent.ligne661.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -1527,6 +1529,87 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         listerAgent();
         JTableHeader header = tableau_agent.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
+       /*     //gestion de la mise à jour en temps réelle des champs de l'incidence mensuelle et annuelle
+        InterfaceAgent.ligne661.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+        });
+        InterfaceAgent.ligne663.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+        });
+        InterfaceAgent.ligne664.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+        });
+        InterfaceAgent.ligne666.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+        });
+        InterfaceAgent.ligne669.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+            }
+        });*/
 
     }//GEN-LAST:event_formInternalFrameOpened
 
@@ -1703,6 +1786,10 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         reaffecterAgent();
     }//GEN-LAST:event_btn_affecternewprogrammeActionPerformed
+
+    private void boxIndResidenceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndResidenceKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxIndResidenceKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
