@@ -43,7 +43,6 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
     //Fonction pour exécuter le calcul du salaire indicaire mensuel de l'agent ********************************************************************************************************************
     public static void afficherLigne661() {
         ContractuelController.calculSalIndiciaire();
-
     }
 
     //Fonction pour exécuter le calcul des contribution cnss et carfo en fonctio n du type d'gant selectionné
@@ -258,6 +257,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
             int IDL669 = Integer.parseInt(idLigne669.getText());
 
             rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment modifier cet agent?", "Modification d'un agent", JOptionPane.YES_NO_OPTION);
+            
             if (rep == JOptionPane.YES_OPTION) {
                 Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
                 ContractuelController.updateLigne661ForUpdate();
@@ -728,18 +728,6 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         ligne661.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne661.setEnabled(false);
         ligne661.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ligne661.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                ligne661InputMethodTextChanged(evt);
-            }
-        });
-        ligne661.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ligne661KeyReleased(evt);
-            }
-        });
         jPanel3.add(ligne661, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 25, 176, 29));
 
         ligne663.setBackground(new java.awt.Color(204, 0, 0));
@@ -1014,6 +1002,9 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         boxSalaireIndicMensuel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxSalaireIndicMensuel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         boxSalaireIndicMensuel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                boxSalaireIndicMensuelKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 boxSalaireIndicMensuelKeyTyped(evt);
             }
@@ -1431,16 +1422,6 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boxIncidenceAnnuelleActionPerformed
 
-    private void ligne661KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ligne661KeyReleased
-        // TODO add your handling code here:
-        afficherIncidenceMensuelleAnnuelle();
-    }//GEN-LAST:event_ligne661KeyReleased
-
-    private void ligne661InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ligne661InputMethodTextChanged
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_ligne661InputMethodTextChanged
-
     private void btn_rechercheragentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rechercheragentActionPerformed
         // TODO add your handling code here:
         displayOneAgent();
@@ -1505,8 +1486,8 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void boxSalaireIndicMensuelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxSalaireIndicMensuelKeyTyped
         // TODO add your handling code here:
-         afficherLigne661();
-        afficherContribution();
+       // afficherLigne661();
+        //afficherContribution();
     }//GEN-LAST:event_boxSalaireIndicMensuelKeyTyped
 
     private void boxAllocationFamilialeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxAllocationFamilialeKeyTyped
@@ -1515,8 +1496,14 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void boxIndResidenceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndResidenceKeyTyped
         // TODO add your handling code here:
-        afficherLigne661();
+        //afficherLigne661();
     }//GEN-LAST:event_boxIndResidenceKeyTyped
+
+    private void boxSalaireIndicMensuelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxSalaireIndicMensuelKeyReleased
+        // TODO add your handling code here:
+        afficherLigne661();
+        afficherContribution();
+    }//GEN-LAST:event_boxSalaireIndicMensuelKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

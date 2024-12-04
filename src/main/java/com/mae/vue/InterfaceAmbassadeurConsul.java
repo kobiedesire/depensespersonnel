@@ -4,7 +4,7 @@
  */
 package com.mae.vue;
 
-import com.mae.controller.AgentController;
+import com.mae.controller.AmbassadeurConsulController;
 import com.mae.model.Agent;
 import com.mae.props.PropsTableau;
 import java.awt.event.KeyEvent;
@@ -23,12 +23,12 @@ import java.util.logging.Logger;
  *
  * @author kobie
  */
-public class InterfaceAgent extends javax.swing.JInternalFrame {
+public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
 
     /**
      *
      */
-    public InterfaceAgent() {
+    public InterfaceAmbassadeurConsul() {
         initComponents();
         AutoCompleteDecorator.decorate(comboStructure);
         AutoCompleteDecorator.decorate(comboFonction);
@@ -42,69 +42,74 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     //Fonction pour exécuter le calcul du salaire indicaire mensuel de l'agent ********************************************************************************************************************
     public static void afficherSalaireIndiciaire() {
-        AgentController.calculSalIndiciaire();
+        AmbassadeurConsulController.calculSalIndiciaire();
 
     }
 
     //Fonction pour exécuter le calcul des contribution cnss et carfo en fonctio n du type d'gant selectionné
     public static void afficherContribution() {
-        AgentController.calculContribution();
+        AmbassadeurConsulController.calculContribution();
     }
 
     //Fonction pour exécuter le calcul de la somme des indeminite
     public static void afficherSommeIndeminite663() {
-        AgentController.calculIndemnite();
+        AmbassadeurConsulController.calculIndemnite();
     }
 
     //Methode de mise à jour de la ligne 666
     public static void afficherLigne666() {
-        AgentController.miseAJourLigne666();
+        AmbassadeurConsulController.miseAJourLigne666();
     }
 
     //Methode de mise à jour de la ligne 669
     public static void afficherLigne669() {
-        AgentController.calculAutreDepenses();
+        AmbassadeurConsulController.calculAutreDepenses();
     }
 
     //Methode de mise à jour de l'incidence mensuelle et annuelle
     public static void afficherIncidenceMensuelleAnnuelle() {
-        AgentController.calculIncidenceMensuelleAnnuelle();
+        AmbassadeurConsulController.calculIncidenceMensuelleAnnuelle();
 
     }
 
     //remplissage du combobox des categories
     public static void listerComboCategorieEchelle() {
-        AgentController.listCategorieInCombo();// Executer la méthode de remplissage du combo
+        AmbassadeurConsulController.listCategorieInCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des emplois
     public static void listerComboEmploi() {
-        AgentController.listEmploiInCombo();// Executer la méthode de remplissage du combo
+        AmbassadeurConsulController.listEmploiInCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des fonctions
     public static void listerComboFonction() {
-        AgentController.listFonctionInCombo();// Executer la méthode de remplissage du combo
+        AmbassadeurConsulController.listFonctionInCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des ministères
     public static void listerComboMinistere() {
-        AgentController.listMinistereCombo();// Executer la méthode de remplissage du combo
+        AmbassadeurConsulController.listMinistereCombo();// Executer la méthode de remplissage du combo
     }
 
     //remplissage du combobox des structures
     public static void listerComboStructure() {
-        AgentController.listStructureCombo();// Executer la méthode de remplissage du combo
+        AmbassadeurConsulController.listStructureCombo();// Executer la méthode de remplissage du combo
     }
 
     //Vider les tous les champs   
     public static void reinitChamps() {
-        AgentController.viderChamps();
+        AmbassadeurConsulController.viderChamps();
     }
 
     //Afficher l'id du programme de la structure  
     public static void displayIDProgramme() {
-        AgentController.afficherIDProgrammeFromStructure();
+        AmbassadeurConsulController.afficherIDProgrammeFromStructure();
+    }
+    
+    //afficher les salaires des ambassadeurs et consu
+    public static void displaySalAmbaConsul() {
+        AmbassadeurConsulController.afficherSalaireAmbaConsul();
     }
 
     //Fonction pour l'enregistrement d'un agent********************************************************************************************************************
@@ -176,12 +181,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             int IDL669 = Integer.parseInt(idLigne669.getText());
 
             Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
-            AgentController.saveAgent(agent);  // Enregistrez  dans la base de données     
-            AgentController.updateLigne661();
-            AgentController.updateLigne663();
-            AgentController.updateLigne664();
-            AgentController.updateLigne666();
-            AgentController.updateLigne669();
+            AmbassadeurConsulController.saveAgent(agent);  // Enregistrez  dans la base de données     
+            AmbassadeurConsulController.updateLigne661();
+            AmbassadeurConsulController.updateLigne663();
+            AmbassadeurConsulController.updateLigne664();
+            AmbassadeurConsulController.updateLigne666();
+            AmbassadeurConsulController.updateLigne669();
             reinitChamps();
         }
 
@@ -261,17 +266,17 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             if (rep == JOptionPane.YES_OPTION) {
                 Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
 
-                AgentController.updateLigne661ForUpdate();
-                AgentController.updateLigne663ForUpdate();
-                AgentController.updateLigne664ForUpdate();
-                AgentController.updateLigne666ForUpdate();
-                AgentController.updateLigne669ForUpdate();
-                AgentController.updateAgent(agent);  // Enregistrez  dans la base de données     
+                AmbassadeurConsulController.updateLigne661ForUpdate();
+                AmbassadeurConsulController.updateLigne663ForUpdate();
+                AmbassadeurConsulController.updateLigne664ForUpdate();
+                AmbassadeurConsulController.updateLigne666ForUpdate();
+                AmbassadeurConsulController.updateLigne669ForUpdate();
+                AmbassadeurConsulController.updateAgent(agent);  // Enregistrez  dans la base de données     
 
-                // AgentController.updateLigne663();
-                //AgentController.updateLigne664();
-                // AgentController.updateLigne666();
-                //AgentController.updateLigne669();
+                // AmbassadeurConsulController.updateLigne663();
+                //AmbassadeurConsulController.updateLigne664();
+                // AmbassadeurConsulController.updateLigne666();
+                //AmbassadeurConsulController.updateLigne669();
                 reinitChamps();
                 JOptionPane.showMessageDialog(null, "Modification validée");
             }
@@ -284,12 +289,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         rep = JOptionPane.showConfirmDialog(null, " !!! Voulez-vous vraiment supprimer cet agent?", "Suppression d'un agent", JOptionPane.YES_NO_OPTION);
         if (rep == JOptionPane.YES_OPTION) {
             Agent agent = new Agent();
-            AgentController.updateLigne661ForDelete();
-            AgentController.updateLigne663ForDelete();
-            AgentController.updateLigne664ForDelete();
-            AgentController.updateLigne666ForDelete();
-            AgentController.updateLigne669ForDelete();
-            AgentController.deleteAgent(agent);// Executer la méthode de suppression des données    
+            AmbassadeurConsulController.updateLigne661ForDelete();
+            AmbassadeurConsulController.updateLigne663ForDelete();
+            AmbassadeurConsulController.updateLigne664ForDelete();
+            AmbassadeurConsulController.updateLigne666ForDelete();
+            AmbassadeurConsulController.updateLigne669ForDelete();
+            AmbassadeurConsulController.deleteAgent(agent);// Executer la méthode de suppression des données    
             JOptionPane.showMessageDialog(null, "L'agent a été supprimé avec succès.");
             reinitChamps();
         }
@@ -366,12 +371,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             if (rep == JOptionPane.YES_OPTION) {
                 Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
 
-                AgentController.updateLigne661ForDelete();
-                AgentController.updateLigne663ForDelete();
-                AgentController.updateLigne664ForDelete();
-                AgentController.updateLigne666ForDelete();
-                AgentController.updateLigne669ForDelete();
-                AgentController.updateAgent(agent);  // mise à jours de l'agent  dans la base de données   
+                AmbassadeurConsulController.updateLigne661ForDelete();
+                AmbassadeurConsulController.updateLigne663ForDelete();
+                AmbassadeurConsulController.updateLigne664ForDelete();
+                AmbassadeurConsulController.updateLigne666ForDelete();
+                AmbassadeurConsulController.updateLigne669ForDelete();
+                AmbassadeurConsulController.updateAgent(agent);  // mise à jours de l'agent  dans la base de données   
                 reinitChamps();
                 JOptionPane.showMessageDialog(null, "Les lignes budgétaires de cet agent ont été retirées de son programme !");
             }
@@ -451,12 +456,12 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             if (rep == JOptionPane.YES_OPTION) {
                 Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
 
-                AgentController.updateAgent(agent);  // Enregistrez  dans la base de données    
-                AgentController.updateLigne661();
-                AgentController.updateLigne663();
-                AgentController.updateLigne664();
-                AgentController.updateLigne666();
-                AgentController.updateLigne669();
+                AmbassadeurConsulController.updateAgent(agent);  // Enregistrez  dans la base de données    
+                AmbassadeurConsulController.updateLigne661();
+                AmbassadeurConsulController.updateLigne663();
+                AmbassadeurConsulController.updateLigne664();
+                AmbassadeurConsulController.updateLigne666();
+                AmbassadeurConsulController.updateLigne669();
 
                 reinitChamps();
                 JOptionPane.showMessageDialog(null, "Réaffectation effectuée avec succès !");
@@ -467,43 +472,43 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     //Lister toutes les agents********************************************************************************************************************
     public static void listerAgent() {
-        AgentController.listAll(); // Executer la méthode d'affichage des données  
+        AmbassadeurConsulController.listAll(); // Executer la méthode d'affichage des données  
     }
 
     //afficher un agent
     public static void displayOneAgent() {
-        AgentController.rechercheAgentByMatricule();
+        AmbassadeurConsulController.rechercheAgentByMatricule();
     }
 
     //afficher les informations d'un agents dans les champs
     public static void displayOneAgenntToUpdateOrDelete() {
-        AgentController.displayAgentInBox();
+        AmbassadeurConsulController.displayAgentInBox();
 
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 661********************************************************************************************************************
     public static void afficherListeLigne661IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
+        AmbassadeurConsulController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 663********************************************************************************************************************
     public static void afficherListeLigne663IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
+        AmbassadeurConsulController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 664********************************************************************************************************************
     public static void afficherListeLigne664IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
+        AmbassadeurConsulController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 666********************************************************************************************************************
     public static void afficherListeLigne666IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
+        AmbassadeurConsulController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 669********************************************************************************************************************
     public static void afficherListeLigne669IdProgramme() {
-        AgentController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
+        AmbassadeurConsulController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
     }
 
     /* private static int rep;
@@ -628,6 +633,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         btn_retirerligne = new javax.swing.JButton();
         btn_affecternewprogramme = new javax.swing.JButton();
         boxIndeminiteLogement = new javax.swing.JFormattedTextField();
+        boxSalaireFixe = new javax.swing.JFormattedTextField();
         panneauForms = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -665,7 +671,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Gestion des agents fonctionnaires");
+        setTitle("Gestion des ambassadeurs & consuls");
         setFrameIcon(null);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -771,6 +777,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jPanel2.add(boxIndiceSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 19, 180, 26));
 
         boxIndResidence.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        boxIndResidence.setText("0");
+        boxIndResidence.setEnabled(false);
         boxIndResidence.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         boxIndResidence.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -871,8 +879,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jLabel28.setText("Autres Ind. : ");
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 121, -1, -1));
 
-        boxSalaireIndicMensuel.setBackground(new java.awt.Color(204, 0, 0));
-        boxSalaireIndicMensuel.setForeground(new java.awt.Color(255, 255, 255));
+        boxSalaireIndicMensuel.setBackground(new java.awt.Color(255, 204, 0));
         boxSalaireIndicMensuel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxSalaireIndicMensuel.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         boxSalaireIndicMensuel.setEnabled(false);
@@ -927,6 +934,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne663.setBackground(new java.awt.Color(204, 0, 0));
         ligne663.setForeground(new java.awt.Color(255, 255, 255));
         ligne663.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne663.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne663.setEnabled(false);
         ligne663.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ligne663.addActionListener(new java.awt.event.ActionListener() {
@@ -939,6 +947,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne664.setBackground(new java.awt.Color(204, 0, 0));
         ligne664.setForeground(new java.awt.Color(255, 255, 255));
         ligne664.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne664.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne664.setEnabled(false);
         ligne664.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel3.add(ligne664, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 60, 176, 29));
@@ -946,12 +955,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         ligne666.setBackground(new java.awt.Color(204, 0, 0));
         ligne666.setForeground(new java.awt.Color(255, 255, 255));
         ligne666.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne666.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne666.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel3.add(ligne666, new org.netbeans.lib.awtextra.AbsoluteConstraints(1235, 60, 256, 29));
 
         ligne669.setBackground(new java.awt.Color(204, 0, 0));
         ligne669.setForeground(new java.awt.Color(255, 255, 255));
         ligne669.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        ligne669.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         ligne669.setEnabled(false);
         ligne669.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel3.add(ligne669, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 95, 176, 29));
@@ -1206,6 +1217,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 1613, 90));
 
         boxIndeminiteLogement.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        boxIndeminiteLogement.setText("0");
+        boxIndeminiteLogement.setEnabled(false);
         boxIndeminiteLogement.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         boxIndeminiteLogement.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1213,6 +1226,13 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(boxIndeminiteLogement, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 50, 180, 30));
+
+        boxSalaireFixe.setBackground(new java.awt.Color(255, 204, 0));
+        boxSalaireFixe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        boxSalaireFixe.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        boxSalaireFixe.setEnabled(false);
+        boxSalaireFixe.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel2.add(boxSalaireFixe, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 90, 180, 26));
 
         javax.swing.GroupLayout panneauPrincipalLayout = new javax.swing.GroupLayout(panneauPrincipal);
         panneauPrincipal.setLayout(panneauPrincipalLayout);
@@ -1301,10 +1321,15 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
         comboFonction.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboFonction.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        comboFonction.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboFonctionItemStateChanged(evt);
+            }
+        });
         panneauForms.add(comboFonction, new org.netbeans.lib.awtextra.AbsoluteConstraints(677, 124, 386, -1));
 
         comboTypeAgent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fonctionnaire" }));
+        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fonctionnaire", "Contractuel" }));
         comboTypeAgent.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboTypeAgentItemStateChanged(evt);
@@ -1407,6 +1432,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
         coefficientStruc.setVisible(false);
+        boxSalaireFixe.setVisible(false);
         idProg.setVisible(false);
         idLigne661.setVisible(false);
         idLigne663.setVisible(false);
@@ -1421,84 +1447,84 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         listerComboStructure();
        
         //gestion de la mise à jour en temps réelle des champs de l'incidence mensuelle et annuelle
-        InterfaceAgent.ligne661.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAmbassadeurConsul.ligne661.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne663.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAmbassadeurConsul.ligne663.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne664.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAmbassadeurConsul.ligne664.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne666.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAmbassadeurConsul.ligne666.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
         });
-        InterfaceAgent.ligne669.getDocument().addDocumentListener(new DocumentListener() {
+        InterfaceAmbassadeurConsul.ligne669.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                InterfaceAgent.afficherIncidenceMensuelleAnnuelle();
+                InterfaceAmbassadeurConsul.afficherIncidenceMensuelleAnnuelle();
             }
         });
 
@@ -1623,15 +1649,15 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
         // TODO add your handling code here:
         modifierAgent();
-        listerAgent();
+       // listerAgent();
 
     }//GEN-LAST:event_btn_modifierActionPerformed
 
     private void boxIndiceSalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndiceSalKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            afficherSalaireIndiciaire();
-        }
+        //if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+       //     afficherSalaireIndiciaire();
+       // }
     }//GEN-LAST:event_boxIndiceSalKeyPressed
 
     private void boxAutreIndeminiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxAutreIndeminiteActionPerformed
@@ -1645,7 +1671,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void boxIndiceSalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndiceSalKeyReleased
         // TODO add your handling code here:
-        afficherSalaireIndiciaire();
+        //afficherSalaireIndiciaire();
         afficherContribution();
     }//GEN-LAST:event_boxIndiceSalKeyReleased
 
@@ -1770,7 +1796,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
         // TODO add your handling code here:
         supprimerAgent();
-        listerAgent();
+        //listerAgent();
     }//GEN-LAST:event_btn_supprimerActionPerformed
 
     private void boxIndeminiteLogementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteLogementKeyReleased
@@ -1791,6 +1817,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void boxIndResidenceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndResidenceKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_boxIndResidenceKeyTyped
+
+    private void comboFonctionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboFonctionItemStateChanged
+        // TODO add your handling code here:
+        displaySalAmbaConsul();
+    }//GEN-LAST:event_comboFonctionItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1816,6 +1847,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField boxMatriculeAg;
     public static javax.swing.JTextField boxNomAg;
     public static javax.swing.JTextField boxPrenomAg;
+    public static javax.swing.JFormattedTextField boxSalaireFixe;
     public static javax.swing.JFormattedTextField boxSalaireIndicMensuel;
     public static javax.swing.JButton btn_SelectLigne661;
     public static javax.swing.JButton btn_SelectLigne663;

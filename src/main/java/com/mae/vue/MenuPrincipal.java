@@ -105,6 +105,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_agent_fonct = new javax.swing.JMenuItem();
         jSeparator18 = new javax.swing.JPopupMenu.Separator();
         menu_agent_contrac = new javax.swing.JMenuItem();
+        jSeparator19 = new javax.swing.JPopupMenu.Separator();
+        menu_agent_amba = new javax.swing.JMenuItem();
         menu_budget = new javax.swing.JMenu();
         menu_creerbudget = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
@@ -477,6 +479,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_agent.add(menu_agent_contrac);
 
+        jSeparator19.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator19.setForeground(new java.awt.Color(255, 255, 255));
+        menu_agent.add(jSeparator19);
+
+        menu_agent_amba.setBackground(new java.awt.Color(255, 204, 0));
+        menu_agent_amba.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_agent_amba.setText("Gestion des ambassadeurs & consuls");
+        menu_agent_amba.setToolTipText("Gestion des ambassadeurs & consuls");
+        menu_agent_amba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_agent_ambaActionPerformed(evt);
+            }
+        });
+        menu_agent.add(menu_agent_amba);
+
         menu_parametre.add(menu_agent);
 
         jMenuBar1.add(menu_parametre);
@@ -841,6 +858,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menu_agent_contracActionPerformed
 
+    private void menu_agent_ambaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_agent_ambaActionPerformed
+        // TODO add your handling code here:
+        panneauBureau.removeAll();
+        InterfaceAmbassadeurConsul amba = new InterfaceAmbassadeurConsul();
+        amba.setSize(1900, 760);
+        panneauBureau.add(amba).setVisible(true); 
+    }//GEN-LAST:event_menu_agent_ambaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -908,6 +933,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator16;
     private javax.swing.JPopupMenu.Separator jSeparator17;
     private javax.swing.JPopupMenu.Separator jSeparator18;
+    private javax.swing.JPopupMenu.Separator jSeparator19;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
@@ -918,6 +944,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JMenu menu__stattistiques;
     private javax.swing.JMenu menu_agent;
+    private javax.swing.JMenuItem menu_agent_amba;
     private javax.swing.JMenuItem menu_agent_contrac;
     private javax.swing.JMenuItem menu_agent_fonct;
     private javax.swing.JMenu menu_aide;
