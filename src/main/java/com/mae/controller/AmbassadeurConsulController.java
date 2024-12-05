@@ -1133,24 +1133,24 @@ public class AmbassadeurConsulController {
     
 
     /*Lister tous les agents fonctionnaires*/
-    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, fonctionAgent FROM agent WHERE fonctionAgent IN (?, ?, ?, ?)";
+    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, fonctionAgent, typeAgent FROM agent WHERE fonctionAgent IN (?, ?, ?, ?) ";
 
     public static void listAll() {
-       // String fonctionA = "Ambassadeur", "Consul Général", "Ambassadeur", "Représentant Permanent", "Ambassadeur", "Représentant Permanent Adjoint", "Consul Général";
-                //InterfaceAmbassadeurConsul.comboFonction.getSelectedItem().toString();
-                String fonctionAmba = "Ambassadeur";
-                String fonctionAmbaPer = "Ambassadeur, Représentant Permanent";
-                String fonctionAmbaPerAdj = "Ambassadeur, Représentant Permanent Adjoint";
-                String fonctionConsul = "Consul Général";
+        // String fonctionA = "Ambassadeur", "Consul Général", "Ambassadeur", "Représentant Permanent", "Ambassadeur", "Représentant Permanent Adjoint", "Consul Général";
+        //InterfaceAmbassadeurConsul.comboFonction.getSelectedItem().toString();
+        String fonctionAmba = "Ambassadeur";
+        String fonctionAmbaPer = "Ambassadeur, Représentant Permanent";
+        String fonctionAmbaPerAdj = "Ambassadeur, Représentant Permanent Adjoint";
+        String fonctionConsul = "Consul Général";
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelect)) {
-             preparedStatement.setString(1, fonctionAmba);
-              preparedStatement.setString(2, fonctionAmbaPer);
-               preparedStatement.setString(3, fonctionAmbaPerAdj);
-                preparedStatement.setString(4, fonctionConsul);
-              
+            preparedStatement.setString(1, fonctionAmba);
+            preparedStatement.setString(2, fonctionAmbaPer);
+            preparedStatement.setString(3, fonctionAmbaPerAdj);
+            preparedStatement.setString(4, fonctionConsul);
+
             ResultSet res = preparedStatement.executeQuery();
             res.last();
-            tab = new String[res.getRow()][6];
+            tab = new String[res.getRow()][7];
             res.beforeFirst();
             yn = false;
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAmbassadeurConsul.tableau_agent.getModel();
@@ -1159,20 +1159,22 @@ public class AmbassadeurConsulController {
             }
             for (int k = 0; k < tab.length; k++) {
                 res.next();
-                Object[] objects = new Object[6];
+                Object[] objects = new Object[7];
                 objects[0] = res.getString("idAgent");
                 objects[1] = res.getString("matriculeAgent");
                 objects[2] = res.getString("nomAgent");
                 objects[3] = res.getString("prenomAgent");
                 objects[4] = res.getString("structureAgent");
-                objects[5] = res.getString("typeAgent");
+                objects[5] = res.getString("fonctionAgent");
+                objects[6] = res.getString("typeAgent");
                 tablemodel.addRow(objects);
                 tab[k][0] = res.getString("idAgent");
                 tab[k][1] = res.getString("matriculeAgent");
                 tab[k][2] = res.getString("nomAgent");
                 tab[k][3] = res.getString("prenomAgent");
                 tab[k][4] = res.getString("structureAgent");
-                tab[k][5] = res.getString("typeAgent");
+                tab[k][5] = res.getString("fonctionAgent");
+                 tab[k][6] = res.getString("typeAgent");
                 yn = true;
             }
             res.close();

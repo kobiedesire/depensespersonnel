@@ -699,17 +699,17 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
         tableau_agent.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         tableau_agent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Agent", "Matricule", "Nom", "Prénom", "Structure", "Type d'agent"
+                "ID Agent", "Matricule", "Nom", "Prénom", "Structure", "Fontion", "Type d'agent"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

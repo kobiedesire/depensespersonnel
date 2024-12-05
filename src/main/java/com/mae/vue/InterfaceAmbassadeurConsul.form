@@ -119,18 +119,24 @@
                   <Font name="Liberation Sans" size="16" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="4">
+                  <Table columnCount="7" rowCount="4">
                     <Column editable="false" title="ID Agent" type="java.lang.Object"/>
                     <Column editable="false" title="Matricule" type="java.lang.Object"/>
                     <Column editable="false" title="Nom" type="java.lang.Object"/>
                     <Column editable="false" title="Pr&#xe9;nom" type="java.lang.Object"/>
                     <Column editable="false" title="Structure" type="java.lang.Object"/>
+                    <Column editable="false" title="Fontion" type="java.lang.Object"/>
                     <Column editable="false" title="Type d&apos;agent" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
