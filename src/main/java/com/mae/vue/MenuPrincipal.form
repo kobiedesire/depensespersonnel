@@ -595,6 +595,9 @@
                     <Property name="text" type="java.lang.String" value="Profils"/>
                     <Property name="toolTipText" type="java.lang.String" value="Profils"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_profilsActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator17">
                   <Properties>

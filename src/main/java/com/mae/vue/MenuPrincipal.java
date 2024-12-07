@@ -660,6 +660,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_profils.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         menu_profils.setText("Profils");
         menu_profils.setToolTipText("Profils");
+        menu_profils.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_profilsActionPerformed(evt);
+            }
+        });
         menu_utilisateurs.add(menu_profils);
 
         jSeparator17.setBackground(new java.awt.Color(204, 204, 204));
@@ -865,6 +870,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         amba.setSize(1900, 760);
         panneauBureau.add(amba).setVisible(true); 
     }//GEN-LAST:event_menu_agent_ambaActionPerformed
+
+    private void menu_profilsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_profilsActionPerformed
+        // TODO add your handling code here:
+         panneauBureau.removeAll();
+        InterfaceProfil prof = new InterfaceProfil();
+        prof.setSize(1900, 760);
+        panneauBureau.add(prof).setVisible(true); 
+        
+    }//GEN-LAST:event_menu_profilsActionPerformed
 
     /**
      * @param args the command line arguments

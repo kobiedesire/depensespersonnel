@@ -10,7 +10,7 @@ package com.mae.model;
  */
 public class User {
 
-    private int idU, idR;
+    private int idU, idP;
     private String nomU, prenomU, userNameU, passwordU;
    
 
