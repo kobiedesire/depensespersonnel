@@ -114,9 +114,29 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         gestParamAvance.clearSelection();
     }
     
-    //Fonction pour l'enregistrement d'un profil********************************************************************************************************************
-                  
-              
+    
+    public static void activerToutSelection(){
+     //groupe boutton gestion structure
+        gest_strucActiv.setSelected(true);
+        gest_emploiActiv.setSelected(true); gest_agentActiv.setSelected(true);
+        gest_statActiv.setSelected(true); gest_budgetActiv.setSelected(true);       
+        gest_categorieActiv.setSelected(true); gest_fonctionActiv.setSelected(true);
+        gest_ministereActiv.setSelected(true); gest_paramAvanceActiv.setSelected(true);
+        gest_budgetActiv.setSelected(true);      
+                
+    }
+    
+    public static void desactiverToutSelection(){
+     //groupe boutton gestion structure
+        gest_strucDesactiv.setSelected(true);
+        gest_emploiDesactiv.setSelected(true); gest_agentDesactiv.setSelected(true);
+        gest_statDesactiv.setSelected(true); gest_budgetDesactiv.setSelected(true);       
+        gest_categorieDesactiv.setSelected(true); gest_fonctionDesactiv.setSelected(true);
+        gest_ministereDesactiv.setSelected(true); gest_paramAvanceDesactiv.setSelected(true);
+        gest_budgetDesactiv.setSelected(true);      
+                
+    }
+    //Fonction pour l'enregistrement d'un profil********************************************************************************************************************       
         public static void enregistrerProfil() {
         // Récuperation des donnéses du formulaire
             String pLibele = libeleProf.getText().trim();
@@ -394,6 +414,8 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         btn_modifier = new javax.swing.JButton();
         btn_supprimer = new javax.swing.JButton();
         btn_rafraichir = new javax.swing.JButton();
+        btn_activertout = new javax.swing.JButton();
+        btn_desactivertout = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -789,6 +811,28 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_activertout.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_activertout.setForeground(new java.awt.Color(0, 102, 51));
+        btn_activertout.setText("Activer tout");
+        btn_activertout.setToolTipText("Activer tout");
+        btn_activertout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_activertout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_activertoutActionPerformed(evt);
+            }
+        });
+
+        btn_desactivertout.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_desactivertout.setForeground(new java.awt.Color(0, 102, 51));
+        btn_desactivertout.setText("Désactiver tout");
+        btn_desactivertout.setToolTipText("Désactiver tout");
+        btn_desactivertout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_desactivertout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_desactivertoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -796,6 +840,8 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_desactivertout, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_activertout, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_enregistrer)
                     .addComponent(btn_modifier)
                     .addComponent(btn_supprimer)
@@ -809,7 +855,7 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(btn_nouveau)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_enregistrer)
@@ -819,7 +865,11 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
                 .addComponent(btn_supprimer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_activertout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_desactivertout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_enregistrer, btn_modifier, btn_nouveau, btn_rafraichir, btn_supprimer});
@@ -918,8 +968,20 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         listerProfil();
     }//GEN-LAST:event_btn_supprimerActionPerformed
 
+    private void btn_activertoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_activertoutActionPerformed
+        // TODO add your handling code here:
+        activerToutSelection();
+    }//GEN-LAST:event_btn_activertoutActionPerformed
+
+    private void btn_desactivertoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desactivertoutActionPerformed
+        // TODO add your handling code here:
+        desactiverToutSelection();
+    }//GEN-LAST:event_btn_desactivertoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_activertout;
+    private javax.swing.JButton btn_desactivertout;
     private javax.swing.JButton btn_enregistrer;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;

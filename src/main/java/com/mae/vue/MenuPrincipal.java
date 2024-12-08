@@ -128,8 +128,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_importagent = new javax.swing.JMenuItem();
         jSeparator15 = new javax.swing.JPopupMenu.Separator();
         menu_utilisateurs = new javax.swing.JMenu();
-        menu_role = new javax.swing.JMenuItem();
-        jSeparator16 = new javax.swing.JPopupMenu.Separator();
         menu_profils = new javax.swing.JMenuItem();
         jSeparator17 = new javax.swing.JPopupMenu.Separator();
         menu_user = new javax.swing.JMenuItem();
@@ -646,16 +644,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_utilisateurs.setToolTipText("Utilisateurs");
         menu_utilisateurs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        menu_role.setBackground(new java.awt.Color(255, 204, 0));
-        menu_role.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        menu_role.setText("Rôles");
-        menu_role.setToolTipText("Rôles");
-        menu_utilisateurs.add(menu_role);
-
-        jSeparator16.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator16.setForeground(new java.awt.Color(255, 255, 255));
-        menu_utilisateurs.add(jSeparator16);
-
         menu_profils.setBackground(new java.awt.Color(255, 204, 0));
         menu_profils.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         menu_profils.setText("Profils");
@@ -675,6 +663,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_user.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         menu_user.setText("Utilisateurs");
         menu_user.setToolTipText("Utilisateurs");
+        menu_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_userActionPerformed(evt);
+            }
+        });
         menu_utilisateurs.add(menu_user);
 
         menu_paramavance.add(menu_utilisateurs);
@@ -873,12 +866,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void menu_profilsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_profilsActionPerformed
         // TODO add your handling code here:
-         panneauBureau.removeAll();
+        panneauBureau.removeAll();
         InterfaceProfil prof = new InterfaceProfil();
         prof.setSize(1900, 760);
-        panneauBureau.add(prof).setVisible(true); 
-        
+        panneauBureau.add(prof).setVisible(true);
+
     }//GEN-LAST:event_menu_profilsActionPerformed
+
+    private void menu_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_userActionPerformed
+        // TODO add your handling code here:
+        panneauBureau.removeAll();
+        InterfaceUser user = new InterfaceUser();
+        user.setSize(1900, 760);
+        panneauBureau.add(user).setVisible(true);
+    }//GEN-LAST:event_menu_userActionPerformed
 
     /**
      * @param args the command line arguments
@@ -944,7 +945,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator13;
     private javax.swing.JPopupMenu.Separator jSeparator14;
     private javax.swing.JPopupMenu.Separator jSeparator15;
-    private javax.swing.JPopupMenu.Separator jSeparator16;
     private javax.swing.JPopupMenu.Separator jSeparator17;
     private javax.swing.JPopupMenu.Separator jSeparator18;
     private javax.swing.JPopupMenu.Separator jSeparator19;
@@ -977,7 +977,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menu_paramavance;
     private javax.swing.JMenu menu_parametre;
     private javax.swing.JMenuItem menu_profils;
-    private javax.swing.JMenuItem menu_role;
     private javax.swing.JMenuItem menu_user;
     private javax.swing.JMenu menu_utilisateurs;
     private javax.swing.JDesktopPane panneauBureau;
