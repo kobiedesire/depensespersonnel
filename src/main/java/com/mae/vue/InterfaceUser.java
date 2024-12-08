@@ -34,7 +34,7 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
         String uNom = nomU.getText().trim();
         String uPrenom = prenomU.getText().trim();
         String uUsername = usernameU.getText().trim();
-        String uPassword = passwordU.getText().trim();
+        String uPassword = passwordU.getPassword().toString().trim();
 
         if (uNom.isBlank() || idP.getText().isBlank() || uPrenom.isBlank() || uUsername.isBlank() || uPassword.isBlank() || idP.getText().trim().isBlank()  ) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
@@ -60,7 +60,7 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
         String uNom = nomU.getText().trim();
         String uPrenom = prenomU.getText().trim();
         String uUsername = usernameU.getText().trim();
-        String uPassword = passwordU.getText().trim();
+        String uPassword = passwordU.getPassword().toString().trim();
         if (uNom.isBlank() || idP.getText().isBlank() || uPrenom.isBlank() || uUsername.isBlank() ||  idP.getText().trim().isBlank()  ) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
@@ -75,7 +75,7 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
             nomU.setText("");
             usernameU.setText("");
             prenomU.setText("");
-            passwordU.setText("");
+            //passwordU.setText("");
             }
         }
 
@@ -141,8 +141,8 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         prenomU = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        passwordU = new javax.swing.JTextField();
         idU = new javax.swing.JTextField();
+        passwordU = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_user = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -236,15 +236,15 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordU, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(prenomU, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(prenomU, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                    .addComponent(passwordU))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panneauFormsLayout.createSequentialGroup()
-                        .addComponent(usernameU, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                        .addComponent(usernameU, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                         .addGap(363, 363, 363))
                     .addGroup(panneauFormsLayout.createSequentialGroup()
                         .addComponent(idP, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -255,15 +255,19 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
         panneauFormsLayout.setVerticalGroup(
             panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauFormsLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(usernameU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(nomU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)
+                    .addGroup(panneauFormsLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(usernameU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(nomU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauFormsLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(prenomU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panneauFormsLayout.createSequentialGroup()
@@ -286,17 +290,17 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
         tableau_user.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         tableau_user.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID User", "ID Prodil", "Nom ", "Prénom ", "Nom d'utilisateur"
+                "ID User", "ID Prodil", "Nom ", "Prénom ", "Nom d'utilisateur", "Profil"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -552,7 +556,7 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField nomU;
     public static javax.swing.JPanel panneauForms;
     public static javax.swing.JPanel panneauPrincipal;
-    public static javax.swing.JTextField passwordU;
+    public static javax.swing.JPasswordField passwordU;
     public static javax.swing.JTextField prenomU;
     public static javax.swing.JComboBox<String> profilU;
     public static javax.swing.JTable tableau_user;

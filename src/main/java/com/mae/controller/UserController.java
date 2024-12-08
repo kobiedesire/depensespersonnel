@@ -228,9 +228,24 @@ public class UserController {
             resetPass.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
             resetPass.iduser.setValue(idUse);
             resetPass.setVisible(true);
-
         }
     }
 
+       public static void updatePasswordUser(User user) {
+        idUs = Integer.parseInt(InterfaceReinitialiserPassword.iduser.getText().trim());  //recuperer l'id 
+        String queryUpdate = "UPDATE user SET  passwordUser = ? WHERE idUser = ?";
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryUpdate)) {
+            preparedStatement.setString(1, user.getPasswordU());            
+            preparedStatement.setInt(2, idUs);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+
+    }
 
 }

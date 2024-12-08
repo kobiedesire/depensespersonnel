@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mae.vue;
+import com.mae.controller.ConnexionController;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.*;
@@ -22,6 +23,10 @@ public class InterfaceConnexion extends javax.swing.JFrame {
      */
     public InterfaceConnexion() {
         initComponents();
+    }
+    
+    public static void userConnexion() {
+        ConnexionController.connexionUser();
     }
 
     /**
@@ -55,7 +60,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Armoiries.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armoirieBF.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -112,7 +117,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 204, 0));
         jLabel7.setText("MAECRBE");
 
-        password.setText("jPasswordField1");
+        password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -192,10 +197,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
 
     private void btn_connexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_connexionActionPerformed
         // TODO add your handling code here:
-        MenuPrincipal m = new MenuPrincipal();
-        m.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
-        m.setVisible(true);
-        m.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        userConnexion();
         this.dispose();
     }//GEN-LAST:event_btn_connexionActionPerformed
 
@@ -246,7 +248,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField login;
-    private javax.swing.JPasswordField password;
+    public static javax.swing.JTextField login;
+    public static javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package com.mae.vue;
 import com.mae.controller.UserController;
 import com.mae.model.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +20,25 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    
+     //Modifier une structure********************************************************************************************************************
+    public static void modifierMotDePasse() {
+        // Récuperation des donnéses du formulaire
+        String uNom="", uPrenom="", uUsername="";
+        String uPassword = new_password.getPassword().toString().trim();
+        if (uPassword.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
+        } else {
+          //  int pID = Integer.parseInt(iduser.getText());
+            int rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment reinitialiser le mot de passe ?", "Réinitialisation de mot de passe", JOptionPane.YES_NO_OPTION);
+            if (rep == JOptionPane.YES_OPTION) {
+                User user = new User(uPassword);
+                UserController.updatePasswordUser(user); // Executer la méthode de modification dans la base de données
+                JOptionPane.showMessageDialog(null, "Mot de passe réinitialisé !!");               
+                new_password.setText("");            
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,10 +50,10 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        new_password = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         iduser = new javax.swing.JFormattedTextField();
         btn_enregistrernewpassword = new javax.swing.JButton();
+        new_password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reinitialiser le mot depasse de l'utilisateur");
@@ -45,8 +65,6 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Saisir le nouveau de passe par défaut ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-
-        new_password.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Saisir un nouveau mot de passe : ");
@@ -61,6 +79,8 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
                 btn_enregistrernewpasswordActionPerformed(evt);
             }
         });
+
+        new_password.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,8 +97,8 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_enregistrernewpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                            .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +108,7 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(51, 51, 51)
                 .addComponent(btn_enregistrernewpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -110,6 +130,8 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
 
     private void btn_enregistrernewpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enregistrernewpasswordActionPerformed
         // TODO add your handling code here:
+        modifierMotDePasse();
+        this.dispose();
       
     }//GEN-LAST:event_btn_enregistrernewpasswordActionPerformed
 
@@ -165,6 +187,6 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
     public static javax.swing.JFormattedTextField iduser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField new_password;
+    public static javax.swing.JPasswordField new_password;
     // End of variables declaration//GEN-END:variables
 }

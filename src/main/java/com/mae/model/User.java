@@ -72,6 +72,10 @@ public class User {
     public User() {
     }
 
+    public User(String passwordU) {
+        this.passwordU = passwordU;
+    }
+
     
 
 }
