@@ -5,7 +5,9 @@
 package com.mae.vue;
 import com.mae.controller.UserController;
 import com.mae.model.User;
+import static com.mae.vue.InterfaceUser.passwordU;
 import javax.swing.JOptionPane;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  *
@@ -25,14 +27,18 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
     public static void modifierMotDePasse() {
         // Récuperation des donnéses du formulaire
         String uNom="", uPrenom="", uUsername="";
-        String uPassword = new_password.getPassword().toString().trim();
+      //  String uPassword = new_password.getPassword().toString().trim();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        char[] uPass = new_password.getPassword();
+        String uPassword = new String(uPass);
+        String hashedPassword = encoder.encode(uPassword);
         if (uPassword.isBlank()) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
           //  int pID = Integer.parseInt(iduser.getText());
             int rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment reinitialiser le mot de passe ?", "Réinitialisation de mot de passe", JOptionPane.YES_NO_OPTION);
             if (rep == JOptionPane.YES_OPTION) {
-                User user = new User(uPassword);
+                User user = new User(hashedPassword);
                 UserController.updatePasswordUser(user); // Executer la méthode de modification dans la base de données
                 JOptionPane.showMessageDialog(null, "Mot de passe réinitialisé !!");               
                 new_password.setText("");            

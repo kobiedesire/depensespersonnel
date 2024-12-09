@@ -10,6 +10,7 @@ import com.mae.props.PropsTableau;
 import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  *
@@ -34,13 +35,17 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
         String uNom = nomU.getText().trim();
         String uPrenom = prenomU.getText().trim();
         String uUsername = usernameU.getText().trim();
-        String uPassword = passwordU.getPassword().toString().trim();
-
-        if (uNom.isBlank() || idP.getText().isBlank() || uPrenom.isBlank() || uUsername.isBlank() || uPassword.isBlank() || idP.getText().trim().isBlank()  ) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();     
+        char[] uPass = passwordU.getPassword();
+        String uPassword = new String(uPass);
+        String hashedPassword = encoder.encode(uPassword);
+        // System.out.println(hashedPassword);
+        
+        if (uNom.isBlank() || idP.getText().isBlank() || uPrenom.isBlank() || uUsername.isBlank() || uPassword.isBlank() || idP.getText().trim().isBlank()) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
             int pID = Integer.parseInt(idP.getText());
-            User user = new User(pID, uNom, uPrenom, uUsername, uPassword ); // Créez un objet InterfaceUser
+            User user = new User(pID, uNom, uPrenom, uUsername, hashedPassword); // Créez un objet InterfaceUser
             UserController.saveUser(user);  // Enregistrez  dans la base de données            
             profilU.setSelectedIndex(0);
             idP.setText("");
@@ -49,7 +54,6 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
             prenomU.setText("");
             passwordU.setText("");
         }
-
     }
 
    
@@ -60,25 +64,27 @@ public class InterfaceUser extends javax.swing.JInternalFrame {
         String uNom = nomU.getText().trim();
         String uPrenom = prenomU.getText().trim();
         String uUsername = usernameU.getText().trim();
-        String uPassword = passwordU.getPassword().toString().trim();
-        if (uNom.isBlank() || idP.getText().isBlank() || uPrenom.isBlank() || uUsername.isBlank() ||  idP.getText().trim().isBlank()  ) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        char[] uPass = passwordU.getPassword();
+        String uPassword = new String(uPass);
+        String hashedPassword = encoder.encode(uPassword);
+        if (uNom.isBlank() || idP.getText().isBlank() || uPrenom.isBlank() || uUsername.isBlank() || idP.getText().trim().isBlank()) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
-             int pID = Integer.parseInt(idP.getText());
+            int pID = Integer.parseInt(idP.getText());
             rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment modifier cet utilisateur?", "Modification d'un utilisateur", JOptionPane.YES_NO_OPTION);
             if (rep == JOptionPane.YES_OPTION) {
-                User user = new User(pID, uNom, uPrenom, uUsername, uPassword );
+                User user = new User(pID, uNom, uPrenom, uUsername, hashedPassword);
                 UserController.updateUser(user); // Executer la méthode de modification dans la base de données
                 JOptionPane.showMessageDialog(null, "Modification validée");
                 profilU.setSelectedIndex(0);
-            idP.setText("");
-            nomU.setText("");
-            usernameU.setText("");
-            prenomU.setText("");
-            //passwordU.setText("");
+                idP.setText("");
+                nomU.setText("");
+                usernameU.setText("");
+                prenomU.setText("");
+                //passwordU.setText("");
             }
         }
-
     }
 
     //Supprimer une structure********************************************************************************************************************

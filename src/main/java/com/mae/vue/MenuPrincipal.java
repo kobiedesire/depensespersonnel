@@ -17,6 +17,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.swing.Box;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -57,7 +59,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
      //Méthode pour exécuter l'import d'un fichier excel
     public static void importerExcel() {
         ImportExcelController.importFichierExcelAgent();
-
     }
 
     /**
@@ -85,13 +86,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panneauBureau = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         menu_fichier = new javax.swing.JMenu();
         menu_moncompte = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         menu_deconnexion = new javax.swing.JMenuItem();
         menu_parametre = new javax.swing.JMenu();
-        menu_ambassade = new javax.swing.JMenuItem();
+        menu_structure = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         menu_catechelle = new javax.swing.JMenuItem();
         jSeparator11 = new javax.swing.JPopupMenu.Separator();
@@ -132,6 +133,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator17 = new javax.swing.JPopupMenu.Separator();
         menu_user = new javax.swing.JMenuItem();
         menu_aide = new javax.swing.JMenu();
+        userConnected = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -229,7 +231,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(heureJour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         panneauEntete.setBackground(new java.awt.Color(255, 255, 255));
@@ -238,6 +240,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btn_moncompte.setBackground(new java.awt.Color(0, 102, 0));
         btn_moncompte.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btn_moncompte.setForeground(new java.awt.Color(255, 255, 255));
+        btn_moncompte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/account.png"))); // NOI18N
         btn_moncompte.setText("Mon compte");
         btn_moncompte.setToolTipText("Mon compte");
         btn_moncompte.setBorder(null);
@@ -248,12 +251,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btn_deconnexion.setBackground(new java.awt.Color(204, 0, 0));
         btn_deconnexion.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btn_deconnexion.setForeground(new java.awt.Color(255, 255, 255));
+        btn_deconnexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/se-deconnecter.png"))); // NOI18N
         btn_deconnexion.setText("Se déconnecter");
         btn_deconnexion.setToolTipText("Se déconnecter");
         btn_deconnexion.setBorder(null);
         btn_deconnexion.setMaximumSize(new java.awt.Dimension(68, 22));
         btn_deconnexion.setMinimumSize(new java.awt.Dimension(68, 22));
         btn_deconnexion.setPreferredSize(new java.awt.Dimension(68, 22));
+        btn_deconnexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deconnexionActionPerformed(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armoirie2.png"))); // NOI18N
 
@@ -334,12 +343,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(204, 0, 0));
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 204, 0)));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(103, 35));
+        menuBar.setBackground(new java.awt.Color(204, 0, 0));
+        menuBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 204, 0)));
+        menuBar.setPreferredSize(new java.awt.Dimension(103, 35));
 
         menu_fichier.setBackground(new java.awt.Color(255, 204, 0));
         menu_fichier.setForeground(new java.awt.Color(255, 255, 255));
+        menu_fichier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fichier.png"))); // NOI18N
         menu_fichier.setText("Fichier");
         menu_fichier.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -364,23 +374,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_fichier.add(menu_deconnexion);
 
-        jMenuBar1.add(menu_fichier);
+        menuBar.add(menu_fichier);
 
         menu_parametre.setBackground(new java.awt.Color(255, 204, 0));
         menu_parametre.setForeground(new java.awt.Color(255, 255, 255));
+        menu_parametre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/parametre.png"))); // NOI18N
         menu_parametre.setText("Paramètres");
         menu_parametre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        menu_ambassade.setBackground(new java.awt.Color(255, 204, 0));
-        menu_ambassade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        menu_ambassade.setText("Gestion des structures du ministère");
-        menu_ambassade.setToolTipText("Gestion des structures du ministère");
-        menu_ambassade.addActionListener(new java.awt.event.ActionListener() {
+        menu_structure.setBackground(new java.awt.Color(255, 204, 0));
+        menu_structure.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_structure.setText("Gestion des structures du ministère");
+        menu_structure.setToolTipText("Gestion des structures du ministère");
+        menu_structure.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_ambassadeActionPerformed(evt);
+                menu_structureActionPerformed(evt);
             }
         });
-        menu_parametre.add(menu_ambassade);
+        menu_parametre.add(menu_structure);
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
@@ -494,10 +505,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menu_parametre.add(menu_agent);
 
-        jMenuBar1.add(menu_parametre);
+        menuBar.add(menu_parametre);
 
         menu_budget.setBackground(new java.awt.Color(255, 204, 0));
         menu_budget.setForeground(new java.awt.Color(255, 255, 255));
+        menu_budget.setIcon(new javax.swing.ImageIcon(getClass().getResource("/budget.png"))); // NOI18N
         menu_budget.setText("Budget");
         menu_budget.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -611,16 +623,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_budget.add(jMenuItem2);
 
-        jMenuBar1.add(menu_budget);
+        menuBar.add(menu_budget);
 
         menu__stattistiques.setBackground(new java.awt.Color(255, 204, 0));
         menu__stattistiques.setForeground(new java.awt.Color(255, 255, 255));
+        menu__stattistiques.setIcon(new javax.swing.ImageIcon(getClass().getResource("/statistiques.png"))); // NOI18N
         menu__stattistiques.setText("Statistiques");
         menu__stattistiques.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuBar1.add(menu__stattistiques);
+        menuBar.add(menu__stattistiques);
 
         menu_paramavance.setBackground(new java.awt.Color(255, 204, 0));
         menu_paramavance.setForeground(new java.awt.Color(255, 255, 255));
+        menu_paramavance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/parametres.png"))); // NOI18N
         menu_paramavance.setText("Paramètres avancés");
         menu_paramavance.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -672,15 +686,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menu_paramavance.add(menu_utilisateurs);
 
-        jMenuBar1.add(menu_paramavance);
+        menuBar.add(menu_paramavance);
 
         menu_aide.setBackground(new java.awt.Color(255, 204, 0));
         menu_aide.setForeground(new java.awt.Color(255, 255, 255));
+        menu_aide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/question.png"))); // NOI18N
         menu_aide.setText("Aide");
         menu_aide.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuBar1.add(menu_aide);
+        menuBar.add(menu_aide);
 
-        setJMenuBar(jMenuBar1);
+        userConnected.setBackground(new java.awt.Color(0, 102, 51));
+        userConnected.setForeground(new java.awt.Color(255, 204, 0));
+        userConnected.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilisateur.png"))); // NOI18N
+        userConnected.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        userConnected.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        menuBar.add(userConnected);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -703,16 +725,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         afficherDateDuJour();
         afficherHeure();
+        menuBar.add(Box.createHorizontalGlue());
+        
+       
         
     }//GEN-LAST:event_formWindowActivated
 
-    private void menu_ambassadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ambassadeActionPerformed
+    private void menu_structureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_structureActionPerformed
         // TODO add your handling code here:
         panneauBureau.removeAll();
         InterfaceStructure amb = new InterfaceStructure();
         amb.setSize(1900, 760);
         panneauBureau.add(amb).setVisible(true);
-    }//GEN-LAST:event_menu_ambassadeActionPerformed
+    }//GEN-LAST:event_menu_structureActionPerformed
 
     private void menu_deconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_deconnexionActionPerformed
         // TODO add your handling code here:
@@ -881,6 +906,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.add(user).setVisible(true);
     }//GEN-LAST:event_menu_userActionPerformed
 
+    private void btn_deconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deconnexionActionPerformed
+        // TODO add your handling code here:
+        int rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment fermer l'application", "Fermeture", JOptionPane.YES_NO_OPTION);
+        if (rep == JOptionPane.YES_OPTION) {
+            this.dispose();
+            InterfaceConnexion ic = new InterfaceConnexion();
+            ic.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            ic.setVisible(true);
+        }
+    }//GEN-LAST:event_btn_deconnexionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -930,7 +966,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -956,32 +991,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JPopupMenu.Separator jSeparator9;
-    private javax.swing.JMenu menu__stattistiques;
-    private javax.swing.JMenu menu_agent;
+    public static javax.swing.JMenuBar menuBar;
+    public static javax.swing.JMenu menu__stattistiques;
+    public static javax.swing.JMenu menu_agent;
     private javax.swing.JMenuItem menu_agent_amba;
     private javax.swing.JMenuItem menu_agent_contrac;
     private javax.swing.JMenuItem menu_agent_fonct;
     private javax.swing.JMenu menu_aide;
-    private javax.swing.JMenuItem menu_ambassade;
     private javax.swing.JMenuItem menu_article;
-    private javax.swing.JMenu menu_budget;
-    private javax.swing.JMenuItem menu_catechelle;
+    public static javax.swing.JMenu menu_budget;
+    public static javax.swing.JMenuItem menu_catechelle;
     private javax.swing.JMenuItem menu_creerbudget;
     private javax.swing.JMenuItem menu_deconnexion;
-    private javax.swing.JMenuItem menu_emploi;
+    public static javax.swing.JMenuItem menu_emploi;
     private javax.swing.JMenu menu_fichier;
-    private javax.swing.JMenuItem menu_fonction;
+    public static javax.swing.JMenuItem menu_fonction;
     private javax.swing.JMenuItem menu_importagent;
-    private javax.swing.JMenuItem menu_ministere;
+    public static javax.swing.JMenuItem menu_ministere;
     private javax.swing.JMenuItem menu_moncompte;
-    private javax.swing.JMenu menu_paramavance;
+    public static javax.swing.JMenu menu_paramavance;
     private javax.swing.JMenu menu_parametre;
     private javax.swing.JMenuItem menu_profils;
+    public static javax.swing.JMenuItem menu_structure;
     private javax.swing.JMenuItem menu_user;
     private javax.swing.JMenu menu_utilisateurs;
     private javax.swing.JDesktopPane panneauBureau;
     private javax.swing.JPanel panneauDeBase;
     private javax.swing.JPanel panneauEntete;
     private javax.swing.JPanel panneauMenu;
+    public static javax.swing.JMenu userConnected;
     // End of variables declaration//GEN-END:variables
 }
