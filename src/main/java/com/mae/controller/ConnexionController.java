@@ -75,8 +75,7 @@ public class ConnexionController {
                     if(btnStatistique == 0){ MenuPrincipal.menu__stattistiques.setVisible(false);}
                     //
                     int btnParamAvance= Integer.parseInt(res.getString("p.permitGestParamAvance"));
-                    if(btnParamAvance == 0){ MenuPrincipal.menu_paramavance.setVisible(false);}
-                    
+                    if(btnParamAvance == 0){ MenuPrincipal.menu_paramavance.setVisible(false);}                    
                     
                 } else {
                     JOptionPane.showMessageDialog(null, "Erreur mot de passe");

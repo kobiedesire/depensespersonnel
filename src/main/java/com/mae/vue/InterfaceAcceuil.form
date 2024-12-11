@@ -185,6 +185,9 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
               <Properties>
@@ -217,7 +220,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" alignment="0" pref="234" max="32767" attributes="0"/>
-                          <Component id="box_TTAgentMin1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="box_TTAgentCentral" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -232,7 +235,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="box_TTAgentMin1" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="box_TTAgentCentral" min="-2" pref="58" max="-2" attributes="0"/>
                       <EmptySpace pref="15" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -250,7 +253,7 @@
                 <Property name="text" type="java.lang.String" value="Total-Agents Central"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="box_TTAgentMin1">
+            <Component class="javax.swing.JTextField" name="box_TTAgentCentral">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="cc" red="ff" type="rgb"/>
@@ -266,6 +269,9 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator2">
               <Properties>
@@ -298,7 +304,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" alignment="0" pref="234" max="32767" attributes="0"/>
-                          <Component id="box_TTAgentMin3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="box_TTAgentMDPC" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -313,7 +319,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="box_TTAgentMin3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="box_TTAgentMDPC" min="-2" pref="58" max="-2" attributes="0"/>
                       <EmptySpace pref="15" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -331,7 +337,7 @@
                 <Property name="text" type="java.lang.String" value="Total-Agents MDPC"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="box_TTAgentMin3">
+            <Component class="javax.swing.JTextField" name="box_TTAgentMDPC">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="cc" red="ff" type="rgb"/>
@@ -347,6 +353,9 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator4">
               <Properties>
@@ -490,7 +499,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Budget global Minist&#xe8;re"/>
+                <Property name="text" type="java.lang.String" value="Budget global Central"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="box_TTAgentMin5">

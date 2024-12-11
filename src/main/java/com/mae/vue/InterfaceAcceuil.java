@@ -3,12 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package com.mae.vue;
-import com.mae.controller.ActionController;
-import com.mae.model.Action;
-import com.mae.props.PropsTableau;
-import javax.swing.JOptionPane;
-import javax.swing.table.JTableHeader;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import com.mae.controller.StatAcceuilController;
+
 
 /**
  *
@@ -23,11 +19,15 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
         initComponents();
         
     }
- 
-
- 
-
     
+    public static void afficherStatAcceuil(){
+    StatAcceuilController.totalAgentMin();
+    StatAcceuilController.totalAgentCentral();
+    StatAcceuilController.totalAgentMDPC();
+    }
+    
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,11 +45,11 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        box_TTAgentMin1 = new javax.swing.JTextField();
+        box_TTAgentCentral = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        box_TTAgentMin3 = new javax.swing.JTextField();
+        box_TTAgentMDPC = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -141,11 +141,11 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Total-Agents Central");
 
-        box_TTAgentMin1.setBackground(new java.awt.Color(255, 204, 0));
-        box_TTAgentMin1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        box_TTAgentMin1.setBorder(null);
-        box_TTAgentMin1.setDisabledTextColor(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin1.setEnabled(false);
+        box_TTAgentCentral.setBackground(new java.awt.Color(255, 204, 0));
+        box_TTAgentCentral.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_TTAgentCentral.setBorder(null);
+        box_TTAgentCentral.setDisabledTextColor(new java.awt.Color(225, 0, 15));
+        box_TTAgentCentral.setEnabled(false);
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,7 +158,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(box_TTAgentMin1)
+                    .addComponent(box_TTAgentCentral)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -170,7 +170,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(box_TTAgentMin1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(box_TTAgentCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -181,11 +181,11 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Total-Agents MDPC");
 
-        box_TTAgentMin3.setBackground(new java.awt.Color(255, 204, 0));
-        box_TTAgentMin3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        box_TTAgentMin3.setBorder(null);
-        box_TTAgentMin3.setDisabledTextColor(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin3.setEnabled(false);
+        box_TTAgentMDPC.setBackground(new java.awt.Color(255, 204, 0));
+        box_TTAgentMDPC.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_TTAgentMDPC.setBorder(null);
+        box_TTAgentMDPC.setDisabledTextColor(new java.awt.Color(225, 0, 15));
+        box_TTAgentMDPC.setEnabled(false);
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,7 +198,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(box_TTAgentMin3)
+                    .addComponent(box_TTAgentMDPC)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -210,7 +210,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(box_TTAgentMin3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(box_TTAgentMDPC, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -259,7 +259,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Budget global Ministère");
+        jLabel6.setText("Budget global Central");
 
         box_TTAgentMin5.setBackground(new java.awt.Color(225, 0, 15));
         box_TTAgentMin5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -390,7 +390,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        
+        afficherStatAcceuil();
     }//GEN-LAST:event_formInternalFrameActivated
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
@@ -402,37 +402,29 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField box_TTAgentMin;
-    private javax.swing.JTextField box_TTAgentMin1;
-    private javax.swing.JTextField box_TTAgentMin2;
-    private javax.swing.JTextField box_TTAgentMin3;
+    public static javax.swing.JTextField box_TTAgentCentral;
+    public static javax.swing.JTextField box_TTAgentMDPC;
+    public static javax.swing.JTextField box_TTAgentMin;
     private javax.swing.JTextField box_TTAgentMin4;
     private javax.swing.JTextField box_TTAgentMin5;
-    private javax.swing.JTextField box_TTAgentMin6;
     private javax.swing.JTextField box_TTAgentMin7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     public static javax.swing.JPanel panneauPrincipal;
     // End of variables declaration//GEN-END:variables
