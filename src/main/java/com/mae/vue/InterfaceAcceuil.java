@@ -20,12 +20,15 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
         
     }
     
-    public static void afficherStatAcceuil(){
-    StatAcceuilController.totalAgentMin();
-    StatAcceuilController.totalAgentCentral();
-    StatAcceuilController.totalAgentMDPC();
+    public static void afficherStatAcceuil() {
+        StatAcceuilController.totalAgentMin();
+        StatAcceuilController.totalAgentCentral();
+        StatAcceuilController.totalAgentMDPC();
+        StatAcceuilController.budgetTotalMin();
+        StatAcceuilController.budgetTotalCentral();
+        StatAcceuilController.budgetTotalMDPC();
     }
-    
+
     
    
 
@@ -53,15 +56,15 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        box_TTAgentMin4 = new javax.swing.JTextField();
+        box_BudgetTotalMin = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        box_TTAgentMin5 = new javax.swing.JTextField();
+        box_TTBudgetCentral = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        box_TTAgentMin7 = new javax.swing.JTextField();
+        box_TTBudgetMDPC = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -99,10 +102,12 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Total-Agents du Ministère");
 
         box_TTAgentMin.setBackground(new java.awt.Color(255, 204, 0));
         box_TTAgentMin.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_TTAgentMin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         box_TTAgentMin.setBorder(null);
         box_TTAgentMin.setDisabledTextColor(new java.awt.Color(225, 0, 15));
         box_TTAgentMin.setEnabled(false);
@@ -139,10 +144,12 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Total-Agents Central");
 
         box_TTAgentCentral.setBackground(new java.awt.Color(255, 204, 0));
         box_TTAgentCentral.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_TTAgentCentral.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         box_TTAgentCentral.setBorder(null);
         box_TTAgentCentral.setDisabledTextColor(new java.awt.Color(225, 0, 15));
         box_TTAgentCentral.setEnabled(false);
@@ -179,10 +186,12 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Total-Agents MDPC");
 
         box_TTAgentMDPC.setBackground(new java.awt.Color(255, 204, 0));
         box_TTAgentMDPC.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_TTAgentMDPC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         box_TTAgentMDPC.setBorder(null);
         box_TTAgentMDPC.setDisabledTextColor(new java.awt.Color(225, 0, 15));
         box_TTAgentMDPC.setEnabled(false);
@@ -219,13 +228,16 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Budget global Ministère");
 
-        box_TTAgentMin4.setBackground(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        box_TTAgentMin4.setBorder(null);
-        box_TTAgentMin4.setDisabledTextColor(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin4.setEnabled(false);
+        box_BudgetTotalMin.setBackground(new java.awt.Color(225, 0, 15));
+        box_BudgetTotalMin.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_BudgetTotalMin.setForeground(new java.awt.Color(255, 255, 255));
+        box_BudgetTotalMin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        box_BudgetTotalMin.setBorder(null);
+        box_BudgetTotalMin.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        box_BudgetTotalMin.setEnabled(false);
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,7 +250,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(box_TTAgentMin4)
+                    .addComponent(box_BudgetTotalMin)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -250,7 +262,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(box_TTAgentMin4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(box_BudgetTotalMin, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -259,13 +271,15 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Budget global Central");
 
-        box_TTAgentMin5.setBackground(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        box_TTAgentMin5.setBorder(null);
-        box_TTAgentMin5.setDisabledTextColor(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin5.setEnabled(false);
+        box_TTBudgetCentral.setBackground(new java.awt.Color(225, 0, 15));
+        box_TTBudgetCentral.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_TTBudgetCentral.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        box_TTBudgetCentral.setBorder(null);
+        box_TTBudgetCentral.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        box_TTBudgetCentral.setEnabled(false);
 
         jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
@@ -278,7 +292,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(box_TTAgentMin5)
+                    .addComponent(box_TTBudgetCentral)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -290,7 +304,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(box_TTAgentMin5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(box_TTBudgetCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -299,13 +313,15 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Budget global MDPC");
 
-        box_TTAgentMin7.setBackground(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        box_TTAgentMin7.setBorder(null);
-        box_TTAgentMin7.setDisabledTextColor(new java.awt.Color(225, 0, 15));
-        box_TTAgentMin7.setEnabled(false);
+        box_TTBudgetMDPC.setBackground(new java.awt.Color(225, 0, 15));
+        box_TTBudgetMDPC.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        box_TTBudgetMDPC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        box_TTBudgetMDPC.setBorder(null);
+        box_TTBudgetMDPC.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        box_TTBudgetMDPC.setEnabled(false);
 
         jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
@@ -318,7 +334,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(box_TTAgentMin7)
+                    .addComponent(box_TTBudgetMDPC)
                     .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -330,7 +346,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(box_TTAgentMin7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(box_TTBudgetMDPC, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -402,12 +418,12 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTextField box_BudgetTotalMin;
     public static javax.swing.JTextField box_TTAgentCentral;
     public static javax.swing.JTextField box_TTAgentMDPC;
     public static javax.swing.JTextField box_TTAgentMin;
-    private javax.swing.JTextField box_TTAgentMin4;
-    private javax.swing.JTextField box_TTAgentMin5;
-    private javax.swing.JTextField box_TTAgentMin7;
+    public static javax.swing.JTextField box_TTBudgetCentral;
+    public static javax.swing.JTextField box_TTBudgetMDPC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
