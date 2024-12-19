@@ -646,6 +646,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="66" red="0" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/btn_nouveau.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nouveau"/>
                 <Property name="toolTipText" type="java.lang.String" value="Nouveau"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -667,6 +670,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="66" red="0" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/ajouter.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ajouter"/>
                 <Property name="toolTipText" type="java.lang.String" value="Ajouter"/>
@@ -713,6 +719,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="66" red="0" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/btn_supprimer.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Supprimer"/>
                 <Property name="toolTipText" type="java.lang.String" value="Supprimer"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -734,6 +743,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="66" red="0" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/btn_actualiser.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rafra&#xee;chir la liste"/>
                 <Property name="toolTipText" type="java.lang.String" value="Rafra&#xee;chir la liste"/>

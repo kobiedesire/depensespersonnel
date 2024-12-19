@@ -114,6 +114,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
         btn_connexion.setBackground(new java.awt.Color(204, 0, 0));
         btn_connexion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_connexion.setForeground(new java.awt.Color(255, 255, 255));
+        btn_connexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche.png"))); // NOI18N
         btn_connexion.setText("Se connecter");
         btn_connexion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 204, 0)));
         btn_connexion.addActionListener(new java.awt.event.ActionListener() {

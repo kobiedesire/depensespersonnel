@@ -77,6 +77,7 @@ public class InterfaceReinitialiserPassword extends javax.swing.JDialog {
 
         btn_enregistrernewpassword.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_enregistrernewpassword.setForeground(new java.awt.Color(0, 102, 51));
+        btn_enregistrernewpassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btn_enregistrer.png"))); // NOI18N
         btn_enregistrernewpassword.setText("Enregistrer");
         btn_enregistrernewpassword.setToolTipText("Réinitialiser le mot de passe");
         btn_enregistrernewpassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));

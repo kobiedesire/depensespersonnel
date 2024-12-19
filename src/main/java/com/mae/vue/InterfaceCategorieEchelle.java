@@ -220,6 +220,7 @@ public class InterfaceCategorieEchelle extends javax.swing.JInternalFrame {
 
         btn_nouveau.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_nouveau.setForeground(new java.awt.Color(0, 102, 51));
+        btn_nouveau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btn_nouveau.png"))); // NOI18N
         btn_nouveau.setText("Nouveau");
         btn_nouveau.setToolTipText("Nouveau");
         btn_nouveau.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
@@ -231,6 +232,7 @@ public class InterfaceCategorieEchelle extends javax.swing.JInternalFrame {
 
         btn_enregistrer.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_enregistrer.setForeground(new java.awt.Color(0, 102, 51));
+        btn_enregistrer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btn_enregistrer.png"))); // NOI18N
         btn_enregistrer.setText("Enregistrer");
         btn_enregistrer.setToolTipText("Enregistrer");
         btn_enregistrer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
@@ -242,6 +244,7 @@ public class InterfaceCategorieEchelle extends javax.swing.JInternalFrame {
 
         btn_modifier.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_modifier.setForeground(new java.awt.Color(0, 102, 51));
+        btn_modifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btn_modifier.png"))); // NOI18N
         btn_modifier.setText("Modifier");
         btn_modifier.setToolTipText("Modifier");
         btn_modifier.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
@@ -253,6 +256,7 @@ public class InterfaceCategorieEchelle extends javax.swing.JInternalFrame {
 
         btn_supprimer.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_supprimer.setForeground(new java.awt.Color(0, 102, 51));
+        btn_supprimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btn_supprimer.png"))); // NOI18N
         btn_supprimer.setText("Supprimer");
         btn_supprimer.setToolTipText("Supprimer");
         btn_supprimer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
@@ -264,6 +268,7 @@ public class InterfaceCategorieEchelle extends javax.swing.JInternalFrame {
 
         btn_rafraichir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_rafraichir.setForeground(new java.awt.Color(0, 102, 51));
+        btn_rafraichir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btn_actualiser.png"))); // NOI18N
         btn_rafraichir.setText("Rafraîchir la liste");
         btn_rafraichir.setToolTipText("Rafraîchir la liste");
         btn_rafraichir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));

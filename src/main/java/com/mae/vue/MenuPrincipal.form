@@ -549,6 +549,33 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Effectif des agents"/>
+                <Property name="toolTipText" type="java.lang.String" value="Effectif des agents"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator16">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menu_paramavance">
           <Properties>
@@ -922,6 +949,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/acceuil.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Revenir &#xe0; la page d&apos;acceuil"/>
                 <Property name="toolTipText" type="java.lang.String" value="Revenir &#xe0; la page d&apos;acceuil"/>
               </Properties>
@@ -953,7 +983,7 @@
                       <Component id="jLabel5" min="-2" pref="124" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="821" max="-2" attributes="0"/>
-                      <EmptySpace pref="468" max="32767" attributes="0"/>
+                      <EmptySpace pref="440" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn_deconnexion" linkSize="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_moncompte" linkSize="3" min="-2" pref="168" max="-2" attributes="0"/>
@@ -1001,7 +1031,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/account.png"/>
+                  <Image iconType="3" name="/profil.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Mon compte"/>
                 <Property name="toolTipText" type="java.lang.String" value="Mon compte"/>
@@ -1031,7 +1061,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/se-deconnecter.png"/>
+                  <Image iconType="3" name="/deconnecter.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Se d&#xe9;connecter"/>
                 <Property name="toolTipText" type="java.lang.String" value="Se d&#xe9;connecter"/>
