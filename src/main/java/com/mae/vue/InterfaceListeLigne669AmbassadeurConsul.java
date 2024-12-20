@@ -114,6 +114,7 @@ public class InterfaceListeLigne669AmbassadeurConsul extends javax.swing.JDialog
 
         btn_ajout669.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_ajout669.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout669.setIcon(new javax.swing.ImageIcon(getClass().getResource("/curseur.png"))); // NOI18N
         btn_ajout669.setText("Sélectionnez la ligne");
         btn_ajout669.setToolTipText("Sélectionnez la ligne");
         btn_ajout669.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));

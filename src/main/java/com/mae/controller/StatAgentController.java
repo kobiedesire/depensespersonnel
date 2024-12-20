@@ -5,29 +5,13 @@
 package com.mae.controller;
 
 import com.mae.bd.connexionBD;
-import com.mae.model.Agent;
 import com.mae.vue.InterfaceStatistiqueAgent;
-import com.mae.vue.InterfaceListeLigne661;
-import com.mae.vue.InterfaceListeLigne663;
-import com.mae.vue.InterfaceListeLigne664;
-import com.mae.vue.InterfaceListeLigne666;
-import com.mae.vue.InterfaceListeLigne669;
-import com.mae.vue.InterfaceListeLigne669;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.math.BigDecimal;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.table.TableModel;
@@ -227,25 +211,7 @@ public class StatAgentController {
         }
     }
     
-      //Afficher les programmes dans le combo
-   private static final String querySelectprogramme = "SELECT codeProgramme FROM programme ";
-
-    public static void listProgrammeInCombo() {
-        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectprogramme)) {
-            ResultSet res = preparedStatement.executeQuery();
-            while (res.next()) {
-                InterfaceStatistiqueAgent.combo_Programme.addItem(res.getString("codeProgramme"));
-            }
-            res.close();
-            preparedStatement.close();
-            connection.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erreur SQL");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
-        }
-    }
-    
+     
       
          //Afficher les emplois dans le combo
    private static final String querySelectEmploi = "SELECT codeEmploi FROM emploi ";
@@ -273,8 +239,7 @@ public class StatAgentController {
     public static void rechercheAgentBySexe() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Categorie.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Programme.setSelectedIndex(0);
+        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);        
         InterfaceStatistiqueAgent.combo_TypeAgent.setSelectedIndex(0);
         String sexeA = InterfaceStatistiqueAgent.combo_Sexe.getSelectedItem().toString();
         //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
@@ -339,8 +304,7 @@ public class StatAgentController {
     public static void rechercheAgentByCategorie() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Programme.setSelectedIndex(0);
+        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);        
         InterfaceStatistiqueAgent.combo_TypeAgent.setSelectedIndex(0);
         String catA = InterfaceStatistiqueAgent.combo_Categorie.getSelectedItem().toString();
         //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
@@ -405,8 +369,7 @@ public class StatAgentController {
     public static void rechercheAgentByStructure() {
         InterfaceStatistiqueAgent.combo_Categorie.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Programme.setSelectedIndex(0);
+        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);        
         InterfaceStatistiqueAgent.combo_TypeAgent.setSelectedIndex(0);
         String strucA = InterfaceStatistiqueAgent.combo_Structure.getSelectedItem().toString();
         //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
@@ -472,8 +435,7 @@ public class StatAgentController {
     public static void rechercheAgentByTypeAgent() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Programme.setSelectedIndex(0);
+        InterfaceStatistiqueAgent.combo_Emploi.setSelectedIndex(0);        
         InterfaceStatistiqueAgent.combo_Categorie.setSelectedIndex(0);
         String strucA = InterfaceStatistiqueAgent.combo_TypeAgent.getSelectedItem().toString();
         //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
@@ -538,8 +500,7 @@ public class StatAgentController {
     public static void rechercheAgentByEmploi() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_TypeAgent.setSelectedIndex(0);
-        InterfaceStatistiqueAgent.combo_Programme.setSelectedIndex(0);
+        InterfaceStatistiqueAgent.combo_TypeAgent.setSelectedIndex(0);        
         InterfaceStatistiqueAgent.combo_Categorie.setSelectedIndex(0);
         String emplA = InterfaceStatistiqueAgent.combo_Emploi.getSelectedItem().toString();
         //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne

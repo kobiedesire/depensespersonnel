@@ -117,6 +117,7 @@ public class InterfaceListeLigne664Contractuel extends javax.swing.JDialog {
 
         btn_ajout664.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_ajout664.setForeground(new java.awt.Color(0, 102, 51));
+        btn_ajout664.setIcon(new javax.swing.ImageIcon(getClass().getResource("/curseur.png"))); // NOI18N
         btn_ajout664.setText("Sélectionnez la ligne");
         btn_ajout664.setToolTipText("Sélectionnez la ligne");
         btn_ajout664.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
@@ -134,7 +135,7 @@ public class InterfaceListeLigne664Contractuel extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(idProgrammeListeLigne664, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ajout664, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_ajout664, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(1189, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()

@@ -6,19 +6,11 @@ package com.mae.vue;
 
 import com.mae.controller.StatAgentController;
 import com.mae.controller.StatExportPDFController;
-import com.mae.model.Agent;
 import com.mae.props.PropsTableau;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
-import com.mae.controller.ImportExcelController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -72,11 +64,7 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
     public static void afficherStructureCombo() {
         StatAgentController.listStructureInCombo();
     }
-
-    //afficher les programmes dans le combobox
-    public static void afficherProgrammeCombo() {
-        StatAgentController.listProgrammeInCombo();
-    }
+   
 
     //afficher les emploi dans le combobox
     public static void afficherEmploiCombo() {
@@ -180,9 +168,7 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         combo_Categorie = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         combo_Structure = new javax.swing.JComboBox<>();
-        combo_Programme = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         combo_TypeAgent = new javax.swing.JComboBox<>();
@@ -277,9 +263,6 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Par structure : ");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Par programme : ");
-
         combo_Structure.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         combo_Structure.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         combo_Structure.addItemListener(new java.awt.event.ItemListener() {
@@ -287,9 +270,6 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
                 combo_StructureItemStateChanged(evt);
             }
         });
-
-        combo_Programme.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        combo_Programme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Par type d'agents :");
@@ -334,23 +314,19 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(combo_Categorie, 0, 1, Short.MAX_VALUE)))
                 .addGap(63, 63, 63)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(combo_Structure, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3))
-                    .addComponent(combo_Programme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                        .addComponent(jLabel4)
+                        .addGap(21, 21, 21)
+                        .addComponent(combo_Structure, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combo_Emploi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(combo_TypeAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(combo_Emploi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(combo_TypeAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(353, Short.MAX_VALUE))
         );
 
@@ -374,14 +350,12 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
                     .addComponent(combo_Sexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(combo_Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(combo_Programme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(combo_Emploi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {combo_Emploi, combo_Programme, combo_Structure, combo_TypeAgent});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {combo_Emploi, combo_Structure, combo_TypeAgent});
 
         tableau_agent.setAutoCreateRowSorter(true);
         tableau_agent.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
@@ -511,7 +485,6 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         afficherCategorieCombo();
         afficherStructureCombo();
-        afficherProgrammeCombo();
         afficherEmploiCombo();
         
         /**coefficientStruc.setVisible(false);
@@ -793,7 +766,6 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_rechercheragent2;
     public static javax.swing.JComboBox<String> combo_Categorie;
     public static javax.swing.JComboBox<String> combo_Emploi;
-    public static javax.swing.JComboBox<String> combo_Programme;
     public static javax.swing.JComboBox<String> combo_Sexe;
     public static javax.swing.JComboBox<String> combo_Structure;
     public static javax.swing.JComboBox<String> combo_TypeAgent;
@@ -801,7 +773,6 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
