@@ -95,7 +95,7 @@ public class StatExportPDFController {
                 table.addCell(new Cell().add(new Paragraph("***********")).setBorder(Border.NO_BORDER)).setFont(police);
 
                 table.addCell(new Cell().add(new Paragraph("SECRETARIAT GENERAL")).setBorder(Border.NO_BORDER)).setFont(police);
-                table.addCell(new Cell().add(new Paragraph("LA PATRIE OU LA MORT, NOUS VAINCRONS !!")).setBorder(Border.NO_BORDER)).setFont(police);
+                table.addCell(new Cell().add(new Paragraph("La patrie ou la mort, nous vaincrons !!")).setBorder(Border.NO_BORDER)).setFont(police);
 
                 table.addCell(new Cell().add(new Paragraph("***********")).setBorder(Border.NO_BORDER)).setFont(police);
                 table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER)).setFont(police);

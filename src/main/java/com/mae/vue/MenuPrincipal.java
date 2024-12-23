@@ -744,9 +744,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         afficherDateDuJour();
         afficherHeure();
-        menuBar.add(Box.createHorizontalGlue());
-        
-       
+        menuBar.add(Box.createHorizontalGlue());       
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -760,10 +758,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void menu_deconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_deconnexionActionPerformed
         // TODO add your handling code here:
-        panneauBureau.removeAll();
-        InterfaceArticle art = new InterfaceArticle();
-        art.setSize(1900, 760);
-        panneauBureau.add(art).setVisible(true);
+         int rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment fermer l'application", "Fermeture", JOptionPane.YES_NO_OPTION);
+        if (rep == JOptionPane.YES_OPTION) {
+            this.dispose();
+            InterfaceConnexion ic = new InterfaceConnexion();
+            ic.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            ic.setVisible(true);
+        }
     }//GEN-LAST:event_menu_deconnexionActionPerformed
 
     private void menu_articleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_articleActionPerformed

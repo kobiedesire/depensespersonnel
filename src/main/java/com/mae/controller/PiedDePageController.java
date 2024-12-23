@@ -37,7 +37,7 @@ public class PiedDePageController implements IEventHandler {
         PdfCanvas canvas = new PdfCanvas(page);
 
         // Ajouter le texte du pied de page
-        String footerText = "Sys.Gest.Dépenses.Personnel - Page " + pdfDoc.getPageNumber(page);
+        String footerText = "Système de Gestion Dépenses du Personnel - Page " + pdfDoc.getPageNumber(page);
 
         try {
             // Positionner le texte en bas de la page
