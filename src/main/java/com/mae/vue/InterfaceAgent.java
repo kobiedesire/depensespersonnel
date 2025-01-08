@@ -261,12 +261,17 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             if (rep == JOptionPane.YES_OPTION) {
                 Agent agent = new Agent(aMatricule, aNom, aPrenom, aDateNaiss, aSexe, aDatePriseService, aTypeAgent, aStructure, aMinistereOrigine, aFonction, aEmploi, aCategorieEchelle, aEchelon, aIndice, aSalIncidiciaire, aIResidence, aIAstreinte, aITechnicite, aIResponsabilite, aIVestimentaire, aILogement, aISpecifique, aAutresI, aChargeMilitaire, aCARFO, aCNSS, aAllFamil, aLigne661, aLigne663, aLigne664, aLigne666, aLigne669, aIncidenceMensuelle, aIncidenceAnnuelle, IDL661, IDL663, IDL664, IDL666, IDL669);
 
+               /* AgentController.updateLigne661ForUpdate();
+                AgentController.updateLigne663ForUpdate();
+                AgentController.updateLigne664ForUpdate();
+                AgentController.updateLigne666ForUpdate();
+                AgentController.updateLigne669ForUpdate();*/
+                AgentController.updateAgent(agent);  // Enregistrez  dans la base de données 
                 AgentController.updateLigne661ForUpdate();
                 AgentController.updateLigne663ForUpdate();
                 AgentController.updateLigne664ForUpdate();
                 AgentController.updateLigne666ForUpdate();
                 AgentController.updateLigne669ForUpdate();
-                AgentController.updateAgent(agent);  // Enregistrez  dans la base de données     
 
                 // AgentController.updateLigne663();
                 //AgentController.updateLigne664();
@@ -770,6 +775,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         });
         jPanel2.add(boxIndiceSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 19, 180, 26));
 
+        boxIndResidence.setEditable(false);
         boxIndResidence.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndResidence.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         boxIndResidence.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -846,6 +852,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         });
         jPanel2.add(boxAutreIndeminite, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 117, 180, 26));
 
+        boxChargeMilitaire.setEditable(false);
         boxChargeMilitaire.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxChargeMilitaire.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         boxChargeMilitaire.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1092,6 +1099,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         btn_modifier.setText("Modifier");
         btn_modifier.setToolTipText("Modifier");
         btn_modifier.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_modifier.setEnabled(false);
         btn_modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modifierActionPerformed(evt);
@@ -1159,8 +1167,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         btn_affecternewprogramme.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_affecternewprogramme.setForeground(new java.awt.Color(0, 102, 51));
         btn_affecternewprogramme.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btn_reaffecter.png"))); // NOI18N
-        btn_affecternewprogramme.setText("Réaffecter nouv. prog");
-        btn_affecternewprogramme.setToolTipText("Réaffecter nouv. prog");
+        btn_affecternewprogramme.setText("Réaffecter les lignes");
+        btn_affecternewprogramme.setToolTipText("Réaffecter les lignes");
         btn_affecternewprogramme.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
         btn_affecternewprogramme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1312,7 +1320,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         panneauForms.add(comboFonction, new org.netbeans.lib.awtextra.AbsoluteConstraints(677, 124, 386, -1));
 
         comboTypeAgent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fonctionnaire" }));
+        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fonctionnaire", "Militaire" }));
         comboTypeAgent.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboTypeAgentItemStateChanged(evt);
@@ -1414,19 +1422,20 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        coefficientStruc.setVisible(false);
-        idProg.setVisible(false);
-        idLigne661.setVisible(false);
-        idLigne663.setVisible(false);
-        idLigne664.setVisible(false);
-        idLigne666.setVisible(false);
-        idLigne669.setVisible(false);
-        boxIDAgent.setVisible(false);
+        //coefficientStruc.setVisible(false);
+       // idProg.setVisible(false);
+       // idLigne661.setVisible(false);
+       // idLigne663.setVisible(false);
+        //idLigne664.setVisible(false);
+        //idLigne666.setVisible(false);
+        //idLigne669.setVisible(false);
+       // boxIDAgent.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();
         listerComboMinistere();
         listerComboStructure();
+        
        
         //gestion de la mise à jour en temps réelle des champs de l'incidence mensuelle et annuelle
         InterfaceAgent.ligne661.getDocument().addDocumentListener(new DocumentListener() {
@@ -1665,6 +1674,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private void comboTypeAgentItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeAgentItemStateChanged
         // TODO add your handling code here:
         afficherContribution();
+         afficherSalaireIndiciaire();
 
     }//GEN-LAST:event_comboTypeAgentItemStateChanged
 
@@ -1700,13 +1710,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void boxChargeMilitaireKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxChargeMilitaireKeyReleased
         // TODO add your handling code here:
-        afficherLigne669();
-
+         afficherLigne669();
+       // afficherSalaireIndiciaire();
+       // afficherContribution();
     }//GEN-LAST:event_boxChargeMilitaireKeyReleased
 
     private void boxIndeminiteSpecifiqueKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteSpecifiqueKeyReleased
         // TODO add your handling code here:
-        afficherLigne669();
+        afficherSommeIndeminite663();
 
     }//GEN-LAST:event_boxIndeminiteSpecifiqueKeyReleased
 

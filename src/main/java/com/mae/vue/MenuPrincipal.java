@@ -127,6 +127,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu__stattistiques = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jSeparator16 = new javax.swing.JPopupMenu.Separator();
+        menu_paramavance1 = new javax.swing.JMenu();
+        menu_importagent1 = new javax.swing.JMenuItem();
+        jSeparator20 = new javax.swing.JPopupMenu.Separator();
         menu_paramavance = new javax.swing.JMenu();
         menu_importagent = new javax.swing.JMenuItem();
         jSeparator15 = new javax.swing.JPopupMenu.Separator();
@@ -651,6 +654,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuBar.add(menu__stattistiques);
 
+        menu_paramavance1.setBackground(new java.awt.Color(255, 204, 0));
+        menu_paramavance1.setForeground(new java.awt.Color(255, 255, 255));
+        menu_paramavance1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rechercher.png"))); // NOI18N
+        menu_paramavance1.setText("Consultation");
+        menu_paramavance1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        menu_importagent1.setBackground(new java.awt.Color(255, 204, 0));
+        menu_importagent1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_importagent1.setText("Visualiser un agent");
+        menu_importagent1.setToolTipText("Visualiser un agent");
+        menu_importagent1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_importagent1ActionPerformed(evt);
+            }
+        });
+        menu_paramavance1.add(menu_importagent1);
+
+        jSeparator20.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
+        menu_paramavance1.add(jSeparator20);
+
+        menuBar.add(menu_paramavance1);
+
         menu_paramavance.setBackground(new java.awt.Color(255, 204, 0));
         menu_paramavance.setForeground(new java.awt.Color(255, 255, 255));
         menu_paramavance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/parametres.png"))); // NOI18N
@@ -945,6 +971,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.add(statAgent).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void menu_importagent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_importagent1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_importagent1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1014,6 +1044,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator18;
     private javax.swing.JPopupMenu.Separator jSeparator19;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator20;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
@@ -1037,9 +1068,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menu_fichier;
     public static javax.swing.JMenuItem menu_fonction;
     private javax.swing.JMenuItem menu_importagent;
+    private javax.swing.JMenuItem menu_importagent1;
     public static javax.swing.JMenuItem menu_ministere;
     private javax.swing.JMenuItem menu_moncompte;
     public static javax.swing.JMenu menu_paramavance;
+    public static javax.swing.JMenu menu_paramavance1;
     private javax.swing.JMenu menu_parametre;
     private javax.swing.JMenuItem menu_profils;
     public static javax.swing.JMenuItem menu_structure;

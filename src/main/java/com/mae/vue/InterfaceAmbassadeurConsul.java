@@ -763,6 +763,7 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
         jPanel2.add(comboCatAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 19, 180, -1));
 
         boxIndiceSal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        boxIndiceSal.setText("0");
         boxIndiceSal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 boxIndiceSalKeyPressed(evt);
@@ -855,6 +856,7 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
         jPanel2.add(boxAutreIndeminite, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 117, 180, 26));
 
         boxChargeMilitaire.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        boxChargeMilitaire.setText("0");
         boxChargeMilitaire.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         boxChargeMilitaire.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1103,6 +1105,7 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
         btn_modifier.setText("Modifier");
         btn_modifier.setToolTipText("Modifier");
         btn_modifier.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_modifier.setEnabled(false);
         btn_modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modifierActionPerformed(evt);
@@ -1439,8 +1442,8 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        coefficientStruc.setVisible(false);
-        boxSalaireFixe.setVisible(false);
+       // coefficientStruc.setVisible(false);
+        //boxSalaireFixe.setVisible(false);
         idProg.setVisible(false);
         idLigne661.setVisible(false);
         idLigne663.setVisible(false);
@@ -1453,6 +1456,7 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
         listerComboFonction();
         listerComboMinistere();
         listerComboStructure();
+         
        
         //gestion de la mise à jour en temps réelle des champs de l'incidence mensuelle et annuelle
         InterfaceAmbassadeurConsul.ligne661.getDocument().addDocumentListener(new DocumentListener() {

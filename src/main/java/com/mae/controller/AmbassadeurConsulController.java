@@ -66,8 +66,7 @@ public class AmbassadeurConsulController {
           //  double indiceS = 0;
             //double salIndicaire = (indiceS * pointIndiciare) / 12; //salaire indiciaire mensuel = indice*point /12
             //String coeffSaisie = InterfaceAmbassadeurConsul.coefficientStruc.getText().replace(",", ".");
-           double aCoefficient = 0.0;            
-            
+           double aCoefficient = 0.0;                     
           //  double salIndicaire = ((indiceS * pointIndiciare) / 12) * aCoefficient ; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
           //  double indeminiteResidence = (salIndicaire * 10) / 100;//calcul de l'indeminité de residence
            // double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
@@ -84,7 +83,8 @@ public class AmbassadeurConsulController {
             double aCoefficient = Double.parseDouble(coeffSaisie);                  
             double salIndicaire = (Double.parseDouble(InterfaceAmbassadeurConsul.boxSalaireFixe.getText())) * aCoefficient ; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
             double indeminiteResidence = 0.0;//calcul de l'indeminité de residence
-            double soldeLigne611 = salIndicaire + indeminiteResidence; //calcul du total de la ligne 661
+            double chargeMilitaire = Integer.parseInt(InterfaceAmbassadeurConsul.boxChargeMilitaire.getText());
+            double soldeLigne611 = salIndicaire + indeminiteResidence + chargeMilitaire; //calcul du total de la ligne 661
             //System.out.println(soldeLigne611);
             InterfaceAmbassadeurConsul.boxSalaireIndicMensuel.setValue(Math.round(salIndicaire));//affichage du solde indiciaire
            // InterfaceAmbassadeurConsul.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence            
@@ -136,7 +136,7 @@ public class AmbassadeurConsulController {
 
     //calcul de la somme des indeminités de logement, d'astreinte, de responsabilité, de technicité et vestimentaire et mise à jour de la ligne 663
     public static void calculIndemnite() {
-        double indLogement = 0, indAstreinte = 0, indVestimentaire = 0, indReponsabilité = 0, indTechnicite = 0;
+        double indLogement = 0, indAstreinte = 0, indVestimentaire = 0, indReponsabilité = 0, indTechnicite = 0, indSpecifique=0;
         if (InterfaceAmbassadeurConsul.boxIndeminiteLogement.getText().isBlank() && InterfaceAmbassadeurConsul.boxIndeminiteAstreinte.getText().isBlank() && InterfaceAmbassadeurConsul.boxIndeminiteVestimentaire.getText().isBlank()
                 && InterfaceAmbassadeurConsul.boxIndeminiteResponsabilite.getText().isBlank() && InterfaceAmbassadeurConsul.boxIndeminiteTechnicite.getText().isBlank()) {
             InterfaceAmbassadeurConsul.ligne663.setText("");
@@ -169,18 +169,24 @@ public class AmbassadeurConsulController {
             } else {
                 indTechnicite = Integer.parseInt(InterfaceAmbassadeurConsul.boxIndeminiteTechnicite.getText());
             }
+            
+            if (InterfaceAmbassadeurConsul.boxIndeminiteSpecifique.getText().isBlank()) {
+                indSpecifique = 0;
+            } else {
+                indSpecifique = Integer.parseInt(InterfaceAmbassadeurConsul.boxIndeminiteSpecifique.getText());
+            }
+              
             if (InterfaceAmbassadeurConsul.coefficientStruc.getText().isBlank()) {
                 double aCoefficient = 0.0;
             } else {
                 String coeffSaisie = InterfaceAmbassadeurConsul.coefficientStruc.getText().replace(",", ".");
                 double aCoefficient = Double.parseDouble(coeffSaisie);
 
-//calcul de la somme des indeminités            
-                double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire * aCoefficient) + (indReponsabilité) + (indTechnicite);
+              //calcul de la somme des indeminités            
+                double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire * aCoefficient) + (indReponsabilité) + (indTechnicite)+ (indSpecifique);
                 InterfaceAmbassadeurConsul.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
             }
         }
-
     }
 
     //mise a jour de laigne 666
@@ -204,7 +210,7 @@ public class AmbassadeurConsulController {
     //calcul de la somme autres dépenses et mise à jour de la ligne 669    
     public static void calculAutreDepenses() {
         double indSpecifique = 0, autreIndemnite = 0, chargeMilitaire = 0;
-        if (InterfaceAmbassadeurConsul.boxAutreIndeminite.getText().isBlank()  && InterfaceAmbassadeurConsul.boxIndeminiteSpecifique.getText().isBlank()) {
+        if (InterfaceAmbassadeurConsul.boxAutreIndeminite.getText().isBlank() && InterfaceAmbassadeurConsul.boxIndeminiteSpecifique.getText().isBlank()) {
             InterfaceAmbassadeurConsul.ligne669.setText("");
         } else {
             if (InterfaceAmbassadeurConsul.boxAutreIndeminite.getText().isBlank()) {
@@ -213,7 +219,7 @@ public class AmbassadeurConsulController {
                 autreIndemnite = Integer.parseInt(InterfaceAmbassadeurConsul.boxAutreIndeminite.getText());
             }
 
-            if (InterfaceAmbassadeurConsul.boxChargeMilitaire.getText().isBlank() || InterfaceAmbassadeurConsul.coefficientStruc.getText().isBlank()) {
+           /* if (InterfaceAmbassadeurConsul.boxChargeMilitaire.getText().isBlank() || InterfaceAmbassadeurConsul.coefficientStruc.getText().isBlank()) {
                 // chargeMilitaire = 0;
                 double aCoefficient = 0.0;
                 chargeMilitaire = 0 * aCoefficient;
@@ -223,17 +229,17 @@ public class AmbassadeurConsulController {
                 double aCoefficient = Double.parseDouble(coeffSaisie);
                 chargeMilitaire = Integer.parseInt(InterfaceAmbassadeurConsul.boxChargeMilitaire.getText()) * aCoefficient;
                 //InterfaceAmbassadeurConsul.boxChargeMilitaire.setValue(Math.round(chargeMilitaire));
-            }
+            }*/
 
-            if (InterfaceAmbassadeurConsul.boxIndeminiteSpecifique.getText().isBlank()) {
+           /* if (InterfaceAmbassadeurConsul.boxIndeminiteSpecifique.getText().isBlank()) {
                 indSpecifique = 0;
             } else {
                 indSpecifique = Integer.parseInt(InterfaceAmbassadeurConsul.boxIndeminiteSpecifique.getText());
-            }
+            }*/
             // String coeffSaisie = InterfaceAmbassadeurConsul.coefficientStruc.getText().replace(",", ".");
            // double aCoefficient = Double.parseDouble(coeffSaisie);    
             //calcul de la somme des indeminités            
-            double sommeAutreDepense = autreIndemnite + chargeMilitaire  + indSpecifique;
+            double sommeAutreDepense = autreIndemnite + chargeMilitaire;
             InterfaceAmbassadeurConsul.ligne669.setValue(Math.round(sommeAutreDepense));//mise a jour de ligne 669
 
         }
@@ -325,10 +331,18 @@ public class AmbassadeurConsulController {
     }
 
     //Afficher les FONCTION dans le combo
-    private static final String querySelectFonction = "SELECT * FROM fonction";
-
+    private static final String querySelectFonction = "SELECT * FROM fonction where libeleFonction IN (?,?,?,?)";
     public static void listFonctionInCombo() {
-        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectFonction)) {
+        String libeleAmba = "Ambassadeur";
+        String libeleCons = "Consul Général";
+        String libeleAmbaRepPer = "Ambassadeur, Représentant Permanent";
+        String libeleAmbaRepPerAdj = "Ambassadeur, Représentant Permanent Adjoint";       
+        
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectFonction)) {            
+            preparedStatement.setString(1, libeleAmba);
+            preparedStatement.setString(2, libeleCons);
+            preparedStatement.setString(3, libeleAmbaRepPer);
+            preparedStatement.setString(4, libeleAmbaRepPerAdj);
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                 InterfaceAmbassadeurConsul.comboFonction.addItem(res.getString("libeleFonction"));
@@ -345,7 +359,6 @@ public class AmbassadeurConsulController {
 
     //Afficher les ministères  dans le combo
     private static final String querySelectMinistere = "SELECT * FROM ministere";
-
     public static void listMinistereCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectMinistere)) {
             ResultSet res = preparedStatement.executeQuery();
@@ -363,10 +376,16 @@ public class AmbassadeurConsulController {
     }
 
     //Afficher les structures  dans le combo
-    private static final String querySelectStructure = "SELECT * FROM structure";
+    private static final String querySelectStructure = "SELECT * FROM structure where typeStructure IN (?,?,?) ";
 
     public static void listStructureCombo() {
+        String ambaStruct = "Ambassade";
+        String miperStruct = "Mission Permanente";
+        String consulStruct = "Consulat";
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectStructure)) {
+            preparedStatement.setString(1, ambaStruct);
+            preparedStatement.setString(2, miperStruct);
+            preparedStatement.setString(3, consulStruct);
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                 InterfaceAmbassadeurConsul.comboStructure.addItem(res.getString("codeStructure"));
@@ -470,7 +489,7 @@ public class AmbassadeurConsulController {
                     InterfaceAmbassadeurConsul.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));
                     calculSalIndiciaire(); //calcul automatique du salaire indiciaire avec le coefficiebt appliqué
                     //calculContribution();//calcul de la contribution carfo
-                    // calculIndemnite();//calcul des indemnités
+                     calculIndemnite();//calcul des indemnités
                     miseAJourLigne666();//calcul automatique des allocations
                     calculAutreDepenses();//calcul des autres dépenses
 
