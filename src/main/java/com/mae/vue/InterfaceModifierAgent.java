@@ -80,7 +80,7 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
      //afficher les informations d'un agents dans les champs
     public static void imprimerAgent() {
        // AgentModifController.imprimerFicheAgent();
-          AgentModifController. printScreen();
+          AgentModifController.printFicheAgent();
 
     }
     
@@ -746,9 +746,10 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
 
         btn_modifier1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_modifier1.setForeground(new java.awt.Color(0, 102, 51));
-        btn_modifier1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imprimante.png"))); // NOI18N
-        btn_modifier1.setText("Imprimer fiche agent");
-        btn_modifier1.setToolTipText("Imprimer fiche agent");
+        btn_modifier1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/export_pdf.png"))); // NOI18N
+        btn_modifier1.setText("Générer la fiche");
+        btn_modifier1.setToolTipText("Générer la fiche");
+        btn_modifier1.setActionCommand("Générer la fiche");
         btn_modifier1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
         btn_modifier1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

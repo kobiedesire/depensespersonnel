@@ -4,6 +4,7 @@
  */
 package com.mae.controller;
 
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.mae.bd.connexionBD;
 import com.mae.model.Agent;
 import com.mae.vue.InterfaceModifierAgent;
@@ -36,6 +37,51 @@ import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import javax.swing.table.TableModel;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Cell;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Cell;
+import com.mae.controller.PiedDePageController;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.kernel.events.IEventHandler;
+import com.itextpdf.kernel.events.Event;
+import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.layout.element.Paragraph;
+
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 
 /**
  *
@@ -298,8 +344,7 @@ public class AgentModifController {
     }
     
     
-     private static final String querySelectOneAgentToPrint = "SELECT * FROM agent where matriculeAgent = ? ";
-
+   /*  private static final String querySelectOneAgentToPrint = "SELECT * FROM agent where matriculeAgent = ? ";
     public static void imprimerFicheAgent() {
         String matriculeA = InterfaceModifierAgent.rechercheMatricule.getText().trim();
         if (matriculeA.isBlank()) {
@@ -407,7 +452,7 @@ public class AgentModifController {
                     //JOptionPane.showMessageDialog(null, "Saisir un matricule valide !! ");
                    // viderChamps();
                // }
-                res.close();
+              /* res.close();
                 preparedStatement.close();
                 connection.close();
             } catch (SQLException e) {
@@ -418,59 +463,256 @@ public class AgentModifController {
         
         }
 
-        }
+        }*/
+  
     
     
-    
-      public static void print(){
-      
-      
-
-        JButton printButton = new JButton("Imprimer l'écran");
-        printButton.addActionListener(e -> printScreen());
-        
-        
-        
-        
-      }
-    
-    
-    public static void printScreen() {
-        try {
-            // Capturer l'écran entier
-            Robot robot = new Robot();
-            Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-            BufferedImage screenCapture = robot.createScreenCapture(screenRect);
-
-            // Imprimer la capture d'écran
-            PrinterJob job = PrinterJob.getPrinterJob();
-            job.setPrintable((graphics, pageFormat, pageIndex) -> {
-                if (pageIndex > 0) {
-                    return Printable.NO_SUCH_PAGE;
-                }
-                Graphics2D g2d = (Graphics2D) graphics;
-                g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-                g2d.drawImage(screenCapture, 0, 0, null);
-                return Printable.PAGE_EXISTS;
-            });
-
-            if (job.printDialog()) {
-                job.print();
+    /*public class DataFetcher {
+        public static ResultSet fetchData() throws Exception {
+            //Connection conn = DatabaseConnection.getConnection();
+            String query = "SELECT * FROM agent where matriculeAgent = ?";
+            String matriculeA = InterfaceModifierAgent.rechercheMatricule.getText().trim();
+            if (matriculeA.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Saisir un matricule !! ");
+                viderChamps();
+            } else {
+                try (Connection connection = connexionBD.getConnection(); 
+                     PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, matriculeA);
+                    //ResultSet res = preparedStatement.executeQuery();
+                    return preparedStatement.executeQuery();
+                    //  res.close();
+                    //preparedStatement.close();
+                    // connection.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Erreur SQL");
+                } 
             }
-        } catch (AWTException | PrinterException ex) {
-            ex.printStackTrace();
+           // return null;
         }
-    }
+    } */
     
-    
-    
-    
-    
-    
-    
-    
+       public static void printFicheAgent() {           
+           // Créateur du sélecteur de fichier
+           JFileChooser selecteurFichier = new JFileChooser();
+           selecteurFichier.setDialogTitle("Sélectionner un emplacement");
+           int maSelection = selecteurFichier.showSaveDialog(null);
 
-}
+           if (maSelection == JFileChooser.APPROVE_OPTION) {
+               String query = "SELECT * FROM agent where matriculeAgent = ?";
+               String matriculeA = InterfaceModifierAgent.rechercheMatricule.getText().trim();
+               if (matriculeA.isBlank()) {
+                   JOptionPane.showMessageDialog(null, "Saisir un matricule !! ");
+                   viderChamps();
+               } else {
+                   
+                   try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                       preparedStatement.setString(1, matriculeA);
+                       ResultSet res = preparedStatement.executeQuery();
+                       // return preparedStatement.executeQuery();
+                       // Chemin du fichier PDF à créer
+                       //String dest = "Fiche Agent.pdf";
+                       String chemin = selecteurFichier.getSelectedFile().getAbsolutePath() + ".pdf";
+                       PdfWriter writer = new PdfWriter(chemin);
+                       PdfDocument pdf = new PdfDocument(writer);
+                       pdf.setDefaultPageSize(com.itextpdf.kernel.geom.PageSize.A4.rotate());
+                       Document document = new Document(pdf);
+                       
+                       /*******************EN TETE********************/
+                       // gestion du timbre
+                       float[] largeurtableau = {600, 400};
+                       PdfFont policeEntete = PdfFontFactory.createFont(StandardFonts.COURIER_BOLD);
+
+                       Table tableEntete = new Table(largeurtableau); // Largeur des colonnes (proportionnelle)
+                       tableEntete.setAutoLayout(); // Ajuster la largeur du tableau au document
+                       tableEntete.setTextAlignment(TextAlignment.CENTER);
+                       tableEntete.setBorder(com.itextpdf.layout.borders.Border.NO_BORDER);
+
+                       tableEntete.addCell(new Cell().add(new Paragraph("MINISTERE DES AFFAIRES ETRANGERES, DE LA COOPERATION REGIONALE ET DES BURKINABE DE L'EXTERIEUR")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+                       tableEntete.addCell(new Cell().add(new Paragraph("BURKINA FASO")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+
+                       tableEntete.addCell(new Cell().add(new Paragraph("***********")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+                       tableEntete.addCell(new Cell().add(new Paragraph("***********")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+
+                       tableEntete.addCell(new Cell().add(new Paragraph("SECRETARIAT GENERAL")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+                       tableEntete.addCell(new Cell().add(new Paragraph("La patrie ou la mort, nous vaincrons !!")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+
+                       tableEntete.addCell(new Cell().add(new Paragraph("***********")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+                       tableEntete.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+
+                       tableEntete.addCell(new Cell().add(new Paragraph("DIRECTION DES RESSOURCES HUMAINES")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+                       tableEntete.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER)).setFont(policeEntete);
+                       document.add(tableEntete);
+
+                       //ajout d'interligne
+                       Paragraph interligne = new Paragraph("")
+                               .setMultipliedLeading(2.5f); // Interligne de 2.5x
+
+                       // Ajout d'un titre
+                       Paragraph title = new Paragraph("FICHE AGENT")
+                               .setFont(policeEntete)
+                               .setFontSize(16)
+                               .setTextAlignment(TextAlignment.CENTER)
+                               .setUnderline()
+                               .setFontColor(ColorConstants.BLACK);
+
+                       //  .setTextAlignment(TextAlignment.CENTER);
+                       document.add(title);
+                       
+                       /*******************DONNEES ********************************/
+
+                       // Ajouter un titre au PDF
+                     //  document.add(new Paragraph("Fiche agent").setBold().setFontSize(15));
+
+                       // Récupérer les données depuis MySQL
+                       // ResultSet resultSet = DataFetcher.fetchData();
+                       // Créer un tableau pour afficher les données
+                       Table table = new Table(new float[]{150, 850}); // Colonnes ajustables
+                       PdfFont police = PdfFontFactory.createFont(StandardFonts.COURIER_BOLD);
+                       table.setAutoLayout(); // Ajuster la largeur du tableau au document
+                       table.setTextAlignment(TextAlignment.LEFT);
+                       table.setBorder(com.itextpdf.layout.borders.Border.NO_BORDER);
+
+                       if (res.next()) {
+                           table.addCell(new Cell().add(new Paragraph("MATRICULE : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("matriculeAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("CATEGORIE/ECHELLE : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("categorieEchelleAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("ECHELON : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("echelonAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("NOM : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("nomAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("PRENOM (S) : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("prenomAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("DATE.NAISSANCE: ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("dateNaissanceAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("SEXE : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("sexeAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("DATE.PRISE/SERVICE: ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("datePriseServiceAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("STRUCTURE : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("structureAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("MINISTERE/ORIGINE : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("ministereOrigineAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("FONCTION : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("fonctionAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("EMPLOI : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("emploiAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+
+                           table.addCell(new Cell().add(new Paragraph("TYPE/AGENT : ")).setBorder(Border.NO_BORDER).setFont(police));
+                           table.addCell(new Cell().add(new Paragraph(res.getString("typeAgent"))).setBorder(Border.NO_BORDER).setFont(police));
+                       }
+
+                       // Ajouter le tableau au document
+                       document.add(table);
+
+                       // Fermer le document
+                       document.close();
+                       JOptionPane.showMessageDialog(null, "Document généré avec succès ! ");
+                       // System.out.println("Fiche généré avec succès !");
+
+                       res.close();
+                       preparedStatement.close();
+                       connection.close();
+                   } catch (SQLException e) {
+                       JOptionPane.showMessageDialog(null, "Erreur SQL");
+                   } catch (Exception e) {
+                       e.printStackTrace();
+                   }
+               }
+           }
+
+        
+        
+       /* try {
+            // Chemin du fichier PDF à créer
+            String dest = "Fiche Agent.pdf";
+            PdfWriter writer = new PdfWriter(dest);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+
+            // Ajouter un titre au PDF
+            document.add(new Paragraph("Fiche agent").setBold().setFontSize(15));
+
+            // Récupérer les données depuis MySQL
+            ResultSet resultSet = DataFetcher.fetchData();
+
+            // Créer un tableau pour afficher les données
+            Table table = new Table(new float[]{500, 500}); // Colonnes ajustables
+            //PdfFont police = PdfFontFactory.createFont(StandardFonts.COURIER_BOLD);
+            table.setAutoLayout(); // Ajuster la largeur du tableau au document
+            table.setTextAlignment(TextAlignment.CENTER);
+            table.setBorder(com.itextpdf.layout.borders.Border.NO_BORDER);
+
+            if (resultSet.next()) {
+                table.addCell(new Cell().add(new Paragraph("MATRICULE : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("matriculeAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("CATEGORIE/ECHELLE : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("categorieEchelleAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("ECHELON : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("echelonAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("NOM : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("nomAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("PRENOM (S) : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("prenomAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("DATE.NAISSANCE: ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("dateNaissanceAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("SEXE : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("sexeAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("DATE.PRISE/SERVICE: ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("datePriseServiceAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("STRUCTURE : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("structureAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("MINISTERE/ORIGINE : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("ministereOrigineAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("FONCTION : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("fonctionAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("EMPLOI : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("emploiAgent"));
+
+                table.addCell(new Cell().add(new Paragraph("TYPE/AGENT : ")).setBorder(Border.NO_BORDER));
+                table.addCell(resultSet.getString("typeAgent"));        
+            }
+ 
+            // Ajouter le tableau au document
+            document.add(table);
+
+            // Fermer le document
+            document.close();
+
+            System.out.println("Fiche généré avec succès !");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
+} 
+
+
+
+
     
     
     

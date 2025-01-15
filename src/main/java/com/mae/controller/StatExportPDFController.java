@@ -165,7 +165,6 @@ public class StatExportPDFController {
                 e.printStackTrace();
             }
         }
-    }
-    
+    }   
     
 }

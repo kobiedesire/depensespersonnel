@@ -35,9 +35,9 @@ public class connexionBD {
             }
         } catch (SQLException e) {
             {
-       JOptionPane.showMessageDialog(null,"Erreur de connexion à la base de données");        
-     }      
+                JOptionPane.showMessageDialog(null, "Erreur de connexion à la base de données");
+            }
         }
-        
+
     }
     }
