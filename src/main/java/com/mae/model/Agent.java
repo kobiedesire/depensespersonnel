@@ -426,6 +426,20 @@ public class Agent {
         this.idL666 = idL666;
         this.idL669 = idL669;
     }
+    
+     public Agent(String matriculeA, String nomA, String prenomA, String dateNaissanceA, String sexeA, String datePriseServiceA, String ministereOrigineA, String fonctionA, String emploiA, String categorieEchelleA, int echelonA) {
+        this.matriculeA = matriculeA;
+        this.nomA = nomA;
+        this.prenomA = prenomA;
+        this.dateNaissanceA = dateNaissanceA;
+        this.sexeA = sexeA;
+        this.datePriseServiceA = datePriseServiceA;       
+        this.ministereOrigineA = ministereOrigineA;
+        this.fonctionA = fonctionA;
+        this.emploiA = emploiA;
+        this.categorieEchelleA = categorieEchelleA;
+        this.echelonA = echelonA;             
+    }
 
     public Agent() {
     }

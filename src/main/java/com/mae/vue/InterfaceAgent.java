@@ -1422,14 +1422,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        //coefficientStruc.setVisible(false);
-       // idProg.setVisible(false);
-       // idLigne661.setVisible(false);
-       // idLigne663.setVisible(false);
-        //idLigne664.setVisible(false);
-        //idLigne666.setVisible(false);
-        //idLigne669.setVisible(false);
-       // boxIDAgent.setVisible(false);
+        coefficientStruc.setVisible(false);
+        idProg.setVisible(false);
+        idLigne661.setVisible(false);
+        idLigne663.setVisible(false);
+        idLigne664.setVisible(false);
+        idLigne666.setVisible(false);
+        idLigne669.setVisible(false);
+        boxIDAgent.setVisible(false);
         listerComboCategorieEchelle();
         listerComboEmploi();
         listerComboFonction();

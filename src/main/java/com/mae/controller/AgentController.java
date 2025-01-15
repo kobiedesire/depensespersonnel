@@ -74,19 +74,20 @@ public class AgentController {
                     break;
 
                 case "Militaire":
-                    InterfaceAgent.boxIndResidence.setValue(0);//fixer la veleur 0 pour l'indeministe de residence si l'agent est un militaire
+                   // InterfaceAgent.boxIndResidence.setValue(0);//fixer la veleur 0 pour l'indeministe de residence si l'agent est un militaire
                     double indiceSMilitaire = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());
                     //double salIndicaire = (indiceS * pointIndiciare) / 12; //salaire indiciaire mensuel = indice*point /12
                     String coeffSaisieMilitaire = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
                     double aCoefficientMilitaire = Double.parseDouble(coeffSaisieMilitaire);
                     double salIndicaireMilitaire = ((indiceSMilitaire * pointIndiciare) / 12) * aCoefficientMilitaire; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
+                    double indeminiteResidenceMilitaire = (salIndicaireMilitaire * 10) / 100;//calcul de l'indeminité de residence
                     double ichargeMilitaire = (salIndicaireMilitaire * 35) / 100;//calcul de la charge militaire
                     double indemResidence = Integer.parseInt(InterfaceAgent.boxIndResidence.getText()); //recuperation de la valeur 0 de l'indeminite de residence
                     double soldeLigne611M = salIndicaireMilitaire + indemResidence + ichargeMilitaire; //calcul du total de la ligne 661
                     InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaireMilitaire));//affichage du solde indiciaire
+                    InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidenceMilitaire));//affichage de l'indeminité de residence
                     InterfaceAgent.boxChargeMilitaire.setValue(Math.round(ichargeMilitaire));//affichage de l'indeminité de residence
                     InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611M));
-
                     break;
             }
         }
@@ -1151,12 +1152,15 @@ public class AgentController {
     
 
     /*Lister tous les agents fonctionnaires*/
-    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent WHERE typeAgent = ?";
+    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent WHERE typeAgent IN (?, ?)";
 
     public static void listAll() {
-        String typeA = InterfaceAgent.comboTypeAgent.getSelectedItem().toString();
+        String typeAFonctionnaire = "Fonctionnaire";
+        String typeAMilitaire = "Militaire";
+        
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelect)) {
-             preparedStatement.setString(1, typeA);
+             preparedStatement.setString(1, typeAFonctionnaire);
+             preparedStatement.setString(2, typeAMilitaire);
             ResultSet res = preparedStatement.executeQuery();
             res.last();
             tab = new String[res.getRow()][6];

@@ -123,11 +123,20 @@ public class AmbassadeurConsulController {
                     //}
                 case "Contractuel":
                     //int coeffC = 1;
-                   // double contriCNSS = (salIndicaire * tauxCNSS) / 100;
+                    // double contriCNSS = (salIndicaire * tauxCNSS) / 100;
                     InterfaceAmbassadeurConsul.boxContributionCNSS.setValue(0);
                     InterfaceAmbassadeurConsul.ligne664.setValue(0);
                     InterfaceAmbassadeurConsul.boxContributionCARFO.setValue(0);
-                   // InterfaceAmbassadeurConsul.coefficientStruc.setText("1");
+                    // InterfaceAmbassadeurConsul.coefficientStruc.setText("1");
+                    break;
+
+                case "Militaire":
+                    //int coeffC = 1;
+                    // double contriCNSS = (salIndicaire * tauxCNSS) / 100;
+                    InterfaceAmbassadeurConsul.boxContributionCNSS.setValue(0);
+                    InterfaceAmbassadeurConsul.ligne664.setValue(0);
+                    InterfaceAmbassadeurConsul.boxContributionCARFO.setValue(0);
+                    // InterfaceAmbassadeurConsul.coefficientStruc.setText("1");
                     break;
             }
 

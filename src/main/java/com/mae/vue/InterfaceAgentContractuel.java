@@ -595,6 +595,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
         });
         jPanel2.add(boxIndiceSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 19, 180, 26));
 
+        boxIndResidence.setEditable(false);
         boxIndResidence.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndResidence.setText("0");
         boxIndResidence.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -1414,13 +1415,14 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void boxChargeMilitaireKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxChargeMilitaireKeyReleased
         // TODO add your handling code here:
-        afficherLigne669();
+       afficherLigne661();
+        //afficherContribution();
 
     }//GEN-LAST:event_boxChargeMilitaireKeyReleased
 
     private void boxIndeminiteSpecifiqueKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteSpecifiqueKeyReleased
         // TODO add your handling code here:
-        afficherLigne669();
+        afficherSommeIndeminite663();
 
     }//GEN-LAST:event_boxIndeminiteSpecifiqueKeyReleased
 

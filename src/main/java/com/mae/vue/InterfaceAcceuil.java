@@ -94,7 +94,7 @@ public class InterfaceAcceuil extends javax.swing.JInternalFrame {
             }
         });
 
-        panneauPrincipal.setBackground(new java.awt.Color(0, 102, 51));
+        panneauPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         panneauPrincipal.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 0));

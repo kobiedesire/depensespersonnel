@@ -7,6 +7,8 @@ import com.mae.controller.StatAcceuilController;
 import com.mae.vue.InterfaceAcceuil;
 import com.mae.bd.connexionBD;
 import java.sql.*;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.*;
 
 /**
@@ -86,7 +88,10 @@ public class StatAcceuilController {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                 int totalB = res.getInt("totalLigneBudgetaire") * 12;
-                InterfaceAcceuil.box_BudgetTotalMin.setText(String.valueOf(totalB) + " " + "FCFA");
+                NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
+                //int ttB = formatter.format(totalB)); 
+                InterfaceAcceuil.box_BudgetTotalMin.setText(String.valueOf(formatter.format(totalB)) + " " + "FCFA");
+                //InterfaceAcceuil.box_BudgetTotalMin.setText(String.valueOf(totalB) + " " + "FCFA");
                 //InterfaceAcceuil.box_BudgetTotalMin.setText(res.getString("totalLigneBudgetaire") +" "+ "FCFA");
             }
             res.close();
@@ -103,12 +108,13 @@ public class StatAcceuilController {
     private static final String queryBudgetAnnuelCentral = "SELECT SUM(incidenceAnnuelle) AS totalBudgetCentral FROM agent a, structure s WHERE  a.structureAgent = s.codeStructure AND s.typeStructure = ?  ";                                                                                                                          
     public static void budgetTotalCentral() {  
         String typeS = "Centrale";
-        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryBudgetAnnuelCentral)) {            
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryBudgetAnnuelCentral)) {
             preparedStatement.setString(1, typeS);
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                 int totalBCentral = res.getInt("totalBudgetCentral");
-               InterfaceAcceuil.box_TTBudgetCentral.setText(String.valueOf(totalBCentral)+" "+ "FCFA");
+                NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
+                InterfaceAcceuil.box_TTBudgetCentral.setText(formatter.format(totalBCentral) + " " + "FCFA");
                 //InterfaceAcceuil.box_TTBudgetCentral.setText(res.getString("totalBudgetCentral") +" "+ "FCFA");
             }
             res.close();
@@ -135,7 +141,8 @@ public class StatAcceuilController {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                   int totalBMDPC = res.getInt("totalBudgetMDPC");
-                  InterfaceAcceuil.box_TTBudgetMDPC.setText(String.valueOf(totalBMDPC)+ " " + "FCFA");
+                  NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
+                  InterfaceAcceuil.box_TTBudgetMDPC.setText(formatter.format(totalBMDPC)+ " " + "FCFA");
                // InterfaceAcceuil.box_TTBudgetMDPC.setText(res.getString("totalBudgetMDPC") + " " + "FCFA");
             }
             res.close();

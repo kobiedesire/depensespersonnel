@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import com.mae.vue.InterfaceAgent;
 import com.mae.controller.ArticleController;
 import com.mae.controller.ImportExcelController;
+import java.awt.Color;
 
 import java.time.format.DateTimeFormatter;
-import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -128,7 +128,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jSeparator16 = new javax.swing.JPopupMenu.Separator();
         menu_paramavance1 = new javax.swing.JMenu();
-        menu_importagent1 = new javax.swing.JMenuItem();
+        menu_modifieragent = new javax.swing.JMenuItem();
         jSeparator20 = new javax.swing.JPopupMenu.Separator();
         menu_paramavance = new javax.swing.JMenu();
         menu_importagent = new javax.swing.JMenuItem();
@@ -161,7 +161,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
         panneauMenu.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Script MT Bold", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Waylimo", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MAEC-RBE");
 
@@ -237,7 +237,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(heureJour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panneauEntete.setBackground(new java.awt.Color(255, 255, 255));
@@ -309,13 +309,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addComponent(btn_moncompte, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_deconnexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 47, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         panneauEnteteLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_deconnexion, btn_moncompte});
 
-        panneauBureau.setBackground(new java.awt.Color(0, 102, 51));
+        panneauBureau.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout panneauBureauLayout = new javax.swing.GroupLayout(panneauBureau);
         panneauBureau.setLayout(panneauBureauLayout);
@@ -349,18 +349,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        menuBar.setBackground(new java.awt.Color(204, 0, 0));
+        menuBar.setBackground(new java.awt.Color(0, 0, 0));
         menuBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 204, 0)));
+        menuBar.setMinimumSize(new java.awt.Dimension(893, 50));
         menuBar.setPreferredSize(new java.awt.Dimension(103, 35));
 
         menu_fichier.setBackground(new java.awt.Color(255, 204, 0));
         menu_fichier.setForeground(new java.awt.Color(255, 255, 255));
         menu_fichier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fichier.png"))); // NOI18N
         menu_fichier.setText("Fichier");
-        menu_fichier.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_fichier.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        menu_moncompte.setBackground(new java.awt.Color(255, 204, 0));
-        menu_moncompte.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_moncompte.setBackground(new java.awt.Color(0, 0, 0));
+        menu_moncompte.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_moncompte.setForeground(new java.awt.Color(255, 204, 0));
         menu_moncompte.setText("Mon compte");
         menu_moncompte.setToolTipText("Mon compte");
         menu_fichier.add(menu_moncompte);
@@ -369,8 +371,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
         menu_fichier.add(jSeparator3);
 
-        menu_deconnexion.setBackground(new java.awt.Color(255, 204, 0));
-        menu_deconnexion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_deconnexion.setBackground(new java.awt.Color(0, 0, 0));
+        menu_deconnexion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_deconnexion.setForeground(new java.awt.Color(255, 204, 0));
         menu_deconnexion.setText("Se déconnecter");
         menu_deconnexion.setToolTipText("Se déconnecter");
         menu_deconnexion.addActionListener(new java.awt.event.ActionListener() {
@@ -386,10 +389,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_parametre.setForeground(new java.awt.Color(255, 255, 255));
         menu_parametre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/parametre.png"))); // NOI18N
         menu_parametre.setText("Paramètres");
-        menu_parametre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_parametre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        menu_structure.setBackground(new java.awt.Color(255, 204, 0));
-        menu_structure.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_structure.setBackground(new java.awt.Color(0, 0, 0));
+        menu_structure.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_structure.setForeground(new java.awt.Color(255, 204, 0));
         menu_structure.setText("Gestion des structures du ministère");
         menu_structure.setToolTipText("Gestion des structures du ministère");
         menu_structure.addActionListener(new java.awt.event.ActionListener() {
@@ -403,8 +407,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         menu_parametre.add(jSeparator2);
 
-        menu_catechelle.setBackground(new java.awt.Color(255, 204, 0));
-        menu_catechelle.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_catechelle.setBackground(new java.awt.Color(0, 0, 0));
+        menu_catechelle.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_catechelle.setForeground(new java.awt.Color(255, 204, 0));
         menu_catechelle.setText("Gestion des catégories/échelles");
         menu_catechelle.setToolTipText("Gestion des catégories/échelles");
         menu_catechelle.addActionListener(new java.awt.event.ActionListener() {
@@ -418,8 +423,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator11.setForeground(new java.awt.Color(255, 255, 255));
         menu_parametre.add(jSeparator11);
 
-        menu_emploi.setBackground(new java.awt.Color(255, 204, 0));
-        menu_emploi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_emploi.setBackground(new java.awt.Color(0, 0, 0));
+        menu_emploi.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_emploi.setForeground(new java.awt.Color(255, 204, 0));
         menu_emploi.setText("Gestion des emplois");
         menu_emploi.setToolTipText("Gestion des emplois");
         menu_emploi.addActionListener(new java.awt.event.ActionListener() {
@@ -433,8 +439,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator14.setForeground(new java.awt.Color(255, 255, 255));
         menu_parametre.add(jSeparator14);
 
-        menu_fonction.setBackground(new java.awt.Color(255, 204, 0));
-        menu_fonction.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_fonction.setBackground(new java.awt.Color(0, 0, 0));
+        menu_fonction.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_fonction.setForeground(new java.awt.Color(255, 204, 0));
         menu_fonction.setText("Gestion des fonctions");
         menu_fonction.setToolTipText("Gestion des fonctions");
         menu_fonction.addActionListener(new java.awt.event.ActionListener() {
@@ -448,8 +455,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator13.setForeground(new java.awt.Color(255, 255, 255));
         menu_parametre.add(jSeparator13);
 
-        menu_ministere.setBackground(new java.awt.Color(255, 204, 0));
-        menu_ministere.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_ministere.setBackground(new java.awt.Color(0, 0, 0));
+        menu_ministere.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_ministere.setForeground(new java.awt.Color(255, 204, 0));
         menu_ministere.setText("Gestion des ministères");
         menu_ministere.setToolTipText("Gestion des ministères");
         menu_ministere.addActionListener(new java.awt.event.ActionListener() {
@@ -463,13 +471,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator12.setForeground(new java.awt.Color(255, 255, 255));
         menu_parametre.add(jSeparator12);
 
-        menu_agent.setBackground(new java.awt.Color(255, 204, 0));
+        menu_agent.setBackground(new java.awt.Color(0, 0, 0));
+        menu_agent.setForeground(new java.awt.Color(255, 204, 0));
         menu_agent.setText("Gestion des agents");
         menu_agent.setToolTipText("Gestion des agents");
-        menu_agent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_agent.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        menu_agent_fonct.setBackground(new java.awt.Color(255, 204, 0));
-        menu_agent_fonct.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_agent_fonct.setBackground(new java.awt.Color(0, 0, 0));
+        menu_agent_fonct.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_agent_fonct.setForeground(new java.awt.Color(255, 204, 0));
         menu_agent_fonct.setText("Gestion des agents fonctionnaires");
         menu_agent_fonct.setToolTipText("Gestion des agents fonctionnaires");
         menu_agent_fonct.addActionListener(new java.awt.event.ActionListener() {
@@ -483,8 +493,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator18.setForeground(new java.awt.Color(255, 255, 255));
         menu_agent.add(jSeparator18);
 
-        menu_agent_contrac.setBackground(new java.awt.Color(255, 204, 0));
-        menu_agent_contrac.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_agent_contrac.setBackground(new java.awt.Color(0, 0, 0));
+        menu_agent_contrac.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_agent_contrac.setForeground(new java.awt.Color(255, 204, 0));
         menu_agent_contrac.setText("Gestion des agents contractuels");
         menu_agent_contrac.setToolTipText("Gestion des agents contractuels");
         menu_agent_contrac.addActionListener(new java.awt.event.ActionListener() {
@@ -498,8 +509,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator19.setForeground(new java.awt.Color(255, 255, 255));
         menu_agent.add(jSeparator19);
 
-        menu_agent_amba.setBackground(new java.awt.Color(255, 204, 0));
-        menu_agent_amba.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_agent_amba.setBackground(new java.awt.Color(0, 0, 0));
+        menu_agent_amba.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_agent_amba.setForeground(new java.awt.Color(255, 204, 0));
         menu_agent_amba.setText("Gestion des ambassadeurs & consuls");
         menu_agent_amba.setToolTipText("Gestion des ambassadeurs & consuls");
         menu_agent_amba.addActionListener(new java.awt.event.ActionListener() {
@@ -517,10 +529,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_budget.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.setIcon(new javax.swing.ImageIcon(getClass().getResource("/budget.png"))); // NOI18N
         menu_budget.setText("Budget");
-        menu_budget.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_budget.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        menu_creerbudget.setBackground(new java.awt.Color(255, 204, 0));
-        menu_creerbudget.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_creerbudget.setBackground(new java.awt.Color(0, 0, 0));
+        menu_creerbudget.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_creerbudget.setForeground(new java.awt.Color(255, 204, 0));
         menu_creerbudget.setText("Créer un budget");
         menu_creerbudget.setToolTipText("Créer un budget");
         menu_creerbudget.addActionListener(new java.awt.event.ActionListener() {
@@ -534,8 +547,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator10.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.add(jSeparator10);
 
-        jMenuItem3.setBackground(new java.awt.Color(255, 204, 0));
-        jMenuItem3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem3.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuItem3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem3.setForeground(new java.awt.Color(255, 204, 0));
         jMenuItem3.setText("Programme");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -548,8 +562,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.add(jSeparator5);
 
-        jMenuItem4.setBackground(new java.awt.Color(255, 204, 0));
-        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem4.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem4.setForeground(new java.awt.Color(255, 204, 0));
         jMenuItem4.setText("Action");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -562,8 +577,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.add(jSeparator6);
 
-        jMenuItem5.setBackground(new java.awt.Color(255, 204, 0));
-        jMenuItem5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem5.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuItem5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem5.setForeground(new java.awt.Color(255, 204, 0));
         jMenuItem5.setText("Chapritre");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -576,8 +592,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.add(jSeparator7);
 
-        jMenuItem6.setBackground(new java.awt.Color(255, 204, 0));
-        jMenuItem6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem6.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuItem6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem6.setForeground(new java.awt.Color(255, 204, 0));
         jMenuItem6.setText("Activité");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -590,8 +607,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.add(jSeparator8);
 
-        menu_article.setBackground(new java.awt.Color(255, 204, 0));
-        menu_article.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_article.setBackground(new java.awt.Color(0, 0, 0));
+        menu_article.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_article.setForeground(new java.awt.Color(255, 204, 0));
         menu_article.setText("Article");
         menu_article.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -604,8 +622,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator9.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.add(jSeparator9);
 
-        jMenuItem8.setBackground(new java.awt.Color(255, 204, 0));
-        jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem8.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuItem8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem8.setForeground(new java.awt.Color(255, 204, 0));
         jMenuItem8.setText("Paragraphe");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -618,8 +637,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         menu_budget.add(jSeparator4);
 
-        jMenuItem2.setBackground(new java.awt.Color(255, 204, 0));
-        jMenuItem2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem2.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuItem2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem2.setForeground(new java.awt.Color(255, 204, 0));
         jMenuItem2.setText("Editer les lignes du budget");
         jMenuItem2.setToolTipText("Editer les lignes du  budget");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -635,10 +655,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu__stattistiques.setForeground(new java.awt.Color(255, 255, 255));
         menu__stattistiques.setIcon(new javax.swing.ImageIcon(getClass().getResource("/statistiques.png"))); // NOI18N
         menu__stattistiques.setText("Statistiques");
-        menu__stattistiques.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu__stattistiques.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        jMenuItem7.setBackground(new java.awt.Color(255, 204, 0));
-        jMenuItem7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem7.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuItem7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem7.setForeground(new java.awt.Color(255, 204, 0));
         jMenuItem7.setText("Effectif des agents");
         jMenuItem7.setToolTipText("Effectif des agents");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -658,18 +679,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_paramavance1.setForeground(new java.awt.Color(255, 255, 255));
         menu_paramavance1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rechercher.png"))); // NOI18N
         menu_paramavance1.setText("Consultation");
-        menu_paramavance1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_paramavance1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        menu_importagent1.setBackground(new java.awt.Color(255, 204, 0));
-        menu_importagent1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        menu_importagent1.setText("Visualiser un agent");
-        menu_importagent1.setToolTipText("Visualiser un agent");
-        menu_importagent1.addActionListener(new java.awt.event.ActionListener() {
+        menu_modifieragent.setBackground(new java.awt.Color(0, 0, 0));
+        menu_modifieragent.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_modifieragent.setForeground(new java.awt.Color(255, 204, 0));
+        menu_modifieragent.setText("Visualiser un agent");
+        menu_modifieragent.setToolTipText("Visualiser un agent");
+        menu_modifieragent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_importagent1ActionPerformed(evt);
+                menu_modifieragentActionPerformed(evt);
             }
         });
-        menu_paramavance1.add(menu_importagent1);
+        menu_paramavance1.add(menu_modifieragent);
 
         jSeparator20.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
@@ -681,10 +703,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_paramavance.setForeground(new java.awt.Color(255, 255, 255));
         menu_paramavance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/parametres.png"))); // NOI18N
         menu_paramavance.setText("Paramètres avancés");
-        menu_paramavance.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_paramavance.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        menu_importagent.setBackground(new java.awt.Color(255, 204, 0));
-        menu_importagent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_importagent.setBackground(new java.awt.Color(0, 0, 0));
+        menu_importagent.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_importagent.setForeground(new java.awt.Color(255, 204, 0));
         menu_importagent.setText("Importer les agents");
         menu_importagent.setToolTipText("Importer les agents");
         menu_importagent.addActionListener(new java.awt.event.ActionListener() {
@@ -698,13 +721,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator15.setForeground(new java.awt.Color(255, 255, 255));
         menu_paramavance.add(jSeparator15);
 
-        menu_utilisateurs.setBackground(new java.awt.Color(255, 204, 0));
+        menu_utilisateurs.setBackground(new java.awt.Color(0, 0, 0));
+        menu_utilisateurs.setForeground(new java.awt.Color(255, 204, 0));
         menu_utilisateurs.setText("Utilisateurs");
         menu_utilisateurs.setToolTipText("Utilisateurs");
-        menu_utilisateurs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_utilisateurs.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        menu_profils.setBackground(new java.awt.Color(255, 204, 0));
-        menu_profils.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_profils.setBackground(new java.awt.Color(0, 0, 0));
+        menu_profils.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_profils.setForeground(new java.awt.Color(255, 204, 0));
         menu_profils.setText("Profils");
         menu_profils.setToolTipText("Profils");
         menu_profils.addActionListener(new java.awt.event.ActionListener() {
@@ -718,8 +743,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator17.setForeground(new java.awt.Color(255, 255, 255));
         menu_utilisateurs.add(jSeparator17);
 
-        menu_user.setBackground(new java.awt.Color(255, 204, 0));
-        menu_user.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_user.setBackground(new java.awt.Color(0, 0, 0));
+        menu_user.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_user.setForeground(new java.awt.Color(255, 204, 0));
         menu_user.setText("Utilisateurs");
         menu_user.setToolTipText("Utilisateurs");
         menu_user.addActionListener(new java.awt.event.ActionListener() {
@@ -737,13 +763,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_aide.setForeground(new java.awt.Color(255, 255, 255));
         menu_aide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/question.png"))); // NOI18N
         menu_aide.setText("Aide");
-        menu_aide.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_aide.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menuBar.add(menu_aide);
 
         userConnected.setBackground(new java.awt.Color(0, 102, 51));
         userConnected.setForeground(new java.awt.Color(255, 204, 0));
         userConnected.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utilisateur.png"))); // NOI18N
-        userConnected.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        userConnected.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         userConnected.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         menuBar.add(userConnected);
 
@@ -770,7 +796,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         afficherDateDuJour();
         afficherHeure();
-        menuBar.add(Box.createHorizontalGlue());       
+        menuBar.add(Box.createHorizontalGlue());  
+        menu_agent.setBackground(Color.black);
+        
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -971,9 +999,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.add(statAgent).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void menu_importagent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_importagent1ActionPerformed
+    private void menu_modifieragentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_modifieragentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menu_importagent1ActionPerformed
+        panneauBureau.removeAll();
+        InterfaceModifierAgent modifAgent = new InterfaceModifierAgent();
+        modifAgent.setSize(1900, 760);
+        panneauBureau.add(modifAgent).setVisible(true);
+    }//GEN-LAST:event_menu_modifieragentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1068,8 +1100,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menu_fichier;
     public static javax.swing.JMenuItem menu_fonction;
     private javax.swing.JMenuItem menu_importagent;
-    private javax.swing.JMenuItem menu_importagent1;
     public static javax.swing.JMenuItem menu_ministere;
+    public static javax.swing.JMenuItem menu_modifieragent;
     private javax.swing.JMenuItem menu_moncompte;
     public static javax.swing.JMenu menu_paramavance;
     public static javax.swing.JMenu menu_paramavance1;

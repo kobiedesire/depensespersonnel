@@ -38,12 +38,20 @@ public class ContractuelController {
     ///calcul du salaire indiciere d'un agent, de l'indeminité de residence et mise à jour de la ligne 661
    // public static int pointIndiciare = 2331;
     public static void calculSalIndiciaire() {
+       int chargeMilitaire = 0;
         if (InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().trim().isBlank()) {
             InterfaceAgentContractuel.ligne661.setText("");
         } else {
             int salIndicaire = Integer.parseInt(InterfaceAgentContractuel.boxSalaireIndicMensuel.getText().trim()); //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
-            int soldeLigne661 = salIndicaire; //calcul du total de la ligne 661
-            System.out.println(soldeLigne661);
+          
+            if (InterfaceAgentContractuel.boxChargeMilitaire.getText().isBlank()) {
+                chargeMilitaire = 0;
+            } else {
+                chargeMilitaire = Integer.parseInt(InterfaceAgentContractuel.boxChargeMilitaire.getText());
+            }
+
+            int soldeLigne661 = salIndicaire + (chargeMilitaire) ; //calcul du total de la ligne 661
+          //  System.out.println(soldeLigne661);
             InterfaceAgentContractuel.ligne661.setValue((soldeLigne661));
         }
     }
@@ -86,7 +94,7 @@ public class ContractuelController {
 
     //calcul de la somme des indeminités de logement, d'astreinte, de responsabilité, de technicité et vestimentaire et mise à jour de la ligne 663
     public static void calculIndemnite() {
-        double indLogement = 0, indAstreinte = 0, indVestimentaire = 0, indReponsabilité = 0, indTechnicite = 0;
+        double indLogement = 0, indAstreinte = 0, indVestimentaire = 0, indReponsabilité = 0, indTechnicite = 0, indSpecifique = 0;
         if (InterfaceAgentContractuel.boxIndeminiteLogement.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteAstreinte.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteVestimentaire.getText().isBlank()
                 && InterfaceAgentContractuel.boxIndeminiteResponsabilite.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteTechnicite.getText().isBlank()) {
             InterfaceAgentContractuel.ligne663.setText("");
@@ -119,11 +127,17 @@ public class ContractuelController {
             } else {
                 indTechnicite = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteTechnicite.getText());
             }
+            
+             if (InterfaceAgentContractuel.boxIndeminiteSpecifique.getText().isBlank()) {
+                indSpecifique = 0;
+            } else {
+                indSpecifique = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteSpecifique.getText());
+            }
 
            // String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
 //            double aCoefficient = Double.parseDouble(coeffSaisie);
 //calcul de la somme des indeminités            
-            double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire) + (indReponsabilité) + (indTechnicite);
+            double sommeIndeminite = (indLogement) + (indAstreinte) + (indVestimentaire) + (indReponsabilité) + (indTechnicite) + (indSpecifique);
             InterfaceAgentContractuel.ligne663.setValue(Math.round(sommeIndeminite));//mise a jour de ligne 663
 
         }
@@ -147,8 +161,8 @@ public class ContractuelController {
 
     //calcul de la somme autres dépenses et mise à jour de la ligne 669    
     public static void calculAutreDepenses() {
-        double indSpecifique = 0, autreIndemnite = 0, chargeMilitaire = 0;
-        if (InterfaceAgentContractuel.boxAutreIndeminite.getText().isBlank() && InterfaceAgentContractuel.boxChargeMilitaire.getText().isBlank() && InterfaceAgentContractuel.boxIndeminiteSpecifique.getText().isBlank()) {
+        double  autreIndemnite = 0 ;
+        if (InterfaceAgentContractuel.boxAutreIndeminite.getText().isBlank() && InterfaceAgentContractuel.boxChargeMilitaire.getText().isBlank()) {
             InterfaceAgentContractuel.ligne669.setText("");
         } else {
             if (InterfaceAgentContractuel.boxAutreIndeminite.getText().isBlank()) {
@@ -157,21 +171,12 @@ public class ContractuelController {
                 autreIndemnite = Integer.parseInt(InterfaceAgentContractuel.boxAutreIndeminite.getText());
             }
 
-            if (InterfaceAgentContractuel.boxChargeMilitaire.getText().isBlank()) {
-                chargeMilitaire = 0;
-            } else {
-                chargeMilitaire = Integer.parseInt(InterfaceAgentContractuel.boxChargeMilitaire.getText());
-            }
-
-            if (InterfaceAgentContractuel.boxIndeminiteSpecifique.getText().isBlank()) {
-                indSpecifique = 0;
-            } else {
-                indSpecifique = Integer.parseInt(InterfaceAgentContractuel.boxIndeminiteSpecifique.getText());
-            }
+            
+           
            // String coeffSaisie = InterfaceAgentContractuel.coefficientStruc.getText().replace(",", ".");
             //double aCoefficient = Double.parseDouble(coeffSaisie);    
             //calcul de la somme des indeminités            
-            double sommeAutreDepense = (autreIndemnite) + (chargeMilitaire) + (indSpecifique);
+            double sommeAutreDepense = (autreIndemnite) ;
             InterfaceAgentContractuel.ligne669.setValue(Math.round(sommeAutreDepense));//mise a jour de ligne 669
         }
 
