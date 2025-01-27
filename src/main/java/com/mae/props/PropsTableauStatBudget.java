@@ -11,7 +11,7 @@ import java.awt.*;
  *
  * @author kobie
  */
-public class PropsTableau implements TableCellRenderer {
+public class PropsTableauStatBudget implements TableCellRenderer {
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -19,8 +19,8 @@ public class PropsTableau implements TableCellRenderer {
         headerLabel.setOpaque(true);
         headerLabel.setBackground(new java.awt.Color(0, 102, 51));
         headerLabel.setForeground(Color.WHITE);
-        headerLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-        headerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         return headerLabel;
     }
 

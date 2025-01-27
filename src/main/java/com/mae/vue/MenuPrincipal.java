@@ -125,8 +125,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         menu__stattistiques = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        menu_statagents = new javax.swing.JMenuItem();
         jSeparator16 = new javax.swing.JPopupMenu.Separator();
+        menu_statbudget = new javax.swing.JMenuItem();
+        jSeparator21 = new javax.swing.JPopupMenu.Separator();
         menu_paramavance1 = new javax.swing.JMenu();
         menu_modifieragent = new javax.swing.JMenuItem();
         jSeparator20 = new javax.swing.JPopupMenu.Separator();
@@ -657,21 +659,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu__stattistiques.setText("Statistiques");
         menu__stattistiques.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        jMenuItem7.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuItem7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jMenuItem7.setForeground(new java.awt.Color(255, 204, 0));
-        jMenuItem7.setText("Effectif des agents");
-        jMenuItem7.setToolTipText("Effectif des agents");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        menu_statagents.setBackground(new java.awt.Color(0, 0, 0));
+        menu_statagents.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_statagents.setForeground(new java.awt.Color(255, 204, 0));
+        menu_statagents.setText("Statistiques sur les agents");
+        menu_statagents.setToolTipText("Statistiques sur les agents");
+        menu_statagents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                menu_statagentsActionPerformed(evt);
             }
         });
-        menu__stattistiques.add(jMenuItem7);
+        menu__stattistiques.add(menu_statagents);
 
         jSeparator16.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator16.setForeground(new java.awt.Color(255, 255, 255));
         menu__stattistiques.add(jSeparator16);
+
+        menu_statbudget.setBackground(new java.awt.Color(0, 0, 0));
+        menu_statbudget.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_statbudget.setForeground(new java.awt.Color(255, 204, 0));
+        menu_statbudget.setText("Statistiques sur le budget");
+        menu_statbudget.setToolTipText("Statistiques sur le budget");
+        menu_statbudget.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_statbudgetActionPerformed(evt);
+            }
+        });
+        menu__stattistiques.add(menu_statbudget);
+
+        jSeparator21.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator21.setForeground(new java.awt.Color(255, 255, 255));
+        menu__stattistiques.add(jSeparator21);
 
         menuBar.add(menu__stattistiques);
 
@@ -991,13 +1009,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_deconnexionActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void menu_statagentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_statagentsActionPerformed
         // TODO add your handling code here:
         panneauBureau.removeAll();
         InterfaceStatistiqueAgent statAgent = new InterfaceStatistiqueAgent();
         statAgent.setSize(1900, 760);
         panneauBureau.add(statAgent).setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_menu_statagentsActionPerformed
 
     private void menu_modifieragentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_modifieragentActionPerformed
         // TODO add your handling code here:
@@ -1006,6 +1024,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         modifAgent.setSize(1900, 760);
         panneauBureau.add(modifAgent).setVisible(true);
     }//GEN-LAST:event_menu_modifieragentActionPerformed
+
+    private void menu_statbudgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_statbudgetActionPerformed
+        // TODO add your handling code here:
+        panneauBureau.removeAll();
+        InterfaceStatistiqueBudget statAgent = new InterfaceStatistiqueBudget();
+        statAgent.setSize(1900, 760);
+        panneauBureau.add(statAgent).setVisible(true);
+    }//GEN-LAST:event_menu_statbudgetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1062,7 +1088,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator10;
@@ -1077,6 +1102,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator19;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator20;
+    private javax.swing.JPopupMenu.Separator jSeparator21;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
@@ -1107,6 +1133,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenu menu_paramavance1;
     private javax.swing.JMenu menu_parametre;
     private javax.swing.JMenuItem menu_profils;
+    private javax.swing.JMenuItem menu_statagents;
+    private javax.swing.JMenuItem menu_statbudget;
     public static javax.swing.JMenuItem menu_structure;
     private javax.swing.JMenuItem menu_user;
     private javax.swing.JMenu menu_utilisateurs;

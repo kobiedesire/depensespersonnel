@@ -4,9 +4,11 @@
  */
 package com.mae.vue;
 
-import com.mae.controller.StatAgentController;
+import com.mae.controller.StatBudgetController;
+import com.mae.controller.StatBudgetExportPDFController;
 import com.mae.controller.StatExportPDFController;
 import com.mae.props.PropsTableau;
+import com.mae.props.PropsTableauStatBudget;
 import java.awt.event.KeyEvent;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
@@ -16,12 +18,12 @@ import java.awt.event.*;
  *
  * @author kobie
  */
-public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
+public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
 
     /**
      *
      */
-    public InterfaceStatistiqueAgent() {
+    public InterfaceStatistiqueBudget() {
         initComponents();
        /* AutoCompleteDecorator.decorate(comboStructure);
         AutoCompleteDecorator.decorate(comboFonction);
@@ -37,72 +39,69 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
     
     //Lister toutes les agents********************************************************************************************************************
     public static void listerAgent() {
-        StatAgentController.listAllAgent(); // Executer la méthode d'affichage des données  
+        StatBudgetController.listAllAgent(); // Executer la méthode d'affichage des données  
+        StatBudgetController.calculBudgetMensuelAnnuel();
     }
 
     //afficher un agent
     public static void displayOneAgent() {
-        StatAgentController.rechercheAgentByMatricule();
+        StatBudgetController.rechercheAgentByMatricule();
     }
 
     //exportExcel   
     public static void exporterExcel() {
-        StatAgentController.exportExcel();
+        StatBudgetController.exportExcel();
     }
 
     //exportPDF
     public static void exporterPDF() {
-        StatExportPDFController.exportPDF();
+        StatBudgetExportPDFController.exportPDF();
     }
 
     //afficher les catégories dans le combobox
     public static void afficherCategorieCombo() {
-        StatAgentController.listCategorieInCombo();
+        StatBudgetController.listCategorieInCombo();
     }
 
     //afficher les structure dans le combobox
     public static void afficherStructureCombo() {
-        StatAgentController.listStructureInCombo();
+        StatBudgetController.listStructureInCombo();
     }
    
-
     //afficher les emploi dans le combobox
     public static void afficherEmploiCombo() {
-        StatAgentController.listEmploiInCombo();
+        StatBudgetController.listEmploiInCombo();
     }
 
     //lister les agents par sexe
     public static void listerAgentBySexe() {
-        StatAgentController.rechercheAgentBySexe();
+        StatBudgetController.rechercheAgentBySexe();
+        StatBudgetController.calculBudgetMensuelAnnuel();
     }
 
     //lister les agents par categorie
     public static void listerAgentByCategorie() {
-        StatAgentController.rechercheAgentByCategorie();
+        StatBudgetController.rechercheAgentByCategorie();
+        StatBudgetController.calculBudgetMensuelAnnuel();
     }
     
      //lister les agents par structure
     public static void listerAgentByStructure() {
-        StatAgentController.rechercheAgentByStructure();
+        StatBudgetController.rechercheAgentByStructure();
+        StatBudgetController.calculBudgetMensuelAnnuel();
     }
     
      //lister les agents par type d'agent
     public static void listerAgentByTypeAgent() {
-        StatAgentController.rechercheAgentByTypeAgent();
+        StatBudgetController.rechercheAgentByTypeAgent();
+        StatBudgetController.calculBudgetMensuelAnnuel();
     }
     
      //lister les agents par emploi
     public static void listerAgentByEmploi() {
-        StatAgentController.rechercheAgentByEmploi();
+        StatBudgetController.rechercheAgentByEmploi();
+        StatBudgetController.calculBudgetMensuelAnnuel();
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 
         //Fonction pour l'enregistrement d'un agent********************************************************************************************************************
@@ -110,40 +109,40 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
 
     //Lister toutes les agents********************************************************************************************************************
     public static void listerAgent() {
-        StatAgentController.listAll(); // Executer la méthode d'affichage des données  
+        StatBudgetController.listAll(); // Executer la méthode d'affichage des données  
     }
 
     
 
     //afficher les informations d'un agents dans les champs
     public static void displayOneAgenntToUpdateOrDelete() {
-        StatAgentController.displayAgentInBox();
+        StatBudgetController.displayAgentInBox();
 
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 661********************************************************************************************************************
     public static void afficherListeLigne661IdProgramme() {
-        StatAgentController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
+        StatBudgetController.afficherIdProgrammeListeSelectLigne661(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 663********************************************************************************************************************
     public static void afficherListeLigne663IdProgramme() {
-        StatAgentController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
+        StatBudgetController.afficherIdProgrammeListeSelectLigne663(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 664********************************************************************************************************************
     public static void afficherListeLigne664IdProgramme() {
-        StatAgentController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
+        StatBudgetController.afficherIdProgrammeListeSelectLigne664(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 666********************************************************************************************************************
     public static void afficherListeLigne666IdProgramme() {
-        StatAgentController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
+        StatBudgetController.afficherIdProgrammeListeSelectLigne666(); // Executer la méthode d'affichage des données  
     }
 
     //Afficher lel'id du programme de la structure dans le tableau de la liste des lignes 669********************************************************************************************************************
     public static void afficherListeLigne669IdProgramme() {
-        StatAgentController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
+        StatBudgetController.afficherIdProgrammeListeSelectLigne669(); // Executer la méthode d'affichage des données  
     }
 
    
@@ -178,6 +177,8 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         btn_rechercheragent1 = new javax.swing.JButton();
         btn_rechercheragent2 = new javax.swing.JButton();
         btn_rafraichir = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableau_total = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -185,7 +186,7 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Statistiques sur les agents");
+        setTitle("Statistiques sur le budget");
         setFrameIcon(null);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -361,17 +362,17 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         tableau_agent.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         tableau_agent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Agent", "Matricule", "Nom", "Prénom", "Structure", "Type d'agent"
+                "ID Agent", "Matricule", "Nom", "Prénom", "Structure", "Type d'agent", "Incidence mensuelle", "Incidence annuelle"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -428,6 +429,35 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
             }
         });
 
+        tableau_total.setBackground(new java.awt.Color(204, 0, 51));
+        tableau_total.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        tableau_total.setForeground(new java.awt.Color(255, 255, 255));
+        tableau_total.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null}
+            },
+            new String [] {
+                "TOTAL BUDGET MENSUEL", "TOTAL BUDGET ANNUEL"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableau_total.setGridColor(new java.awt.Color(255, 255, 255));
+        tableau_total.setRowHeight(65);
+        tableau_total.setSelectionBackground(new java.awt.Color(204, 0, 51));
+        tableau_total.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(tableau_total);
+        if (tableau_total.getColumnModel().getColumnCount() > 0) {
+            tableau_total.getColumnModel().getColumn(0).setResizable(false);
+            tableau_total.getColumnModel().getColumn(1).setResizable(false);
+        }
+
         javax.swing.GroupLayout panneauPrincipalLayout = new javax.swing.GroupLayout(panneauPrincipal);
         panneauPrincipal.setLayout(panneauPrincipalLayout);
         panneauPrincipalLayout.setHorizontalGroup(
@@ -446,14 +476,19 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_rechercheragent2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2))
         );
         panneauPrincipalLayout.setVerticalGroup(
             panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panneauPrincipalLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_rechercheragent1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_rechercheragent2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -611,6 +646,10 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         listerAgent();
         JTableHeader header = tableau_agent.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
+        
+        JTableHeader header2 = tableau_total.getTableHeader();
+        header2.setDefaultRenderer(new PropsTableauStatBudget());
+         
        /*     //gestion de la mise à jour en temps réelle des champs de l'incidence mensuelle et annuelle
         InterfaceAgent.ligne661.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -777,7 +816,9 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JPanel panneauPrincipal;
     public static javax.swing.JTable tableau_agent;
+    public static javax.swing.JTable tableau_total;
     // End of variables declaration//GEN-END:variables
 }
