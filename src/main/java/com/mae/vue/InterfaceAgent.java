@@ -1422,7 +1422,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        coefficientStruc.setVisible(false);
+       // coefficientStruc.setVisible(false);
         idProg.setVisible(false);
         idLigne661.setVisible(false);
         idLigne663.setVisible(false);
@@ -1673,8 +1673,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void comboTypeAgentItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeAgentItemStateChanged
         // TODO add your handling code here:
-        afficherContribution();
-         afficherSalaireIndiciaire();
+      // afficherContribution();
+       afficherSalaireIndiciaire();
 
     }//GEN-LAST:event_comboTypeAgentItemStateChanged
 

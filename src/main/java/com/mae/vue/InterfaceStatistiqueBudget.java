@@ -179,6 +179,8 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
         btn_rafraichir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableau_total = new javax.swing.JTable();
+        statBudgetNombreEnreg = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -448,6 +450,7 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableau_total.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tableau_total.setGridColor(new java.awt.Color(255, 255, 255));
         tableau_total.setRowHeight(65);
         tableau_total.setSelectionBackground(new java.awt.Color(204, 0, 51));
@@ -458,13 +461,20 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
             tableau_total.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        statBudgetNombreEnreg.setBackground(new java.awt.Color(0, 0, 204));
+        statBudgetNombreEnreg.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        statBudgetNombreEnreg.setForeground(new java.awt.Color(255, 255, 255));
+        statBudgetNombreEnreg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        statBudgetNombreEnreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel5.setText("Total Lignes Trouvées : ");
+
         javax.swing.GroupLayout panneauPrincipalLayout = new javax.swing.GroupLayout(panneauPrincipal);
         panneauPrincipal.setLayout(panneauPrincipalLayout);
         panneauPrincipalLayout.setHorizontalGroup(
             panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panneauPrincipalLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1))
             .addGroup(panneauPrincipalLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -479,6 +489,15 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2))
+            .addGroup(panneauPrincipalLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panneauPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(statBudgetNombreEnreg, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)))
         );
         panneauPrincipalLayout.setVerticalGroup(
             panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,14 +505,18 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statBudgetNombreEnreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_rechercheragent1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_rechercheragent2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -812,12 +835,14 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JPanel panneauPrincipal;
+    public static javax.swing.JTextField statBudgetNombreEnreg;
     public static javax.swing.JTable tableau_agent;
     public static javax.swing.JTable tableau_total;
     // End of variables declaration//GEN-END:variables

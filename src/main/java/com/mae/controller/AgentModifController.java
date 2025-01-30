@@ -82,6 +82,7 @@ import com.itextpdf.layout.element.Paragraph;
 
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.mae.vue.InterfaceElementsDeSalaire;
 
 /**
  *
@@ -235,6 +236,99 @@ public class AgentModifController {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
 
+    }
+    
+     //afficher les données de salaires dans une nouvelles fenetre
+    public static void afficherInterfaceElementDeSalaire() {
+         String matA = (InterfaceModifierAgent.rechercheMatricule.getText().trim());
+        if (matA.isBlank()) {
+          //  InterfaceModifierAgent.rechercheMatricule.setText("");
+            JOptionPane.showMessageDialog(null, "Saisir le matricule de l'agent.");
+        } else {
+           // String matA = (InterfaceModifierAgent.rechercheMatricule.getText());
+            // System.out.println(idP);
+             // Ajout de la table dans un JScrollPane
+        JScrollPane scrollPane = new JScrollPane(InterfaceElementsDeSalaire.tableau_elementSalaire);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        
+            InterfaceElementsDeSalaire iAfficheSalaire = new InterfaceElementsDeSalaire(new javax.swing.JFrame(), true);
+            iAfficheSalaire.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
+            iAfficheSalaire.matriculeAgent.setText(matA);
+            iAfficheSalaire.add(scrollPane, BorderLayout.CENTER);
+            iAfficheSalaire.setVisible(true);
+
+        }
+    }
+    
+    
+     private static boolean res, yn;
+    private static String tab[][];
+    //Selectionner toutes les element de salaire d'un agent en fonction de son matricule    
+    private static final String querySelectSalaire = "SELECT * FROM agent WHERE matriculeAgent = ?";
+
+    public static void afficherElementDeSalaire() {
+        String matAgent = InterfaceElementsDeSalaire.matriculeAgent.getText();
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectSalaire)) {
+            preparedStatement.setString(1, matAgent);
+            ResultSet res = preparedStatement.executeQuery();
+            res.last();
+            tab = new String[res.getRow()][16];
+            res.beforeFirst();
+            yn = false;
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceElementsDeSalaire.tableau_elementSalaire.getModel();
+            while (InterfaceElementsDeSalaire.tableau_elementSalaire.getRowCount() > 0) {
+                tablemodel.removeRow(0);
+            }
+
+            for (String[] tab1 : tab) {
+                res.next();
+                Object[] objects = new Object[16];
+                objects[0] = res.getString("idAgent");
+                objects[1] = res.getString("matriculeAgent");
+                objects[2] = res.getString("indiceAgent");
+                objects[3] = res.getString("salaireIndiciaireAgent");
+                objects[4] = res.getString("indemniteResidence");
+                objects[5] = res.getString("indemniteAstreinte");
+                objects[6] = res.getString("indemniteTechnicite");
+                objects[7] = res.getString("indemniteResponsabilite");
+                objects[8] = res.getString("indemniteVestimentaire");
+                objects[9] = res.getString("indemniteLogement");
+                objects[10] = res.getString("indemniteSpecifique");
+                objects[11] = res.getString("autreIndemnite");
+                objects[12] = res.getString("chargeMilitaire");
+                objects[13] = res.getString("contributionCARFO");
+                objects[14] = res.getString("contributionCNSS");
+                objects[15] = res.getString("allocationFamiliale");                
+                
+                tablemodel.addRow(objects);
+                tab1[0] = res.getString("idAgent");
+                tab1[1] = res.getString("matriculeAgent");
+                tab1[2] = res.getString("indiceAgent");
+                tab1[3] = res.getString("salaireIndiciaireAgent");
+                tab1[4] = res.getString("indemniteResidence");
+                tab1[5] = res.getString("indemniteAstreinte");
+                tab1[6] = res.getString("indemniteTechnicite");
+                tab1[7] = res.getString("indemniteResponsabilite");
+                tab1[8] = res.getString("indemniteVestimentaire");
+                tab1[9] = res.getString("indemniteLogement");
+                tab1[10] = res.getString("indemniteSpecifique");
+                tab1[11] = res.getString("autreIndemnite");
+                tab1[12] = res.getString("chargeMilitaire");
+                tab1[13] = res.getString("contributionCARFO");
+                tab1[14] = res.getString("contributionCNSS");
+                tab1[15] = res.getString("allocationFamiliale");
+                
+                yn = true;
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
     }
     
     

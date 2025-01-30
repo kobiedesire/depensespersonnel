@@ -84,6 +84,13 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
 
     }
     
+      //afficher les informations d'un agents dans les champs
+    public static void displaySalaire() {
+       // AgentModifController.imprimerFicheAgent();
+          AgentModifController.afficherInterfaceElementDeSalaire();
+
+    }
+    
     
     
     private static int rep;
@@ -530,6 +537,7 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
         btn_nouveau = new javax.swing.JButton();
         btn_modifier = new javax.swing.JButton();
         btn_modifier1 = new javax.swing.JButton();
+        btn_afficherSalaire = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -749,11 +757,22 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
         btn_modifier1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/export_pdf.png"))); // NOI18N
         btn_modifier1.setText("Générer la fiche");
         btn_modifier1.setToolTipText("Générer la fiche");
-        btn_modifier1.setActionCommand("Générer la fiche");
         btn_modifier1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
         btn_modifier1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modifier1ActionPerformed(evt);
+            }
+        });
+
+        btn_afficherSalaire.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_afficherSalaire.setForeground(new java.awt.Color(0, 102, 51));
+        btn_afficherSalaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salaire.png"))); // NOI18N
+        btn_afficherSalaire.setText("Voir les éléments de salaire");
+        btn_afficherSalaire.setToolTipText("Voir les éléments de salaire");
+        btn_afficherSalaire.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
+        btn_afficherSalaire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_afficherSalaireActionPerformed(evt);
             }
         });
 
@@ -768,6 +787,8 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
                 .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_modifier1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_afficherSalaire, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -777,7 +798,8 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_nouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_modifier1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_modifier1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_afficherSalaire, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -1066,6 +1088,12 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
         imprimerAgent();
     }//GEN-LAST:event_btn_modifier1ActionPerformed
 
+    private void btn_afficherSalaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_afficherSalaireActionPerformed
+        // TODO add your handling code here:
+        displaySalaire();
+        
+    }//GEN-LAST:event_btn_afficherSalaireActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JFormattedTextField boxDateNaissAg;
@@ -1075,6 +1103,7 @@ public class InterfaceModifierAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField boxMatriculeAg;
     public static javax.swing.JTextField boxNomAg;
     public static javax.swing.JTextField boxPrenomAg;
+    private javax.swing.JButton btn_afficherSalaire;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_modifier1;
     private javax.swing.JButton btn_nouveau;

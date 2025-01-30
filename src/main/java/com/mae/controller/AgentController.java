@@ -82,8 +82,8 @@ public class AgentController {
                     double salIndicaireMilitaire = ((indiceSMilitaire * pointIndiciare) / 12) * aCoefficientMilitaire; //salaire indiciaire mensuel = (indice*point /12) * coefficient de correction
                     double indeminiteResidenceMilitaire = (salIndicaireMilitaire * 10) / 100;//calcul de l'indeminité de residence
                     double ichargeMilitaire = (salIndicaireMilitaire * 35) / 100;//calcul de la charge militaire
-                    double indemResidence = Integer.parseInt(InterfaceAgent.boxIndResidence.getText()); //recuperation de la valeur 0 de l'indeminite de residence
-                    double soldeLigne611M = salIndicaireMilitaire + indemResidence + ichargeMilitaire; //calcul du total de la ligne 661
+                  //  double indemResidence = Integer.parseInt(InterfaceAgent.boxIndResidence.getText()); //recuperation de la valeur 0 de l'indeminite de residence
+                    double soldeLigne611M = salIndicaireMilitaire + indeminiteResidenceMilitaire + ichargeMilitaire; //calcul du total de la ligne 661
                     InterfaceAgent.boxSalaireIndicMensuel.setValue(Math.round(salIndicaireMilitaire));//affichage du solde indiciaire
                     InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidenceMilitaire));//affichage de l'indeminité de residence
                     InterfaceAgent.boxChargeMilitaire.setValue(Math.round(ichargeMilitaire));//affichage de l'indeminité de residence
@@ -116,30 +116,45 @@ public class AgentController {
                 case "Fonctionnaire":
                     String coeffSaisie = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
                     double aCoeff = Double.parseDouble(coeffSaisie);
-                    if(aCoeff>1.0)
-                    {
-                    double contriCARFO = ((salIndicaire * tauxCARFO) / 100) / aCoeff;
-                    InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
-                    InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
-                    InterfaceAgent.boxContributionCNSS.setText("");
-                    break;
-                    
+                    if (aCoeff > 1.0) {
+                        double contriCARFO = ((salIndicaire * tauxCARFO) / 100) / aCoeff;
+                        InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
+                        InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
+                        InterfaceAgent.boxContributionCNSS.setText("");
+                        break;
+
+                    } else {
+                        double contriCARFO = (salIndicaire * tauxCARFO) / 100;
+                        InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
+                        InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
+                        InterfaceAgent.boxContributionCNSS.setText("");
+                        break;
                     }
-                    else{
-                    double contriCARFO = (salIndicaire * tauxCARFO) / 100;
-                    InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO));
-                    InterfaceAgent.ligne664.setValue(Math.round(contriCARFO));
-                    InterfaceAgent.boxContributionCNSS.setText("");
-                    break;
-                    }
-                case "Contractuel":
+                case "Militaire":
                     //int coeffC = 1;
-                    double contriCNSS = (salIndicaire * tauxCNSS) / 100;
+                    /*double contriCNSS = (salIndicaire * tauxCNSS) / 100;
                     InterfaceAgent.boxContributionCNSS.setValue(Math.round(contriCNSS));
                     InterfaceAgent.ligne664.setValue(Math.round(contriCNSS));
                     InterfaceAgent.boxContributionCARFO.setText("");
                    // InterfaceAgent.coefficientStruc.setText("1");
-                    break;
+                    break;*/
+                   // InterfaceAgent.coefficientStruc.setText("0,0");
+                    String coeffSaisie2 = InterfaceAgent.coefficientStruc.getText().replace(",", ".");
+                    double aCoeff2 = Double.parseDouble(coeffSaisie2);
+                    if (aCoeff2 > 1.0) {
+                        double contriCARFO2 = ((salIndicaire * tauxCARFO) / 100) / aCoeff2;
+                        InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO2));
+                        InterfaceAgent.ligne664.setValue(Math.round(contriCARFO2));
+                        InterfaceAgent.boxContributionCNSS.setText("");
+                        break;
+
+                    } else {
+                        double contriCARFO2 = (salIndicaire * tauxCARFO) / 100;
+                        InterfaceAgent.boxContributionCARFO.setValue(Math.round(contriCARFO2));
+                        InterfaceAgent.ligne664.setValue(Math.round(contriCARFO2));
+                        InterfaceAgent.boxContributionCNSS.setText("");
+                        break;
+                    }
             }
 
         }
@@ -219,7 +234,7 @@ public class AgentController {
 
     //calcul de la somme autres dépenses et mise à jour de la ligne 669    
     public static void calculAutreDepenses() {
-        double  autreIndemnite = 0, chargeMilitaire = 0;
+        double  autreIndemnite = 0;
         if (InterfaceAgent.boxAutreIndeminite.getText().isBlank()) {
             InterfaceAgent.ligne669.setText("");
         } else {

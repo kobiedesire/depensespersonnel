@@ -29,7 +29,7 @@ public class StatAgentController {
     private static String tab[][];
 
     /*Lister tous les agents Central + MDCPC*/
-    private static final String querySelectAllAgent = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent ";
+    private static final String querySelectAllAgent = "SELECT  idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent ";
 
     public static void listAllAgent() {
         //String typeA = InterfaceAgent.comboTypeAgent.getSelectedItem().toString();
@@ -37,6 +37,7 @@ public class StatAgentController {
             ResultSet res = preparedStatement.executeQuery();
             res.last();
             tab = new String[res.getRow()][6];
+            InterfaceStatistiqueAgent.statNombreEnreg.setText(String.valueOf(res.getRow()));
             res.beforeFirst();
             yn = false;
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
@@ -60,7 +61,9 @@ public class StatAgentController {
                 tab[k][4] = res.getString("structureAgent");
                 tab[k][5] = res.getString("typeAgent");
                 yn = true;
-            }
+            } 
+          
+           
             res.close();
             preparedStatement.close();
             connection.close();
@@ -79,6 +82,7 @@ public class StatAgentController {
         if (matriculeA.isBlank()) {
             JOptionPane.showMessageDialog(null, "Saisir un matricule !! ");
             InterfaceStatistiqueAgent.tableau_agent.removeAll();
+            InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
             //System.out.println(nbreligne);
         } else {
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentByMatricule)) {
@@ -87,6 +91,7 @@ public class StatAgentController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][6];
+                    InterfaceStatistiqueAgent.statNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
@@ -116,6 +121,7 @@ public class StatAgentController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -248,6 +254,7 @@ public class StatAgentController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
             while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
             }
 
         } else {
@@ -257,6 +264,7 @@ public class StatAgentController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][6];
+                    InterfaceStatistiqueAgent.statNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
@@ -286,6 +294,7 @@ public class StatAgentController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -313,6 +322,7 @@ public class StatAgentController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
             while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
             }
 
         } else {
@@ -322,6 +332,7 @@ public class StatAgentController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][6];
+                    InterfaceStatistiqueAgent.statNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
@@ -351,6 +362,7 @@ public class StatAgentController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -378,6 +390,8 @@ public class StatAgentController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
             while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
+                
             }
 
         } else {
@@ -387,11 +401,13 @@ public class StatAgentController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][6];
+                    InterfaceStatistiqueAgent.statNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        //InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
                     }
                     for (int k = 0; k < tab.length; k++) {
                         res.next();
@@ -416,6 +432,7 @@ public class StatAgentController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -444,6 +461,8 @@ public class StatAgentController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
             while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
+                
             }
 
         } else {
@@ -453,6 +472,7 @@ public class StatAgentController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][6];
+                    InterfaceStatistiqueAgent.statNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
@@ -482,6 +502,7 @@ public class StatAgentController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -509,6 +530,7 @@ public class StatAgentController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
             while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
             }
 
         } else {
@@ -518,11 +540,14 @@ public class StatAgentController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][6];
+                    InterfaceStatistiqueAgent.statNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        
+                       
                     }
                     for (int k = 0; k < tab.length; k++) {
                         res.next();
@@ -547,6 +572,7 @@ public class StatAgentController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgent.tableau_agent.getModel();
                     while (InterfaceStatistiqueAgent.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueAgent.statNombreEnreg.setText("0");
                     }
                 }
                 res.close();

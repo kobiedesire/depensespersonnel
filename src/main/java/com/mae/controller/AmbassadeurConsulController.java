@@ -389,7 +389,7 @@ public class AmbassadeurConsulController {
 
     public static void listStructureCombo() {
         String ambaStruct = "Ambassade";
-        String miperStruct = "Mission Permanente";
+        String miperStruct = "Mission permamente";
         String consulStruct = "Consulat";
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectStructure)) {
             preparedStatement.setString(1, ambaStruct);

@@ -41,6 +41,7 @@ public class StatBudgetController {
             ResultSet res = preparedStatement.executeQuery();
             res.last();
             tab = new String[res.getRow()][8];
+            InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
             res.beforeFirst();
             yn = false;
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
@@ -94,6 +95,7 @@ public class StatBudgetController {
         if (matriculeA.isBlank()) {
             JOptionPane.showMessageDialog(null, "Saisir un matricule !! ");
             InterfaceStatistiqueBudget.tableau_agent.removeAll();
+            InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
             //System.out.println(nbreligne);
         } else {
             try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectOneAgentByMatricule)) {
@@ -102,6 +104,7 @@ public class StatBudgetController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][8];
+                    InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
@@ -136,6 +139,7 @@ public class StatBudgetController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
                     while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -267,6 +271,7 @@ public class StatBudgetController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
             while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
             }
 
         } else {
@@ -276,6 +281,7 @@ public class StatBudgetController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][8];
+                    InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
@@ -309,6 +315,7 @@ public class StatBudgetController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
                     while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                        InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -337,6 +344,7 @@ public class StatBudgetController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
             while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                 InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
             }
 
         } else {
@@ -346,6 +354,7 @@ public class StatBudgetController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][8];
+                    InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
@@ -379,6 +388,7 @@ public class StatBudgetController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
                     while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                         InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -407,6 +417,7 @@ public class StatBudgetController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
             while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                 InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
             }
 
         } else {
@@ -416,6 +427,7 @@ public class StatBudgetController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][8];
+                    InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
@@ -449,6 +461,7 @@ public class StatBudgetController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
                     while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                         InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -477,6 +490,7 @@ public class StatBudgetController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
             while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                 InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
             }
 
         } else {
@@ -486,6 +500,7 @@ public class StatBudgetController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][8];
+                    InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
@@ -519,6 +534,7 @@ public class StatBudgetController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
                     while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                         InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
                     }
                 }
                 res.close();
@@ -547,6 +563,7 @@ public class StatBudgetController {
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
             while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
+                 InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
             }
 
         } else {
@@ -556,6 +573,7 @@ public class StatBudgetController {
                 if (res.next()) {
                     res.last();
                     tab = new String[res.getRow()][8];
+                    InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
                     res.beforeFirst();
                     yn = false;
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
@@ -589,6 +607,7 @@ public class StatBudgetController {
                     DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
                     while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
                         tablemodel.removeRow(0);
+                         InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
                     }
                 }
                 res.close();

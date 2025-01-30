@@ -109,7 +109,7 @@ public class StatExportPDFController {
                 .setMultipliedLeading(2.5f); // Interligne de 2.5x
  
                 // Ajout d'un titre
-                Paragraph title = new Paragraph("Effectif des agents")
+                Paragraph title = new Paragraph("EFFECTIF DES AGENTS")
                         .setFont(police)
                         .setFontSize(16)
                         .setTextAlignment(TextAlignment.CENTER)
@@ -154,8 +154,23 @@ public class StatExportPDFController {
                     }
                 }       
                 
+                
+                // Créer un tableau pour afficher le nombre de resultats
+                       Table tableResultat = new Table(new float[]{100, 50}); // Colonnes ajustables
+                       PdfFont police2 = PdfFontFactory.createFont(StandardFonts.COURIER_BOLD);
+                       tableResultat.setAutoLayout(); // Ajuster la largeur du tableau au document
+                       tableResultat.setTextAlignment(TextAlignment.LEFT);
+                       tableResultat.setBorder(com.itextpdf.layout.borders.Border.NO_BORDER);
+                       
+                       String nbResult = (InterfaceStatistiqueAgent.statNombreEnreg.getText());                
+                       tableResultat.addCell(new Cell().add(new Paragraph("NOMBRE D'ENREGISTREMENTS : ")).setBorder(Border.NO_BORDER).setFont(police2));
+                       tableResultat.addCell(new Cell().add(new Paragraph(nbResult)).setBorder(Border.NO_BORDER).setFont(police));
+                 // Ajouter le tableau au document
+                       document.add(tableResultat);
+                
+                
                 // Ajouter un gestionnaire d'événements pour le pied de page
-                pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new PiedDePageController());               
+                pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new PiedDePageController());          
                 
                
                 document.add(pdfTable);

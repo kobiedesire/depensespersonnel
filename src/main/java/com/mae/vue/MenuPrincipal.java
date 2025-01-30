@@ -132,6 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_paramavance1 = new javax.swing.JMenu();
         menu_modifieragent = new javax.swing.JMenuItem();
         jSeparator20 = new javax.swing.JPopupMenu.Separator();
+        menu_informationsfinancieres = new javax.swing.JMenuItem();
         menu_paramavance = new javax.swing.JMenu();
         menu_importagent = new javax.swing.JMenuItem();
         jSeparator15 = new javax.swing.JPopupMenu.Separator();
@@ -272,7 +273,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armoirie2.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armoirieBF2.jpg"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Script MT Bold", 0, 60)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 0, 0));
@@ -702,8 +703,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_modifieragent.setBackground(new java.awt.Color(0, 0, 0));
         menu_modifieragent.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_modifieragent.setForeground(new java.awt.Color(255, 204, 0));
-        menu_modifieragent.setText("Visualiser un agent");
-        menu_modifieragent.setToolTipText("Visualiser un agent");
+        menu_modifieragent.setText("Informations administratives d'un agent");
+        menu_modifieragent.setToolTipText("Informations administratives d'un agent");
         menu_modifieragent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menu_modifieragentActionPerformed(evt);
@@ -714,6 +715,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator20.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
         menu_paramavance1.add(jSeparator20);
+
+        menu_informationsfinancieres.setBackground(new java.awt.Color(0, 0, 0));
+        menu_informationsfinancieres.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_informationsfinancieres.setForeground(new java.awt.Color(255, 204, 0));
+        menu_informationsfinancieres.setText("Informations financières d'un agent");
+        menu_informationsfinancieres.setToolTipText("Informations financières d'un agent");
+        menu_informationsfinancieres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_informationsfinancieresActionPerformed(evt);
+            }
+        });
+        menu_paramavance1.add(menu_informationsfinancieres);
 
         menuBar.add(menu_paramavance1);
 
@@ -816,6 +829,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         afficherHeure();
         menuBar.add(Box.createHorizontalGlue());  
         menu_agent.setBackground(Color.black);
+        menu_importagent.setVisible(false);
+        btn_moncompte.setVisible(false);
+        btn_deconnexion.setVisible(false);
         
         
     }//GEN-LAST:event_formWindowActivated
@@ -1033,6 +1049,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.add(statAgent).setVisible(true);
     }//GEN-LAST:event_menu_statbudgetActionPerformed
 
+    private void menu_informationsfinancieresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_informationsfinancieresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_informationsfinancieresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1126,6 +1146,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menu_fichier;
     public static javax.swing.JMenuItem menu_fonction;
     private javax.swing.JMenuItem menu_importagent;
+    public static javax.swing.JMenuItem menu_informationsfinancieres;
     public static javax.swing.JMenuItem menu_ministere;
     public static javax.swing.JMenuItem menu_modifieragent;
     private javax.swing.JMenuItem menu_moncompte;
