@@ -52,10 +52,11 @@ public class InterfaceElementsDeSalaire extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_elementSalaire = new javax.swing.JTable();
         matriculeAgent = new javax.swing.JFormattedTextField();
-        btn_ajout661 = new javax.swing.JButton();
+        jScrollBar1 = new javax.swing.JScrollBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Elements de salaire d'un agent");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -100,17 +101,7 @@ public class InterfaceElementsDeSalaire extends javax.swing.JDialog {
             tableau_elementSalaire.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
-        btn_ajout661.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_ajout661.setForeground(new java.awt.Color(0, 102, 51));
-        btn_ajout661.setIcon(new javax.swing.ImageIcon(getClass().getResource("/curseur.png"))); // NOI18N
-        btn_ajout661.setText("Sélectionnez la ligne");
-        btn_ajout661.setToolTipText("Sélectionnez la ligne");
-        btn_ajout661.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 1, true));
-        btn_ajout661.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ajout661ActionPerformed(evt);
-            }
-        });
+        jScrollBar1.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,39 +110,31 @@ public class InterfaceElementsDeSalaire extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(matriculeAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ajout661, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(1189, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(matriculeAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1285, Short.MAX_VALUE))
+                    .addComponent(jScrollBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1425, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1527, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(matriculeAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415, Short.MAX_VALUE)
-                .addComponent(btn_ajout661, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(156, 156, 156)
+                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(30, 30, 30)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(84, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(13, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -170,21 +153,16 @@ public class InterfaceElementsDeSalaire extends javax.swing.JDialog {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         afficherSal();
-        tableau_elementSalaire.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //tableau_elementSalaire.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-     //   matriculeAgent.setVisible(false);
+       matriculeAgent.setVisible(false);
         JTableHeader header = tableau_elementSalaire.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
     }//GEN-LAST:event_formWindowOpened
-
-    private void btn_ajout661ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajout661ActionPerformed
-         //afficherIDLigne661();
-         //this.dispose();
-    }//GEN-LAST:event_btn_ajout661ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,8 +210,8 @@ public class InterfaceElementsDeSalaire extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btn_ajout661;
     public static javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JFormattedTextField matriculeAgent;
     public static javax.swing.JTable tableau_elementSalaire;

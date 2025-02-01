@@ -238,26 +238,22 @@ public class AgentModifController {
 
     }
     
-     //afficher les données de salaires dans une nouvelles fenetre
+    //afficher les données de salaires dans une nouvelles fenetre
     public static void afficherInterfaceElementDeSalaire() {
-         String matA = (InterfaceModifierAgent.rechercheMatricule.getText().trim());
-        if (matA.isBlank()) {
-          //  InterfaceModifierAgent.rechercheMatricule.setText("");
+        String matA = (InterfaceModifierAgent.rechercheMatricule.getText().trim());
+        if (matA.isBlank() || matA.contentEquals("Saisir le numéro matricule...")) {
+            //  InterfaceModifierAgent.rechercheMatricule.setText("");
             JOptionPane.showMessageDialog(null, "Saisir le matricule de l'agent.");
         } else {
-           // String matA = (InterfaceModifierAgent.rechercheMatricule.getText());
+            // String matA = (InterfaceModifierAgent.rechercheMatricule.getText());
             // System.out.println(idP);
-             // Ajout de la table dans un JScrollPane
-        JScrollPane scrollPane = new JScrollPane(InterfaceElementsDeSalaire.tableau_elementSalaire);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        
+            // Ajout de la table dans un JScrollPane
+           
             InterfaceElementsDeSalaire iAfficheSalaire = new InterfaceElementsDeSalaire(new javax.swing.JFrame(), true);
             iAfficheSalaire.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
-            iAfficheSalaire.matriculeAgent.setText(matA);
-            iAfficheSalaire.add(scrollPane, BorderLayout.CENTER);
+            iAfficheSalaire.matriculeAgent.setText(matA);           
             iAfficheSalaire.setVisible(true);
-
+            
         }
     }
     
@@ -288,14 +284,14 @@ public class AgentModifController {
                 objects[1] = res.getString("matriculeAgent");
                 objects[2] = res.getString("indiceAgent");
                 objects[3] = res.getString("salaireIndiciaireAgent");
-                objects[4] = res.getString("indemniteResidence");
-                objects[5] = res.getString("indemniteAstreinte");
-                objects[6] = res.getString("indemniteTechnicite");
-                objects[7] = res.getString("indemniteResponsabilite");
-                objects[8] = res.getString("indemniteVestimentaire");
-                objects[9] = res.getString("indemniteLogement");
-                objects[10] = res.getString("indemniteSpecifique");
-                objects[11] = res.getString("autreIndemnite");
+                objects[4] = res.getString("indeminiteResidence");
+                objects[5] = res.getString("indeminiteAstreinte");
+                objects[6] = res.getString("indeminiteTechnicite");
+                objects[7] = res.getString("indeminiteResponsabilite");
+                objects[8] = res.getString("indeminiteVestimentaire");
+                objects[9] = res.getString("indeminiteLogement");
+                objects[10] = res.getString("indeminiteSpecifique");
+                objects[11] = res.getString("autreIndeminite");
                 objects[12] = res.getString("chargeMilitaire");
                 objects[13] = res.getString("contributionCARFO");
                 objects[14] = res.getString("contributionCNSS");
@@ -306,19 +302,18 @@ public class AgentModifController {
                 tab1[1] = res.getString("matriculeAgent");
                 tab1[2] = res.getString("indiceAgent");
                 tab1[3] = res.getString("salaireIndiciaireAgent");
-                tab1[4] = res.getString("indemniteResidence");
-                tab1[5] = res.getString("indemniteAstreinte");
-                tab1[6] = res.getString("indemniteTechnicite");
-                tab1[7] = res.getString("indemniteResponsabilite");
-                tab1[8] = res.getString("indemniteVestimentaire");
-                tab1[9] = res.getString("indemniteLogement");
-                tab1[10] = res.getString("indemniteSpecifique");
-                tab1[11] = res.getString("autreIndemnite");
+                tab1[4] = res.getString("indeminiteResidence");
+                tab1[5] = res.getString("indeminiteAstreinte");
+                tab1[6] = res.getString("indeminiteTechnicite");
+                tab1[7] = res.getString("indeminiteResponsabilite");
+                tab1[8] = res.getString("indeminiteVestimentaire");
+                tab1[9] = res.getString("indeminiteLogement");
+                tab1[10] = res.getString("indeminiteSpecifique");
+                tab1[11] = res.getString("autreIndeminite");
                 tab1[12] = res.getString("chargeMilitaire");
                 tab1[13] = res.getString("contributionCARFO");
                 tab1[14] = res.getString("contributionCNSS");
-                tab1[15] = res.getString("allocationFamiliale");
-                
+                tab1[15] = res.getString("allocationFamiliale");                
                 yn = true;
             }
             res.close();

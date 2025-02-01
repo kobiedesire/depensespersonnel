@@ -129,6 +129,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator16 = new javax.swing.JPopupMenu.Separator();
         menu_statbudget = new javax.swing.JMenuItem();
         jSeparator21 = new javax.swing.JPopupMenu.Separator();
+        menu_statparporgramme = new javax.swing.JMenuItem();
         menu_paramavance1 = new javax.swing.JMenu();
         menu_modifieragent = new javax.swing.JMenuItem();
         jSeparator20 = new javax.swing.JPopupMenu.Separator();
@@ -692,6 +693,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator21.setForeground(new java.awt.Color(255, 255, 255));
         menu__stattistiques.add(jSeparator21);
 
+        menu_statparporgramme.setBackground(new java.awt.Color(0, 0, 0));
+        menu_statparporgramme.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_statparporgramme.setForeground(new java.awt.Color(255, 204, 0));
+        menu_statparporgramme.setText("Statistiques des agents basés sur le programme");
+        menu_statparporgramme.setToolTipText("Statistiques des agents basés sur le programme");
+        menu_statparporgramme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_statparporgrammeActionPerformed(evt);
+            }
+        });
+        menu__stattistiques.add(menu_statparporgramme);
+
         menuBar.add(menu__stattistiques);
 
         menu_paramavance1.setBackground(new java.awt.Color(255, 204, 0));
@@ -1053,6 +1066,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_informationsfinancieresActionPerformed
 
+    private void menu_statparporgrammeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_statparporgrammeActionPerformed
+        // TODO add your handling code here:
+         panneauBureau.removeAll();
+        InterfaceStatistiqueAgentProgramme statAgentProgramme = new InterfaceStatistiqueAgentProgramme();
+        statAgentProgramme.setSize(1900, 760);
+        panneauBureau.add(statAgentProgramme).setVisible(true);
+    }//GEN-LAST:event_menu_statparporgrammeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1156,6 +1177,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_profils;
     private javax.swing.JMenuItem menu_statagents;
     private javax.swing.JMenuItem menu_statbudget;
+    private javax.swing.JMenuItem menu_statparporgramme;
     public static javax.swing.JMenuItem menu_structure;
     private javax.swing.JMenuItem menu_user;
     private javax.swing.JMenu menu_utilisateurs;
