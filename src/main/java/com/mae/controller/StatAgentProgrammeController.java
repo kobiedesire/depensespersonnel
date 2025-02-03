@@ -617,6 +617,82 @@ public class StatAgentProgrammeController {
             }
         }
     }
+    
+    
+    //rechercher dans un programme
+    
+    private static final String querySelectAllAgentByProgramme = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ?";
+    public static void rechercheAgentByProgramme() {
+        InterfaceStatistiqueAgentProgramme.combo_Structure.setSelectedIndex(0);
+        InterfaceStatistiqueAgentProgramme.combo_Sexe.setSelectedIndex(0);
+        InterfaceStatistiqueAgentProgramme.combo_TypeAgent.setSelectedIndex(0);        
+        InterfaceStatistiqueAgentProgramme.combo_Categorie.setSelectedIndex(0);
+        InterfaceStatistiqueAgentProgramme.combo_Emploi.setSelectedIndex(0);
+       // String emplA = InterfaceStatistiqueAgentProgramme.combo_Emploi.getSelectedItem().toString();
+        String programmeA = InterfaceStatistiqueAgentProgramme.combo_programme.getSelectedItem().toString();
+        //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
+        if (programmeA.equals(" ")) {
+            //JOptionPane.showMessageDialog(null, "Selectionnez le sexe des agent !! ");
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgentProgramme.tableau_agentprogramme.getModel();
+            while (InterfaceStatistiqueAgentProgramme.tableau_agentprogramme.getRowCount() > 0) {
+                tablemodel.removeRow(0);
+                InterfaceStatistiqueAgentProgramme.statNombreEnreg.setText("0");
+            }
+
+        } else {
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectAllAgentByProgramme)) {
+                preparedStatement.setString(1, programmeA);
+              //  preparedStatement.setString(2, emplA);
+                ResultSet res = preparedStatement.executeQuery();
+                if (res.next()) {
+                    res.last();
+                    tab = new String[res.getRow()][6];
+                    InterfaceStatistiqueAgentProgramme.statNombreEnreg.setText(String.valueOf(res.getRow()));
+                    res.beforeFirst();
+                    yn = false;
+                    DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgentProgramme.tableau_agentprogramme.getModel();
+                    while (InterfaceStatistiqueAgentProgramme.tableau_agentprogramme.getRowCount() > 0) {
+                        tablemodel.removeRow(0);
+                        
+                       
+                    }
+                    for (int k = 0; k < tab.length; k++) {
+                        res.next();
+                        Object[] objects = new Object[6];
+                        objects[0] = res.getString("idAgent");
+                        objects[1] = res.getString("matriculeAgent");
+                        objects[2] = res.getString("nomAgent");
+                        objects[3] = res.getString("prenomAgent");
+                        objects[4] = res.getString("structureAgent");
+                        objects[5] = res.getString("typeAgent");
+                        tablemodel.addRow(objects);
+                        tab[k][0] = res.getString("idAgent");
+                        tab[k][1] = res.getString("matriculeAgent");
+                        tab[k][2] = res.getString("nomAgent");
+                        tab[k][3] = res.getString("prenomAgent");
+                        tab[k][4] = res.getString("structureAgent");
+                        tab[k][5] = res.getString("typeAgent");
+                        yn = true;
+                    }
+                } else {
+                    //JOptionPane.showMessageDialog(null, "Saisir un matricule valide !! ");
+                    DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueAgentProgramme.tableau_agentprogramme.getModel();
+                    while (InterfaceStatistiqueAgentProgramme.tableau_agentprogramme.getRowCount() > 0) {
+                        tablemodel.removeRow(0);
+                        InterfaceStatistiqueAgentProgramme.statNombreEnreg.setText("0");
+                    }
+                }
+                res.close();
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+            }
+        }
+    }
+   
    
 }  
     

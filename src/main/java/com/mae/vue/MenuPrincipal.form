@@ -737,7 +737,7 @@
                 </Property>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menu_informationsfinancieres">
+            <MenuItem class="javax.swing.JMenuItem" name="menu_consulterbudget">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -748,11 +748,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="cc" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Informations financi&#xe8;res d&apos;un agent"/>
-                <Property name="toolTipText" type="java.lang.String" value="Informations financi&#xe8;res d&apos;un agent"/>
+                <Property name="text" type="java.lang.String" value="Consulter/G&#xe9;n&#xe9;rer le budget d&#xe9;taill&#xe9;"/>
+                <Property name="toolTipText" type="java.lang.String" value="Consulter/G&#xe9;n&#xe9;rer le budget d&#xe9;taill&#xe9;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_informationsfinancieresActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_consulterbudgetActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>

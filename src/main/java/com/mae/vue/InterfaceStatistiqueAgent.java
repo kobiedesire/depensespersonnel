@@ -280,7 +280,7 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         jLabel7.setText("Par emplois : ");
 
         combo_TypeAgent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        combo_TypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Fonctionnaire", "Contractuel" }));
+        combo_TypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Fonctionnaire", "Contractuel", "Militaire" }));
         combo_TypeAgent.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combo_TypeAgentItemStateChanged(evt);

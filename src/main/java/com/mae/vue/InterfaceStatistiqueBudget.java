@@ -57,7 +57,10 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
     public static void exporterPDF() {
         StatBudgetExportPDFController.exportPDF();
     }
-
+//afficher les programmes dans le combobox
+    public static void afficherProgrammeCombo() {
+        StatBudgetController.listProgrammeInCombo();
+    }
     //afficher les catégories dans le combobox
     public static void afficherCategorieCombo() {
         StatBudgetController.listCategorieInCombo();
@@ -102,6 +105,13 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
         StatBudgetController.rechercheAgentByEmploi();
         StatBudgetController.calculBudgetMensuelAnnuel();
     }
+    
+    //lister les agents par emploi
+    public static void listerAgentByProgramme() {
+        StatBudgetController.rechercheAgentByProgramme();
+        StatBudgetController.calculBudgetMensuelAnnuel();
+    }
+    
     
 
         //Fonction pour l'enregistrement d'un agent********************************************************************************************************************
@@ -172,6 +182,8 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         combo_TypeAgent = new javax.swing.JComboBox<>();
         combo_Emploi = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        combo_programme = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_agent = new javax.swing.JTable();
         btn_rechercheragent1 = new javax.swing.JButton();
@@ -281,7 +293,7 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
         jLabel7.setText("Par emplois : ");
 
         combo_TypeAgent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        combo_TypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Fonctionnaire", "Contractuel" }));
+        combo_TypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Fonctionnaire", "Contractuel", "Militaire" }));
         combo_TypeAgent.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combo_TypeAgentItemStateChanged(evt);
@@ -293,6 +305,17 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
         combo_Emploi.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combo_EmploiItemStateChanged(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setText("Par programme : ");
+
+        combo_programme.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        combo_programme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " " }));
+        combo_programme.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combo_programmeItemStateChanged(evt);
             }
         });
 
@@ -326,11 +349,17 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(combo_Emploi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(15, 15, 15)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(combo_TypeAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(combo_TypeAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(combo_programme, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {combo_Emploi, combo_Structure, combo_TypeAgent});
@@ -348,13 +377,17 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6)
                     .addComponent(combo_TypeAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(combo_Sexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(combo_Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(combo_Emploi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(combo_programme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(combo_Sexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(combo_Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(combo_Emploi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16))
         );
 
@@ -452,7 +485,7 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
         });
         tableau_total.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tableau_total.setGridColor(new java.awt.Color(255, 255, 255));
-        tableau_total.setRowHeight(65);
+        tableau_total.setRowHeight(50);
         tableau_total.setSelectionBackground(new java.awt.Color(204, 0, 51));
         tableau_total.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(tableau_total);
@@ -479,7 +512,7 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauPrincipalLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 1065, Short.MAX_VALUE)
                 .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_rechercheragent1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -544,6 +577,7 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
         afficherCategorieCombo();
         afficherStructureCombo();
         afficherEmploiCombo();
+        afficherProgrammeCombo();
         
         /**coefficientStruc.setVisible(false);
         idProg.setVisible(false);
@@ -819,6 +853,11 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
          listerAgentByEmploi();
     }//GEN-LAST:event_combo_EmploiItemStateChanged
 
+    private void combo_programmeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_programmeItemStateChanged
+        // TODO add your handling code here:
+        listerAgentByProgramme();
+    }//GEN-LAST:event_combo_programmeItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField box_rechercheMatricule;
@@ -831,6 +870,7 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
     public static javax.swing.JComboBox<String> combo_Sexe;
     public static javax.swing.JComboBox<String> combo_Structure;
     public static javax.swing.JComboBox<String> combo_TypeAgent;
+    public static javax.swing.JComboBox<String> combo_programme;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -838,6 +878,7 @@ public class InterfaceStatistiqueBudget extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

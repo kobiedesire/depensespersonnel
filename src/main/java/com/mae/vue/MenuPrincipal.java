@@ -133,7 +133,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_paramavance1 = new javax.swing.JMenu();
         menu_modifieragent = new javax.swing.JMenuItem();
         jSeparator20 = new javax.swing.JPopupMenu.Separator();
-        menu_informationsfinancieres = new javax.swing.JMenuItem();
+        menu_consulterbudget = new javax.swing.JMenuItem();
         menu_paramavance = new javax.swing.JMenu();
         menu_importagent = new javax.swing.JMenuItem();
         jSeparator15 = new javax.swing.JPopupMenu.Separator();
@@ -729,17 +729,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
         menu_paramavance1.add(jSeparator20);
 
-        menu_informationsfinancieres.setBackground(new java.awt.Color(0, 0, 0));
-        menu_informationsfinancieres.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        menu_informationsfinancieres.setForeground(new java.awt.Color(255, 204, 0));
-        menu_informationsfinancieres.setText("Informations financières d'un agent");
-        menu_informationsfinancieres.setToolTipText("Informations financières d'un agent");
-        menu_informationsfinancieres.addActionListener(new java.awt.event.ActionListener() {
+        menu_consulterbudget.setBackground(new java.awt.Color(0, 0, 0));
+        menu_consulterbudget.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menu_consulterbudget.setForeground(new java.awt.Color(255, 204, 0));
+        menu_consulterbudget.setText("Consulter/Générer le budget détaillé");
+        menu_consulterbudget.setToolTipText("Consulter/Générer le budget détaillé");
+        menu_consulterbudget.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_informationsfinancieresActionPerformed(evt);
+                menu_consulterbudgetActionPerformed(evt);
             }
         });
-        menu_paramavance1.add(menu_informationsfinancieres);
+        menu_paramavance1.add(menu_consulterbudget);
 
         menuBar.add(menu_paramavance1);
 
@@ -1062,9 +1062,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.add(statAgent).setVisible(true);
     }//GEN-LAST:event_menu_statbudgetActionPerformed
 
-    private void menu_informationsfinancieresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_informationsfinancieresActionPerformed
+    private void menu_consulterbudgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_consulterbudgetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menu_informationsfinancieresActionPerformed
+         panneauBureau.removeAll();
+        InterfaceConsulterBudget consultBudget = new InterfaceConsulterBudget();
+        consultBudget.setSize(1900, 760);
+        panneauBureau.add(consultBudget).setVisible(true);
+    }//GEN-LAST:event_menu_consulterbudgetActionPerformed
 
     private void menu_statparporgrammeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_statparporgrammeActionPerformed
         // TODO add your handling code here:
@@ -1161,13 +1165,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_article;
     public static javax.swing.JMenu menu_budget;
     public static javax.swing.JMenuItem menu_catechelle;
+    public static javax.swing.JMenuItem menu_consulterbudget;
     private javax.swing.JMenuItem menu_creerbudget;
     private javax.swing.JMenuItem menu_deconnexion;
     public static javax.swing.JMenuItem menu_emploi;
     private javax.swing.JMenu menu_fichier;
     public static javax.swing.JMenuItem menu_fonction;
     private javax.swing.JMenuItem menu_importagent;
-    public static javax.swing.JMenuItem menu_informationsfinancieres;
     public static javax.swing.JMenuItem menu_ministere;
     public static javax.swing.JMenuItem menu_modifieragent;
     private javax.swing.JMenuItem menu_moncompte;

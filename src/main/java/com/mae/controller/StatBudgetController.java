@@ -50,10 +50,11 @@ public class StatBudgetController {
                 tablemodel.removeRow(0);
             }
             NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
-            DecimalFormat df = new DecimalFormat("#,###.00");
+            DecimalFormat df = new DecimalFormat("#,###");
             //NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
             for (int k = 0; k < tab.length; k++) {
                 res.next();
+                
                 Object[] objects = new Object[8];
                 objects[0] = res.getString("idAgent");
                 objects[1] = res.getString("matriculeAgent");
@@ -71,7 +72,9 @@ public class StatBudgetController {
                 tab[k][4] = res.getString("structureAgent");
                 tab[k][5] = res.getString("typeAgent");
                 tab[k][6] = res.getString("incidenceMensuelle");
-                tab[k][7] = res.getString("incidenceAnnuelle") ;
+                
+               
+                tab[k][7] = formatter.format(res.getDouble("incidenceAnnuelle")) ;
                 yn = true;
                 //System.out.println(res.getString("incidenceAnnuelle"));
             }
@@ -195,6 +198,28 @@ public class StatBudgetController {
 
         }
     }
+    
+    
+    
+           //Afficher les prhramme dans le combo
+   private static final String querySelectProgramme = "SELECT * FROM programme";
+
+    public static void listProgrammeInCombo() {
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectProgramme)) {
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) {
+                InterfaceStatistiqueBudget.combo_programme.addItem(res.getString("codeProgramme"));
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+    
 
     //Afficher les categories dans le combo
     private static final String querySelectCategorieEchelle = "SELECT * FROM categorie";
@@ -620,6 +645,83 @@ public class StatBudgetController {
             }
         }
     }
+    
+    
+    
+      // Effectif des agents par programme    
+    private static final String querySelectAllAgentByProgramme = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ?";
+    public static void rechercheAgentByProgramme() {
+        InterfaceStatistiqueBudget.combo_Structure.setSelectedIndex(0);
+        InterfaceStatistiqueBudget.combo_Sexe.setSelectedIndex(0);
+        InterfaceStatistiqueBudget.combo_TypeAgent.setSelectedIndex(0);        
+        InterfaceStatistiqueBudget.combo_Categorie.setSelectedIndex(0);
+        String programmeA = InterfaceStatistiqueBudget.combo_programme.getSelectedItem().toString();
+        //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
+        if (programmeA.equals(" ")) {
+            //JOptionPane.showMessageDialog(null, "Selectionnez le sexe des agent !! ");
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
+            while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
+                tablemodel.removeRow(0);
+                InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
+            }
+
+        } else {
+            try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectAllAgentByProgramme)) {
+                preparedStatement.setString(1, programmeA);
+                ResultSet res = preparedStatement.executeQuery();
+                if (res.next()) {
+                    res.last();
+                    tab = new String[res.getRow()][8];
+                    InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
+                    res.beforeFirst();
+                    yn = false;
+                    DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
+                    while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
+                        tablemodel.removeRow(0);                                            
+                    }
+                    for (int k = 0; k < tab.length; k++) {
+                        res.next();
+                        Object[] objects = new Object[8];
+                        objects[0] = res.getString("idAgent");
+                        objects[1] = res.getString("matriculeAgent");
+                        objects[2] = res.getString("nomAgent");
+                        objects[3] = res.getString("prenomAgent");
+                        objects[4] = res.getString("structureAgent");
+                        objects[5] = res.getString("typeAgent");
+                        objects[6] = res.getString("incidenceMensuelle");
+                        objects[7] = res.getString("incidenceAnnuelle");
+                        tablemodel.addRow(objects);
+                        tab[k][0] = res.getString("idAgent");
+                        tab[k][1] = res.getString("matriculeAgent");
+                        tab[k][2] = res.getString("nomAgent");
+                        tab[k][3] = res.getString("prenomAgent");
+                        tab[k][4] = res.getString("structureAgent");
+                        tab[k][5] = res.getString("typeAgent");
+                        tab[k][6] = res.getString("incidenceMensuelle");
+                        tab[k][7] = res.getString("incidenceAnnuelle");
+                        yn = true;
+                    }
+                } else {
+                    //JOptionPane.showMessageDialog(null, "Saisir un matricule valide !! ");
+                    DefaultTableModel tablemodel = (DefaultTableModel) InterfaceStatistiqueBudget.tableau_agent.getModel();
+                    while (InterfaceStatistiqueBudget.tableau_agent.getRowCount() > 0) {
+                        tablemodel.removeRow(0);
+                        InterfaceStatistiqueBudget.statBudgetNombreEnreg.setText("0");
+                    }
+                }
+                res.close();
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erreur SQL");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+            }
+        }
+    }
+    
+    
+    
     
     ///sommes des incidences
     public static void calculBudgetMensuelAnnuel() {
