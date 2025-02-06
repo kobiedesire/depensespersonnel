@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import com.mae.vue.InterfaceConnexion;
+import com.mae.vue.InterfaceAcceuil;
 
 /**
  *
@@ -51,9 +53,29 @@ public class connexionBD {
         Properties properties = new Properties();
         Connection connection = null;
         try {
+            int exBdugetaire = Integer.parseInt(InterfaceConnexion.exercice.getSelectedItem().toString());
+            switch (exBdugetaire) {
+                case 2025:
+                    // Charger le fichier de configuration
+                    FileInputStream fis = new FileInputStream("2025config.properties");
+                    properties.load(fis);
+                    
+                    break;
+
+                case 2026:
+                    JOptionPane.showMessageDialog(null, "Connexion à la base de données impossible ou base de données inexistante");
+                    break;
+
+                case 2027:
+                    JOptionPane.showMessageDialog(null, "Connexion à la base de données impossible ou base de données inexistante");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Connexion à la base de données impossible ou base de données inexistante");
+                    break;
+            }
             // Charger le fichier de configuration
-            FileInputStream fis = new FileInputStream("config.properties");
-            properties.load(fis);
+            //  FileInputStream fis = new FileInputStream("2025config.properties");
+            //properties.load(fis);
 
             // Récupérer les informations
             String host = properties.getProperty("db.host");
@@ -66,9 +88,11 @@ public class connexionBD {
             URL = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Europe/Paris";
 
         } catch (IOException e) {
-            System.err.println("Erreur lors de la lecture du fichier de configuration : " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erreur lors de la lecture du fichier de configuration : " + e.getMessage());
+            //System.err.println("Erreur lors de la lecture du fichier de configuration : " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Erreur de connexion à la base de données : " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erreur de connexion à la base de données : " + e.getMessage());
+            // System.err.println("Erreur de connexion à la base de données : " + e.getMessage());
         }
 
         //return DriverManager.getConnection(URL, USER, PASSWORD);
@@ -85,6 +109,5 @@ public class connexionBD {
                 JOptionPane.showMessageDialog(null, "Erreur de connexion à la base de données");
             }
         }
-
     }
 }

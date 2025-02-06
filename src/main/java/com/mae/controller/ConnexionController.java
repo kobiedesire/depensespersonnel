@@ -30,6 +30,7 @@ public class ConnexionController {
         char[] uPass = InterfaceConnexion.password.getPassword();
         String uPassword = new String(uPass);
         String pass = encoder.encode(uPassword);
+        int anneB = Integer.parseInt(InterfaceConnexion.exercice.getSelectedItem().toString());
         //  boolean matches = encoder.matches(uPassword, pass);
        // System.out.println(pass);
         // System.out.println(matches);
@@ -48,6 +49,7 @@ public class ConnexionController {
                     m.setVisible(true);
                     m.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     MenuPrincipal.userConnected.setText(res.getString("u.nomUser") + " " + res.getString("u.prenomUser") + " " + "est connecté");
+                    
                    // MenuPrincipal.profilID.setText(res.getString("u.idProfil"));
                     //traitement sur les boutons à activer et à désactiver
                     int btnStructure = Integer.parseInt(res.getString("p.permitGestStructure"));
@@ -75,8 +77,10 @@ public class ConnexionController {
                     if(btnStatistique == 0){ MenuPrincipal.menu__stattistiques.setVisible(false);}
                     //
                     int btnParamAvance= Integer.parseInt(res.getString("p.permitGestParamAvance"));
-                    if(btnParamAvance == 0){ MenuPrincipal.menu_paramavance.setVisible(false);}                    
+                    if(btnParamAvance == 0){ MenuPrincipal.menu_paramavance.setVisible(false);}  
                     
+                    
+                    MenuPrincipal.textExBudgetaire.setText("ANNEE BUDGETAIRE : " +anneB);
                 } else {
                     JOptionPane.showMessageDialog(null, "Erreur mot de passe");
                     // JOptionPane.showMessageDialog(null, "Erreur nom d'utilisateur ou mot de passe");
@@ -95,7 +99,7 @@ public class ConnexionController {
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erreur SQL");
+            JOptionPane.showMessageDialog(null, "Erreur SQL (Verifiez les paramètres de connexion à la base de données)" + e.getMessage());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }

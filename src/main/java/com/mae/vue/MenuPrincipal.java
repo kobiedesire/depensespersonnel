@@ -81,10 +81,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         heureJour = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         panneauEntete = new javax.swing.JPanel();
-        btn_moncompte = new javax.swing.JButton();
-        btn_deconnexion = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        textExBudgetaire = new javax.swing.JLabel();
         panneauBureau = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         menu_fichier = new javax.swing.JMenu();
@@ -247,38 +246,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauEntete.setBackground(new java.awt.Color(255, 255, 255));
         panneauEntete.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 0)));
 
-        btn_moncompte.setBackground(new java.awt.Color(0, 102, 0));
-        btn_moncompte.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        btn_moncompte.setForeground(new java.awt.Color(255, 255, 255));
-        btn_moncompte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/profil.png"))); // NOI18N
-        btn_moncompte.setText("Mon compte");
-        btn_moncompte.setToolTipText("Mon compte");
-        btn_moncompte.setBorder(null);
-        btn_moncompte.setMaximumSize(new java.awt.Dimension(68, 22));
-        btn_moncompte.setMinimumSize(new java.awt.Dimension(68, 22));
-        btn_moncompte.setPreferredSize(new java.awt.Dimension(68, 22));
-
-        btn_deconnexion.setBackground(new java.awt.Color(204, 0, 0));
-        btn_deconnexion.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        btn_deconnexion.setForeground(new java.awt.Color(255, 255, 255));
-        btn_deconnexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/deconnecter.png"))); // NOI18N
-        btn_deconnexion.setText("Se déconnecter");
-        btn_deconnexion.setToolTipText("Se déconnecter");
-        btn_deconnexion.setBorder(null);
-        btn_deconnexion.setMaximumSize(new java.awt.Dimension(68, 22));
-        btn_deconnexion.setMinimumSize(new java.awt.Dimension(68, 22));
-        btn_deconnexion.setPreferredSize(new java.awt.Dimension(68, 22));
-        btn_deconnexion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_deconnexionActionPerformed(evt);
-            }
-        });
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armoirieBF2.jpg"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Script MT Bold", 0, 60)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 0, 0));
         jLabel3.setText("Gestion des dépenses du personnel");
+
+        textExBudgetaire.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        textExBudgetaire.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout panneauEnteteLayout = new javax.swing.GroupLayout(panneauEntete);
         panneauEntete.setLayout(panneauEnteteLayout);
@@ -289,35 +264,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 440, Short.MAX_VALUE)
-                .addGroup(panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_deconnexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_moncompte, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(textExBudgetaire, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
-
-        panneauEnteteLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_deconnexion, btn_moncompte});
-
         panneauEnteteLayout.setVerticalGroup(
             panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panneauEnteteLayout.createSequentialGroup()
                 .addGroup(panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panneauEnteteLayout.createSequentialGroup()
-                        .addGroup(panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panneauEnteteLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel3))
-                            .addGroup(panneauEnteteLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(btn_moncompte, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_deconnexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(panneauEnteteLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(textExBudgetaire, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        panneauEnteteLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_deconnexion, btn_moncompte});
 
         panneauBureau.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -329,7 +294,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         panneauBureauLayout.setVerticalGroup(
             panneauBureauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 764, Short.MAX_VALUE)
+            .addGap(0, 776, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panneauDeBaseLayout = new javax.swing.GroupLayout(panneauDeBase);
@@ -346,11 +311,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             panneauDeBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panneauDeBaseLayout.createSequentialGroup()
                 .addGroup(panneauDeBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panneauEntete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panneauMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panneauMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panneauEntete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panneauBureau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panneauBureau))
         );
 
         menuBar.setBackground(new java.awt.Color(0, 0, 0));
@@ -843,8 +807,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuBar.add(Box.createHorizontalGlue());  
         menu_agent.setBackground(Color.black);
         menu_importagent.setVisible(false);
-        btn_moncompte.setVisible(false);
-        btn_deconnexion.setVisible(false);
+      //  btn_moncompte.setVisible(false);
+       // btn_deconnexion.setVisible(false);
         
         
     }//GEN-LAST:event_formWindowActivated
@@ -1027,17 +991,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.add(user).setVisible(true);
     }//GEN-LAST:event_menu_userActionPerformed
 
-    private void btn_deconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deconnexionActionPerformed
-        // TODO add your handling code here:
-        int rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment fermer l'application", "Fermeture", JOptionPane.YES_NO_OPTION);
-        if (rep == JOptionPane.YES_OPTION) {
-            this.dispose();
-            InterfaceConnexion ic = new InterfaceConnexion();
-            ic.setIconImage(new ImageIcon("C:/deper/src/main/resources/iconapp.png").getImage());
-            ic.setVisible(true);
-        }
-    }//GEN-LAST:event_btn_deconnexionActionPerformed
-
     private void menu_statagentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_statagentsActionPerformed
         // TODO add your handling code here:
         panneauBureau.removeAll();
@@ -1117,8 +1070,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_deconnexion;
-    private javax.swing.JButton btn_moncompte;
     public static javax.swing.JLabel dateJour;
     public static javax.swing.JLabel heureJour;
     private javax.swing.JButton jButton1;
@@ -1189,6 +1140,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panneauDeBase;
     private javax.swing.JPanel panneauEntete;
     private javax.swing.JPanel panneauMenu;
+    public static javax.swing.JLabel textExBudgetaire;
     public static javax.swing.JMenu userConnected;
     // End of variables declaration//GEN-END:variables
 }

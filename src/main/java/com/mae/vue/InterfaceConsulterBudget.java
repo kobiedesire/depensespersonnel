@@ -70,7 +70,7 @@ import javax.swing.JTable;
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableau_agent = new javax.swing.JTable();
+        tableau_listeCompleteAgent = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -206,9 +206,9 @@ import javax.swing.JTable;
 
         jScrollPane3.setBackground(new java.awt.Color(204, 204, 255));
 
-        tableau_agent.setAutoCreateRowSorter(true);
-        tableau_agent.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
-        tableau_agent.setModel(new javax.swing.table.DefaultTableModel(
+        tableau_listeCompleteAgent.setAutoCreateRowSorter(true);
+        tableau_listeCompleteAgent.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        tableau_listeCompleteAgent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -227,18 +227,18 @@ import javax.swing.JTable;
                 return canEdit [columnIndex];
             }
         });
-        tableau_agent.setSelectionBackground(new java.awt.Color(255, 153, 0));
-        tableau_agent.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tableau_agent.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableau_listeCompleteAgent.setSelectionBackground(new java.awt.Color(255, 153, 0));
+        tableau_listeCompleteAgent.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableau_listeCompleteAgent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableau_agentMouseClicked(evt);
+                tableau_listeCompleteAgentMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableau_agent);
-        if (tableau_agent.getColumnModel().getColumnCount() > 0) {
-            tableau_agent.getColumnModel().getColumn(0).setMinWidth(0);
-            tableau_agent.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tableau_agent.getColumnModel().getColumn(0).setMaxWidth(0);
+        jScrollPane1.setViewportView(tableau_listeCompleteAgent);
+        if (tableau_listeCompleteAgent.getColumnModel().getColumnCount() > 0) {
+            tableau_listeCompleteAgent.getColumnModel().getColumn(0).setMinWidth(0);
+            tableau_listeCompleteAgent.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tableau_listeCompleteAgent.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
         jScrollPane3.setViewportView(jScrollPane1);
@@ -273,23 +273,23 @@ import javax.swing.JTable;
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         listerAgent();
-        JTableHeader header = tableau_agent.getTableHeader();
+        JTableHeader header = tableau_listeCompleteAgent.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
         
         JTableHeader header2 = tableau_total.getTableHeader();
         header2.setDefaultRenderer(new PropsTableauStatBudget());
-        tableau_agent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tableau_listeCompleteAgent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
         
          
 
     }//GEN-LAST:event_formInternalFrameOpened
 
-    private void tableau_agentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableau_agentMouseClicked
+    private void tableau_listeCompleteAgentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableau_listeCompleteAgentMouseClicked
         // TODO add your handling code here:
       //  displayOneAgenntToUpdateOrDelete();
 
-    }//GEN-LAST:event_tableau_agentMouseClicked
+    }//GEN-LAST:event_tableau_listeCompleteAgentMouseClicked
 
     private void btn_rafraichirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rafraichirActionPerformed
         // TODO add your handling code here:
@@ -311,7 +311,7 @@ import javax.swing.JTable;
     private javax.swing.JScrollPane jScrollPane3;
     public static javax.swing.JPanel panneauPrincipal;
     public static javax.swing.JTextField statBudgetNombreEnreg;
-    public static javax.swing.JTable tableau_agent;
+    public static javax.swing.JTable tableau_listeCompleteAgent;
     public static javax.swing.JTable tableau_total;
     // End of variables declaration//GEN-END:variables
 }

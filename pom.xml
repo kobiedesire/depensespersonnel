@@ -9,15 +9,23 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.2</version>
-                 <configuration>
-                <archive>
-                    <manifest>
-                        <mainClass>com.mae.deper.Deper</mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!--   <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.mae.deper.Deper</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>-->
                
             </plugin>
         </plugins>
@@ -33,7 +41,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
-        <exec.mainClass>com.mae.deper.Deper</exec.mainClass>
+          <main.class>com.mae.deper.Deper</main.class>
+        <!-- <exec.mainClass>com.mae.deper.Deper</exec.mainClass>-->
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->

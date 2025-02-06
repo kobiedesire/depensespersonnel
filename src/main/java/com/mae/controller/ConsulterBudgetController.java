@@ -28,6 +28,21 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author hp
  */
 public class ConsulterBudgetController {
+    
+     // Définition du renderer personnalisé
+    static class DecimalFormatRenderer extends DefaultTableCellRenderer {
+
+        private final DecimalFormat formatter = new DecimalFormat("0.################"); // Formatage personnalisé
+
+        @Override
+        public void setValue(Object value) {
+            if (value instanceof Number) {
+                setText(formatter.format(value));
+            } else {
+                setText(value.toString());
+            }
+        }
+    }
 
     private static boolean res, yn;
     private static String tab[][];
@@ -44,9 +59,26 @@ public class ConsulterBudgetController {
             InterfaceConsulterBudget.statBudgetNombreEnreg.setText(String.valueOf(res.getRow()));
             res.beforeFirst();
             yn = false;
-            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceConsulterBudget.tableau_agent.getModel();
+            DefaultTableModel tablemodel = (DefaultTableModel) InterfaceConsulterBudget.tableau_listeCompleteAgent.getModel();
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.setModel(tablemodel);
+            // Appliquer un renderer pour formater les nombres
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(15).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(16).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(17).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(18).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(19).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(20).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(21).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(22).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(23).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(24).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(25).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(26).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(27).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(28).setCellRenderer(new DecimalFormatRenderer());
+            InterfaceConsulterBudget.tableau_listeCompleteAgent.getColumnModel().getColumn(29).setCellRenderer(new DecimalFormatRenderer());
             
-            while (InterfaceConsulterBudget.tableau_agent.getRowCount() > 0) {
+            while (InterfaceConsulterBudget.tableau_listeCompleteAgent.getRowCount() > 0) {
                 tablemodel.removeRow(0);
             }
             NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
@@ -70,21 +102,21 @@ public class ConsulterBudgetController {
                 objects[12] = res.getString("categorieEchelleAgent");
                 objects[13] = res.getString("echelonAgent");
                 objects[14] = res.getString("indiceAgent");
-                objects[15] = res.getString("salaireIndiciaireAgent");
-                objects[16] = res.getString("indeminiteResidence");
-                objects[17] = res.getString("indeminiteAstreinte");
-                objects[18] = res.getString("indeminiteTechnicite");
-                objects[19] = res.getString("indeminiteResponsabilite");
-                objects[20] = res.getString("indeminiteVestimentaire");
-                objects[21] = res.getString("indeminiteLogement");
-                objects[22] = res.getString("indeminiteSpecifique");
-                objects[23] = res.getString("autreIndeminite");
-                objects[24] = res.getString("chargeMilitaire");
-                objects[25] = res.getString("contributionCARFO");
-                objects[26] = res.getString("contributionCNSS");
-                objects[27] = res.getString("allocationFamiliale");
-                objects[28] = res.getString("incidenceMensuelle");
-                objects[29] = res.getString("incidenceAnnuelle");
+                objects[15] = res.getDouble("salaireIndiciaireAgent");
+                objects[16] = res.getDouble("indeminiteResidence");
+                objects[17] = res.getDouble("indeminiteAstreinte");
+                objects[18] = res.getDouble("indeminiteTechnicite");
+                objects[19] = res.getDouble("indeminiteResponsabilite");
+                objects[20] = res.getDouble("indeminiteVestimentaire");
+                objects[21] = res.getDouble("indeminiteLogement");
+                objects[22] = res.getDouble("indeminiteSpecifique");
+                objects[23] = res.getDouble("autreIndeminite");
+                objects[24] = res.getDouble("chargeMilitaire");
+                objects[25] = res.getDouble("contributionCARFO");
+                objects[26] = res.getDouble("contributionCNSS");
+                objects[27] = res.getDouble("allocationFamiliale");
+                objects[28] = res.getDouble("incidenceMensuelle");
+                objects[29] = res.getDouble("incidenceAnnuelle");
                 
                 tablemodel.addRow(objects);
                 tab[k][0] = res.getString("idAgent");
@@ -145,7 +177,7 @@ public class ConsulterBudgetController {
                 Sheet sheet = workbook.createSheet("Budget détaillé");
 
                 // Écrire les en-têtes
-                TableModel model = InterfaceConsulterBudget.tableau_agent.getModel();
+                TableModel model = InterfaceConsulterBudget.tableau_listeCompleteAgent.getModel();
                 Row headerRow = sheet.createRow(0);
                 for (int col = 0; col < model.getColumnCount(); col++) {
                     Cell cell = headerRow.createCell(col);
@@ -183,17 +215,17 @@ public class ConsulterBudgetController {
         //int nombreLignes = InterfaceStatistiqueBudget.tableau_agent.getRowCount();
         double budgetMensuel = 0;
         double budgetAnnuel = 0;
-        DefaultTableModel tablemodel = (DefaultTableModel) InterfaceConsulterBudget.tableau_agent.getModel();
+        DefaultTableModel tablemodel = (DefaultTableModel) InterfaceConsulterBudget.tableau_listeCompleteAgent.getModel();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // Centrer horizontalement
         InterfaceConsulterBudget.tableau_total.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         InterfaceConsulterBudget.tableau_total.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 
-        int nombreLignes = InterfaceConsulterBudget.tableau_agent.getRowCount();
+        int nombreLignes = InterfaceConsulterBudget.tableau_listeCompleteAgent.getRowCount();
 
         for (int i = 0; i < nombreLignes; i++) {
-            Object valueInM = InterfaceConsulterBudget.tableau_agent.getValueAt(i, 28); // Colonne d'index 6
-            Object valueInA = InterfaceConsulterBudget.tableau_agent.getValueAt(i, 29); // Colonne d'index 7
+            Object valueInM = InterfaceConsulterBudget.tableau_listeCompleteAgent.getValueAt(i, 28); // Colonne d'index 6
+            Object valueInA = InterfaceConsulterBudget.tableau_listeCompleteAgent.getValueAt(i, 29); // Colonne d'index 7
 
             if (valueInM instanceof Number || valueInA instanceof Number ) {
                 budgetMensuel += ((Number) valueInM).doubleValue();
