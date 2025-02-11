@@ -17,6 +17,13 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <transformers>
+            <transformer>
+              <mainClass>com.mae.deper.Deper</mainClass>
+            </transformer>
+          </transformers>
+        </configuration>
       </plugin>
     </plugins>
   </build>

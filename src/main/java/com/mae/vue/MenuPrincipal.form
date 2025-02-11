@@ -915,7 +915,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Deper - Tableau de bord principal"/>
+    <Property name="title" type="java.lang.String" value="D&#xe9;penses du personnel - Tableau de bord principal"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>

@@ -57,9 +57,8 @@ public class connexionBD {
             switch (exBdugetaire) {
                 case 2025:
                     // Charger le fichier de configuration
-                    FileInputStream fis = new FileInputStream("2025config.properties");
-                    properties.load(fis);
-                    
+                    FileInputStream fichierConfig = new FileInputStream("2025config.properties");
+                    properties.load(fichierConfig);
                     break;
 
                 case 2026:
@@ -85,7 +84,8 @@ public class connexionBD {
             PASSWORD = properties.getProperty("db.password");
 
             // Construire l'URL de connexion
-            URL = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Europe/Paris";
+            URL = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?serverTimezone=UTC";
+            // URL = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Europe/Paris";
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erreur lors de la lecture du fichier de configuration : " + e.getMessage());
@@ -95,8 +95,15 @@ public class connexionBD {
             // System.err.println("Erreur de connexion à la base de données : " + e.getMessage());
         }
 
+         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+             return DriverManager.getConnection(URL, USER, PASSWORD);
+             } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
         //return DriverManager.getConnection(URL, USER, PASSWORD);
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        //return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
     public static void main(String[] args) {
