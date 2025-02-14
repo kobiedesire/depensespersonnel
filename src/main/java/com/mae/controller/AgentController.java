@@ -2123,8 +2123,7 @@ public class AgentController {
                 InterfaceAgent.idLigne666.setText(res.getString("idLigne666"));
                 InterfaceAgent.ligne666.setBackground(new java.awt.Color(0, 102, 51));
                 InterfaceAgent.idLigne669.setText(res.getString("idLigne669"));
-                InterfaceAgent.ligne669.setBackground(new java.awt.Color(0, 102, 51));
-                            
+                InterfaceAgent.ligne669.setBackground(new java.awt.Color(0, 102, 51));                            
             }
             res.close();
             preparedStatement.close();
@@ -2135,9 +2134,6 @@ public class AgentController {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
     }  
-        
-    
-
 }  
     
     

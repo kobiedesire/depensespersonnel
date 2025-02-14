@@ -498,7 +498,7 @@ public class AmbassadeurConsulController {
                     InterfaceAmbassadeurConsul.coefficientStruc.setText(String.format("%.1f", res.getDouble("coefficientStructure")));
                     calculSalIndiciaire(); //calcul automatique du salaire indiciaire avec le coefficiebt appliqué
                     //calculContribution();//calcul de la contribution carfo
-                     calculIndemnite();//calcul des indemnités
+                    calculIndemnite();//calcul des indemnités
                     miseAJourLigne666();//calcul automatique des allocations
                     calculAutreDepenses();//calcul des autres dépenses
 
@@ -522,7 +522,7 @@ public class AmbassadeurConsulController {
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erreur SQL");
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+              //  JOptionPane.showMessageDialog(null, "Attention aux champs ");
             }
         }
     }
@@ -2062,7 +2062,7 @@ public class AmbassadeurConsulController {
         numligne = InterfaceAmbassadeurConsul.tableau_agent.getSelectedRow();//recuperer le le numero de la ligne
         if (nbreligne != 1) {
             InterfaceAmbassadeurConsul.reinitChamps();            
-            JOptionPane.showMessageDialog(null, " Sélectionnez un agent");
+            JOptionPane.showMessageDialog(null, "Sélectionnez un agent");
             //System.out.println(nbreligne);
         } else {
             idAg = Integer.parseInt(InterfaceAmbassadeurConsul.tableau_agent.getValueAt(numligne, 0).toString());   //recuperer l'id       
@@ -2136,10 +2136,7 @@ public class AmbassadeurConsulController {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
-    }  
-        
-    
-
+    }           
 }  
     
     
