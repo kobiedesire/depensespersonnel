@@ -104,7 +104,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
         jLabel4.setText("Mot de passe");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Russo One", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 204, 0));
         jLabel2.setText("Gestion des dépenses du personnel");
 
@@ -130,7 +130,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
         jLabel5.setText("©2025-MAECRBE-DSI*Version 1.0 ");
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Russo One", 0, 48)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 204, 0));
         jLabel7.setText("MAECRBE");
 
@@ -142,6 +142,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
         });
 
         btn_afficherPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eye.png"))); // NOI18N
+        btn_afficherPassword.setText("Voir/Masquer");
         btn_afficherPassword.setToolTipText("Afficher/Masquer le mot de passe");
         btn_afficherPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -522,7 +522,7 @@ public class AmbassadeurConsulController {
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erreur SQL");
             } catch (NumberFormatException e) {
-              //  JOptionPane.showMessageDialog(null, "Attention aux champs ");
+                JOptionPane.showMessageDialog(null, "Attention aux champs ");
             }
         }
     }

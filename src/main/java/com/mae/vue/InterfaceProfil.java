@@ -59,7 +59,12 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
           //groupe bpoutton gestion paramAvance
         ButtonGroup gestParamAvance = new ButtonGroup();
         gestParamAvance.add(gest_paramAvanceActiv);
-        gestParamAvance.add(gest_paramAvanceDesactiv);      
+        gestParamAvance.add(gest_paramAvanceDesactiv); 
+          //groupe boutton gestion gestionAvanceeAgent
+        ButtonGroup gestAvanceeAgent = new ButtonGroup();
+        gestAvanceeAgent.add(gest_gestionAvanceAgentActiv);
+        gestAvanceeAgent.add(gest_gestionAvanceAgentDesactiv);    
+        
     }
     
     
@@ -112,6 +117,11 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         gestParamAvance.add(gest_paramAvanceActiv);
         gestParamAvance.add(gest_paramAvanceDesactiv);   
         gestParamAvance.clearSelection();
+          //groupe boutton gestionAvanceAgent
+        ButtonGroup gestAvanceeAgent = new ButtonGroup();
+        gestAvanceeAgent.add(gest_gestionAvanceAgentActiv);
+        gestAvanceeAgent.add(gest_gestionAvanceAgentDesactiv);   
+        gestAvanceeAgent.clearSelection();
     }
     
     
@@ -122,7 +132,7 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         gest_statActiv.setSelected(true); gest_budgetActiv.setSelected(true);       
         gest_categorieActiv.setSelected(true); gest_fonctionActiv.setSelected(true);
         gest_ministereActiv.setSelected(true); gest_paramAvanceActiv.setSelected(true);
-        gest_budgetActiv.setSelected(true);      
+        gest_budgetActiv.setSelected(true);    gest_gestionAvanceAgentActiv.setSelected(true); 
                 
     }
     
@@ -133,7 +143,7 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         gest_statDesactiv.setSelected(true); gest_budgetDesactiv.setSelected(true);       
         gest_categorieDesactiv.setSelected(true); gest_fonctionDesactiv.setSelected(true);
         gest_ministereDesactiv.setSelected(true); gest_paramAvanceDesactiv.setSelected(true);
-        gest_budgetDesactiv.setSelected(true);      
+        gest_budgetDesactiv.setSelected(true);   gest_gestionAvanceAgentDesactiv.setSelected(true);  
                 
     }
     //Fonction pour l'enregistrement d'un profil********************************************************************************************************************       
@@ -141,7 +151,7 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         // Récuperation des donnéses du formulaire
             String pLibele = libeleProf.getText().trim();
             String structSelect, fonctionSelect, categorieSelect, ministereSelect, agentSelect;
-            String statSelect, emploiSelect, budgetSelect, paramAvanceSelect;
+            String statSelect, emploiSelect, budgetSelect, paramAvanceSelect, agentAvanceSelect;
             
              //recuperation de l'evenement du bouton de gestion des structures
             if (gest_strucActiv.isSelected()) {
@@ -222,13 +232,22 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
                 paramAvanceSelect = "0";
             } else {
                 paramAvanceSelect = "";
-            }   
+            } 
+            
+             ///recuperation de l'evenement du bouton de gestion  avancee des agents
+            if (gest_gestionAvanceAgentActiv.isSelected()) {
+                agentAvanceSelect = "1";
+            } else if (gest_gestionAvanceAgentDesactiv.isSelected()) {
+                agentAvanceSelect = "0";
+            } else {
+                agentAvanceSelect = "";
+            } 
      
         if (pLibele.isBlank() || structSelect.isBlank() || fonctionSelect.isBlank() || categorieSelect.isBlank() || ministereSelect.isBlank() || agentSelect.isBlank() || 
-                statSelect.isBlank() || emploiSelect.isBlank() || budgetSelect.isBlank() || paramAvanceSelect.isBlank()) {
+                statSelect.isBlank() || emploiSelect.isBlank() || budgetSelect.isBlank() || paramAvanceSelect.isBlank() || agentAvanceSelect.isBlank()) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
-            Profil profil = new Profil(pLibele, structSelect, categorieSelect, emploiSelect, fonctionSelect, ministereSelect, agentSelect, budgetSelect, statSelect, paramAvanceSelect ); // Créez un objet Interfaceprofil  
+            Profil profil = new Profil(pLibele, structSelect, categorieSelect, emploiSelect, fonctionSelect, ministereSelect, agentSelect, budgetSelect, statSelect, paramAvanceSelect, agentAvanceSelect ); // Créez un objet Interfaceprofil  
             ProfilController.saveProfil(profil);  // Enregistrez  dans la base de données        
             libeleProf.setText("");
            
@@ -242,7 +261,7 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
 
     public static void modifierProfil() {
         String structSelect, fonctionSelect, categorieSelect, ministereSelect, agentSelect;
-        String statSelect, emploiSelect, budgetSelect, paramAvanceSelect;
+        String statSelect, emploiSelect, budgetSelect, paramAvanceSelect, agentAvanceSelect;
         // Récuperation des donnéses du formulaire
         String pLibele = libeleProf.getText().trim();
         //recuperation de l'evenement du bouton de gestion des structures
@@ -326,15 +345,24 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
             paramAvanceSelect = "";
         }
         
+        ///recuperation de l'evenement du bouton de gestion  avancee des agents
+            if (gest_gestionAvanceAgentActiv.isSelected()) {
+                agentAvanceSelect = "1";
+            } else if (gest_gestionAvanceAgentDesactiv.isSelected()) {
+                agentAvanceSelect = "0";
+            } else {
+                agentAvanceSelect = "";
+            } 
+        
         
         if (pLibele.isBlank() || structSelect.isBlank() || fonctionSelect.isBlank() || categorieSelect.isBlank() || ministereSelect.isBlank() || agentSelect.isBlank()
-                || statSelect.isBlank() || emploiSelect.isBlank() || budgetSelect.isBlank() || paramAvanceSelect.isBlank()) {
+                || statSelect.isBlank() || emploiSelect.isBlank() || budgetSelect.isBlank() || paramAvanceSelect.isBlank() || agentAvanceSelect.isBlank()) {
             JOptionPane.showMessageDialog(null, "Des cahmps sont vides");
         } else {
 
             rep = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment modifier ce profil?", "Modification d'un profil", JOptionPane.YES_NO_OPTION);
             if (rep == JOptionPane.YES_OPTION) {
-                Profil profil = new Profil(pLibele, structSelect, categorieSelect, emploiSelect, fonctionSelect, ministereSelect, agentSelect, budgetSelect, statSelect, paramAvanceSelect); // Créez un objet Interfaceprofil  
+                Profil profil = new Profil(pLibele, structSelect, categorieSelect, emploiSelect, fonctionSelect, ministereSelect, agentSelect, budgetSelect, statSelect, paramAvanceSelect, agentAvanceSelect); // Créez un objet Interfaceprofil  
                 ProfilController.updateProfil(profil); // Executer la méthode de modification dans la base de données
                 JOptionPane.showMessageDialog(null, "Modification validée");
                 libeleProf.setText("");
@@ -406,6 +434,9 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         gest_ministereDesactiv = new javax.swing.JRadioButton();
         gest_paramAvanceActiv = new javax.swing.JRadioButton();
         gest_paramAvanceDesactiv = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
+        gest_gestionAvanceAgentDesactiv = new javax.swing.JRadioButton();
+        gest_gestionAvanceAgentActiv = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_profil = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -580,6 +611,20 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
         gest_paramAvanceDesactiv.setText("Désactiver");
         gest_paramAvanceDesactiv.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel11.setText("Permissions/Gestion Avancée Agent : ");
+
+        gest_gestionAvanceAgentDesactiv.setBackground(new java.awt.Color(204, 0, 0));
+        gest_gestionAvanceAgentDesactiv.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        gest_gestionAvanceAgentDesactiv.setForeground(new java.awt.Color(255, 255, 255));
+        gest_gestionAvanceAgentDesactiv.setText("Désactiver");
+        gest_gestionAvanceAgentDesactiv.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
+        gest_gestionAvanceAgentActiv.setBackground(new java.awt.Color(0, 153, 0));
+        gest_gestionAvanceAgentActiv.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        gest_gestionAvanceAgentActiv.setForeground(new java.awt.Color(255, 255, 255));
+        gest_gestionAvanceAgentActiv.setText("Activer");
+
         javax.swing.GroupLayout panneauFormsLayout = new javax.swing.GroupLayout(panneauForms);
         panneauForms.setLayout(panneauFormsLayout);
         panneauFormsLayout.setHorizontalGroup(
@@ -626,36 +671,44 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
                                     .addGroup(panneauFormsLayout.createSequentialGroup()
                                         .addComponent(gest_budgetActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(gest_budgetDesactiv)))))
+                                        .addComponent(gest_budgetDesactiv))))
+                            .addComponent(jLabel10))
                         .addGap(72, 72, 72)
-                        .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panneauFormsLayout.createSequentialGroup()
-                                .addComponent(gest_paramAvanceActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gest_paramAvanceDesactiv))
+                                .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panneauFormsLayout.createSequentialGroup()
+                                        .addComponent(gest_paramAvanceActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(gest_paramAvanceDesactiv))
+                                    .addGroup(panneauFormsLayout.createSequentialGroup()
+                                        .addComponent(gest_ministereActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(gest_ministereDesactiv))
+                                    .addGroup(panneauFormsLayout.createSequentialGroup()
+                                        .addComponent(gest_fonctionActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(gest_fonctionDesactiv))
+                                    .addGroup(panneauFormsLayout.createSequentialGroup()
+                                        .addComponent(gest_categorieActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(gest_categorieDesactiv))))
                             .addGroup(panneauFormsLayout.createSequentialGroup()
-                                .addComponent(gest_ministereActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gest_gestionAvanceAgentActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gest_ministereDesactiv))
-                            .addGroup(panneauFormsLayout.createSequentialGroup()
-                                .addComponent(gest_fonctionActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gest_fonctionDesactiv))
-                            .addGroup(panneauFormsLayout.createSequentialGroup()
-                                .addComponent(gest_categorieActiv, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gest_categorieDesactiv))))
-                    .addComponent(jLabel10))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(gest_gestionAvanceAgentDesactiv)))))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
-        panneauFormsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gest_categorieActiv, gest_categorieDesactiv, gest_fonctionActiv, gest_fonctionDesactiv, gest_ministereActiv, gest_ministereDesactiv, gest_paramAvanceActiv, gest_paramAvanceDesactiv});
+        panneauFormsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gest_categorieActiv, gest_categorieDesactiv, gest_fonctionActiv, gest_fonctionDesactiv, gest_gestionAvanceAgentActiv, gest_gestionAvanceAgentDesactiv, gest_ministereActiv, gest_ministereDesactiv, gest_paramAvanceActiv, gest_paramAvanceDesactiv});
 
         panneauFormsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gest_agentActiv, gest_agentDesactiv, gest_budgetActiv, gest_budgetDesactiv, gest_emploiActiv, gest_emploiDesactiv, gest_statActiv, gest_statDesactiv, gest_strucActiv, gest_strucDesactiv});
 
@@ -708,9 +761,14 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)
-                    .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(gest_budgetDesactiv)
-                        .addComponent(gest_budgetActiv)))
+                    .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(gest_gestionAvanceAgentDesactiv)
+                            .addComponent(gest_gestionAvanceAgentActiv))
+                        .addGroup(panneauFormsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(gest_budgetDesactiv)
+                            .addComponent(gest_budgetActiv)
+                            .addComponent(jLabel11))))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -1004,6 +1062,8 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
     public static javax.swing.JRadioButton gest_emploiDesactiv;
     public static javax.swing.JRadioButton gest_fonctionActiv;
     public static javax.swing.JRadioButton gest_fonctionDesactiv;
+    public static javax.swing.JRadioButton gest_gestionAvanceAgentActiv;
+    public static javax.swing.JRadioButton gest_gestionAvanceAgentDesactiv;
     public static javax.swing.JRadioButton gest_ministereActiv;
     public static javax.swing.JRadioButton gest_ministereDesactiv;
     public static javax.swing.JRadioButton gest_paramAvanceActiv;
@@ -1015,6 +1075,7 @@ public class InterfaceProfil extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField idCatE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

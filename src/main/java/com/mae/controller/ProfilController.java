@@ -25,7 +25,7 @@ public class ProfilController {
     private static String tab[][];
 
     /*Enregistrer un Programme*/
-    private static final String queryInsert = "INSERT INTO profil (libeleProfil, permitGestStructure, permitGestCategorie, permitGestEmploi, permitGestFonction, permitGestMinistere, permitGestAgent, permitGestBudget,permitGestStatistique, permitGestParamAvance) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    private static final String queryInsert = "INSERT INTO profil (libeleProfil, permitGestStructure, permitGestCategorie, permitGestEmploi, permitGestFonction, permitGestMinistere, permitGestAgent, permitGestBudget,permitGestStatistique, permitGestParamAvance, permitGestAvanceeAgent) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
     public static void saveProfil(Profil profil) {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryInsert)) {           
@@ -39,6 +39,7 @@ public class ProfilController {
             preparedStatement.setString(8, profil.getPermitGestBudget());
             preparedStatement.setString(9, profil.getPermitGestStatistique());
             preparedStatement.setString(10, profil.getPermitGestParamAvance());
+             preparedStatement.setString(11, profil.getPermitGestAvanceeAgent());
 
             // preparedStatement.executeUpdate();
             int enregistrementValide = preparedStatement.executeUpdate();
@@ -165,6 +166,12 @@ public class ProfilController {
                 } else {
                     InterfaceProfil.gest_paramAvanceDesactiv.setSelected(true);
                 }
+                 //
+                if (res.getString("permitGestAvanceeAgent").equals("1")) {
+                    InterfaceProfil.gest_gestionAvanceAgentActiv.setSelected(true);
+                } else {
+                    InterfaceProfil.gest_gestionAvanceAgentDesactiv.setSelected(true);
+                }
 
         }
         res.close();
@@ -188,7 +195,7 @@ public class ProfilController {
     public static void updateProfil(Profil profil) {
         idP = Integer.parseInt(InterfaceProfil.tableau_profil.getValueAt(numligne, 0).toString());   //recuperer l'id 
         String queryUpdate = "UPDATE profil SET  libeleProfil = ?,  permitGestStructure = ?, permitGestCategorie = ?, permitGestEmploi = ?, permitGestFonction = ?, "
-                + "permitGestMinistere = ?, permitGestAgent = ?, permitGestBudget = ?,permitGestStatistique = ?, permitGestParamAvance = ? WHERE idProfil = ?";
+                + "permitGestMinistere = ?, permitGestAgent = ?, permitGestBudget = ?,permitGestStatistique = ?, permitGestParamAvance = ?, permitGestAvanceeAgent = ? WHERE idProfil = ?";
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(queryUpdate)) {
             preparedStatement.setString(1, profil.getLibeleR());
             preparedStatement.setString(2, profil.getPermitGestStructure());
@@ -199,8 +206,9 @@ public class ProfilController {
             preparedStatement.setString(7, profil.getPermitGestAgent());
             preparedStatement.setString(8, profil.getPermitGestBudget());
             preparedStatement.setString(9, profil.getPermitGestStatistique());
-            preparedStatement.setString(10, profil.getPermitGestParamAvance());           
-            preparedStatement.setInt(11, idP);
+            preparedStatement.setString(10, profil.getPermitGestParamAvance());
+             preparedStatement.setString(11, profil.getPermitGestAvanceeAgent());      
+            preparedStatement.setInt(12, idP);
             preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
@@ -209,11 +217,9 @@ public class ProfilController {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
-
     }
 
 //Modifier une Programme
- 
 
     public static void deleteProfil(Profil profil) {
         idP = Integer.parseInt(InterfaceProfil.tableau_profil.getValueAt(numligne, 0).toString());   //recuperer l'id   

@@ -1340,7 +1340,7 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
         panneauForms.add(comboFonction, new org.netbeans.lib.awtextra.AbsoluteConstraints(677, 124, 386, -1));
 
         comboTypeAgent.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Fonctionnaire", "Contractuel", "Militaire" }));
+        comboTypeAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fonctionnaire", "Contractuel", "Militaire" }));
         comboTypeAgent.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboTypeAgentItemStateChanged(evt);

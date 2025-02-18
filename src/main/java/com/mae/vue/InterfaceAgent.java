@@ -569,7 +569,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         panneauPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableau_agent = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        panneauElement = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -622,7 +622,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jLabel33 = new javax.swing.JLabel();
         boxAllocationFamiliale = new javax.swing.JFormattedTextField();
         boxIndeminiteSpecifique = new javax.swing.JFormattedTextField();
-        jPanel1 = new javax.swing.JPanel();
+        panneauBouton = new javax.swing.JPanel();
         btn_nouveau = new javax.swing.JButton();
         btn_enregistrer = new javax.swing.JButton();
         btn_modifier = new javax.swing.JButton();
@@ -729,37 +729,37 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             tableau_agent.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elements de salaire", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panneauElement.setBackground(new java.awt.Color(255, 255, 255));
+        panneauElement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elements de salaire", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panneauElement.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel23.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel23.setText("Ind.Respons. :");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 89, -1, -1));
+        panneauElement.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 89, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel21.setText("Ind.Technicité : ");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 94, -1, -1));
+        panneauElement.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 94, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("Catégorie/Echelle : ");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 25, -1, -1));
+        panneauElement.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 25, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Indice Sal. : ");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 23, -1, -1));
+        panneauElement.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 23, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel19.setText("Ind.Résidence. : ");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 23, -1, -1));
+        panneauElement.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 23, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel20.setText("Ind.Astreintes :");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 57, -1, -1));
+        panneauElement.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 57, -1, -1));
 
         comboCatAgent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboCatAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jPanel2.add(comboCatAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 19, 180, -1));
+        panneauElement.add(comboCatAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 19, 180, -1));
 
         boxIndiceSal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         boxIndiceSal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -773,7 +773,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndiceSalKeyTyped(evt);
             }
         });
-        jPanel2.add(boxIndiceSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 19, 180, 26));
+        panneauElement.add(boxIndiceSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 19, 180, 26));
 
         boxIndResidence.setEditable(false);
         boxIndResidence.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -786,7 +786,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndResidenceKeyTyped(evt);
             }
         });
-        jPanel2.add(boxIndResidence, new org.netbeans.lib.awtextra.AbsoluteConstraints(1432, 19, 180, 26));
+        panneauElement.add(boxIndResidence, new org.netbeans.lib.awtextra.AbsoluteConstraints(1432, 19, 180, 26));
 
         boxIndeminiteAstreinte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndeminiteAstreinte.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -795,7 +795,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndeminiteAstreinteKeyReleased(evt);
             }
         });
-        jPanel2.add(boxIndeminiteAstreinte, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 51, 180, 26));
+        panneauElement.add(boxIndeminiteAstreinte, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 51, 180, 26));
 
         boxIndeminiteTechnicite.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndeminiteTechnicite.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -804,7 +804,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndeminiteTechniciteKeyReleased(evt);
             }
         });
-        jPanel2.add(boxIndeminiteTechnicite, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 85, 180, 26));
+        panneauElement.add(boxIndeminiteTechnicite, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 85, 180, 26));
 
         boxIndeminiteResponsabilite.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndeminiteResponsabilite.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -813,30 +813,30 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndeminiteResponsabiliteKeyReleased(evt);
             }
         });
-        jPanel2.add(boxIndeminiteResponsabilite, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 85, 180, 26));
+        panneauElement.add(boxIndeminiteResponsabilite, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 85, 180, 26));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Echelon : ");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 25, -1, -1));
+        panneauElement.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 25, -1, -1));
 
         boxEchelon.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jPanel2.add(boxEchelon, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 19, 180, 26));
+        panneauElement.add(boxEchelon, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 19, 180, 26));
 
         jLabel22.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel22.setText("Cont.CARFO : ");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1012, 57, -1, -1));
+        panneauElement.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1012, 57, -1, -1));
 
         jLabel29.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel29.setText("Charge Militaire : ");
-        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 126, -1, -1));
+        panneauElement.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 126, -1, -1));
 
         jLabel30.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel30.setText("Alloc.Familiales : ");
-        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(1012, 91, -1, -1));
+        panneauElement.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(1012, 91, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Ind. Vest : ");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 57, 77, -1));
+        panneauElement.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 57, 77, -1));
 
         boxAutreIndeminite.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxAutreIndeminite.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -850,7 +850,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxAutreIndeminiteKeyReleased(evt);
             }
         });
-        jPanel2.add(boxAutreIndeminite, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 117, 180, 26));
+        panneauElement.add(boxAutreIndeminite, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 117, 180, 26));
 
         boxChargeMilitaire.setEditable(false);
         boxChargeMilitaire.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -860,23 +860,23 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxChargeMilitaireKeyReleased(evt);
             }
         });
-        jPanel2.add(boxChargeMilitaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 117, 180, 26));
+        panneauElement.add(boxChargeMilitaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 117, 180, 26));
 
         jLabel26.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel26.setText("Ind.Logement :");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 62, -1, -1));
+        panneauElement.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 62, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel14.setText("Salaire indiciaire : ");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1012, 23, -1, -1));
+        panneauElement.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1012, 23, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel27.setText("Ind.Spécifique : ");
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 89, -1, -1));
+        panneauElement.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 89, -1, -1));
 
         jLabel28.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel28.setText("Autres Ind. : ");
-        jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 121, -1, -1));
+        panneauElement.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 121, -1, -1));
 
         boxSalaireIndicMensuel.setBackground(new java.awt.Color(204, 0, 0));
         boxSalaireIndicMensuel.setForeground(new java.awt.Color(255, 255, 255));
@@ -884,7 +884,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         boxSalaireIndicMensuel.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         boxSalaireIndicMensuel.setEnabled(false);
         boxSalaireIndicMensuel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel2.add(boxSalaireIndicMensuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 19, 180, 26));
+        panneauElement.add(boxSalaireIndicMensuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 19, 180, 26));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Récapitulatif des lignes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
@@ -1023,17 +1023,17 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         jPanel3.add(idLigne666, new org.netbeans.lib.awtextra.AbsoluteConstraints(1497, 63, 93, -1));
         jPanel3.add(idLigne669, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 98, 93, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 149, 1601, 140));
+        panneauElement.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 149, 1601, 140));
 
         boxContributionCARFO.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxContributionCARFO.setEnabled(false);
         boxContributionCARFO.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanel2.add(boxContributionCARFO, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 51, 180, -1));
+        panneauElement.add(boxContributionCARFO, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 51, 180, -1));
 
         boxContributionCNSS.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxContributionCNSS.setEnabled(false);
         boxContributionCNSS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanel2.add(boxContributionCNSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(1432, 51, 180, -1));
+        panneauElement.add(boxContributionCNSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(1432, 51, 180, -1));
 
         boxIndeminiteVestimentaire.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndeminiteVestimentaire.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1042,11 +1042,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndeminiteVestimentaireKeyReleased(evt);
             }
         });
-        jPanel2.add(boxIndeminiteVestimentaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 51, 180, -1));
+        panneauElement.add(boxIndeminiteVestimentaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 51, 180, -1));
 
         jLabel33.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel33.setText("Cont.CNSS :");
-        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 57, -1, -1));
+        panneauElement.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 57, -1, -1));
 
         boxAllocationFamiliale.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxAllocationFamiliale.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1055,7 +1055,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxAllocationFamilialeKeyReleased(evt);
             }
         });
-        jPanel2.add(boxAllocationFamiliale, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 85, 180, -1));
+        panneauElement.add(boxAllocationFamiliale, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 85, 180, -1));
 
         boxIndeminiteSpecifique.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndeminiteSpecifique.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -1064,10 +1064,10 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndeminiteSpecifiqueKeyReleased(evt);
             }
         });
-        jPanel2.add(boxIndeminiteSpecifique, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 85, 180, 26));
+        panneauElement.add(boxIndeminiteSpecifique, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 85, 180, 26));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actions", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        panneauBouton.setBackground(new java.awt.Color(255, 255, 255));
+        panneauBouton.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actions", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         btn_nouveau.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_nouveau.setForeground(new java.awt.Color(0, 102, 51));
@@ -1176,11 +1176,11 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panneauBoutonLayout = new javax.swing.GroupLayout(panneauBouton);
+        panneauBouton.setLayout(panneauBoutonLayout);
+        panneauBoutonLayout.setHorizontalGroup(
+            panneauBoutonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneauBoutonLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(btn_nouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
@@ -1201,15 +1201,15 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addComponent(rechercheMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panneauBoutonLayout.setVerticalGroup(
+            panneauBoutonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneauBoutonLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panneauBoutonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_nouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_enregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(panneauBoutonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_rafraichir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_rechercheragent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1219,7 +1219,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19))
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 1613, 90));
+        panneauElement.add(panneauBouton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 1613, 90));
 
         boxIndeminiteLogement.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         boxIndeminiteLogement.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -1228,7 +1228,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
                 boxIndeminiteLogementKeyReleased(evt);
             }
         });
-        jPanel2.add(boxIndeminiteLogement, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 50, 180, 30));
+        panneauElement.add(boxIndeminiteLogement, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 50, 180, 30));
 
         javax.swing.GroupLayout panneauPrincipalLayout = new javax.swing.GroupLayout(panneauPrincipal);
         panneauPrincipal.setLayout(panneauPrincipalLayout);
@@ -1237,7 +1237,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
             .addGroup(panneauPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panneauElement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauPrincipalLayout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addContainerGap())))
@@ -1245,7 +1245,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         panneauPrincipalLayout.setVerticalGroup(
             panneauPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panneauPrincipalLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panneauElement, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
@@ -1841,14 +1841,14 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btn_SelectLigne664;
     public static javax.swing.JButton btn_SelectLigne666;
     public static javax.swing.JButton btn_SelectLigne669;
-    private javax.swing.JButton btn_affecternewprogramme;
+    public static javax.swing.JButton btn_affecternewprogramme;
     private javax.swing.JButton btn_enregistrer;
     private javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;
     private javax.swing.JButton btn_rechercheragent;
-    private javax.swing.JButton btn_retirerligne;
-    private javax.swing.JButton btn_supprimer;
+    public static javax.swing.JButton btn_retirerligne;
+    public static javax.swing.JButton btn_supprimer;
     public static javax.swing.JTextField coefficientStruc;
     public static javax.swing.JComboBox<String> comboCatAgent;
     public static javax.swing.JComboBox<String> comboEmploiAgent;
@@ -1897,8 +1897,6 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    public static javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JFormattedTextField ligne661;
@@ -1906,6 +1904,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     public static javax.swing.JFormattedTextField ligne664;
     public static javax.swing.JFormattedTextField ligne666;
     public static javax.swing.JFormattedTextField ligne669;
+    public static javax.swing.JPanel panneauBouton;
+    public static javax.swing.JPanel panneauElement;
     public static javax.swing.JPanel panneauForms;
     public static javax.swing.JPanel panneauPrincipal;
     public static javax.swing.JTextField rechercheMatricule;

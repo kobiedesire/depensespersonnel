@@ -731,8 +731,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menu_utilisateurs.setBackground(new java.awt.Color(0, 0, 0));
         menu_utilisateurs.setForeground(new java.awt.Color(255, 204, 0));
-        menu_utilisateurs.setText("Utilisateurs");
-        menu_utilisateurs.setToolTipText("Utilisateurs");
+        menu_utilisateurs.setText("Profils et Utilisateurs");
+        menu_utilisateurs.setToolTipText("Profils et Utilisateurs");
         menu_utilisateurs.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         menu_profils.setBackground(new java.awt.Color(0, 0, 0));
@@ -1137,7 +1137,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_user;
     private javax.swing.JMenu menu_utilisateurs;
     private javax.swing.JDesktopPane panneauBureau;
-    private javax.swing.JPanel panneauDeBase;
+    public static javax.swing.JPanel panneauDeBase;
     private javax.swing.JPanel panneauEntete;
     private javax.swing.JPanel panneauMenu;
     public static javax.swing.JLabel textExBudgetaire;

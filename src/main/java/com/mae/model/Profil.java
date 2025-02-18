@@ -12,7 +12,7 @@ public class Profil {
     private int idR;
     private String libeleR;
     private String permitGestStructure, permitGestCategorie, permitGestEmploi, permitGestFonction, permitGestMinistere, permitGestAgent;
-    private String permitGestBudget, permitGestStatistique, permitGestParamAvance;
+    private String permitGestBudget, permitGestStatistique, permitGestParamAvance, permitGestAvanceeAgent;
 
     public int getIdR() {
         return idR;
@@ -73,6 +73,11 @@ public class Profil {
     public String getPermitGestAgent() {
         return permitGestAgent;
     }
+    
+    
+    
+    
+    
 
     public void setPermitGestAgent(String permitGestAgent) {
         this.permitGestAgent = permitGestAgent;
@@ -101,8 +106,20 @@ public class Profil {
     public void setPermitGestParamAvance(String permitGestParamAvance) {
         this.permitGestParamAvance = permitGestParamAvance;
     }
+    
+     public String getPermitGestAvanceeAgent() {
+        return permitGestAvanceeAgent;
+    }
 
-    public Profil(String libeleR, String permitGestStructure, String permitGestCategorie, String permitGestEmploi, String permitGestFonction, String permitGestMinistere, String permitGestAgent, String permitGestBudget, String permitGestStatistique, String permitGestParamAvance) {
+    public void setPermitGestAvanceeAgent(String permitGestAvanceeAgent) {
+        this.permitGestAvanceeAgent = permitGestAvanceeAgent;
+    }
+    
+    
+    
+    
+
+    public Profil(String libeleR, String permitGestStructure, String permitGestCategorie, String permitGestEmploi, String permitGestFonction, String permitGestMinistere, String permitGestAgent, String permitGestBudget, String permitGestStatistique, String permitGestParamAvance, String permitGestAvanceeAgent) {
         this.libeleR = libeleR;
         this.permitGestStructure = permitGestStructure;
         this.permitGestCategorie = permitGestCategorie;
@@ -113,12 +130,10 @@ public class Profil {
         this.permitGestBudget = permitGestBudget;
         this.permitGestStatistique = permitGestStatistique;
         this.permitGestParamAvance = permitGestParamAvance;
+        this.permitGestAvanceeAgent = permitGestAvanceeAgent;
     }
 
     public Profil() {
-    }
-
-   
-    
+    }    
     
 }

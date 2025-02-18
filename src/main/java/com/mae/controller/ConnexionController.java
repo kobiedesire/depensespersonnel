@@ -5,6 +5,7 @@
 package com.mae.controller;
 
 import com.mae.bd.connexionBD;
+import com.mae.vue.InterfaceAgent;
 import com.mae.vue.InterfaceConnexion;
 import com.mae.vue.MenuPrincipal;
 import java.sql.Connection;
@@ -77,8 +78,16 @@ public class ConnexionController {
                     if(btnStatistique == 0){ MenuPrincipal.menu__stattistiques.setVisible(false);}
                     //
                     int btnParamAvance= Integer.parseInt(res.getString("p.permitGestParamAvance"));
-                    if(btnParamAvance == 0){ MenuPrincipal.menu_paramavance.setVisible(false);}  
-                    
+                    if(btnParamAvance == 0){ MenuPrincipal.menu_paramavance.setVisible(false);}                     
+                     //
+                    int btnAvanceAgent= Integer.parseInt(res.getString("p.permitGestAvanceeAgent"));
+                    if(btnAvanceAgent == 0){ 
+                        //MenuPrincipal.menu_paramavance.setVisible(false);
+                      //  InterfaceAgent ia = new InterfaceAgent();
+                        InterfaceAgent.panneauPrincipal.btn_supprimer.setEnabled(false);
+                     //   InterfaceAgent.btn_retirerligne.setVisible(false);
+                    //    InterfaceAgent.btn_affecternewprogramme.setVisible(false);
+                    }
                     
                     MenuPrincipal.textExBudgetaire.setText("ANNEE BUDGETAIRE : " +anneB);
                 } else {
