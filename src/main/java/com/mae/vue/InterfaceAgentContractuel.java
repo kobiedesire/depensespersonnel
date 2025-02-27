@@ -40,6 +40,13 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     }
 
+    
+    //droit d'accès aux bouttons
+    public static void afficherMasquerBoutton() {
+        ContractuelController.droitsBoutton();
+    }
+    
+    
     //Fonction pour exécuter le calcul du salaire indicaire mensuel de l'agent ********************************************************************************************************************
     public static void afficherLigne661() {
         ContractuelController.calculSalIndiciaire();
@@ -1211,6 +1218,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
+       
         coefficientStruc.setVisible(false);
         idProg.setVisible(false);
         idLigne661.setVisible(false);
@@ -1331,6 +1339,7 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
+         afficherMasquerBoutton();
         listerAgent();
         JTableHeader header = tableau_agent_contractuel.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
@@ -1544,11 +1553,11 @@ public class InterfaceAgentContractuel extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btn_SelectLigne666;
     public static javax.swing.JButton btn_SelectLigne669;
     private javax.swing.JButton btn_enregistrer;
-    private javax.swing.JButton btn_modifier;
+    public static javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;
     private javax.swing.JButton btn_rechercheragent;
-    private javax.swing.JButton btn_supprimer;
+    public static javax.swing.JButton btn_supprimer;
     public static javax.swing.JTextField coefficientStruc;
     public static javax.swing.JComboBox<String> comboCatAgent;
     public static javax.swing.JComboBox<String> comboEmploiAgent;

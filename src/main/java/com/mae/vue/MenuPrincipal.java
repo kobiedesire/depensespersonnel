@@ -88,60 +88,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         menu_fichier = new javax.swing.JMenu();
         menu_moncompte = new javax.swing.JMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         menu_deconnexion = new javax.swing.JMenuItem();
         menu_parametre = new javax.swing.JMenu();
         menu_structure = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         menu_catechelle = new javax.swing.JMenuItem();
-        jSeparator11 = new javax.swing.JPopupMenu.Separator();
         menu_emploi = new javax.swing.JMenuItem();
-        jSeparator14 = new javax.swing.JPopupMenu.Separator();
         menu_fonction = new javax.swing.JMenuItem();
-        jSeparator13 = new javax.swing.JPopupMenu.Separator();
         menu_ministere = new javax.swing.JMenuItem();
-        jSeparator12 = new javax.swing.JPopupMenu.Separator();
         menu_agent = new javax.swing.JMenu();
         menu_agent_fonct = new javax.swing.JMenuItem();
-        jSeparator18 = new javax.swing.JPopupMenu.Separator();
         menu_agent_contrac = new javax.swing.JMenuItem();
-        jSeparator19 = new javax.swing.JPopupMenu.Separator();
         menu_agent_amba = new javax.swing.JMenuItem();
         menu_budget = new javax.swing.JMenu();
         menu_creerbudget = new javax.swing.JMenuItem();
-        jSeparator10 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jSeparator6 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jSeparator8 = new javax.swing.JPopupMenu.Separator();
         menu_article = new javax.swing.JMenuItem();
-        jSeparator9 = new javax.swing.JPopupMenu.Separator();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         menu__stattistiques = new javax.swing.JMenu();
         menu_statagents = new javax.swing.JMenuItem();
-        jSeparator16 = new javax.swing.JPopupMenu.Separator();
         menu_statbudget = new javax.swing.JMenuItem();
-        jSeparator21 = new javax.swing.JPopupMenu.Separator();
         menu_statparporgramme = new javax.swing.JMenuItem();
         menu_paramavance1 = new javax.swing.JMenu();
         menu_modifieragent = new javax.swing.JMenuItem();
-        jSeparator20 = new javax.swing.JPopupMenu.Separator();
         menu_consulterbudget = new javax.swing.JMenuItem();
         menu_paramavance = new javax.swing.JMenu();
         menu_importagent = new javax.swing.JMenuItem();
-        jSeparator15 = new javax.swing.JPopupMenu.Separator();
         menu_utilisateurs = new javax.swing.JMenu();
         menu_profils = new javax.swing.JMenuItem();
         jSeparator17 = new javax.swing.JPopupMenu.Separator();
         menu_user = new javax.swing.JMenuItem();
         menu_aide = new javax.swing.JMenu();
         userConnected = new javax.swing.JMenu();
+        prodilID = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -335,10 +317,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menu_moncompte.setToolTipText("Mon compte");
         menu_fichier.add(menu_moncompte);
 
-        jSeparator3.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
-        menu_fichier.add(jSeparator3);
-
         menu_deconnexion.setBackground(new java.awt.Color(0, 0, 0));
         menu_deconnexion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_deconnexion.setForeground(new java.awt.Color(255, 204, 0));
@@ -371,10 +349,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_parametre.add(menu_structure);
 
-        jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        menu_parametre.add(jSeparator2);
-
         menu_catechelle.setBackground(new java.awt.Color(0, 0, 0));
         menu_catechelle.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_catechelle.setForeground(new java.awt.Color(255, 204, 0));
@@ -386,10 +360,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu_parametre.add(menu_catechelle);
-
-        jSeparator11.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator11.setForeground(new java.awt.Color(255, 255, 255));
-        menu_parametre.add(jSeparator11);
 
         menu_emploi.setBackground(new java.awt.Color(0, 0, 0));
         menu_emploi.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -403,10 +373,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_parametre.add(menu_emploi);
 
-        jSeparator14.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator14.setForeground(new java.awt.Color(255, 255, 255));
-        menu_parametre.add(jSeparator14);
-
         menu_fonction.setBackground(new java.awt.Color(0, 0, 0));
         menu_fonction.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_fonction.setForeground(new java.awt.Color(255, 204, 0));
@@ -419,10 +385,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_parametre.add(menu_fonction);
 
-        jSeparator13.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator13.setForeground(new java.awt.Color(255, 255, 255));
-        menu_parametre.add(jSeparator13);
-
         menu_ministere.setBackground(new java.awt.Color(0, 0, 0));
         menu_ministere.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_ministere.setForeground(new java.awt.Color(255, 204, 0));
@@ -434,10 +396,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu_parametre.add(menu_ministere);
-
-        jSeparator12.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator12.setForeground(new java.awt.Color(255, 255, 255));
-        menu_parametre.add(jSeparator12);
 
         menu_agent.setBackground(new java.awt.Color(0, 0, 0));
         menu_agent.setForeground(new java.awt.Color(255, 204, 0));
@@ -457,10 +415,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_agent.add(menu_agent_fonct);
 
-        jSeparator18.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator18.setForeground(new java.awt.Color(255, 255, 255));
-        menu_agent.add(jSeparator18);
-
         menu_agent_contrac.setBackground(new java.awt.Color(0, 0, 0));
         menu_agent_contrac.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_agent_contrac.setForeground(new java.awt.Color(255, 204, 0));
@@ -472,10 +426,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu_agent.add(menu_agent_contrac);
-
-        jSeparator19.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator19.setForeground(new java.awt.Color(255, 255, 255));
-        menu_agent.add(jSeparator19);
 
         menu_agent_amba.setBackground(new java.awt.Color(0, 0, 0));
         menu_agent_amba.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -511,10 +461,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_budget.add(menu_creerbudget);
 
-        jSeparator10.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator10.setForeground(new java.awt.Color(255, 255, 255));
-        menu_budget.add(jSeparator10);
-
         jMenuItem3.setBackground(new java.awt.Color(0, 0, 0));
         jMenuItem3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jMenuItem3.setForeground(new java.awt.Color(255, 204, 0));
@@ -525,10 +471,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu_budget.add(jMenuItem3);
-
-        jSeparator5.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
-        menu_budget.add(jSeparator5);
 
         jMenuItem4.setBackground(new java.awt.Color(0, 0, 0));
         jMenuItem4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -541,10 +483,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_budget.add(jMenuItem4);
 
-        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
-        menu_budget.add(jSeparator6);
-
         jMenuItem5.setBackground(new java.awt.Color(0, 0, 0));
         jMenuItem5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jMenuItem5.setForeground(new java.awt.Color(255, 204, 0));
@@ -555,10 +493,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu_budget.add(jMenuItem5);
-
-        jSeparator7.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        menu_budget.add(jSeparator7);
 
         jMenuItem6.setBackground(new java.awt.Color(0, 0, 0));
         jMenuItem6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -571,10 +505,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_budget.add(jMenuItem6);
 
-        jSeparator8.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
-        menu_budget.add(jSeparator8);
-
         menu_article.setBackground(new java.awt.Color(0, 0, 0));
         menu_article.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_article.setForeground(new java.awt.Color(255, 204, 0));
@@ -586,10 +516,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_budget.add(menu_article);
 
-        jSeparator9.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator9.setForeground(new java.awt.Color(255, 255, 255));
-        menu_budget.add(jSeparator9);
-
         jMenuItem8.setBackground(new java.awt.Color(0, 0, 0));
         jMenuItem8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jMenuItem8.setForeground(new java.awt.Color(255, 204, 0));
@@ -600,10 +526,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu_budget.add(jMenuItem8);
-
-        jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
-        menu_budget.add(jSeparator4);
 
         jMenuItem2.setBackground(new java.awt.Color(0, 0, 0));
         jMenuItem2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -637,10 +559,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu__stattistiques.add(menu_statagents);
 
-        jSeparator16.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator16.setForeground(new java.awt.Color(255, 255, 255));
-        menu__stattistiques.add(jSeparator16);
-
         menu_statbudget.setBackground(new java.awt.Color(0, 0, 0));
         menu_statbudget.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_statbudget.setForeground(new java.awt.Color(255, 204, 0));
@@ -652,10 +570,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu__stattistiques.add(menu_statbudget);
-
-        jSeparator21.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator21.setForeground(new java.awt.Color(255, 255, 255));
-        menu__stattistiques.add(jSeparator21);
 
         menu_statparporgramme.setBackground(new java.awt.Color(0, 0, 0));
         menu_statparporgramme.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -689,10 +603,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menu_paramavance1.add(menu_modifieragent);
 
-        jSeparator20.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
-        menu_paramavance1.add(jSeparator20);
-
         menu_consulterbudget.setBackground(new java.awt.Color(0, 0, 0));
         menu_consulterbudget.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         menu_consulterbudget.setForeground(new java.awt.Color(255, 204, 0));
@@ -724,10 +634,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menu_paramavance.add(menu_importagent);
-
-        jSeparator15.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator15.setForeground(new java.awt.Color(255, 255, 255));
-        menu_paramavance.add(jSeparator15);
 
         menu_utilisateurs.setBackground(new java.awt.Color(0, 0, 0));
         menu_utilisateurs.setForeground(new java.awt.Color(255, 204, 0));
@@ -780,6 +686,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         userConnected.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         userConnected.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         menuBar.add(userConnected);
+        menuBar.add(prodilID);
 
         setJMenuBar(menuBar);
 
@@ -802,6 +709,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        
         afficherDateDuJour();
         afficherHeure();
         menuBar.add(Box.createHorizontalGlue());  
@@ -1086,26 +994,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator10;
-    private javax.swing.JPopupMenu.Separator jSeparator11;
-    private javax.swing.JPopupMenu.Separator jSeparator12;
-    private javax.swing.JPopupMenu.Separator jSeparator13;
-    private javax.swing.JPopupMenu.Separator jSeparator14;
-    private javax.swing.JPopupMenu.Separator jSeparator15;
-    private javax.swing.JPopupMenu.Separator jSeparator16;
     private javax.swing.JPopupMenu.Separator jSeparator17;
-    private javax.swing.JPopupMenu.Separator jSeparator18;
-    private javax.swing.JPopupMenu.Separator jSeparator19;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator20;
-    private javax.swing.JPopupMenu.Separator jSeparator21;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
-    private javax.swing.JPopupMenu.Separator jSeparator6;
-    private javax.swing.JPopupMenu.Separator jSeparator7;
-    private javax.swing.JPopupMenu.Separator jSeparator8;
-    private javax.swing.JPopupMenu.Separator jSeparator9;
     public static javax.swing.JMenuBar menuBar;
     public static javax.swing.JMenu menu__stattistiques;
     public static javax.swing.JMenu menu_agent;
@@ -1140,6 +1029,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JPanel panneauDeBase;
     private javax.swing.JPanel panneauEntete;
     private javax.swing.JPanel panneauMenu;
+    public static javax.swing.JMenu prodilID;
     public static javax.swing.JLabel textExBudgetaire;
     public static javax.swing.JMenu userConnected;
     // End of variables declaration//GEN-END:variables

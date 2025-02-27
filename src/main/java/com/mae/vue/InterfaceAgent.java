@@ -39,6 +39,13 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         AutoCompleteDecorator.decorate(comboSexeAg);
 
     }
+    
+    
+    //droit d'accès aux bouttons
+    public static void afficherMasquerBoutton() {
+        AgentController.droitsBoutton();
+    }
+    
 
     //Fonction pour exécuter le calcul du salaire indicaire mensuel de l'agent ********************************************************************************************************************
     public static void afficherSalaireIndiciaire() {
@@ -1544,6 +1551,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
+         afficherMasquerBoutton();
         listerAgent();
         JTableHeader header = tableau_agent.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());

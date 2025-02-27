@@ -63,7 +63,7 @@ public class InterfaceConnexion extends javax.swing.JFrame {
         exercice = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Deper_Gestion des dépenses du personnel MAE");
+        setTitle("MAECRBE-Gestion des dépenses du personnel MAE");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {

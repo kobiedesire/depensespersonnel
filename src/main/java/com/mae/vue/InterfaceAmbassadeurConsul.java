@@ -39,6 +39,13 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
         AutoCompleteDecorator.decorate(comboSexeAg);
 
     }
+    
+    
+    //droit d'accès aux bouttons
+    public static void afficherMasquerBoutton() {
+        AmbassadeurConsulController.droitsBoutton();
+    }
+    
 
     //Fonction pour exécuter le calcul du salaire indicaire mensuel de l'agent ********************************************************************************************************************
     public static void afficherSalaireIndiciaire() {
@@ -1565,6 +1572,7 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
+         afficherMasquerBoutton();
         listerAgent();
         JTableHeader header = tableau_agent.getTableHeader();
         header.setDefaultRenderer(new PropsTableau());
@@ -1866,14 +1874,14 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
     public static javax.swing.JButton btn_SelectLigne664;
     public static javax.swing.JButton btn_SelectLigne666;
     public static javax.swing.JButton btn_SelectLigne669;
-    private javax.swing.JButton btn_affecternewprogramme;
+    public static javax.swing.JButton btn_affecternewprogramme;
     private javax.swing.JButton btn_enregistrer;
-    private javax.swing.JButton btn_modifier;
+    public static javax.swing.JButton btn_modifier;
     private javax.swing.JButton btn_nouveau;
     private javax.swing.JButton btn_rafraichir;
     private javax.swing.JButton btn_rechercheragent;
-    private javax.swing.JButton btn_retirerligne;
-    private javax.swing.JButton btn_supprimer;
+    public static javax.swing.JButton btn_retirerligne;
+    public static javax.swing.JButton btn_supprimer;
     public static javax.swing.JTextField coefficientStruc;
     public static javax.swing.JComboBox<String> comboCatAgent;
     public static javax.swing.JComboBox<String> comboEmploiAgent;

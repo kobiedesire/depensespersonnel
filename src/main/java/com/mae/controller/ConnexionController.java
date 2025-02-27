@@ -80,16 +80,19 @@ public class ConnexionController {
                     int btnParamAvance= Integer.parseInt(res.getString("p.permitGestParamAvance"));
                     if(btnParamAvance == 0){ MenuPrincipal.menu_paramavance.setVisible(false);}                     
                      //
-                    int btnAvanceAgent= Integer.parseInt(res.getString("p.permitGestAvanceeAgent"));
-                    if(btnAvanceAgent == 0){ 
+                   // int btnAvanceAgent= Integer.parseInt(res.getString("p.permitGestAvanceeAgent"));
+                   // if(btnAvanceAgent == 0){ 
                         //MenuPrincipal.menu_paramavance.setVisible(false);
                       //  InterfaceAgent ia = new InterfaceAgent();
-                        InterfaceAgent.panneauPrincipal.btn_supprimer.setEnabled(false);
+                        //InterfaceAgent.panneauPrincipal.btn_supprimer.setEnabled(false);
                      //   InterfaceAgent.btn_retirerligne.setVisible(false);
                     //    InterfaceAgent.btn_affecternewprogramme.setVisible(false);
-                    }
+                   // }
                     
                     MenuPrincipal.textExBudgetaire.setText("ANNEE BUDGETAIRE : " +anneB);
+                    MenuPrincipal.prodilID.setVisible(false);
+                    MenuPrincipal.prodilID.setText(res.getString("u.idProfil"));
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Erreur mot de passe");
                     // JOptionPane.showMessageDialog(null, "Erreur nom d'utilisateur ou mot de passe");

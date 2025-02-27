@@ -3,7 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Deper_Gestion des d&#xe9;penses du personnel MAE"/>
+    <Property name="title" type="java.lang.String" value="MAECRBE-Gestion des d&#xe9;penses du personnel MAE"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>

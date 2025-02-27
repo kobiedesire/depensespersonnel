@@ -7,6 +7,7 @@ package com.mae.controller;
 import com.mae.bd.connexionBD;
 import com.mae.model.Agent;
 import com.mae.vue.InterfaceAgent;
+import com.mae.vue.MenuPrincipal;
 import com.mae.vue.InterfaceListeLigne661;
 import com.mae.vue.InterfaceListeLigne663;
 import com.mae.vue.InterfaceListeLigne664;
@@ -2134,8 +2135,35 @@ public class AgentController {
             JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
         }
     }  
-}  
     
+    //gestion des droits d'accès aux bouttons supprimer un agent retirer et réaffecter les lignes
+    private static final String querySelectProfil = "SELECT * FROM  profil  WHERE idProfil = ? ";
+
+    public static void droitsBoutton() {
+        int idprofil = Integer.parseInt(MenuPrincipal.prodilID.getText());
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectProfil)) {
+            preparedStatement.setInt(1, idprofil);
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) {
+
+                int btnAvanceAgent = Integer.parseInt(res.getString("permitGestAvanceeAgent"));
+                if (btnAvanceAgent == 0) {
+                    InterfaceAgent.btn_supprimer.setEnabled(false);
+                    InterfaceAgent.btn_retirerligne.setEnabled(false);
+                    InterfaceAgent.btn_affecternewprogramme.setEnabled(false);
+                }
+
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }
+}
     
     
     
