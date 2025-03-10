@@ -37,7 +37,6 @@ public class AgentController {
 
     private static boolean res, yn;
     private static String tab[][];
-
     ///calcul du salaire indiciere d'un agent, de l'indeminité de residence et mise à jour de la ligne 661
     public static int pointIndiciare = 2331;
     public static void calculSalIndiciaire() {
@@ -73,7 +72,6 @@ public class AgentController {
                     InterfaceAgent.boxIndResidence.setValue(Math.round(indeminiteResidence));//affichage de l'indeminité de residence
                     InterfaceAgent.ligne661.setValue(Math.round(soldeLigne611));
                     break;
-
                 case "Militaire":
                    // InterfaceAgent.boxIndResidence.setValue(0);//fixer la veleur 0 pour l'indeministe de residence si l'agent est un militaire
                     double indiceSMilitaire = Integer.parseInt(InterfaceAgent.boxIndiceSal.getText().trim());

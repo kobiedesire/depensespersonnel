@@ -670,6 +670,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         boxIncidenceAnnuelle = new javax.swing.JFormattedTextField();
         boxIDAgent = new javax.swing.JTextField();
         coefficientStruc = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -1319,8 +1320,8 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         panneauForms.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 127, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel13.setText("Fonction : ");
-        panneauForms.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 127, -1, -1));
+        jLabel13.setText("Coef.Correct :");
+        panneauForms.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, -1));
 
         comboFonction.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboFonction.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -1387,7 +1388,15 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
         });
         panneauForms.add(boxIncidenceAnnuelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 25, 299, -1));
         panneauForms.add(boxIDAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 90, -1));
-        panneauForms.add(coefficientStruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1510, 130, -1, -1));
+
+        coefficientStruc.setBackground(new java.awt.Color(204, 0, 51));
+        coefficientStruc.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        coefficientStruc.setEnabled(false);
+        panneauForms.add(coefficientStruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(674, 160, 100, -1));
+
+        jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel35.setText("Fonction : ");
+        panneauForms.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 127, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1899,6 +1908,7 @@ public class InterfaceAgent extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

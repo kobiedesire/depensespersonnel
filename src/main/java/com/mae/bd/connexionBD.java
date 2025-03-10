@@ -57,7 +57,7 @@ public class connexionBD {
             switch (exBdugetaire) {
                 case 2025:
                     // Charger le fichier de configuration
-                    FileInputStream fichierConfig = new FileInputStream("2025config.properties");
+                    FileInputStream fichierConfig = new FileInputStream("2025config2.properties");
                     properties.load(fichierConfig);
                     break;
 

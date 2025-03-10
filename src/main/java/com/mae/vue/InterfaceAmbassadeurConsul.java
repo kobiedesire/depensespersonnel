@@ -1744,7 +1744,8 @@ public class InterfaceAmbassadeurConsul extends javax.swing.JInternalFrame {
 
     private void boxIndeminiteSpecifiqueKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxIndeminiteSpecifiqueKeyReleased
         // TODO add your handling code here:
-        afficherLigne669();
+        //afficherLigne669();
+         afficherSommeIndeminite663();
 
     }//GEN-LAST:event_boxIndeminiteSpecifiqueKeyReleased
 

@@ -141,6 +141,7 @@ public class StatAcceuilController {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                   int totalBMDPC = res.getInt("totalBudgetMDPC");
+                  //System.out.println(totalBMDPC);
                   NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
                   InterfaceAcceuil.box_TTBudgetMDPC.setText(formatter.format(totalBMDPC)+ " " + "FCFA");
                // InterfaceAcceuil.box_TTBudgetMDPC.setText(res.getString("totalBudgetMDPC") + " " + "FCFA");
