@@ -161,6 +161,7 @@ import javax.swing.JTable;
         statBudgetNombreEnreg.setForeground(new java.awt.Color(255, 255, 255));
         statBudgetNombreEnreg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         statBudgetNombreEnreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        statBudgetNombreEnreg.setEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 204));

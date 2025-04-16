@@ -29,7 +29,7 @@ public class StatAgentController {
     private static String tab[][];
 
     /*Lister tous les agents Central + MDCPC*/
-    private static final String querySelectAllAgent = "SELECT  idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent ";
+    private static final String querySelectAllAgent = "SELECT  idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent ORDER BY nomAgent ASC ";
 
     public static void listAllAgent() {
         //String typeA = InterfaceAgent.comboTypeAgent.getSelectedItem().toString();
@@ -75,7 +75,7 @@ public class StatAgentController {
     }
   
     // rechercheret afficher un agent par le matricule    
-    private static final String querySelectOneAgentByMatricule = "SELECT * FROM agent WHERE matriculeAgent = ? ";
+    private static final String querySelectOneAgentByMatricule = "SELECT * FROM agent WHERE matriculeAgent = ? ORDER BY nomAgent ASC ";
     public static void rechercheAgentByMatricule() {
         String matriculeA = InterfaceStatistiqueAgent.box_rechercheMatricule.getText().trim();
         //numligne = InterfaceAction.tableau_action.getSelectedRow();//recuperer le le numero de la ligne
@@ -220,7 +220,7 @@ public class StatAgentController {
      
       
          //Afficher les emplois dans le combo
-   private static final String querySelectEmploi = "SELECT codeEmploi FROM emploi ";
+   private static final String querySelectEmploi = "SELECT codeEmploi FROM emploi ORDER BY codeEmploi ASC";
 
     public static void listEmploiInCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectEmploi)) {
@@ -241,7 +241,7 @@ public class StatAgentController {
     
 /***************************FILTRER LES RECHERCHE******************************************************************************************/
 // Effectif des agents par sexe    
-    private static final String querySelectAllAgentBySexe = "SELECT * FROM agent WHERE sexeAgent = ? ";
+    private static final String querySelectAllAgentBySexe = "SELECT * FROM agent WHERE sexeAgent = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentBySexe() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Categorie.setSelectedIndex(0);
@@ -309,7 +309,7 @@ public class StatAgentController {
     }
 
     // Effectif des agents par caetgorie    
-    private static final String querySelectAllAgentByCategorie = "SELECT * FROM agent WHERE categorieEchelleAgent = ? ";
+    private static final String querySelectAllAgentByCategorie = "SELECT * FROM agent WHERE categorieEchelleAgent = ? ORDER BY nomAgent ASC ";
     public static void rechercheAgentByCategorie() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);
@@ -377,7 +377,7 @@ public class StatAgentController {
     }
     
     // Effectif des agents par structure    
-    private static final String querySelectAllAgentByStructure = "SELECT * FROM agent WHERE structureAgent = ? ";
+    private static final String querySelectAllAgentByStructure = "SELECT * FROM agent WHERE structureAgent = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentByStructure() {
         InterfaceStatistiqueAgent.combo_Categorie.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);
@@ -448,7 +448,7 @@ public class StatAgentController {
 
     
  // Effectif des agents par type d'agent    
-    private static final String querySelectAllAgentByTypeAgent = "SELECT * FROM agent WHERE typeAgent = ?";
+    private static final String querySelectAllAgentByTypeAgent = "SELECT * FROM agent WHERE typeAgent = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentByTypeAgent() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);
@@ -517,7 +517,7 @@ public class StatAgentController {
     }
    
      // Effectif des agents par emploi    
-    private static final String querySelectAllAgentByEmploi = "SELECT * FROM agent WHERE emploiAgent = ?";
+    private static final String querySelectAllAgentByEmploi = "SELECT * FROM agent WHERE emploiAgent = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentByEmploi() {
         InterfaceStatistiqueAgent.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgent.combo_Sexe.setSelectedIndex(0);

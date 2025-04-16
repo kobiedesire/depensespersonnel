@@ -29,7 +29,7 @@ public class StatAgentProgrammeController {
     private static String tab[][];
 
     /*Lister tous les agents Central + MDCPC*/
-    private static final String querySelectAllAgent = "SELECT  idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent ";
+    private static final String querySelectAllAgent = "SELECT  idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent ORDER BY nomAgent ASC ";
 
     public static void listAllAgent() {
         //String typeA = InterfaceAgent.comboTypeAgent.getSelectedItem().toString();
@@ -75,7 +75,7 @@ public class StatAgentProgrammeController {
     }
   
     // rechercheret afficher un agent par le matricule    
-    private static final String querySelectOneAgentByMatricule = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND matriculeAgent = ? ";
+    private static final String querySelectOneAgentByMatricule = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND matriculeAgent = ? ORDER BY nomAgent ASC ";
     public static void rechercheAgentByMatriculeEtprogramme() {
         String matriculeA = InterfaceStatistiqueAgentProgramme.box_rechercheMatricule.getText().trim();
         String programmeA = InterfaceStatistiqueAgentProgramme.combo_programme.getSelectedItem().toString();
@@ -244,7 +244,7 @@ public class StatAgentProgrammeController {
      
       
          //Afficher les emplois dans le combo
-   private static final String querySelectEmploi = "SELECT codeEmploi FROM emploi ";
+   private static final String querySelectEmploi = "SELECT codeEmploi FROM emploi ORDER BY codeEmploi ASC";
 
     public static void listEmploiInCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectEmploi)) {
@@ -265,7 +265,7 @@ public class StatAgentProgrammeController {
     
 /***************************FILTRER LES RECHERCHE******************************************************************************************/
 // Effectif des agents par sexe    
-    private static final String querySelectAllAgentBySexe = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND sexeAgent = ?";
+    private static final String querySelectAllAgentBySexe = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND sexeAgent = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentBySexeEtProgramme() {
         InterfaceStatistiqueAgentProgramme.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgentProgramme.combo_Categorie.setSelectedIndex(0);
@@ -335,7 +335,7 @@ public class StatAgentProgrammeController {
     }
 
     // Effectif des agents par caetgorie et par programme
-    private static final String querySelectAllAgentByCategorie = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND categorieEchelleAgent = ? ";
+    private static final String querySelectAllAgentByCategorie = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND categorieEchelleAgent = ? ORDER BY nomAgent ASC ";
     public static void rechercheAgentByCategorieEtProgramme() {
         InterfaceStatistiqueAgentProgramme.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgentProgramme.combo_Sexe.setSelectedIndex(0);
@@ -476,7 +476,7 @@ public class StatAgentProgrammeController {
 
     
  // Effectif des agents par type d'agent et par porgramme   
-    private static final String querySelectAllAgentByTypeAgent = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND typeAgent = ?";
+    private static final String querySelectAllAgentByTypeAgent = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND typeAgent = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentByTypeAgent() {
         InterfaceStatistiqueAgentProgramme.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgentProgramme.combo_Sexe.setSelectedIndex(0);
@@ -547,7 +547,7 @@ public class StatAgentProgrammeController {
     }
    
      // Effectif des agents par emploi et par programme   
-    private static final String querySelectAllAgentByEmploi = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND emploiAgent = ?";
+    private static final String querySelectAllAgentByEmploi = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? AND emploiAgent = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentByEmploi() {
         InterfaceStatistiqueAgentProgramme.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgentProgramme.combo_Sexe.setSelectedIndex(0);
@@ -621,7 +621,7 @@ public class StatAgentProgrammeController {
     
     //rechercher dans un programme
     
-    private static final String querySelectAllAgentByProgramme = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ?";
+    private static final String querySelectAllAgentByProgramme = "SELECT * FROM agent a, structure s, programme p WHERE a.structureAgent = s.codeStructure AND s.idProgramme = p.idProgramme AND p.codeProgramme = ? ORDER BY nomAgent ASC";
     public static void rechercheAgentByProgramme() {
         InterfaceStatistiqueAgentProgramme.combo_Structure.setSelectedIndex(0);
         InterfaceStatistiqueAgentProgramme.combo_Sexe.setSelectedIndex(0);

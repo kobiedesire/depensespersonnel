@@ -71,6 +71,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jScrollPane1 = new javax.swing.JScrollPane();
         panneauDeBase = new javax.swing.JPanel();
         panneauMenu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -146,9 +147,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
         panneauMenu.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Waylimo", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("MAEC-RBE");
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel1.setText("MAECRBE");
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -230,7 +231,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armoirieBF2.jpg"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Script MT Bold", 0, 60)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Narrow 7", 0, 60)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 0, 0));
         jLabel3.setText("Gestion des dépenses du personnel");
 
@@ -242,11 +243,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauEnteteLayout.setHorizontalGroup(
             panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauEnteteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(textExBudgetaire, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -256,14 +256,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panneauEnteteLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel3)
+                        .addGroup(panneauEnteteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panneauEnteteLayout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(textExBudgetaire, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panneauEnteteLayout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(panneauEnteteLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(textExBudgetaire, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panneauBureau.setBackground(new java.awt.Color(255, 255, 255));
@@ -272,11 +273,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panneauBureau.setLayout(panneauBureauLayout);
         panneauBureauLayout.setHorizontalGroup(
             panneauBureauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1903, Short.MAX_VALUE)
+            .addGap(0, 1950, Short.MAX_VALUE)
         );
         panneauBureauLayout.setVerticalGroup(
             panneauBureauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 776, Short.MAX_VALUE)
+            .addGap(0, 781, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panneauDeBaseLayout = new javax.swing.GroupLayout(panneauDeBase);
@@ -286,7 +287,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(panneauDeBaseLayout.createSequentialGroup()
                 .addComponent(panneauMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panneauEntete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panneauEntete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(panneauBureau)
         );
         panneauDeBaseLayout.setVerticalGroup(
@@ -298,6 +300,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panneauBureau))
         );
+
+        jScrollPane1.setViewportView(panneauDeBase);
 
         menuBar.setBackground(new java.awt.Color(0, 0, 0));
         menuBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 204, 0)));
@@ -694,13 +698,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panneauDeBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1907, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panneauDeBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         pack();
@@ -715,6 +719,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuBar.add(Box.createHorizontalGlue());  
         menu_agent.setBackground(Color.black);
         menu_importagent.setVisible(false);
+        menu_moncompte.setVisible(false);
       //  btn_moncompte.setVisible(false);
        // btn_deconnexion.setVisible(false);
         
@@ -993,6 +998,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator17;
     public static javax.swing.JMenuBar menuBar;

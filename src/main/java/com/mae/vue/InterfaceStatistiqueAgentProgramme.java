@@ -401,6 +401,7 @@ public class InterfaceStatistiqueAgentProgramme extends javax.swing.JInternalFra
         statNombreEnreg.setForeground(new java.awt.Color(255, 255, 255));
         statNombreEnreg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         statNombreEnreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        statNombreEnreg.setEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Paramètre 1", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N

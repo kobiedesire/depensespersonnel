@@ -230,7 +230,7 @@ public class ContractuelController {
     }
 
     //Afficher les categories dans le combo
-    private static final String querySelectCategorieEchelle = "SELECT * FROM categorie";
+    private static final String querySelectCategorieEchelle = "SELECT * FROM categorie ORDER BY codeCategorieEchelle ASC";
 
     public static void listCategorieInCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectCategorieEchelle)) {
@@ -249,7 +249,7 @@ public class ContractuelController {
     }
 
     //Afficher les emplois dans le combo
-    private static final String querySelectEmploi = "SELECT * FROM emploi";
+    private static final String querySelectEmploi = "SELECT * FROM emploi ORDER BY codeEmploi ASC";
 
     public static void listEmploiInCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectEmploi)) {
@@ -268,7 +268,7 @@ public class ContractuelController {
     }
 
     //Afficher les FONCTION dans le combo
-    private static final String querySelectFonction = "SELECT * FROM fonction";
+    private static final String querySelectFonction = "SELECT * FROM fonction ORDER BY libeleFonction ASC";
 
     public static void listFonctionInCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectFonction)) {
@@ -287,7 +287,7 @@ public class ContractuelController {
     }
 
     //Afficher les ministères  dans le combo
-    private static final String querySelectMinistere = "SELECT * FROM ministere";
+    private static final String querySelectMinistere = "SELECT * FROM ministere ORDER BY codeMinistere ASC";
 
     public static void listMinistereCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectMinistere)) {
@@ -306,7 +306,7 @@ public class ContractuelController {
     }
 
     //Afficher les structures  dans le combo
-    private static final String querySelectStructure = "SELECT * FROM structure";
+    private static final String querySelectStructure = "SELECT * FROM structure ORDER BY codeStructure ASC";
 
     public static void listStructureCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectStructure)) {
@@ -1076,7 +1076,7 @@ public class ContractuelController {
     
 
     /*Lister tous les agents*/
-    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent WHERE typeAgent = ? ";
+    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, typeAgent FROM agent WHERE typeAgent = ? ORDER BY nomAgent ASC";
 
     public static void listAll() {
          String typeA = InterfaceAgentContractuel.comboTypeAgent.getSelectedItem().toString();
@@ -1858,18 +1858,6 @@ public class ContractuelController {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
 
 
     
@@ -1917,7 +1905,7 @@ public class ContractuelController {
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
                 res.last();
-            tab = new String[res.getRow()][5];
+            tab = new String[res.getRow()][6];
             res.beforeFirst();
             yn = false;
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAgentContractuel.tableau_agent_contractuel.getModel();
@@ -1926,18 +1914,20 @@ public class ContractuelController {
             }
             for (int k = 0; k < tab.length; k++) {
                 res.next();
-                Object[] objects = new Object[5];
+                Object[] objects = new Object[6];
                 objects[0] = res.getString("idAgent");
                 objects[1] = res.getString("matriculeAgent");
                 objects[2] = res.getString("nomAgent");
                 objects[3] = res.getString("prenomAgent");
                 objects[4] = res.getString("structureAgent");
+                 objects[5] = res.getString("typeAgent");
                 tablemodel.addRow(objects);
                 tab[k][0] = res.getString("idAgent");
                 tab[k][1] = res.getString("matriculeAgent");
                 tab[k][2] = res.getString("nomAgent");
                 tab[k][3] = res.getString("prenomAgent");
                 tab[k][4] = res.getString("structureAgent");
+                tab[k][5] = res.getString("typeAgent");
                 yn = true;
             }
             } else {

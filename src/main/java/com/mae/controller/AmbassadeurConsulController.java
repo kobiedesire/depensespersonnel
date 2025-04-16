@@ -304,7 +304,7 @@ public class AmbassadeurConsulController {
     }
 
     //Afficher les categories dans le combo
-    private static final String querySelectCategorieEchelle = "SELECT * FROM categorie";
+    private static final String querySelectCategorieEchelle = "SELECT * FROM categorie ORDER BY codeCategorieEchelle ASC";
 
     public static void listCategorieInCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectCategorieEchelle)) {
@@ -323,7 +323,7 @@ public class AmbassadeurConsulController {
     }
 
     //Afficher les emplois dans le combo
-    private static final String querySelectEmploi = "SELECT * FROM emploi";
+    private static final String querySelectEmploi = "SELECT * FROM emploi ORDER BY codeEmploi ASC";
 
     public static void listEmploiInCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectEmploi)) {
@@ -342,7 +342,7 @@ public class AmbassadeurConsulController {
     }
 
     //Afficher les FONCTION dans le combo
-    private static final String querySelectFonction = "SELECT * FROM fonction where libeleFonction IN (?,?,?,?)";
+    private static final String querySelectFonction = "SELECT * FROM fonction where libeleFonction IN (?,?,?,?) ORDER BY libeleFonction ASC";
     public static void listFonctionInCombo() {
         String libeleAmba = "Ambassadeur";
         String libeleCons = "Consul Général";
@@ -369,7 +369,7 @@ public class AmbassadeurConsulController {
     }
 
     //Afficher les ministères  dans le combo
-    private static final String querySelectMinistere = "SELECT * FROM ministere";
+    private static final String querySelectMinistere = "SELECT * FROM ministere ORDER BY codeMinistere ASC";
     public static void listMinistereCombo() {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySelectMinistere)) {
             ResultSet res = preparedStatement.executeQuery();
@@ -387,7 +387,7 @@ public class AmbassadeurConsulController {
     }
 
     //Afficher les structures  dans le combo
-    private static final String querySelectStructure = "SELECT * FROM structure where typeStructure IN (?,?,?) ";
+    private static final String querySelectStructure = "SELECT * FROM structure where typeStructure IN (?,?,?) ORDER BY codeStructure ASC ";
 
     public static void listStructureCombo() {
         String ambaStruct = "Ambassade";
@@ -470,7 +470,7 @@ public class AmbassadeurConsulController {
     }
 
     //recuperation de l'id du programme et l'afficher en fonction de la selection de la structure  
-    private static final String querySelectIDProgrammeFromStructure = "SELECT idProgramme, coefficientStructure FROM structure  where codeStructure = ? ";
+    private static final String querySelectIDProgrammeFromStructure = "SELECT idProgramme, coefficientStructure FROM structure where codeStructure = ? ";
 
     // public static int exercice = Integer.parseInt(InterfaceProgramme.exerciceBu.getSelectedItem().toString());
     public static void afficherIDProgrammeFromStructure() {
@@ -503,7 +503,6 @@ public class AmbassadeurConsulController {
                     calculIndemnite();//calcul des indemnités
                     miseAJourLigne666();//calcul automatique des allocations
                     calculAutreDepenses();//calcul des autres dépenses
-
                     
                     InterfaceAmbassadeurConsul.ligne661.setBackground(new java.awt.Color(204, 0, 0));
                     InterfaceAmbassadeurConsul.ligne663.setBackground(new java.awt.Color(204, 0, 0));
@@ -1163,7 +1162,7 @@ public class AmbassadeurConsulController {
     
 
     /*Lister tous les agents fonctionnaires*/
-    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, fonctionAgent, typeAgent FROM agent WHERE fonctionAgent IN (?, ?, ?, ?) ";
+    private static final String querySelect = "SELECT idAgent, matriculeAgent, nomAgent, prenomAgent, structureAgent, fonctionAgent, typeAgent FROM agent WHERE fonctionAgent IN (?, ?, ?, ?) ORDER BY nomAgent ASC ";
 
     public static void listAll() {
         // String fonctionA = "Ambassadeur", "Consul Général", "Ambassadeur", "Représentant Permanent", "Ambassadeur", "Représentant Permanent Adjoint", "Consul Général";
@@ -2018,7 +2017,7 @@ public class AmbassadeurConsulController {
             ResultSet res = preparedStatement.executeQuery();
             if (res.next()) {
                 res.last();
-            tab = new String[res.getRow()][5];
+            tab = new String[res.getRow()][7];
             res.beforeFirst();
             yn = false;
             DefaultTableModel tablemodel = (DefaultTableModel) InterfaceAmbassadeurConsul.tableau_agent.getModel();
@@ -2027,18 +2026,22 @@ public class AmbassadeurConsulController {
             }
             for (int k = 0; k < tab.length; k++) {
                 res.next();
-                Object[] objects = new Object[5];
+                Object[] objects = new Object[7];
                 objects[0] = res.getString("idAgent");
                 objects[1] = res.getString("matriculeAgent");
                 objects[2] = res.getString("nomAgent");
                 objects[3] = res.getString("prenomAgent");
                 objects[4] = res.getString("structureAgent");
+                objects[5] = res.getString("fonctionAgent");
+                objects[6] = res.getString("typeAgent");
                 tablemodel.addRow(objects);
                 tab[k][0] = res.getString("idAgent");
                 tab[k][1] = res.getString("matriculeAgent");
                 tab[k][2] = res.getString("nomAgent");
                 tab[k][3] = res.getString("prenomAgent");
                 tab[k][4] = res.getString("structureAgent");
+                tab[k][5] = res.getString("fonctionAgent");
+                tab[k][6] = res.getString("typeAgent");
                 yn = true;
             }
             } else {

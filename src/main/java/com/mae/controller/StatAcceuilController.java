@@ -79,7 +79,7 @@ public class StatAcceuilController {
         }
     } 
     
-    
+  /********************************BUDGET******************************************************************************/  
     ///Budget Total du Ministere 
     private static final String querySUMMLIGNE = "SELECT SUM(montantLigne) AS totalLigneBudgetaire FROM ligne";
 
@@ -87,7 +87,7 @@ public class StatAcceuilController {
         try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySUMMLIGNE)) {
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                int totalB = res.getInt("totalLigneBudgetaire") * 12;
+                double totalB = (res.getDouble("totalLigneBudgetaire")*12);
                 NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
                 //int ttB = formatter.format(totalB)); 
                 InterfaceAcceuil.box_BudgetTotalMin.setText(String.valueOf(formatter.format(totalB)) + " " + "FCFA");
@@ -104,6 +104,31 @@ public class StatAcceuilController {
         }
     }
     
+         ///Budget Total ministere
+   /* private static final String querySUMMLIGNE = "SELECT SUM(incidenceAnnuelle) AS totalLigneBudgetaire FROM agent";                                                                                                                          
+    public static void budgetTotalMin() {  
+        //String typeS = "Centrale";
+        try (Connection connection = connexionBD.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(querySUMMLIGNE)) {
+           // preparedStatement.setString(1, typeS);
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) {
+                double totalB = res.getDouble("totalLigneBudgetaire");
+                NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
+                InterfaceAcceuil.box_BudgetTotalMin.setText(formatter.format(totalB) + " " + "FCFA");
+                  //InterfaceAcceuil.box_BudgetTotalMin.setText((totalB) + " " + "FCFA");
+               // System.out.println(totalB);
+                //InterfaceAcceuil.box_TTBudgetCentral.setText(res.getString("totalBudgetCentral") +" "+ "FCFA");
+            }
+            res.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erreur SQL");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Attention aux champs numériques");
+        }
+    }*/
+    
         ///Budget Total central
     private static final String queryBudgetAnnuelCentral = "SELECT SUM(incidenceAnnuelle) AS totalBudgetCentral FROM agent a, structure s WHERE  a.structureAgent = s.codeStructure AND s.typeStructure = ?  ";                                                                                                                          
     public static void budgetTotalCentral() {  
@@ -112,7 +137,7 @@ public class StatAcceuilController {
             preparedStatement.setString(1, typeS);
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                int totalBCentral = res.getInt("totalBudgetCentral");
+                double totalBCentral = res.getDouble("totalBudgetCentral");
                 NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
                 InterfaceAcceuil.box_TTBudgetCentral.setText(formatter.format(totalBCentral) + " " + "FCFA");
                 //InterfaceAcceuil.box_TTBudgetCentral.setText(res.getString("totalBudgetCentral") +" "+ "FCFA");
@@ -140,7 +165,7 @@ public class StatAcceuilController {
             preparedStatement.setString(3, typesMiper);
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
-                  int totalBMDPC = res.getInt("totalBudgetMDPC");
+                  double totalBMDPC = res.getDouble("totalBudgetMDPC");
                   //System.out.println(totalBMDPC);
                   NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
                   InterfaceAcceuil.box_TTBudgetMDPC.setText(formatter.format(totalBMDPC)+ " " + "FCFA");

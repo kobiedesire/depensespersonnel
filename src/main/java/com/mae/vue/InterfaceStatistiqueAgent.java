@@ -439,6 +439,7 @@ public class InterfaceStatistiqueAgent extends javax.swing.JInternalFrame {
         statNombreEnreg.setForeground(new java.awt.Color(255, 255, 255));
         statNombreEnreg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         statNombreEnreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        statNombreEnreg.setEnabled(false);
 
         javax.swing.GroupLayout panneauPrincipalLayout = new javax.swing.GroupLayout(panneauPrincipal);
         panneauPrincipal.setLayout(panneauPrincipalLayout);
